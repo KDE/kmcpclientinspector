@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: None
+# SPDX-License-Identifier: CC0-1.0
+
+Dependencies:
+ - 'on': ['Linux', 'FreeBSD', 'Windows']
+   'require':
+    'frameworks/kcoreaddons': '@latest-kf6'
+
+Options:
+ require-passing-tests-on: ['Linux', 'FreeBSD', 'Windows']
+ cppcheck-arguments: '--enable=warning,style,performance --inline-suppr --suppress=passedByValue --suppress=nullPointer'
+ tests-run-in-parallel: True
+ cmake-options: '-DWARNINGS_AS_ERRORS=ON'
+ enable-lsan: True
