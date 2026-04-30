@@ -1,0 +1,22 @@
+version = 1
+SPDX-PackageName = "kmcpclientinspector"
+SPDX-PackageSupplier = "Laurent Montel <montel@kde.org>"
+SPDX-PackageDownloadLocation = "https://invent.kde.org/utilities/kmcpclientinspector"
+
+[[annotations]]
+path = ["po/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "none"
+SPDX-License-Identifier = "LGPL-2.0-or-later"
+
+[[annotations]]
+path = ["README-pre-commit.md"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2023-2026 Laurent Montel <montel@kde.org>"
+SPDX-License-Identifier = "BSD-3-Clause"
+
+[[annotations]]
+path = ["CMakePresets.json"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Laurent Montel <montel@kde.org>"
+SPDX-License-Identifier = "BSD-3-Clause"

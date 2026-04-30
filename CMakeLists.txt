@@ -1,25 +1,25 @@
 # SPDX-FileCopyrightText: 2025-2026 Laurent Montel <montel@kde.org>
 # SPDX-License-Identifier: BSD-3-Clause
 cmake_minimum_required(VERSION 3.29.0)
-set(KAICHAT_VERSION "0.7.42")
-project(kaichat VERSION ${KAICHAT_VERSION})
+set(KMCPCLIENTINSPECTOR_VERSION "0.7.42")
+project(kmcpclientinspector VERSION ${KMCPCLIENTINSPECTOR_VERSION})
 
-set(KAICHAT_LIB_VERSION "${KAICHAT_VERSION}")
+set(KMCPCLIENTINSPECTOR_LIB_VERSION "${KMCPCLIENTINSPECTOR_VERSION}")
 
 # TODO: update it in each release version
-set(KAICHAT_RELEASE_VERSION "26.08.30") # yy.MM.dd
+set(KMCPCLIENTINSPECTOR_RELEASE_VERSION "26.08.30") # yy.MM.dd
 
 # Use true if stable version => we will check specific version
-set(KAICHAT_STABLE_VERSION false)
+set(KMCPCLIENTINSPECTOR_STABLE_VERSION false)
 
 # Do NOT add quote
-set(KAICHAT_DEV_VERSION "alpha")
+set(KMCPCLIENTINSPECTOR_DEV_VERSION "alpha")
 # add an extra space
-if(DEFINED KAICHAT_DEV_VERSION)
-    set(KAICHAT_DEV_VERSION " ${KAICHAT_DEV_VERSION}")
+if(DEFINED KMCPCLIENTINSPECTOR_DEV_VERSION)
+    set(KMCPCLIENTINSPECTOR_DEV_VERSION " ${KMCPCLIENTINSPECTOR_DEV_VERSION}")
 endif()
 
-set(KAICHAT_VERSION_STRING "${KAICHAT_VERSION}${KAICHAT_DEV_VERSION}")
+set(KMCPCLIENTINSPECTOR_VERSION_STRING "${KMCPCLIENTINSPECTOR_VERSION}${KMCPCLIENTINSPECTOR_DEV_VERSION}")
 
 set(QT_REQUIRED_VERSION "6.10.0")
 set(KF_MIN_VERSION "6.22.0")
@@ -121,13 +121,7 @@ set_package_properties(
 set(KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION "2.0.53")
 
 find_package(Qt6 ${QT_REQUIRED_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
-find_package(
-    KF6
-    ${KF_MIN_VERSION}
-    REQUIRED
-    COMPONENTS
-        CoreAddons
-)
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS CoreAddons)
 
 find_package(KF6TextAutoGenerateText ${KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION} CONFIG)
 set_package_properties(
@@ -141,7 +135,7 @@ set_package_properties(
             "Use AI plugin"
 )
 
-add_definitions(-DTRANSLATION_DOMAIN="kaichat")
+add_definitions(-DTRANSLATION_DOMAIN="kmcpclientinspector")
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ecm_set_disabled_deprecation_versions(QT 6.12.0
@@ -154,14 +148,14 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     string(APPEND CMAKE_CXX_FLAGS " -Wshadow")
 endif()
 
-set(KAICHAT_LIB_SOVERSION "0")
+set(KMCPCLIENTINSPECTOR_LIB_SOVERSION "0")
 
 if(BUILD_TESTING)
     find_package(Qt6 ${QT_REQUIRED_VERSION} REQUIRED COMPONENTS Test)
     add_definitions(-DBUILD_TESTING)
 endif()
 
-configure_file(config-kaichat.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-kaichat.h)
+configure_file(config-kmcpclientinspector.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-kmcpclientinspector.h)
 
 option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)
 
@@ -187,12 +181,6 @@ file(
     GLOB_RECURSE ALL_SOURCE_FILES
     src/apps/*.h
     src/apps/*.cpp
-    src/widgets/*.cpp
-    src/widgets/*.h
-    src/core/*.cpp
-    src/core/*.h
-    src/plugins/*.h
-    src/plugins/*.cpp
 )
 ecm_check_outbound_license(LICENSES GPL-2.0-only  FILES ${ALL_SOURCE_FILES})
 
@@ -202,8 +190,8 @@ if(GIT_SOURCE_TARBALL)
     endif()
 endif()
 ecm_qt_install_logging_categories(
-    EXPORT KAICHAT
-    FILE kaichat.categories
+    EXPORT KMCPCLIENTINSPECTOR
+    FILE kmcpclientinspector.categories
     DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
 )
 
