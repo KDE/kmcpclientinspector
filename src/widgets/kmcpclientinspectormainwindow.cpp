@@ -12,3 +12,5 @@ KMcpClientInspectorMainWindow::KMcpClientInspectorMainWindow(QWidget *parent)
 }
 
 KMcpClientInspectorMainWindow::~KMcpClientInspectorMainWindow() = default;
+
+#include "moc_kmcpclientinspectormainwindow.cpp"
