@@ -118,7 +118,7 @@ set_package_properties(
             OPTIONAL
 )
 
-set(KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION "2.0.53")
+set(KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION "2.0.56")
 
 find_package(Qt6 ${QT_REQUIRED_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
 find_package(
@@ -146,7 +146,7 @@ add_definitions(-DTRANSLATION_DOMAIN="kmcpclientinspector")
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ecm_set_disabled_deprecation_versions(QT 6.12.0
-    KF 6.25.0
+    KF 6.26.0
 )
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
