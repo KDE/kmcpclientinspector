@@ -21,6 +21,7 @@ target_link_libraries(
     KF6::I18n
     KF6::CoreAddons
     Qt::Widgets
+    libkmcpclientinspectorwidgets
 )
 
 #file(GLOB_RECURSE KAICHAT_ICONS "${PROJECT_SOURCE_DIR}/src/widgets/icons/*-apps-kaichat.png")
