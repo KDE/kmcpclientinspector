@@ -4,10 +4,10 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 #pragma once
-
+#include "libkmcpclientinspectorwidgets_export.h"
 #include <KXmlGuiWindow>
 
-class KMcpClientInspectorMainWindow : public KXmlGuiWindow
+class LIBKMCPCLIENTINSPECTORWIDGETS_EXPORT KMcpClientInspectorMainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
 public:
