@@ -121,7 +121,14 @@ set_package_properties(
 set(KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION "2.0.53")
 
 find_package(Qt6 ${QT_REQUIRED_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
-find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS CoreAddons)
+find_package(
+    KF6
+    ${KF_MIN_VERSION}
+    REQUIRED
+    COMPONENTS
+        CoreAddons
+        I18n
+)
 
 find_package(KF6TextAutoGenerateText ${KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION} CONFIG)
 set_package_properties(
