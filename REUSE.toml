@@ -10,6 +10,13 @@ SPDX-FileCopyrightText = "none"
 SPDX-License-Identifier = "LGPL-2.0-or-later"
 
 [[annotations]]
+path = ["REUSE.toml", ".gersemirc"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Laurent Montel <montel@kde.org>"
+SPDX-License-Identifier = "CC0-1.0"
+
+
+[[annotations]]
 path = ["README-pre-commit.md"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2023-2026 Laurent Montel <montel@kde.org>"
