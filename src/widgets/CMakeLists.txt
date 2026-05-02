@@ -27,9 +27,9 @@ set_target_properties(
         OUTPUT_NAME
             kmcpclientinspectorwidgets
         VERSION
-            ${KAICHAT_LIB_VERSION}
+            ${KMCPCLIENTINSPECTOR_LIB_VERSION}
         SOVERSION
-            ${KAICHAT_LIB_SOVERSION}
+            ${KMCPCLIENTINSPECTOR_LIB_SOVERSION}
 )
 
 install(
