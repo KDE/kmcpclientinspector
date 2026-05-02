@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2025-2026 Laurent Montel <montel@kde.org>
 # SPDX-License-Identifier: BSD-3-Clause
 cmake_minimum_required(VERSION 3.29.0)
-set(KMCPCLIENTINSPECTOR_VERSION "0.7.42")
+set(KMCPCLIENTINSPECTOR_VERSION "0.0.1")
 project(kmcpclientinspector VERSION ${KMCPCLIENTINSPECTOR_VERSION})
 
 set(KMCPCLIENTINSPECTOR_LIB_VERSION "${KMCPCLIENTINSPECTOR_VERSION}")
@@ -128,6 +128,7 @@ find_package(
     COMPONENTS
         CoreAddons
         I18n
+        XmlGui
 )
 
 find_package(KF6TextAutoGenerateText ${KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION} CONFIG)

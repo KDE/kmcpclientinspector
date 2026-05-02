@@ -4,11 +4,16 @@
 #add_subdirectory(icons)
 
 add_library(libkmcpclientinspectorwidgets)
-ecm_qt_declare_logging_category(libkmcpclientinspectorwidgets HEADER kaichat_widget_debug.h IDENTIFIER KAICHAT_WIDGET_LOG
-    CATEGORY_NAME org.kde.kaichat_widget DESCRIPTION "kaichat (widget lib)" EXPORT KAICHAT
+ecm_qt_declare_logging_category(libkmcpclientinspectorwidgets HEADER kmcpclientinspector_widget_debug.h IDENTIFIER KMCPCLIENTINSPECTOR_WIDGET_LOG
+    CATEGORY_NAME org.kde.kmcpclientinspector_widget DESCRIPTION "kmcpclientinspector (widget lib)" EXPORT KMCPCLIENTINSPECTOR
 )
 
-target_sources(libkmcpclientinspectorwidgets PRIVATE)
+target_sources(
+    libkmcpclientinspectorwidgets
+    PRIVATE
+        kmcpclientinspectormainwindow.h
+        kmcpclientinspectormainwindow.cpp
+)
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(
         libkmcpclientinspectorwidgets
@@ -19,7 +24,11 @@ if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
 endif()
 generate_export_header(libkmcpclientinspectorwidgets BASE_NAME libkmcpclientinspectorwidgets)
 
-target_link_libraries(libkmcpclientinspectorwidgets Qt::Widgets)
+target_link_libraries(
+    libkmcpclientinspectorwidgets
+    Qt::Widgets
+    KF6::XmlGui
+)
 
 set_target_properties(
     libkmcpclientinspectorwidgets
