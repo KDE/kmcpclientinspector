@@ -13,4 +13,7 @@ class LIBKMCPCLIENTINSPECTORWIDGETS_EXPORT KMcpClientInspectorMainWindow : publi
 public:
     explicit KMcpClientInspectorMainWindow(QWidget *parent = nullptr);
     ~KMcpClientInspectorMainWindow() override;
+
+private:
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void setupActions();
 };

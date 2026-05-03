@@ -9,8 +9,14 @@
 KMcpClientInspectorMainWindow::KMcpClientInspectorMainWindow(QWidget *parent)
     : KXmlGuiWindow(parent)
 {
+    setupActions();
+    setupGUI();
 }
 
 KMcpClientInspectorMainWindow::~KMcpClientInspectorMainWindow() = default;
+
+void KMcpClientInspectorMainWindow::setupActions()
+{
+}
 
 #include "moc_kmcpclientinspectormainwindow.cpp"
