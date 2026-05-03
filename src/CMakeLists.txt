@@ -3,3 +3,6 @@
 
 add_subdirectory(widgets)
 add_subdirectory(apps)
+
+install(PROGRAMS data/org.kde.kmcpclientinspector.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES data/org.kde.kmcpclientinspector.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SPDX-License-Identifier: CC0-1.0
+  SPDX-FileCopyrightText: 2026 Laurent Montel <montel@kde.org>
+-->
+<component type="desktop-application">
+  <id>org.kde.kmcpclientinspector</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <developer id="org.kde">
+    <name translate="no">KDE</name>
+  </developer>
+  <name>KMcpClientInspector</name>
+  <summary>MCP client inspector</summary>
+  <description>
+    <p>
+      KMcpClientInspector allows to show mcp client apps.
+    </p>
+  </description>
+  <url type="homepage">https://apps.kde.org/kmcpclientinspector</url>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kmcpclientinspector</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=kmcpclientinspector&amp;source=appdata</url>
+  <url type="vcs-browser">https://invent.kde.org/utilities/kmcpclientinspector</url>
+  <project_group>KDE</project_group>
+  <content_rating type="oars-1.1">
+    <content_attribute id="social-chat">moderate</content_attribute>
+    <content_attribute id="social-audio">moderate</content_attribute>
+  </content_rating>
+  <provides>
+    <binary>kmcpclientinspector</binary>
+  </provides>
+  <launchable type="desktop-id">org.kde.kmcpclientinspector.desktop</launchable>
+  <categories>
+    <category>Utility</category>
+  </categories>
+  <icon type="stock">org.kde.kmcpclientinspector</icon>
+</component>
