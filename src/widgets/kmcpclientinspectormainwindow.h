@@ -6,7 +6,7 @@
 #pragma once
 #include "libkmcpclientinspectorwidgets_export.h"
 #include <KXmlGuiWindow>
-
+class KMcpClientInspectorCentralWidget;
 class LIBKMCPCLIENTINSPECTORWIDGETS_EXPORT KMcpClientInspectorMainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
@@ -16,4 +16,5 @@ public:
 
 private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void setupActions();
+    KMcpClientInspectorCentralWidget *const mMainWidget;
 };
