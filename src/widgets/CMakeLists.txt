@@ -13,6 +13,7 @@ target_sources(
     PRIVATE
         kmcpclientinspectormainwindow.h
         kmcpclientinspectormainwindow.cpp
+        kmcpclientinspectorwidgets.qrc
 )
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(
