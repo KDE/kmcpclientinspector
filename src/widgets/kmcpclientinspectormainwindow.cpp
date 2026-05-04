@@ -6,6 +6,9 @@
 
 #include "kmcpclientinspectormainwindow.h"
 #include "kmcpclientinspectorcentralwidget.h"
+#include <KActionCollection>
+#include <KStandardAction>
+#include <KStandardActions>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorMainWindow::KMcpClientInspectorMainWindow(QWidget *parent)
     : KXmlGuiWindow(parent)
@@ -22,6 +25,7 @@ KMcpClientInspectorMainWindow::~KMcpClientInspectorMainWindow() = default;
 void KMcpClientInspectorMainWindow::setupActions()
 {
     KActionCollection *ac = actionCollection();
+    KStandardActions::quit(this, &KMcpClientInspectorMainWindow::close, ac);
     // TODO
 }
 

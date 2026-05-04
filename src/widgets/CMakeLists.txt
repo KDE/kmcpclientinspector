@@ -33,6 +33,8 @@ target_link_libraries(
     libkmcpclientinspectorwidgets
     Qt::Widgets
     KF6::XmlGui
+    KF6::ConfigGui
+    KF6::ConfigWidgets
 )
 
 set_target_properties(
