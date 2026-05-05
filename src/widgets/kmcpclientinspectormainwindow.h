@@ -6,6 +6,7 @@
 #pragma once
 #include "libkmcpclientinspectorwidgets_export.h"
 #include <KXmlGuiWindow>
+class KToggleFullScreenAction;
 class KMcpClientInspectorCentralWidget;
 class LIBKMCPCLIENTINSPECTORWIDGETS_EXPORT KMcpClientInspectorMainWindow : public KXmlGuiWindow
 {
@@ -16,6 +17,8 @@ public:
 
 private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void setupActions();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotFullScreen(bool t);
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotConfigureNotifications();
     KMcpClientInspectorCentralWidget *const mMainWidget;
+    KToggleFullScreenAction *mShowFullScreenAction = nullptr;
 };
