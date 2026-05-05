@@ -35,6 +35,7 @@ target_link_libraries(
     KF6::XmlGui
     KF6::ConfigGui
     KF6::ConfigWidgets
+    KF6::NotifyConfig
 )
 
 set_target_properties(

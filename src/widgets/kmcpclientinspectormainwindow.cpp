@@ -7,6 +7,7 @@
 #include "kmcpclientinspectormainwindow.h"
 #include "kmcpclientinspectorcentralwidget.h"
 #include <KActionCollection>
+#include <KNotifyConfigWidget>
 #include <KStandardAction>
 #include <KStandardActions>
 using namespace Qt::Literals::StringLiterals;
@@ -26,7 +27,13 @@ void KMcpClientInspectorMainWindow::setupActions()
 {
     KActionCollection *ac = actionCollection();
     KStandardActions::quit(this, &KMcpClientInspectorMainWindow::close, ac);
+    KStandardActions::configureNotifications(this, &KMcpClientInspectorMainWindow::slotConfigureNotifications, ac);
     // TODO
+}
+
+void KMcpClientInspectorMainWindow::slotConfigureNotifications()
+{
+    KNotifyConfigWidget::configure(this);
 }
 
 #include "moc_kmcpclientinspectormainwindow.cpp"

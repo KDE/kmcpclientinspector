@@ -129,6 +129,7 @@ find_package(
         CoreAddons
         I18n
         XmlGui
+        NotifyConfig
 )
 
 find_package(KF6TextAutoGenerateText ${KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION} CONFIG)
