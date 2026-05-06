@@ -12,3 +12,5 @@ KMcpClientInspectorTreeView::KMcpClientInspectorTreeView(QWidget *parent)
 }
 
 KMcpClientInspectorTreeView::~KMcpClientInspectorTreeView() = default;
+
+#include "moc_kmcpclientinspectortreeview.cpp"
