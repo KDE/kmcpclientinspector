@@ -10,6 +10,8 @@ Dependencies:
     'libraries/ktextaddons': '@latest-kf6'
     'frameworks/kxmlgui': '@latest-kf6'
     'frameworks/knotifyconfig': '@latest-kf6'
+    'frameworks/kcrash': '@latest-kf6'
+    'frameworks/kiconthemes': '@latest-kf6'
 
 Options:
  require-passing-tests-on: ['Linux', 'FreeBSD', 'Windows']

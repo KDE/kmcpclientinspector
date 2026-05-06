@@ -129,17 +129,18 @@ find_package(
         CoreAddons
         I18n
         XmlGui
+        Crash
         NotifyConfig
 )
 
-find_package(KF6TextAutoGenerateText ${KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION} CONFIG)
+find_package(KF6TextAutoGenerateTextMcpProtocolWidgets ${KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION} CONFIG)
 set_package_properties(
-    KF6TextAutoGenerateText
+    KF6TextAutoGenerateTextMcpProtocolWidgets
     PROPERTIES
         TYPE
             REQUIRED
         PURPOSE
-            "Required for building AI plugins support"
+            "Required for mcp protocol support"
         DESCRIPTION
             "Use AI plugin"
 )

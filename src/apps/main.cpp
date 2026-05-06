@@ -7,6 +7,7 @@
 #include "config-kmcpclientinspector.h"
 #include "kmcpclientinspectormainwindow.h"
 #include <KAboutData>
+#include <KCrash>
 #include <KLocalizedString>
 #include <QApplication>
 using namespace Qt::Literals::StringLiterals;
@@ -28,7 +29,7 @@ int main(int argc, char *argv[])
     aboutData.setProgramLogo(QIcon(u":/kmcpclientinspector/kmcpclientinspector.svg"_s));
 
     KAboutData::setApplicationData(aboutData);
-
+    KCrash::initialize();
     auto mw = new KMcpClientInspectorMainWindow;
     mw->show();
     const int val = app.exec();

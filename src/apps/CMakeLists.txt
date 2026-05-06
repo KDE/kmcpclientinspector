@@ -15,8 +15,7 @@ endif()
 
 target_link_libraries(
     kmcpclientinspector
-    # KF6::Crash
-    # KF6::XmlGui
+    KF6::Crash
     # KF6::IconThemes
     KF6::I18n
     KF6::CoreAddons
