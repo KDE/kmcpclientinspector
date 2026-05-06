@@ -20,6 +20,7 @@ target_sources(
         kmcpclientinspectortreeview.cpp
         kmcpclientinspectortabwidget.h
         kmcpclientinspectortabwidget.cpp
+        libkmcpclientinspectorwidgets_private_export.h
 )
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(

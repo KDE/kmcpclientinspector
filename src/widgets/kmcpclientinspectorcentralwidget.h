@@ -5,11 +5,10 @@
  */
 
 #pragma once
-#include "libkmcpclientinspectorwidgets_export.h"
+#include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
-class KMcpClientInspectorTreeView;
-class QPlainTextEdit;
-class LIBKMCPCLIENTINSPECTORWIDGETS_EXPORT KMcpClientInspectorCentralWidget : public QWidget
+class KMcpClientInspectorTabWidget;
+class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorCentralWidget : public QWidget
 {
     Q_OBJECT
 public:
@@ -17,6 +16,5 @@ public:
     ~KMcpClientInspectorCentralWidget() override;
 
 private:
-    KMcpClientInspectorTreeView *const mTreeView;
-    QPlainTextEdit *const mTextEdit;
+    KMcpClientInspectorTabWidget *const mTabWidget;
 };

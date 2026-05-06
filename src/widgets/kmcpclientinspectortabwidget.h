@@ -5,10 +5,10 @@
  */
 
 #pragma once
-#include "libkmcpclientinspectorwidgets_export.h"
+#include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QTabWidget>
 
-class LIBKMCPCLIENTINSPECTORWIDGETS_EXPORT KMcpClientInspectorTabWidget : public QTabWidget
+class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorTabWidget : public QTabWidget
 {
     Q_OBJECT
 public:
