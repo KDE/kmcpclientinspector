@@ -12,3 +12,5 @@ KMcpClientInspectorTabWidget::KMcpClientInspectorTabWidget(QWidget *parent)
 }
 
 KMcpClientInspectorTabWidget::~KMcpClientInspectorTabWidget() = default;
+
+#include "moc_kmcpclientinspectortabwidget.cpp"
