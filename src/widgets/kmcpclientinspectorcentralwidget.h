@@ -8,6 +8,7 @@
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
 class KMcpClientInspectorTabWidget;
+class KMcpClientInspectorManager;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorCentralWidget : public QWidget
 {
     Q_OBJECT

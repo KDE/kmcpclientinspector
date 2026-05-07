@@ -6,10 +6,11 @@
 
 #pragma once
 
+#include "libkmcpclientinspectorcore_export.h"
 #include <QObject>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServerManager>
 
-class KMcpClientInspectorManager : public TextAutoGenerateTextMcpProtocolCore::McpServerManager
+class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorManager : public TextAutoGenerateTextMcpProtocolCore::McpServerManager
 {
     Q_OBJECT
 public:

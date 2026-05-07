@@ -6,6 +6,7 @@
 
 #include "kmcpclientinspectormainwindow.h"
 #include "kmcpclientinspectorcentralwidget.h"
+#include "kmcpclientinspectormanager.h"
 #include <KActionCollection>
 #include <KNotifyConfigWidget>
 #include <KStandardAction>
@@ -17,11 +18,13 @@ using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorMainWindow::KMcpClientInspectorMainWindow(QWidget *parent)
     : KXmlGuiWindow(parent)
     , mMainWidget(new KMcpClientInspectorCentralWidget(this))
+    , mManager(new KMcpClientInspectorManager(this))
 {
     mMainWidget->setObjectName(u"mMainWidget"_s);
     setCentralWidget(mMainWidget);
     setupActions();
     setupGUI();
+    mManager->loadServers();
 }
 
 KMcpClientInspectorMainWindow::~KMcpClientInspectorMainWindow() = default;

@@ -5,6 +5,7 @@
  */
 
 #include "kmcpclientinspectorcentralwidget.h"
+#include "kmcpclientinspectormanager.h"
 #include "kmcpclientinspectortabwidget.h"
 #include <QVBoxLayout>
 

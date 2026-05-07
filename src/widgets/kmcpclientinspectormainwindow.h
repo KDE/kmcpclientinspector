@@ -8,6 +8,7 @@
 #include <KXmlGuiWindow>
 class KToggleFullScreenAction;
 class KMcpClientInspectorCentralWidget;
+class KMcpClientInspectorManager;
 class LIBKMCPCLIENTINSPECTORWIDGETS_EXPORT KMcpClientInspectorMainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
@@ -21,4 +22,5 @@ private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotConfigureNotifications();
     KMcpClientInspectorCentralWidget *const mMainWidget;
     KToggleFullScreenAction *mShowFullScreenAction = nullptr;
+    KMcpClientInspectorManager *const mManager;
 };
