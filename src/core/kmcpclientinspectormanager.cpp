@@ -16,6 +16,6 @@ KMcpClientInspectorManager::~KMcpClientInspectorManager() = default;
 
 QString KMcpClientInspectorManager::serverConfigFileName() const
 {
-    return u"kmcpinspector.rc"_s;
+    return u"kmcpclientinspectorrc"_s;
 }
 #include "moc_kmcpclientinspectormanager.cpp"
