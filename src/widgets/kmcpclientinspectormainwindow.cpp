@@ -8,6 +8,9 @@
 #include "kmcpclientinspectorcentralwidget.h"
 #include "kmcpclientinspectormanager.h"
 #include <KActionCollection>
+#include <KActionMenu>
+#include <KColorSchemeManager>
+#include <KColorSchemeMenu>
 #include <KNotifyConfigWidget>
 #include <KStandardAction>
 #include <KStandardActions>
@@ -38,6 +41,9 @@ void KMcpClientInspectorMainWindow::setupActions()
     mShowFullScreenAction = KStandardAction::fullScreen(nullptr, nullptr, this, ac);
     ac->setDefaultShortcut(mShowFullScreenAction, Qt::Key_F11);
     connect(mShowFullScreenAction, &QAction::toggled, this, &KMcpClientInspectorMainWindow::slotFullScreen);
+
+    auto manager = KColorSchemeManager::instance();
+    ac->addAction(u"colorscheme_menu"_s, KColorSchemeMenu::createMenu(manager, this));
 }
 
 void KMcpClientInspectorMainWindow::slotConfigureNotifications()
