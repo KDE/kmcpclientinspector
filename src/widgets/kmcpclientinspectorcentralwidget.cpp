@@ -10,9 +10,10 @@
 #include <QVBoxLayout>
 
 using namespace Qt::Literals::StringLiterals;
-KMcpClientInspectorCentralWidget::KMcpClientInspectorCentralWidget(QWidget *parent)
+KMcpClientInspectorCentralWidget::KMcpClientInspectorCentralWidget(KMcpClientInspectorManager *manager, QWidget *parent)
     : QWidget{parent}
     , mTabWidget(new KMcpClientInspectorTabWidget(this))
+    , mManager(manager)
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName("mainLayout"_L1);

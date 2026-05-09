@@ -13,9 +13,10 @@ class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorCentralWidge
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorCentralWidget(QWidget *parent = nullptr);
+    explicit KMcpClientInspectorCentralWidget(KMcpClientInspectorManager *manager, QWidget *parent = nullptr);
     ~KMcpClientInspectorCentralWidget() override;
 
 private:
     KMcpClientInspectorTabWidget *const mTabWidget;
+    KMcpClientInspectorManager *const mManager;
 };

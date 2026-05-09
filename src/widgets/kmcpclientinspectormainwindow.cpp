@@ -20,8 +20,8 @@
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorMainWindow::KMcpClientInspectorMainWindow(QWidget *parent)
     : KXmlGuiWindow(parent)
-    , mMainWidget(new KMcpClientInspectorCentralWidget(this))
     , mManager(new KMcpClientInspectorManager(this))
+    , mMainWidget(new KMcpClientInspectorCentralWidget(mManager, this))
 {
     mMainWidget->setObjectName(u"mMainWidget"_s);
     setCentralWidget(mMainWidget);
