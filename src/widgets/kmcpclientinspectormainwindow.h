@@ -20,7 +20,7 @@ private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void setupActions();
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotFullScreen(bool t);
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotConfigureNotifications();
-    KMcpClientInspectorCentralWidget *const mMainWidget;
     KMcpClientInspectorManager *const mManager;
+    KMcpClientInspectorCentralWidget *const mMainWidget;
     KToggleFullScreenAction *mShowFullScreenAction = nullptr;
 };
