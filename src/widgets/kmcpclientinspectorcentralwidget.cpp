@@ -12,7 +12,7 @@
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorCentralWidget::KMcpClientInspectorCentralWidget(KMcpClientInspectorManager *manager, QWidget *parent)
     : QWidget{parent}
-    , mTabWidget(new KMcpClientInspectorTabWidget(this))
+    , mTabWidget(new KMcpClientInspectorTabWidget(manager, this))
     , mManager(manager)
 {
     auto mainLayout = new QVBoxLayout(this);

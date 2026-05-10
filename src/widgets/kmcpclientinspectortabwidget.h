@@ -7,11 +7,14 @@
 #pragma once
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QTabWidget>
-
+class KMcpClientInspectorManager;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorTabWidget : public QTabWidget
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorTabWidget(QWidget *parent = nullptr);
+    explicit KMcpClientInspectorTabWidget(KMcpClientInspectorManager *manager, QWidget *parent = nullptr);
     ~KMcpClientInspectorTabWidget() override;
+
+private:
+    KMcpClientInspectorManager *const mManager;
 };

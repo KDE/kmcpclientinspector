@@ -5,10 +5,13 @@
  */
 
 #include "kmcpclientinspectortabwidget.h"
+#include "kmcpclientinspectormanager.h"
 
-KMcpClientInspectorTabWidget::KMcpClientInspectorTabWidget(QWidget *parent)
+KMcpClientInspectorTabWidget::KMcpClientInspectorTabWidget(KMcpClientInspectorManager *manager, QWidget *parent)
     : QTabWidget(parent)
+    , mManager(manager)
 {
+    // TODO initialize manager
 }
 
 KMcpClientInspectorTabWidget::~KMcpClientInspectorTabWidget() = default;
