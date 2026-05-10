@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2026 Laurent Montel <montel@kde.org>
 # SPDX-License-Identifier: BSD-3-Clause
 
-#add_subdirectory(icons)
+add_subdirectory(icons)
 
 add_library(libkmcpclientinspectorwidgets)
 ecm_qt_declare_logging_category(libkmcpclientinspectorwidgets HEADER kmcpclientinspector_widget_debug.h IDENTIFIER KMCPCLIENTINSPECTOR_WIDGET_LOG
