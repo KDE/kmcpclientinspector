@@ -6,6 +6,8 @@
 
 #include "kmcpclientinspectortabwidget.h"
 #include "kmcpclientinspectormanager.h"
+#include "kmcpclientinspectortabpage.h"
+#include <TextAutoGenerateTextMcpProtocolCore/McpServerModel>
 
 KMcpClientInspectorTabWidget::KMcpClientInspectorTabWidget(KMcpClientInspectorManager *manager, QWidget *parent)
     : QTabWidget(parent)
@@ -18,6 +20,11 @@ KMcpClientInspectorTabWidget::~KMcpClientInspectorTabWidget() = default;
 
 void KMcpClientInspectorTabWidget::loadServers()
 {
+    const auto servers = mManager->mcpServerModel()->mcpServers();
+    for (const auto &s : servers) {
+        auto page = new KMcpClientInspectorTabPage(this);
+        addTab(page, s.name());
+    }
     // TODO
 }
 
