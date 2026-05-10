@@ -31,7 +31,7 @@ cmake --preset dev-mokd && cmake --build --preset dev-mold
 ## ASAN
 
 We can use sanitizers.supp file
-example: LSAN_OPTIONS=suppressions=../sanitizers.supp ./bin/kaichat
+example: LSAN_OPTIONS=suppressions=../sanitizers.supp ./bin/kmcpclientinspector
 
 ## UNITY
 
