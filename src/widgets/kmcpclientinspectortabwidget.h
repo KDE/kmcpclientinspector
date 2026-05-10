@@ -16,5 +16,6 @@ public:
     ~KMcpClientInspectorTabWidget() override;
 
 private:
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void loadServers();
     KMcpClientInspectorManager *const mManager;
 };

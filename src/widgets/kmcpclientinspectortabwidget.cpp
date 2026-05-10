@@ -11,9 +11,14 @@ KMcpClientInspectorTabWidget::KMcpClientInspectorTabWidget(KMcpClientInspectorMa
     : QTabWidget(parent)
     , mManager(manager)
 {
-    // TODO initialize manager
+    loadServers();
 }
 
 KMcpClientInspectorTabWidget::~KMcpClientInspectorTabWidget() = default;
+
+void KMcpClientInspectorTabWidget::loadServers()
+{
+    // TODO
+}
 
 #include "moc_kmcpclientinspectortabwidget.cpp"
