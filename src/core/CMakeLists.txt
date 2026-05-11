@@ -1,16 +1,18 @@
 # SPDX-FileCopyrightText: 2026 Laurent Montel <montel@kde.org>
 # SPDX-License-Identifier: BSD-3-Clause
 
-add_library(
-    libkmcpclientinspectorcore
-    kmcpclientinspectormanager.h
-    kmcpclientinspectormanager.cpp
-)
+add_library(libkmcpclientinspectorcore)
 ecm_qt_declare_logging_category(libkmcpclientinspectorcore HEADER kmcpclientinspector_core_debug.h IDENTIFIER KMCPCLIENTINSPECTOR_CORE_LOG
     CATEGORY_NAME org.kde.kmcpclientinspector_core DESCRIPTION "kmcpclientinspector (core lib)" EXPORT KMCPCLIENTINSPECTOR
 )
 
-target_sources(libkmcpclientinspectorcore PRIVATE)
+target_sources(
+    libkmcpclientinspectorcore
+    PRIVATE
+        kmcpclientinspectormanager.h
+        kmcpclientinspectormanager.cpp
+)
+
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(
         libkmcpclientinspectorcore

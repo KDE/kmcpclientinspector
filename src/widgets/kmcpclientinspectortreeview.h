@@ -5,13 +5,16 @@
  */
 
 #pragma once
-
+#include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QTreeView>
-
-class KMcpClientInspectorTreeView : public QTreeView
+class KMcpClientInspectorManager;
+class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorTreeView : public QTreeView
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorTreeView(QWidget *parent = nullptr);
+    explicit KMcpClientInspectorTreeView(KMcpClientInspectorManager *manager, QWidget *parent = nullptr);
     ~KMcpClientInspectorTreeView() override;
+
+private:
+    KMcpClientInspectorManager *const mManager;
 };

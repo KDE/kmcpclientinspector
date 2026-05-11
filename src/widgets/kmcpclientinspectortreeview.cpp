@@ -6,8 +6,9 @@
 
 #include "kmcpclientinspectortreeview.h"
 
-KMcpClientInspectorTreeView::KMcpClientInspectorTreeView(QWidget *parent)
+KMcpClientInspectorTreeView::KMcpClientInspectorTreeView(KMcpClientInspectorManager *manager, QWidget *parent)
     : QTreeView(parent)
+    , mManager(manager)
 {
 }
 

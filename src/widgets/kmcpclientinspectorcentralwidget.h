@@ -9,6 +9,7 @@
 #include <QWidget>
 class KMcpClientInspectorTabWidget;
 class KMcpClientInspectorManager;
+class KMcpClientInspectorTreeView;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorCentralWidget : public QWidget
 {
     Q_OBJECT
@@ -18,5 +19,6 @@ public:
 
 private:
     KMcpClientInspectorTabWidget *const mTabWidget;
+    KMcpClientInspectorTreeView *const mTreeView;
     KMcpClientInspectorManager *const mManager;
 };
