@@ -21,6 +21,8 @@ target_sources(
         kmcpclientinspectortabpage.h
         kmcpclientinspectortabpage.cpp
         libkmcpclientinspectorwidgets_private_export.h
+        kmcpclientinspectorserversettingswidget.h
+        kmcpclientinspectorserversettingswidget.cpp
 )
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(
