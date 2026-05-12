@@ -9,7 +9,10 @@
 #include <QWidget>
 class KMcpClientInspectorTabWidget;
 class KMcpClientInspectorManager;
-class KMcpClientInspectorTreeView;
+namespace TextAutoGenerateTextMcpProtocolWidgets
+{
+class McpServerListView;
+}
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorCentralWidget : public QWidget
 {
     Q_OBJECT
@@ -19,6 +22,6 @@ public:
 
 private:
     KMcpClientInspectorTabWidget *const mTabWidget;
-    KMcpClientInspectorTreeView *const mTreeView;
+    TextAutoGenerateTextMcpProtocolWidgets::McpServerListView *const mTreeView;
     KMcpClientInspectorManager *const mManager;
 };

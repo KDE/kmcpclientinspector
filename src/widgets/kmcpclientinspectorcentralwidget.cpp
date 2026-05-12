@@ -7,15 +7,15 @@
 #include "kmcpclientinspectorcentralwidget.h"
 #include "kmcpclientinspectormanager.h"
 #include "kmcpclientinspectortabwidget.h"
-#include "kmcpclientinspectortreeview.h"
 #include <QSplitter>
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolWidgets/McpServerListView>
 
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorCentralWidget::KMcpClientInspectorCentralWidget(KMcpClientInspectorManager *manager, QWidget *parent)
     : QWidget{parent}
     , mTabWidget(new KMcpClientInspectorTabWidget(manager, this))
-    , mTreeView(new KMcpClientInspectorTreeView(manager, this))
+    , mTreeView(new TextAutoGenerateTextMcpProtocolWidgets::McpServerListView(manager->mcpServerModel(), this))
     , mManager(manager)
 {
     auto mainLayout = new QVBoxLayout(this);
