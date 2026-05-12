@@ -15,7 +15,7 @@ using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorCentralWidget::KMcpClientInspectorCentralWidget(KMcpClientInspectorManager *manager, QWidget *parent)
     : QWidget{parent}
     , mTabWidget(new KMcpClientInspectorTabWidget(manager, this))
-    , mTreeView(new TextAutoGenerateTextMcpProtocolWidgets::McpServerListView(manager->mcpServerModel(), this))
+    , mListView(new TextAutoGenerateTextMcpProtocolWidgets::McpServerListView(manager->mcpServerModel(), this))
     , mManager(manager)
 {
     auto mainLayout = new QVBoxLayout(this);
@@ -28,7 +28,10 @@ KMcpClientInspectorCentralWidget::KMcpClientInspectorCentralWidget(KMcpClientIns
     splitter->setChildrenCollapsible(false);
     mainLayout->addWidget(splitter);
 
-    splitter->addWidget(mTreeView);
+    mListView->setObjectName(u"mListView"_s);
+    mTabWidget->setObjectName(u"mTabWidget"_s);
+
+    splitter->addWidget(mListView);
     splitter->addWidget(mTabWidget);
 }
 

@@ -22,6 +22,6 @@ public:
 
 private:
     KMcpClientInspectorTabWidget *const mTabWidget;
-    TextAutoGenerateTextMcpProtocolWidgets::McpServerListView *const mTreeView;
+    TextAutoGenerateTextMcpProtocolWidgets::McpServerListView *const mListView;
     KMcpClientInspectorManager *const mManager;
 };
