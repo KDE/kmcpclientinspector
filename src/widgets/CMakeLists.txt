@@ -16,8 +16,6 @@ target_sources(
         kmcpclientinspectorwidgets.qrc
         kmcpclientinspectorcentralwidget.h
         kmcpclientinspectorcentralwidget.cpp
-        kmcpclientinspectortreeview.h
-        kmcpclientinspectortreeview.cpp
         kmcpclientinspectortabwidget.h
         kmcpclientinspectortabwidget.cpp
         kmcpclientinspectortabpage.h
