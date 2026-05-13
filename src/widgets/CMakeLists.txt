@@ -23,6 +23,8 @@ target_sources(
         libkmcpclientinspectorwidgets_private_export.h
         kmcpclientinspectorserversettingswidget.h
         kmcpclientinspectorserversettingswidget.cpp
+        configure/kmcpclientinspectorconfiguresettingsdialog.cpp
+        configure/kmcpclientinspectorconfiguresettingsdialog.h
 )
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(
