@@ -4,7 +4,8 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 #include "kmcpclientinspectorconfiguresettingsdialog.h"
-
+#include "configure/kmcpclientinspectorconfiguremcpserverswidget.h"
+#include "kmcpclientinspector_widget_debug.h"
 #include <KLocalizedString>
 #include <KSharedConfig>
 #include <KWindowConfig>
@@ -16,11 +17,18 @@ namespace
 const char myConfigGroupName[] = "KMcpClientInspectorConfigureSettingsDialog";
 }
 using namespace Qt::Literals::StringLiterals;
-KMcpClientInspectorConfigureSettingsDialog::KMcpClientInspectorConfigureSettingsDialog(QWidget *parent)
+KMcpClientInspectorConfigureSettingsDialog::KMcpClientInspectorConfigureSettingsDialog(TextAutoGenerateTextMcpProtocolCore::McpServerManager *manager,
+                                                                                       QWidget *parent)
     : KPageDialog(parent)
+    , mConfigureMcpServersWidget(new KMcpClientInspectorConfigureMcpServersWidget(manager, this))
 {
     setWindowTitle(i18nc("@title:window", "Configure KMcpClientInspector"));
     setFaceType(KPageDialog::List);
+
+    const QString mcpServersPageName = i18nc("@title Preferences page name", "MCP Servers");
+    mConfigureMcpServersWidgetPage = new KPageWidgetItem(mConfigureMcpServersWidget, mcpServersPageName);
+    mConfigureMcpServersWidgetPage->setIcon(QIcon::fromTheme(u"preferences-system-network-server"_s));
+    addPage(mConfigureMcpServersWidgetPage);
 
     buttonBox()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
 
@@ -56,14 +64,21 @@ void KMcpClientInspectorConfigureSettingsDialog::writeConfig()
 
 void KMcpClientInspectorConfigureSettingsDialog::slotAccepted()
 {
+    mConfigureMcpServersWidget->save();
 }
 
 void KMcpClientInspectorConfigureSettingsDialog::load()
 {
+    mConfigureMcpServersWidget->load();
 }
 
 void KMcpClientInspectorConfigureSettingsDialog::slotRestoreDefaults()
 {
+    if (currentPage() == mConfigureMcpServersWidgetPage) {
+        mConfigureMcpServersWidget->restoreToDefaults();
+    } else {
+        qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << " slotRestoreDefault not implemented for current page";
+    }
 }
 
 #include "moc_kmcpclientinspectorconfiguresettingsdialog.cpp"

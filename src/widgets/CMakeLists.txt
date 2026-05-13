@@ -25,6 +25,8 @@ target_sources(
         kmcpclientinspectorserversettingswidget.cpp
         configure/kmcpclientinspectorconfiguresettingsdialog.cpp
         configure/kmcpclientinspectorconfiguresettingsdialog.h
+        configure/kmcpclientinspectorconfiguremcpserverswidget.cpp
+        configure/kmcpclientinspectorconfiguremcpserverswidget.h
 )
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(

@@ -5,6 +5,7 @@
  */
 
 #include "kmcpclientinspectormainwindow.h"
+#include "configure/kmcpclientinspectorconfiguresettingsdialog.h"
 #include "kmcpclientinspectorcentralwidget.h"
 #include "kmcpclientinspectormanager.h"
 #include <KActionCollection>
@@ -16,6 +17,7 @@
 #include <KStandardActions>
 #include <QFontDatabase>
 #include <QMenuBar>
+#include <QPointer>
 #include <QToolButton>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorMainWindow::KMcpClientInspectorMainWindow(QWidget *parent)
@@ -44,6 +46,16 @@ void KMcpClientInspectorMainWindow::setupActions()
 
     auto manager = KColorSchemeManager::instance();
     ac->addAction(u"colorscheme_menu"_s, KColorSchemeMenu::createMenu(manager, this));
+    KStandardActions::preferences(this, &KMcpClientInspectorMainWindow::slotConfigure, ac);
+}
+
+void KMcpClientInspectorMainWindow::slotConfigure()
+{
+    QPointer<KMcpClientInspectorConfigureSettingsDialog> dlg = new KMcpClientInspectorConfigureSettingsDialog(mManager, this);
+    if (dlg->exec()) {
+        // TODO
+    }
+    delete dlg;
 }
 
 void KMcpClientInspectorMainWindow::slotConfigureNotifications()

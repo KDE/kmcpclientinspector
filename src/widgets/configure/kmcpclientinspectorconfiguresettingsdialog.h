@@ -7,11 +7,16 @@
 #pragma once
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <KPageDialog>
+namespace TextAutoGenerateTextMcpProtocolCore
+{
+class McpServerManager;
+}
+class KMcpClientInspectorConfigureMcpServersWidget;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorConfigureSettingsDialog : public KPageDialog
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorConfigureSettingsDialog(QWidget *parent = nullptr);
+    explicit KMcpClientInspectorConfigureSettingsDialog(TextAutoGenerateTextMcpProtocolCore::McpServerManager *manager, QWidget *parent = nullptr);
     ~KMcpClientInspectorConfigureSettingsDialog() override;
 
 private:
@@ -20,4 +25,6 @@ private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotAccepted();
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void load();
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotRestoreDefaults();
+    KMcpClientInspectorConfigureMcpServersWidget *const mConfigureMcpServersWidget;
+    KPageWidgetItem *mConfigureMcpServersWidgetPage = nullptr;
 };
