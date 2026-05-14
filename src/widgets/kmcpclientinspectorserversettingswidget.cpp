@@ -12,3 +12,5 @@ KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget
 }
 
 KMcpClientInspectorServerSettingsWidget::~KMcpClientInspectorServerSettingsWidget() = default;
+
+#include "moc_kmcpclientinspectorserversettingswidget.cpp"
