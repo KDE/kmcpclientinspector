@@ -22,6 +22,7 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(QWidget *parent)
     auto splitter = new QSplitter(this);
     splitter->setObjectName(u"splitter"_s);
     splitter->setChildrenCollapsible(false);
+    mainLayout->addWidget(splitter);
 
     mServerSettings->setObjectName(u"mServerSettings"_s);
     splitter->addWidget(mServerSettings);

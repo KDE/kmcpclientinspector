@@ -13,7 +13,7 @@ KMcpClientInspectorTabWidget::KMcpClientInspectorTabWidget(KMcpClientInspectorMa
     : QTabWidget(parent)
     , mManager(manager)
 {
-    loadServers();
+    connect(mManager, &KMcpClientInspectorManager::serverLoaded, this, &KMcpClientInspectorTabWidget::loadServers);
 }
 
 KMcpClientInspectorTabWidget::~KMcpClientInspectorTabWidget() = default;
@@ -25,7 +25,6 @@ void KMcpClientInspectorTabWidget::loadServers()
         auto page = new KMcpClientInspectorTabPage(this);
         addTab(page, s.name());
     }
-    // TODO
 }
 
 #include "moc_kmcpclientinspectortabwidget.cpp"
