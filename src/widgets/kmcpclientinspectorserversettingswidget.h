@@ -5,13 +5,19 @@
  */
 
 #pragma once
-
+#include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
-
-class KMcpClientInspectorServerSettingsWidget : public QWidget
+namespace TextAutoGenerateTextMcpProtocolWidgets
+{
+class AddMcpServerWidget;
+}
+class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorServerSettingsWidget : public QWidget
 {
     Q_OBJECT
 public:
     explicit KMcpClientInspectorServerSettingsWidget(QWidget *parent = nullptr);
     ~KMcpClientInspectorServerSettingsWidget() override;
+
+private:
+    TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget *const mMcpServerWidget;
 };

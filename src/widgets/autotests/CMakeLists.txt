@@ -8,3 +8,5 @@ macro(add_kmcpclientinspector_widgets_unittest _source)
         LINK_LIBRARIES Qt::Test libkmcpclientinspectorwidgets
     )
 endmacro()
+
+add_kmcpclientinspector_widgets_unittest(kmcpclientinspectorserversettingswidgettest.cpp)
