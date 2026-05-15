@@ -11,7 +11,7 @@ class KMcpClientInspectorTabWidget;
 class KMcpClientInspectorManager;
 namespace TextAutoGenerateTextMcpProtocolWidgets
 {
-class McpServerListView;
+class McpServerWidget;
 }
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorCentralWidget : public QWidget
 {
@@ -22,6 +22,6 @@ public:
 
 private:
     KMcpClientInspectorTabWidget *const mTabWidget;
-    TextAutoGenerateTextMcpProtocolWidgets::McpServerListView *const mListView;
+    TextAutoGenerateTextMcpProtocolWidgets::McpServerWidget *const mMcpServerWidget;
     KMcpClientInspectorManager *const mManager;
 };
