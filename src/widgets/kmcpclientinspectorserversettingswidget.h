@@ -11,6 +11,7 @@ namespace TextAutoGenerateTextMcpProtocolWidgets
 {
 class AddMcpServerWidget;
 }
+class QPushButton;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorServerSettingsWidget : public QWidget
 {
     Q_OBJECT
@@ -20,4 +21,5 @@ public:
 
 private:
     TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget *const mMcpServerWidget;
+    QPushButton *const mStartStopButton;
 };

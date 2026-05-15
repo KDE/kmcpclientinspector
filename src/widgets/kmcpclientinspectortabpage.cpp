@@ -6,6 +6,8 @@
 
 #include "kmcpclientinspectortabpage.h"
 #include "kmcpclientinspectorserversettingswidget.h"
+#include <KLocalizedString>
+#include <QPushButton>
 #include <QSplitter>
 #include <QVBoxLayout>
 
