@@ -26,3 +26,5 @@ void KMcpClientInspectorServerSettingsWidgetTest::shouldHaveDefaultValues()
 
     // TODO
 }
+
+#include "moc_kmcpclientinspectorserversettingswidgettest.cpp"
