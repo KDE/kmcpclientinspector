@@ -22,7 +22,7 @@ void KMcpClientInspectorTabWidget::loadServers()
 {
     const auto servers = mManager->mcpServerModel()->mcpServers();
     for (const auto &s : servers) {
-        auto page = new KMcpClientInspectorTabPage(this);
+        auto page = new KMcpClientInspectorTabPage(s, this);
         addTab(page, s.name());
     }
 }

@@ -10,11 +10,12 @@
 #include <QPushButton>
 #include <QSplitter>
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 
 using namespace Qt::Literals::StringLiterals;
-KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(QWidget *parent)
+KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent)
     : QWidget{parent}
-    , mServerSettings(new KMcpClientInspectorServerSettingsWidget(this))
+    , mServerSettings(new KMcpClientInspectorServerSettingsWidget(server, this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName("mainLayout"_L1);

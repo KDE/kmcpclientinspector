@@ -8,6 +8,7 @@
 #include "kmcpclientinspectorserversettingswidget.h"
 #include <QTest>
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 QTEST_MAIN(KMcpClientInspectorServerSettingsWidgetTest)
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorServerSettingsWidgetTest::KMcpClientInspectorServerSettingsWidgetTest(QObject *parent)
@@ -17,7 +18,7 @@ KMcpClientInspectorServerSettingsWidgetTest::KMcpClientInspectorServerSettingsWi
 
 void KMcpClientInspectorServerSettingsWidgetTest::shouldHaveDefaultValues()
 {
-    const KMcpClientInspectorServerSettingsWidget w;
+    const KMcpClientInspectorServerSettingsWidget w(TextAutoGenerateTextMcpProtocolCore::McpServer{});
 
     auto mainLayout = w.findChild<QVBoxLayout *>(u"mainLayout"_s);
     QVERIFY(mainLayout);

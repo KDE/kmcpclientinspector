@@ -7,6 +7,10 @@
 #pragma once
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
+namespace TextAutoGenerateTextMcpProtocolCore
+{
+class McpServer;
+}
 namespace TextAutoGenerateTextMcpProtocolWidgets
 {
 class AddMcpServerWidget;
@@ -16,10 +20,11 @@ class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorServerSettin
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorServerSettingsWidget(QWidget *parent = nullptr);
+    explicit KMcpClientInspectorServerSettingsWidget(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent = nullptr);
     ~KMcpClientInspectorServerSettingsWidget() override;
 
 private:
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotStopStart();
     TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget *const mMcpServerWidget;
     QPushButton *const mStartStopButton;
 };

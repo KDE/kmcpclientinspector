@@ -8,11 +8,15 @@
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
 class KMcpClientInspectorServerSettingsWidget;
+namespace TextAutoGenerateTextMcpProtocolCore
+{
+class McpServer;
+}
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorTabPage : public QWidget
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorTabPage(QWidget *parent = nullptr);
+    explicit KMcpClientInspectorTabPage(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent = nullptr);
     ~KMcpClientInspectorTabPage() override;
 
 private:
