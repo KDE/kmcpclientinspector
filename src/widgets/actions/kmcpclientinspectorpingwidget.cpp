@@ -6,7 +6,7 @@
 
 #include "kmcpclientinspectorpingwidget.h"
 #include <QVBoxLayout>
-
+using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(QWidget *parent)
     : QWidget{parent}
 {

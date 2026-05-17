@@ -8,6 +8,7 @@
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
 class KMcpClientInspectorServerSettingsWidget;
+class KMcpClientInspectorActionTabWidget;
 namespace TextAutoGenerateTextMcpProtocolCore
 {
 class McpServer;
@@ -21,4 +22,5 @@ public:
 
 private:
     KMcpClientInspectorServerSettingsWidget *const mServerSettings;
+    KMcpClientInspectorActionTabWidget *const mActionTabWidget;
 };

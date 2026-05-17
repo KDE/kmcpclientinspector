@@ -5,6 +5,7 @@
  */
 
 #include "kmcpclientinspectortabpage.h"
+#include "actions/kmcpclientinspectoractiontabwidget.h"
 #include "kmcpclientinspectorserversettingswidget.h"
 #include <KLocalizedString>
 #include <QPushButton>
@@ -16,6 +17,7 @@ using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent)
     : QWidget{parent}
     , mServerSettings(new KMcpClientInspectorServerSettingsWidget(server, this))
+    , mActionTabWidget(new KMcpClientInspectorActionTabWidget(this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName("mainLayout"_L1);
@@ -29,6 +31,9 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
 
     mServerSettings->setObjectName(u"mServerSettings"_s);
     splitter->addWidget(mServerSettings);
+
+    mActionTabWidget->setObjectName(u"mActionTabWidget"_s);
+    splitter->addWidget(mActionTabWidget);
 }
 
 KMcpClientInspectorTabPage::~KMcpClientInspectorTabPage() = default;
