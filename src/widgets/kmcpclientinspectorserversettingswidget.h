@@ -25,6 +25,9 @@ public:
     explicit KMcpClientInspectorServerSettingsWidget(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent = nullptr);
     ~KMcpClientInspectorServerSettingsWidget() override;
 
+Q_SIGNALS:
+    void startStopRequested(bool started);
+
 private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotStopStart();
     TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget *const mMcpServerWidget;

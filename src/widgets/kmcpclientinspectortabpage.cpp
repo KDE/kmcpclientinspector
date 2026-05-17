@@ -35,16 +35,19 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
 
     mActionTabWidget->setObjectName(u"mActionTabWidget"_s);
     splitter->addWidget(mActionTabWidget);
+    connect(mServerSettings, &KMcpClientInspectorServerSettingsWidget::startStopRequested, this, &KMcpClientInspectorTabPage::initializeClient);
 }
 
 KMcpClientInspectorTabPage::~KMcpClientInspectorTabPage() = default;
 
-void KMcpClientInspectorTabPage::initializeClient()
+void KMcpClientInspectorTabPage::initializeClient(bool started)
 {
+    // TODO use started !
     if (!mClient) {
-        // mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mMcpServerWidget->serverInfo().transportType(), this);
+        mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mServer.transportType(), this);
     }
     mClient->setSettings(mServer.settings());
+    mClient->start();
 }
 
 #include "moc_kmcpclientinspectortabpage.cpp"

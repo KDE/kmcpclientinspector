@@ -23,7 +23,7 @@ public:
     ~KMcpClientInspectorTabPage() override;
 
 private:
-    void initializeClient();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void initializeClient(bool started);
     KMcpClientInspectorServerSettingsWidget *const mServerSettings;
     KMcpClientInspectorActionTabWidget *const mActionTabWidget;
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *mClient = nullptr;

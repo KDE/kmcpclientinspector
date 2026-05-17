@@ -37,6 +37,7 @@ KMcpClientInspectorServerSettingsWidget::~KMcpClientInspectorServerSettingsWidge
 void KMcpClientInspectorServerSettingsWidget::slotStopStart()
 {
     // TODO
+    Q_EMIT startStopRequested(true);
 }
 
 #include "moc_kmcpclientinspectorserversettingswidget.cpp"
