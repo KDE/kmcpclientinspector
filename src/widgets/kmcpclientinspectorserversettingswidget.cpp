@@ -8,7 +8,6 @@
 #include <KLocalizedString>
 #include <QPushButton>
 #include <QVBoxLayout>
-#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 #include <TextAutoGenerateTextMcpProtocolWidgets/AddMcpServerWidget>
 using namespace Qt::Literals::StringLiterals;
@@ -37,10 +36,6 @@ KMcpClientInspectorServerSettingsWidget::~KMcpClientInspectorServerSettingsWidge
 
 void KMcpClientInspectorServerSettingsWidget::slotStopStart()
 {
-    if (!mClient) {
-        mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mMcpServerWidget->serverInfo().transportType(), this);
-    }
-    mClient->setSettings(mServer.settings());
     // TODO
 }
 

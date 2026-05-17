@@ -7,11 +7,13 @@
 #pragma once
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
+#include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 class KMcpClientInspectorServerSettingsWidget;
 class KMcpClientInspectorActionTabWidget;
 namespace TextAutoGenerateTextMcpProtocolCore
 {
 class McpServer;
+class McpProtocolClient;
 }
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorTabPage : public QWidget
 {
@@ -21,6 +23,9 @@ public:
     ~KMcpClientInspectorTabPage() override;
 
 private:
+    void initializeClient();
     KMcpClientInspectorServerSettingsWidget *const mServerSettings;
     KMcpClientInspectorActionTabWidget *const mActionTabWidget;
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *mClient = nullptr;
+    TextAutoGenerateTextMcpProtocolCore::McpServer mServer;
 };

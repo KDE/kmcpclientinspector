@@ -29,6 +29,5 @@ private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotStopStart();
     TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget *const mMcpServerWidget;
     QPushButton *const mStartStopButton;
-    TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *mClient = nullptr;
     TextAutoGenerateTextMcpProtocolCore::McpServer mServer;
 };

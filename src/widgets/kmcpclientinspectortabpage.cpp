@@ -11,13 +11,14 @@
 #include <QPushButton>
 #include <QSplitter>
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServer>
-
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent)
     : QWidget{parent}
     , mServerSettings(new KMcpClientInspectorServerSettingsWidget(server, this))
     , mActionTabWidget(new KMcpClientInspectorActionTabWidget(this))
+    , mServer(server)
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName("mainLayout"_L1);
@@ -37,5 +38,13 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
 }
 
 KMcpClientInspectorTabPage::~KMcpClientInspectorTabPage() = default;
+
+void KMcpClientInspectorTabPage::initializeClient()
+{
+    if (!mClient) {
+        // mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mMcpServerWidget->serverInfo().transportType(), this);
+    }
+    mClient->setSettings(mServer.settings());
+}
 
 #include "moc_kmcpclientinspectortabpage.cpp"
