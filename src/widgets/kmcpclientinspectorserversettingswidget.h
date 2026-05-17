@@ -27,8 +27,6 @@ public:
 
 private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotStopStart();
-    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT [[nodiscard]] TextAutoGenerateTextMcpProtocolCore::McpProtocolPlugin::ProtocolType
-    convertTransportType(TextAutoGenerateTextMcpProtocolCore::McpServer::TransportType type) const;
     TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget *const mMcpServerWidget;
     QPushButton *const mStartStopButton;
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *mClient = nullptr;

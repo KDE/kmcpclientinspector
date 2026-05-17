@@ -37,25 +37,9 @@ KMcpClientInspectorServerSettingsWidget::~KMcpClientInspectorServerSettingsWidge
 void KMcpClientInspectorServerSettingsWidget::slotStopStart()
 {
     if (!mClient) {
-        mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(convertTransportType(mMcpServerWidget->serverInfo().transportType()), this);
+        mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mMcpServerWidget->serverInfo().transportType(), this);
     }
     // TODO
-}
-
-TextAutoGenerateTextMcpProtocolCore::McpProtocolPlugin::ProtocolType
-KMcpClientInspectorServerSettingsWidget::convertTransportType(TextAutoGenerateTextMcpProtocolCore::McpServer::TransportType type) const
-{
-    switch (type) {
-    case TextAutoGenerateTextMcpProtocolCore::McpServer::TransportType::Unknown:
-        return TextAutoGenerateTextMcpProtocolCore::McpProtocolPlugin::ProtocolType::Unknown;
-    case TextAutoGenerateTextMcpProtocolCore::McpServer::TransportType::Sse:
-        return TextAutoGenerateTextMcpProtocolCore::McpProtocolPlugin::ProtocolType::Sse;
-    case TextAutoGenerateTextMcpProtocolCore::McpServer::TransportType::Stdio:
-        return TextAutoGenerateTextMcpProtocolCore::McpProtocolPlugin::ProtocolType::Stdio;
-    case TextAutoGenerateTextMcpProtocolCore::McpServer::TransportType::StreamableHttp:
-        return TextAutoGenerateTextMcpProtocolCore::McpProtocolPlugin::ProtocolType::StreamableHttp;
-    }
-    return TextAutoGenerateTextMcpProtocolCore::McpProtocolPlugin::ProtocolType::Unknown;
 }
 
 #include "moc_kmcpclientinspectorserversettingswidget.cpp"
