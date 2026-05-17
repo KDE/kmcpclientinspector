@@ -28,6 +28,7 @@ KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget
 
     mainLayout->addStretch(1);
     connect(mStartStopButton, &QPushButton::clicked, this, &KMcpClientInspectorServerSettingsWidget::slotStopStart);
+    connect(mMcpServerWidget, &TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget::buttonOkEnabled, mStartStopButton, &QPushButton::setEnabled);
 }
 
 KMcpClientInspectorServerSettingsWidget::~KMcpClientInspectorServerSettingsWidget() = default;
