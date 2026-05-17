@@ -10,6 +10,7 @@
 namespace TextAutoGenerateTextMcpProtocolCore
 {
 class McpServer;
+class McpProtocolClient;
 }
 namespace TextAutoGenerateTextMcpProtocolWidgets
 {
@@ -27,4 +28,5 @@ private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotStopStart();
     TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget *const mMcpServerWidget;
     QPushButton *const mStartStopButton;
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *mClient = nullptr;
 };

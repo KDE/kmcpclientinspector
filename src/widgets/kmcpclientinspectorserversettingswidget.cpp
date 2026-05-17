@@ -8,6 +8,7 @@
 #include <KLocalizedString>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 #include <TextAutoGenerateTextMcpProtocolWidgets/AddMcpServerWidget>
 using namespace Qt::Literals::StringLiterals;
