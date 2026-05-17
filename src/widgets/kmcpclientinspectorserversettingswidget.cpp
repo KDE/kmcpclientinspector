@@ -40,7 +40,7 @@ void KMcpClientInspectorServerSettingsWidget::slotStopStart()
     if (!mClient) {
         mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mMcpServerWidget->serverInfo().transportType(), this);
     }
-    // TODO mClient->setSettings(mServer.settings());
+    mClient->setSettings(mServer.settings());
     // TODO
 }
 

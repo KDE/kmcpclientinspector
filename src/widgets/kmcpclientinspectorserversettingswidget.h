@@ -30,4 +30,5 @@ private:
     TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget *const mMcpServerWidget;
     QPushButton *const mStartStopButton;
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *mClient = nullptr;
+    TextAutoGenerateTextMcpProtocolCore::McpServer mServer;
 };
