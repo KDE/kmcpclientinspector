@@ -7,9 +7,10 @@
 #pragma once
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolPlugin>
+#include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 namespace TextAutoGenerateTextMcpProtocolCore
 {
-class McpServer;
 class McpProtocolClient;
 }
 namespace TextAutoGenerateTextMcpProtocolWidgets
@@ -26,6 +27,8 @@ public:
 
 private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotStopStart();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT [[nodiscard]] TextAutoGenerateTextMcpProtocolCore::McpProtocolPlugin::ProtocolType
+    convertTransportType(TextAutoGenerateTextMcpProtocolCore::McpServer::TransportType type) const;
     TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget *const mMcpServerWidget;
     QPushButton *const mStartStopButton;
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *mClient = nullptr;
