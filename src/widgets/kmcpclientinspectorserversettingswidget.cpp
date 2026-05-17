@@ -16,6 +16,7 @@ KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget
     : QWidget{parent}
     , mMcpServerWidget(new TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget(this))
     , mStartStopButton(new QPushButton(i18nc("@action:button", "Start"), this))
+    , mServer(server)
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
@@ -39,6 +40,7 @@ void KMcpClientInspectorServerSettingsWidget::slotStopStart()
     if (!mClient) {
         mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mMcpServerWidget->serverInfo().transportType(), this);
     }
+    // TODO mClient->setSettings(mServer.settings());
     // TODO
 }
 
