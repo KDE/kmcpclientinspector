@@ -21,3 +21,5 @@ void KMcpClientInspectorActionTabPageBase::setClient(TextAutoGenerateTextMcpProt
 {
     mClient = newClient;
 }
+
+#include "moc_kmcpclientinspectoractiontabpagebase.cpp"
