@@ -28,3 +28,5 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(QWidget *
 }
 
 KMcpClientInspectorActionTabWidget::~KMcpClientInspectorActionTabWidget() = default;
+
+#include "moc_kmcpclientinspectoractiontabwidget.cpp"
