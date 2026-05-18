@@ -5,6 +5,9 @@
  */
 
 #include "kmcpclientinspectorpingwidget.h"
+#include "kmcpclientinspector_widget_debug.h"
+#include <KLocalizedString>
+#include <QPushButton>
 #include <QVBoxLayout>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolPingRequest>
 using namespace Qt::Literals::StringLiterals;
@@ -14,7 +17,16 @@ KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(QWidget *parent)
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
     mainLayout->setContentsMargins({});
-    // TODO
+
+    auto pingButton = new QPushButton(i18nc("@action:button", "Ping"), this);
+    pingButton->setObjectName(u"pingButton"_s);
+    connect(pingButton, &QPushButton::clicked, this, [this]() {
+        if (mClient) {
+        } else {
+            qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << "Client is not defined it's a bug! ";
+        }
+    });
+    mainLayout->addWidget(pingButton);
 }
 
 KMcpClientInspectorPingWidget::~KMcpClientInspectorPingWidget() = default;
