@@ -6,6 +6,7 @@
 
 #include "kmcpclientinspectorpingwidget.h"
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolPingRequest>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(QWidget *parent)
     : KMcpClientInspectorActionTabPageBase{parent}
