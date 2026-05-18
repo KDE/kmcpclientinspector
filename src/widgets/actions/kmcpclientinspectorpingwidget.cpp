@@ -10,6 +10,9 @@ using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(QWidget *parent)
     : QWidget{parent}
 {
+    auto mainLayout = new QVBoxLayout(this);
+    mainLayout->setObjectName(u"mainLayout"_s);
+    mainLayout->setContentsMargins({});
     // TODO
 }
 
