@@ -8,6 +8,7 @@
 #include "actions/kmcpclientinspectoractiontabwidget.h"
 #include "kmcpclientinspectorserversettingswidget.h"
 #include <KLocalizedString>
+#include <QJsonObject>
 #include <QPushButton>
 #include <QSplitter>
 #include <QVBoxLayout>
@@ -47,6 +48,15 @@ void KMcpClientInspectorTabPage::initializeClient(bool started)
     // TODO use started !
     if (!mClient) {
         mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mServer.transportType(), this);
+        connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::error, this, [](const QString &error) {
+            qDebug() << " ERROR " << error;
+        });
+        connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::received, this, [](const QJsonObject &obj) {
+            qDebug() << " receive " << obj;
+        });
+        connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::started, this, []() {
+            qDebug() << " Started ! ";
+        });
         mActionTabWidget->setClient(mClient);
     }
     mClient->setSettings(mServer.settings());
@@ -54,6 +64,18 @@ void KMcpClientInspectorTabPage::initializeClient(bool started)
     mClient->start();
 
     // TODO initialize
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequest initRequest;
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequestParams params;
+    params.setProtocolVersion(TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::convertProtocolVersionToString(
+        TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::ProtocolVersion::V2025_03_26));
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolClientCapabilities capabilities = params.capabilities();
+    auto roots = capabilities.roots();
+    roots.emplace(true);
+    capabilities.setRoots(roots);
+
+    params.setCapabilities(capabilities);
+    initRequest.setParams(params);
+    mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequest::toJson(initRequest));
 }
 
 #include "moc_kmcpclientinspectortabpage.cpp"
