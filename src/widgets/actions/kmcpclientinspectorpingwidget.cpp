@@ -8,7 +8,7 @@
 #include <QVBoxLayout>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(QWidget *parent)
-    : QWidget{parent}
+    : KMcpClientInspectorActionTabPageBase{parent}
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
