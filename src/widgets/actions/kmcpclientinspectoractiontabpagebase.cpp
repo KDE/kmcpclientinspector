@@ -11,3 +11,13 @@ KMcpClientInspectorActionTabPageBase::KMcpClientInspectorActionTabPageBase(QWidg
 }
 
 KMcpClientInspectorActionTabPageBase::~KMcpClientInspectorActionTabPageBase() = default;
+
+TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *KMcpClientInspectorActionTabPageBase::client() const
+{
+    return mClient;
+}
+
+void KMcpClientInspectorActionTabPageBase::setClient(TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *newClient)
+{
+    mClient = newClient;
+}

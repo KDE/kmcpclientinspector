@@ -6,11 +6,20 @@
 #pragma once
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
-
+namespace TextAutoGenerateTextMcpProtocolCore
+{
+class McpProtocolClient;
+}
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorActionTabPageBase : public QWidget
 {
     Q_OBJECT
 public:
     explicit KMcpClientInspectorActionTabPageBase(QWidget *parent = nullptr);
     ~KMcpClientInspectorActionTabPageBase() override;
+
+    [[nodiscard]] TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *client() const;
+    void setClient(TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *newClient);
+
+protected:
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *mClient = nullptr;
 };
