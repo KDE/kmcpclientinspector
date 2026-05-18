@@ -29,4 +29,10 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(QWidget *
 
 KMcpClientInspectorActionTabWidget::~KMcpClientInspectorActionTabWidget() = default;
 
+void KMcpClientInspectorActionTabWidget::setClient(TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *newClient)
+{
+    mPingWidget->setClient(newClient);
+    // TODO add more
+}
+
 #include "moc_kmcpclientinspectoractiontabwidget.cpp"

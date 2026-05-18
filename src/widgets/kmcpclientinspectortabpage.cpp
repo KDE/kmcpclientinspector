@@ -46,6 +46,7 @@ void KMcpClientInspectorTabPage::initializeClient(bool started)
     // TODO use started !
     if (!mClient) {
         mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mServer.transportType(), this);
+        mActionTabWidget->setClient(mClient);
     }
     mClient->setSettings(mServer.settings());
     mClient->start();
