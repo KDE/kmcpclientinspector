@@ -42,6 +42,7 @@ KMcpClientInspectorTabPage::~KMcpClientInspectorTabPage() = default;
 
 void KMcpClientInspectorTabPage::initializeClient(bool started)
 {
+    Q_UNUSED(started)
     // TODO use started !
     if (!mClient) {
         mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mServer.transportType(), this);
