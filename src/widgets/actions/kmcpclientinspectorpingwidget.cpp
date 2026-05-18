@@ -22,6 +22,7 @@ KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(QWidget *parent)
     pingButton->setObjectName(u"pingButton"_s);
     connect(pingButton, &QPushButton::clicked, this, [this]() {
         if (mClient) {
+            qDebug() << " ping !!!!!!!!!!";
         } else {
             qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << "Client is not defined it's a bug! ";
         }

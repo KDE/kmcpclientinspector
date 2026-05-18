@@ -12,6 +12,7 @@
 #include <QSplitter>
 #include <QVBoxLayout>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolInitializeRequest>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent)
@@ -49,7 +50,10 @@ void KMcpClientInspectorTabPage::initializeClient(bool started)
         mActionTabWidget->setClient(mClient);
     }
     mClient->setSettings(mServer.settings());
+    qDebug() << " mClient " << mClient;
     mClient->start();
+
+    // TODO initialize
 }
 
 #include "moc_kmcpclientinspectortabpage.cpp"
