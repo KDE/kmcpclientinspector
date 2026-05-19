@@ -45,7 +45,6 @@ KMcpClientInspectorTabPage::~KMcpClientInspectorTabPage() = default;
 void KMcpClientInspectorTabPage::initializeClient(bool started)
 {
     Q_UNUSED(started)
-    // TODO use started !
     if (!mClient) {
         mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mServer.transportType(), this);
         connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::error, this, [](const QString &error) {
@@ -60,7 +59,6 @@ void KMcpClientInspectorTabPage::initializeClient(bool started)
         mActionTabWidget->setClient(mClient);
     }
     mClient->setSettings(mServer.settings());
-    qDebug() << " mClient " << mClient;
     mClient->start();
 
     // TODO initialize
