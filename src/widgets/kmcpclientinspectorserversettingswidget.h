@@ -17,7 +17,7 @@ namespace TextAutoGenerateTextMcpProtocolWidgets
 {
 class AddMcpServerWidget;
 }
-class QPushButton;
+class KMcpClientInspectorConnectButtonsWidget;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorServerSettingsWidget : public QWidget
 {
     Q_OBJECT
@@ -29,8 +29,10 @@ Q_SIGNALS:
     void startStopRequested(bool started);
 
 private:
-    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotStopStart();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotConnectRequested();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotDisconnectRequested();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotUpdateButtons(bool valid);
     TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget *const mMcpServerWidget;
-    QPushButton *const mStartStopButton;
+    KMcpClientInspectorConnectButtonsWidget *const mConnectButtonsWidget;
     TextAutoGenerateTextMcpProtocolCore::McpServer mServer;
 };

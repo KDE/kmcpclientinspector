@@ -5,6 +5,7 @@
  */
 
 #include "kmcpclientinspectorserversettingswidget.h"
+#include "kmcpclientinspectorconnectbuttonswidget.h"
 #include <KLocalizedString>
 #include <QPushButton>
 #include <QVBoxLayout>
@@ -14,7 +15,7 @@ using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent)
     : QWidget{parent}
     , mMcpServerWidget(new TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget(this))
-    , mStartStopButton(new QPushButton(i18nc("@action:button", "Start"), this))
+    , mConnectButtonsWidget(new KMcpClientInspectorConnectButtonsWidget(this))
     , mServer(server)
 {
     auto mainLayout = new QVBoxLayout(this);
@@ -24,19 +25,44 @@ KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget
     mMcpServerWidget->setObjectName(u"mMcpServerWidget"_s);
     mainLayout->addWidget(mMcpServerWidget);
     mMcpServerWidget->setServerInfo(server);
-    mStartStopButton->setObjectName(u"mStartStopButton"_s);
-    mainLayout->addWidget(mStartStopButton);
+    mConnectButtonsWidget->setObjectName(u"mConnectButtonsWidget"_s);
+    mainLayout->addWidget(mConnectButtonsWidget);
 
     mainLayout->addStretch(1);
-    connect(mStartStopButton, &QPushButton::clicked, this, &KMcpClientInspectorServerSettingsWidget::slotStopStart);
-    connect(mMcpServerWidget, &TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget::buttonOkEnabled, mStartStopButton, &QPushButton::setEnabled);
+    connect(mConnectButtonsWidget,
+            &KMcpClientInspectorConnectButtonsWidget::connectRequested,
+            this,
+            &KMcpClientInspectorServerSettingsWidget::slotConnectRequested);
+    connect(mConnectButtonsWidget,
+            &KMcpClientInspectorConnectButtonsWidget::connectRequested,
+            this,
+            &KMcpClientInspectorServerSettingsWidget::slotDisconnectRequested);
+    connect(mMcpServerWidget,
+            &TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget::buttonOkEnabled,
+            this,
+            &KMcpClientInspectorServerSettingsWidget::slotUpdateButtons);
+
+    slotUpdateButtons(mServer.isValid());
 }
 
 KMcpClientInspectorServerSettingsWidget::~KMcpClientInspectorServerSettingsWidget() = default;
 
-void KMcpClientInspectorServerSettingsWidget::slotStopStart()
+void KMcpClientInspectorServerSettingsWidget::slotUpdateButtons([[maybe_unused]] bool valid)
 {
     // TODO
+    mConnectButtonsWidget->updateButtons(true, false);
+}
+
+void KMcpClientInspectorServerSettingsWidget::slotDisconnectRequested()
+{
+    mConnectButtonsWidget->updateButtons(true, false);
+    Q_EMIT startStopRequested(false);
+}
+
+void KMcpClientInspectorServerSettingsWidget::slotConnectRequested()
+{
+    // TODO
+    mConnectButtonsWidget->updateButtons(false, true);
     Q_EMIT startStopRequested(true);
 }
 

@@ -6,9 +6,10 @@
 
 #include "kmcpclientinspectorconnectbuttonswidgettest.h"
 #include "kmcpclientinspectorconnectbuttonswidget.h"
+#include <QHBoxLayout>
 #include <QTest>
 QTEST_MAIN(KMcpClientInspectorConnectButtonsWidgetTest)
-
+using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorConnectButtonsWidgetTest::KMcpClientInspectorConnectButtonsWidgetTest(QObject *parent)
     : QObject{parent}
 {
@@ -17,6 +18,9 @@ KMcpClientInspectorConnectButtonsWidgetTest::KMcpClientInspectorConnectButtonsWi
 void KMcpClientInspectorConnectButtonsWidgetTest::shouldHaveDefaultValues()
 {
     const KMcpClientInspectorConnectButtonsWidget w;
+    auto mainLayout = w.findChild<QHBoxLayout *>(u"mainLayout"_s);
+    QVERIFY(mainLayout);
+    QCOMPARE(mainLayout->contentsMargins(), QMargins{});
     // TODO
 }
 

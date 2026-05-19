@@ -6,11 +6,20 @@
 #pragma once
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
-
+class QPushButton;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorConnectButtonsWidget : public QWidget
 {
     Q_OBJECT
 public:
     explicit KMcpClientInspectorConnectButtonsWidget(QWidget *parent = nullptr);
     ~KMcpClientInspectorConnectButtonsWidget() override;
+
+    void updateButtons(bool connected, bool disconnected);
+Q_SIGNALS:
+    void connectRequested();
+    void disconnectRequested();
+
+private:
+    QPushButton *const mConnectButton;
+    QPushButton *const mDisconnectButton;
 };
