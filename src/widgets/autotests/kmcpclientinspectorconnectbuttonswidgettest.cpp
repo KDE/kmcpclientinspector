@@ -7,7 +7,7 @@
 #include "kmcpclientinspectorconnectbuttonswidgettest.h"
 #include "kmcpclientinspectorconnectbuttonswidget.h"
 #include <QTest>
-QTEST_GUILESS_MAIN(KMcpClientInspectorConnectButtonsWidgetTest)
+QTEST_MAIN(KMcpClientInspectorConnectButtonsWidgetTest)
 
 KMcpClientInspectorConnectButtonsWidgetTest::KMcpClientInspectorConnectButtonsWidgetTest(QObject *parent)
     : QObject{parent}
