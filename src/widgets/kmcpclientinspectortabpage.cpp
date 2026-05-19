@@ -82,7 +82,7 @@ void KMcpClientInspectorTabPage::initializeClient(bool started)
 
     params.setCapabilities(capabilities);
     initRequest.setParams(params);
-    TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId id = QString::number(1);
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId id = 1;
     initRequest.setId(id);
     qDebug() << " initRequest " << initRequest;
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequest::toJson(initRequest));
