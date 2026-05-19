@@ -7,6 +7,8 @@ add_library(
     libkmcpclientinspectorwidgets
     actions/kmcpclientinspectoractiontabpagebase.h
     actions/kmcpclientinspectoractiontabpagebase.cpp
+    kmcpclientinspectorconnectbuttonswidget.h
+    kmcpclientinspectorconnectbuttonswidget.cpp
 )
 ecm_qt_declare_logging_category(libkmcpclientinspectorwidgets HEADER kmcpclientinspector_widget_debug.h IDENTIFIER KMCPCLIENTINSPECTOR_WIDGET_LOG
     CATEGORY_NAME org.kde.kmcpclientinspector_widget DESCRIPTION "kmcpclientinspector (widget lib)" EXPORT KMCPCLIENTINSPECTOR

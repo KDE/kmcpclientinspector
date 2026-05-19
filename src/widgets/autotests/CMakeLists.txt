@@ -10,3 +10,4 @@ macro(add_kmcpclientinspector_widgets_unittest _source)
 endmacro()
 
 add_kmcpclientinspector_widgets_unittest(kmcpclientinspectorserversettingswidgettest.cpp)
+add_kmcpclientinspector_widgets_unittest(kmcpclientinspectorconnectbuttonswidgettest.cpp)
