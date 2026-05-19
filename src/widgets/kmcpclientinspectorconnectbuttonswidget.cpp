@@ -14,3 +14,5 @@ KMcpClientInspectorConnectButtonsWidget::KMcpClientInspectorConnectButtonsWidget
 }
 
 KMcpClientInspectorConnectButtonsWidget::~KMcpClientInspectorConnectButtonsWidget() = default;
+
+#include "moc_kmcpclientinspectorconnectbuttonswidget.cpp"

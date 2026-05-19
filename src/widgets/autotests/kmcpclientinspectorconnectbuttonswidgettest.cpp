@@ -19,3 +19,5 @@ void KMcpClientInspectorConnectButtonsWidgetTest::shouldHaveDefaultValues()
     const KMcpClientInspectorConnectButtonsWidget w;
     // TODO
 }
+
+#include "moc_kmcpclientinspectorconnectbuttonswidgettest.cpp"
