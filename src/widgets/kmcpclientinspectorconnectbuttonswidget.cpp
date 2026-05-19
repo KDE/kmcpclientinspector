@@ -7,10 +7,13 @@
 #include "kmcpclientinspectorconnectbuttonswidget.h"
 #include <QHBoxLayout>
 #include <QPushButton>
-
+using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorConnectButtonsWidget::KMcpClientInspectorConnectButtonsWidget(QWidget *parent)
     : QWidget{parent}
 {
+    auto mainLayout = new QHBoxLayout(this);
+    mainLayout->setObjectName("mainLayout"_L1);
+    mainLayout->setContentsMargins({});
 }
 
 KMcpClientInspectorConnectButtonsWidget::~KMcpClientInspectorConnectButtonsWidget() = default;
