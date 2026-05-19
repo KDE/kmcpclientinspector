@@ -68,6 +68,13 @@ void KMcpClientInspectorTabPage::initializeClient(bool started)
     TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequestParams params;
     params.setProtocolVersion(TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::convertProtocolVersionToString(
         TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::ProtocolVersion::V2025_03_26));
+
+    // TODO fix me.
+    auto clientInfo = params.clientInfo();
+    clientInfo.setName(u"kmcpinspector"_s);
+    clientInfo.setVersion(u"1"_s);
+    params.setClientInfo(clientInfo);
+
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClientCapabilities capabilities = params.capabilities();
     auto roots = capabilities.roots();
     roots.emplace(true);
@@ -75,6 +82,9 @@ void KMcpClientInspectorTabPage::initializeClient(bool started)
 
     params.setCapabilities(capabilities);
     initRequest.setParams(params);
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId id = QString::number(1);
+    initRequest.setId(id);
+    qDebug() << " initRequest " << initRequest;
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequest::toJson(initRequest));
 }
 
