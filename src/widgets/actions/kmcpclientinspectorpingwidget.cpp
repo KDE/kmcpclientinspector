@@ -9,7 +9,9 @@
 #include <KLocalizedString>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolPingRequest>
+#include <qjsonobject.h>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(QWidget *parent)
     : KMcpClientInspectorActionTabPageBase{parent}
@@ -22,6 +24,10 @@ KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(QWidget *parent)
     pingButton->setObjectName(u"pingButton"_s);
     connect(pingButton, &QPushButton::clicked, this, [this]() {
         if (mClient) {
+            TextAutoGenerateTextMcpProtocolCore::McpProtocolPingRequest pingRequest;
+            pingRequest.setId(2);
+            mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolPingRequest::toJson(pingRequest));
+
             qDebug() << " ping !!!!!!!!!!";
         } else {
             qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << "Client is not defined it's a bug! ";
