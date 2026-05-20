@@ -27,13 +27,12 @@ KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(QWidget *parent)
             TextAutoGenerateTextMcpProtocolCore::McpProtocolPingRequest pingRequest;
             pingRequest.setId(2);
             mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolPingRequest::toJson(pingRequest));
-
-            qDebug() << " ping !!!!!!!!!!";
         } else {
             qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << "Client is not defined it's a bug! ";
         }
     });
     mainLayout->addWidget(pingButton);
+    mainLayout->addStretch(1);
 }
 
 KMcpClientInspectorPingWidget::~KMcpClientInspectorPingWidget() = default;
