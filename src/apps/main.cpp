@@ -10,6 +10,7 @@
 #include <KCrash>
 #include <KLocalizedString>
 #include <QApplication>
+#include <QCommandLineParser>
 using namespace Qt::Literals::StringLiterals;
 int main(int argc, char *argv[])
 {
@@ -30,6 +31,11 @@ int main(int argc, char *argv[])
 
     KAboutData::setApplicationData(aboutData);
     KCrash::initialize();
+    QCommandLineParser parser;
+
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
     auto mw = new KMcpClientInspectorMainWindow;
     mw->show();
     const int val = app.exec();
