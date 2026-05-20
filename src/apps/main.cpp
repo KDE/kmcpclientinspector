@@ -44,9 +44,11 @@ int main(int argc, char *argv[])
     auto mw = new KMcpClientInspectorMainWindow;
     mw->show();
     if (parser.isSet(KMcpClientInspectorCommandLineParser::optionParserFromEnum(KMcpClientInspectorCommandLineParser::OptionParser::SelfTest))) {
-        QTimer::singleShot(std::chrono::milliseconds(250), &app, &QCoreApplication::quit);
+        QTimer::singleShot(std::chrono::milliseconds(250), &app, [mw, &app]() {
+            delete mw;
+            app.quit();
+        });
     }
     const int val = app.exec();
-    // TODO delete mw;
     return val;
 }
