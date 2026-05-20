@@ -12,6 +12,7 @@
 #include <KLocalizedString>
 #include <QApplication>
 #include <QCommandLineParser>
+#include <QPointer>
 #include <QTimer>
 
 using namespace Qt::Literals::StringLiterals;
@@ -41,7 +42,7 @@ int main(int argc, char *argv[])
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
-    auto mw = new KMcpClientInspectorMainWindow;
+    QPointer<KMcpClientInspectorMainWindow> mw{new KMcpClientInspectorMainWindow};
     mw->show();
     if (parser.isSet(KMcpClientInspectorCommandLineParser::optionParserFromEnum(KMcpClientInspectorCommandLineParser::OptionParser::SelfTest))) {
         QTimer::singleShot(std::chrono::milliseconds(250), &app, [mw, &app]() {
@@ -50,5 +51,6 @@ int main(int argc, char *argv[])
         });
     }
     const int val = app.exec();
+    delete mw;
     return val;
 }
