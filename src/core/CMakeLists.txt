@@ -11,6 +11,8 @@ target_sources(
     PRIVATE
         kmcpclientinspectormanager.h
         kmcpclientinspectormanager.cpp
+        kmcpclientinspectorcommandlineparser.cpp
+        kmcpclientinspectorcommandlineparser.h
 )
 
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
