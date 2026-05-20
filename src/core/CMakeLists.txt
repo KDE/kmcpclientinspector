@@ -13,6 +13,8 @@ target_sources(
         kmcpclientinspectormanager.cpp
         kmcpclientinspectorcommandlineparser.cpp
         kmcpclientinspectorcommandlineparser.h
+        kmcpclientinspectorclientprotocolmanager.h
+        kmcpclientinspectorclientprotocolmanager.cpp
 )
 
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
