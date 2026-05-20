@@ -5,12 +5,15 @@
  */
 
 #include "config-kmcpclientinspector.h"
+#include "kmcpclientinspectorcommandlineparser.h"
 #include "kmcpclientinspectormainwindow.h"
 #include <KAboutData>
 #include <KCrash>
 #include <KLocalizedString>
 #include <QApplication>
 #include <QCommandLineParser>
+#include <QTimer>
+
 using namespace Qt::Literals::StringLiterals;
 int main(int argc, char *argv[])
 {
@@ -33,11 +36,17 @@ int main(int argc, char *argv[])
     KCrash::initialize();
     QCommandLineParser parser;
 
+    KMcpClientInspectorCommandLineParser commandLineParser(&parser);
+
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
     auto mw = new KMcpClientInspectorMainWindow;
     mw->show();
+    if (parser.isSet(KMcpClientInspectorCommandLineParser::optionParserFromEnum(KMcpClientInspectorCommandLineParser::OptionParser::SelfTest))) {
+        QTimer::singleShot(std::chrono::milliseconds(250), &app, &QCoreApplication::quit);
+    }
     const int val = app.exec();
+    // TODO delete mw;
     return val;
 }
