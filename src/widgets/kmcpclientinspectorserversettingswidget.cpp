@@ -34,7 +34,7 @@ KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget
             this,
             &KMcpClientInspectorServerSettingsWidget::slotConnectRequested);
     connect(mConnectButtonsWidget,
-            &KMcpClientInspectorConnectButtonsWidget::connectRequested,
+            &KMcpClientInspectorConnectButtonsWidget::disconnectRequested,
             this,
             &KMcpClientInspectorServerSettingsWidget::slotDisconnectRequested);
     connect(mMcpServerWidget,
