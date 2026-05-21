@@ -9,6 +9,7 @@
 #include "libkmcpclientinspectorcore_export.h"
 #include <QObject>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServer>
+class QJsonObject;
 namespace TextAutoGenerateTextMcpProtocolCore
 {
 class McpProtocolClient;
@@ -24,6 +25,9 @@ public:
     void ping();
 
     [[nodiscard]] int requestId();
+
+Q_SIGNALS:
+    void received(const QJsonObject &obj);
 
 private:
     int mRequestIdentifier = 0;

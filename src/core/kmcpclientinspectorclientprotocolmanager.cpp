@@ -5,7 +5,7 @@
  */
 
 #include "kmcpclientinspectorclientprotocolmanager.h"
-#include "kmcpclientinspector_widget_debug.h"
+#include "kmcpclientinspector_core_debug.h"
 #include <QDebug>
 #include <QJsonObject>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
@@ -33,15 +33,15 @@ void KMcpClientInspectorClientProtocolManager::initializeClient(bool started)
     if (!mClient) {
         mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mServer.transportType(), this);
         connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::error, this, [](const QString &error) {
-            qCDebug(KMCPCLIENTINSPECTOR_WIDGET_LOG) << " ERROR " << error;
+            qCDebug(KMCPCLIENTINSPECTOR_CORE_LOG) << " ERROR " << error;
         });
-        connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::received, this, [](const QJsonObject &obj) {
-            qCDebug(KMCPCLIENTINSPECTOR_WIDGET_LOG) << " receive " << obj;
+        connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::received, this, [this](const QJsonObject &obj) {
+            qCDebug(KMCPCLIENTINSPECTOR_CORE_LOG) << " receive " << obj;
+            Q_EMIT received(obj);
         });
         connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::started, this, []() {
-            qCDebug(KMCPCLIENTINSPECTOR_WIDGET_LOG) << " Started ! ";
+            qCDebug(KMCPCLIENTINSPECTOR_CORE_LOG) << " Started ! ";
         });
-        // TODO mActionTabWidget->setClient(mClient);
     }
     mClient->setSettings(mServer.settings());
     mClient->start();
@@ -67,7 +67,7 @@ void KMcpClientInspectorClientProtocolManager::initializeClient(bool started)
     initRequest.setParams(params);
     TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId id = requestId();
     initRequest.setId(id);
-    qCDebug(KMCPCLIENTINSPECTOR_WIDGET_LOG) << " initRequest " << initRequest;
+    qCDebug(KMCPCLIENTINSPECTOR_CORE_LOG) << " initRequest " << initRequest;
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequest::toJson(initRequest));
 }
 
