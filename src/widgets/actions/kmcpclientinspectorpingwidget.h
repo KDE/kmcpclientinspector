@@ -7,11 +7,11 @@
 #pragma once
 #include "actions/kmcpclientinspectoractiontabpagebase.h"
 #include "libkmcpclientinspectorwidgets_private_export.h"
-
+class KMcpClientInspectorClientProtocolManager;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorPingWidget : public KMcpClientInspectorActionTabPageBase
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorPingWidget(QWidget *parent = nullptr);
+    explicit KMcpClientInspectorPingWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent = nullptr);
     ~KMcpClientInspectorPingWidget() override;
 };

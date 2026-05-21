@@ -5,21 +5,12 @@
  */
 #include "kmcpclientinspectoractiontabpagebase.h"
 
-KMcpClientInspectorActionTabPageBase::KMcpClientInspectorActionTabPageBase(QWidget *parent)
+KMcpClientInspectorActionTabPageBase::KMcpClientInspectorActionTabPageBase(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent)
     : QWidget{parent}
+    , mProtocolManager(protocolManager)
 {
 }
 
 KMcpClientInspectorActionTabPageBase::~KMcpClientInspectorActionTabPageBase() = default;
-
-TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *KMcpClientInspectorActionTabPageBase::client() const
-{
-    return mClient;
-}
-
-void KMcpClientInspectorActionTabPageBase::setClient(TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *newClient)
-{
-    mClient = newClient;
-}
 
 #include "moc_kmcpclientinspectoractiontabpagebase.cpp"

@@ -19,9 +19,9 @@
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent)
     : QWidget{parent}
-    , mServerSettings(new KMcpClientInspectorServerSettingsWidget(server, this))
-    , mActionTabWidget(new KMcpClientInspectorActionTabWidget(this))
     , mProtocolManager(new KMcpClientInspectorClientProtocolManager(server, this))
+    , mServerSettings(new KMcpClientInspectorServerSettingsWidget(server, this))
+    , mActionTabWidget(new KMcpClientInspectorActionTabWidget(mProtocolManager, this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName("mainLayout"_L1);

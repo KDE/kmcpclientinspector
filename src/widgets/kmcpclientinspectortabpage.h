@@ -22,7 +22,7 @@ public:
     ~KMcpClientInspectorTabPage() override;
 
 private:
+    KMcpClientInspectorClientProtocolManager *const mProtocolManager;
     KMcpClientInspectorServerSettingsWidget *const mServerSettings;
     KMcpClientInspectorActionTabWidget *const mActionTabWidget;
-    KMcpClientInspectorClientProtocolManager *const mProtocolManager;
 };

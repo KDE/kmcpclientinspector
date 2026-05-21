@@ -21,6 +21,7 @@ public:
     ~KMcpClientInspectorClientProtocolManager() override;
 
     void initializeClient(bool started);
+    void ping();
 
 private:
     TextAutoGenerateTextMcpProtocolCore::McpServer mServer;

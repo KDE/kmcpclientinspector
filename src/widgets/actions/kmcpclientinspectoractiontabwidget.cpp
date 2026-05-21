@@ -10,9 +10,9 @@
 #include <QTabWidget>
 #include <QVBoxLayout>
 using namespace Qt::Literals::StringLiterals;
-KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(QWidget *parent)
+KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent)
     : QWidget{parent}
-    , mPingWidget(new KMcpClientInspectorPingWidget(this))
+    , mPingWidget(new KMcpClientInspectorPingWidget(protocolManager, this))
     , mTabWidget(new QTabWidget(this))
 {
     auto mainLayout = new QVBoxLayout(this);
@@ -28,11 +28,5 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(QWidget *
 }
 
 KMcpClientInspectorActionTabWidget::~KMcpClientInspectorActionTabWidget() = default;
-
-void KMcpClientInspectorActionTabWidget::setClient(TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *newClient)
-{
-    mPingWidget->setClient(newClient);
-    // TODO add more
-}
 
 #include "moc_kmcpclientinspectoractiontabwidget.cpp"

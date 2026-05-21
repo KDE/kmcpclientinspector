@@ -9,6 +9,7 @@
 #include <QJsonObject>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolInitializeRequest>
+#include <textautogeneratetextmcpprotocolcore/mcpprotocolpingrequest.h>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorClientProtocolManager::KMcpClientInspectorClientProtocolManager(const TextAutoGenerateTextMcpProtocolCore::McpServer &server,
                                                                                    QObject *parent)
@@ -59,6 +60,13 @@ void KMcpClientInspectorClientProtocolManager::initializeClient(bool started)
     initRequest.setId(id);
     qDebug() << " initRequest " << initRequest;
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequest::toJson(initRequest));
+}
+
+void KMcpClientInspectorClientProtocolManager::ping()
+{
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolPingRequest pingRequest;
+    pingRequest.setId(2);
+    mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolPingRequest::toJson(pingRequest));
 }
 
 KMcpClientInspectorClientProtocolManager::~KMcpClientInspectorClientProtocolManager() = default;
