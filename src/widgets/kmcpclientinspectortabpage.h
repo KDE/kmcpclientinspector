@@ -10,6 +10,7 @@
 #include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 class KMcpClientInspectorServerSettingsWidget;
 class KMcpClientInspectorActionTabWidget;
+class KMcpClientInspectorClientProtocolManager;
 namespace TextAutoGenerateTextMcpProtocolCore
 {
 class McpServer;
@@ -28,4 +29,5 @@ private:
     KMcpClientInspectorActionTabWidget *const mActionTabWidget;
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *mClient = nullptr;
     TextAutoGenerateTextMcpProtocolCore::McpServer mServer;
+    KMcpClientInspectorClientProtocolManager *const mProtocolManager;
 };

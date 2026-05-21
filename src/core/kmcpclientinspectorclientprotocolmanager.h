@@ -8,11 +8,21 @@
 
 #include "libkmcpclientinspectorcore_export.h"
 #include <QObject>
-
+#include <TextAutoGenerateTextMcpProtocolCore/McpServer>
+namespace TextAutoGenerateTextMcpProtocolCore
+{
+class McpProtocolClient;
+}
 class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorClientProtocolManager : public QObject
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorClientProtocolManager(QObject *parent = nullptr);
+    explicit KMcpClientInspectorClientProtocolManager(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QObject *parent = nullptr);
     ~KMcpClientInspectorClientProtocolManager() override;
+
+    void initializeClient(bool started);
+
+private:
+    TextAutoGenerateTextMcpProtocolCore::McpServer mServer;
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *mClient = nullptr;
 };

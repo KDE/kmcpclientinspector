@@ -6,6 +6,7 @@
 
 #include "kmcpclientinspectortabpage.h"
 #include "actions/kmcpclientinspectoractiontabwidget.h"
+#include "kmcpclientinspectorclientprotocolmanager.h"
 #include "kmcpclientinspectorserversettingswidget.h"
 #include <KLocalizedString>
 #include <QJsonObject>
@@ -21,6 +22,7 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
     , mServerSettings(new KMcpClientInspectorServerSettingsWidget(server, this))
     , mActionTabWidget(new KMcpClientInspectorActionTabWidget(this))
     , mServer(server)
+    , mProtocolManager(new KMcpClientInspectorClientProtocolManager(server, this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName("mainLayout"_L1);
