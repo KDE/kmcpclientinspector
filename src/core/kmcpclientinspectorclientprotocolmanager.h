@@ -23,7 +23,10 @@ public:
     void initializeClient(bool started);
     void ping();
 
+    [[nodiscard]] int requestId();
+
 private:
+    int mRequestIdentifier = 0;
     TextAutoGenerateTextMcpProtocolCore::McpServer mServer;
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *mClient = nullptr;
 };

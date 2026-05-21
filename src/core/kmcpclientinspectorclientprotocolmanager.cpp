@@ -5,6 +5,7 @@
  */
 
 #include "kmcpclientinspectorclientprotocolmanager.h"
+#include "kmcpclientinspector_widget_debug.h"
 #include <QDebug>
 #include <QJsonObject>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
@@ -18,19 +19,27 @@ KMcpClientInspectorClientProtocolManager::KMcpClientInspectorClientProtocolManag
 {
 }
 
+KMcpClientInspectorClientProtocolManager::~KMcpClientInspectorClientProtocolManager() = default;
+
+int KMcpClientInspectorClientProtocolManager::requestId()
+{
+    mRequestIdentifier++;
+    return mRequestIdentifier;
+}
+
 void KMcpClientInspectorClientProtocolManager::initializeClient(bool started)
 {
     Q_UNUSED(started)
     if (!mClient) {
         mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mServer.transportType(), this);
         connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::error, this, [](const QString &error) {
-            qDebug() << " ERROR " << error;
+            qCDebug(KMCPCLIENTINSPECTOR_WIDGET_LOG) << " ERROR " << error;
         });
         connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::received, this, [](const QJsonObject &obj) {
-            qDebug() << " receive " << obj;
+            qCDebug(KMCPCLIENTINSPECTOR_WIDGET_LOG) << " receive " << obj;
         });
         connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::started, this, []() {
-            qDebug() << " Started ! ";
+            qCDebug(KMCPCLIENTINSPECTOR_WIDGET_LOG) << " Started ! ";
         });
         // TODO mActionTabWidget->setClient(mClient);
     }
@@ -56,18 +65,17 @@ void KMcpClientInspectorClientProtocolManager::initializeClient(bool started)
 
     params.setCapabilities(capabilities);
     initRequest.setParams(params);
-    TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId id = 1;
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId id = requestId();
     initRequest.setId(id);
-    qDebug() << " initRequest " << initRequest;
+    qCDebug(KMCPCLIENTINSPECTOR_WIDGET_LOG) << " initRequest " << initRequest;
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequest::toJson(initRequest));
 }
 
 void KMcpClientInspectorClientProtocolManager::ping()
 {
     TextAutoGenerateTextMcpProtocolCore::McpProtocolPingRequest pingRequest;
-    pingRequest.setId(2);
+    pingRequest.setId(requestId());
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolPingRequest::toJson(pingRequest));
 }
 
-KMcpClientInspectorClientProtocolManager::~KMcpClientInspectorClientProtocolManager() = default;
 #include "moc_kmcpclientinspectorclientprotocolmanager.cpp"
