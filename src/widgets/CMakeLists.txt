@@ -37,6 +37,8 @@ target_sources(
         actions/kmcpclientinspectorpingwidget.cpp
         actions/kmcpclientinspectoractiontabwidget.h
         actions/kmcpclientinspectoractiontabwidget.cpp
+        actions/kmcpclientinspectorlisttoolswidget.cpp
+        actions/kmcpclientinspectorlisttoolswidget.h
 )
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(

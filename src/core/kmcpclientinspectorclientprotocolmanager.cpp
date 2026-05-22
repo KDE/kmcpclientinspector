@@ -10,7 +10,8 @@
 #include <QJsonObject>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolInitializeRequest>
-#include <textautogeneratetextmcpprotocolcore/mcpprotocolpingrequest.h>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolListToolsRequest>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolPingRequest>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorClientProtocolManager::KMcpClientInspectorClientProtocolManager(const TextAutoGenerateTextMcpProtocolCore::McpServer &server,
                                                                                    QObject *parent)
@@ -75,6 +76,13 @@ void KMcpClientInspectorClientProtocolManager::ping()
     TextAutoGenerateTextMcpProtocolCore::McpProtocolPingRequest pingRequest;
     pingRequest.setId(requestId());
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolPingRequest::toJson(pingRequest));
+}
+
+void KMcpClientInspectorClientProtocolManager::listTools()
+{
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolListToolsRequest listToolsRequest;
+    listToolsRequest.setId(requestId());
+    mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolListToolsRequest::toJson(listToolsRequest));
 }
 
 #include "moc_kmcpclientinspectorclientprotocolmanager.cpp"

@@ -23,6 +23,7 @@ public:
 
     void initializeClient(bool started);
     void ping();
+    void listTools();
 
     [[nodiscard]] int requestId();
 
