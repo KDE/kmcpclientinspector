@@ -52,7 +52,6 @@ void KMcpClientInspectorClientProtocolManager::initializeClient(bool started)
     params.setProtocolVersion(TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::convertProtocolVersionToString(
         TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::ProtocolVersion::V2025_03_26));
 
-    // TODO fix me.
     auto clientInfo = params.clientInfo();
     clientInfo.setName(u"kmcpinspector"_s);
     clientInfo.setVersion(u"1"_s);

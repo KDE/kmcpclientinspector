@@ -27,7 +27,9 @@ public:
     [[nodiscard]] int requestId();
 
 Q_SIGNALS:
+    void started();
     void received(const QJsonObject &obj);
+    void error(const QString &str);
 
 private:
     int mRequestIdentifier = 0;
