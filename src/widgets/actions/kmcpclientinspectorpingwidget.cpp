@@ -5,14 +5,10 @@
  */
 
 #include "kmcpclientinspectorpingwidget.h"
-#include "kmcpclientinspector_widget_debug.h"
 #include "kmcpclientinspectorclientprotocolmanager.h"
 #include <KLocalizedString>
 #include <QPushButton>
 #include <QVBoxLayout>
-#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
-#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolPingRequest>
-#include <qjsonobject.h>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent)
     : KMcpClientInspectorActionTabPageBase{protocolManager, parent}
