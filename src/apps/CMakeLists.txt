@@ -2,7 +2,11 @@
 # SPDX-License-Identifier: BSD-3-Clause
 include(ECMAddAppIcon)
 
-add_executable(kmcpclientinspector main.cpp)
+add_executable(
+    kmcpclientinspector
+    main.cpp
+    kmcpclientinspector.qrc
+)
 
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(

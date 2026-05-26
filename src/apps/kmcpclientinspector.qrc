@@ -1,0 +1,10 @@
+<!--
+    SPDX-FileCopyrightText: Laurent Montel <montel@kde.org>
+    SPDX-License-Identifier: CC0-1.0
+-->
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/kmcpclientinspector">
+        <file alias="kmcpclientinspector.svg">../widgets/icons/sc-apps-kmcpclientinspector.svg</file>
+    </qresource>
+</RCC>

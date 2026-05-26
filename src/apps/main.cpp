@@ -19,6 +19,7 @@ using namespace Qt::Literals::StringLiterals;
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    app.setWindowIcon(QIcon(u":/kmcpclientinspector/kmcpclientinspector.svg"_s));
 
     KLocalizedString::setApplicationDomain("kmcpclientinspector"_ba);
 
