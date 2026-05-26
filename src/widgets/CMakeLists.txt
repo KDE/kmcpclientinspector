@@ -3,13 +3,7 @@
 
 add_subdirectory(icons)
 
-add_library(
-    libkmcpclientinspectorwidgets
-    actions/kmcpclientinspectoractiontabpagebase.h
-    actions/kmcpclientinspectoractiontabpagebase.cpp
-    kmcpclientinspectorconnectbuttonswidget.h
-    kmcpclientinspectorconnectbuttonswidget.cpp
-)
+add_library(libkmcpclientinspectorwidgets)
 ecm_qt_declare_logging_category(libkmcpclientinspectorwidgets HEADER kmcpclientinspector_widget_debug.h IDENTIFIER KMCPCLIENTINSPECTOR_WIDGET_LOG
     CATEGORY_NAME org.kde.kmcpclientinspector_widget DESCRIPTION "kmcpclientinspector (widget lib)" EXPORT KMCPCLIENTINSPECTOR
 )
@@ -39,6 +33,10 @@ target_sources(
         actions/kmcpclientinspectoractiontabwidget.cpp
         actions/kmcpclientinspectorlisttoolswidget.cpp
         actions/kmcpclientinspectorlisttoolswidget.h
+        actions/kmcpclientinspectoractiontabpagebase.h
+        actions/kmcpclientinspectoractiontabpagebase.cpp
+        kmcpclientinspectorconnectbuttonswidget.h
+        kmcpclientinspectorconnectbuttonswidget.cpp
 )
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(
