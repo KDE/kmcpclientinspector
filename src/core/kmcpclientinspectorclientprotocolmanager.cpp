@@ -10,6 +10,7 @@
 #include <QJsonObject>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolInitializeRequest>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolListPromptsRequest>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolListToolsRequest>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolPingRequest>
 using namespace Qt::Literals::StringLiterals;
@@ -65,8 +66,7 @@ void KMcpClientInspectorClientProtocolManager::initializeClient(bool started)
 
     params.setCapabilities(capabilities);
     initRequest.setParams(params);
-    TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId id = requestId();
-    initRequest.setId(id);
+    initRequest.setId(requestId());
     qCDebug(KMCPCLIENTINSPECTOR_CORE_LOG) << " initRequest " << initRequest;
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequest::toJson(initRequest));
 }
@@ -83,6 +83,13 @@ void KMcpClientInspectorClientProtocolManager::listTools()
     TextAutoGenerateTextMcpProtocolCore::McpProtocolListToolsRequest listToolsRequest;
     listToolsRequest.setId(requestId());
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolListToolsRequest::toJson(listToolsRequest));
+}
+
+void KMcpClientInspectorClientProtocolManager::listPrompts()
+{
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolListPromptsRequest listPromptsRequest;
+    listPromptsRequest.setId(requestId());
+    mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolListPromptsRequest::toJson(listPromptsRequest));
 }
 
 #include "moc_kmcpclientinspectorclientprotocolmanager.cpp"

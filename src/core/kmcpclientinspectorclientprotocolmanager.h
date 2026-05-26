@@ -24,6 +24,7 @@ public:
     void initializeClient(bool started);
     void ping();
     void listTools();
+    void listPrompts();
 
     [[nodiscard]] int requestId();
 
