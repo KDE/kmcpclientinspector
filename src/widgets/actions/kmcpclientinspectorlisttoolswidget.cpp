@@ -18,7 +18,7 @@ KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(KMcpClien
     mainLayout->setContentsMargins({});
 
     auto listToolsButton = new QPushButton(i18nc("@action:button", "List Tools"), this);
-    listToolsButton->setObjectName(u"pingButton"_s);
+    listToolsButton->setObjectName(u"listToolsButton"_s);
     connect(listToolsButton, &QPushButton::clicked, this, [this]() {
         mProtocolManager->listTools();
     });
