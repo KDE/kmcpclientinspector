@@ -16,16 +16,16 @@ endif()
 target_link_libraries(
     kmcpclientinspector
     KF6::Crash
-    # KF6::IconThemes
+    KF6::IconThemes
     KF6::I18n
     KF6::CoreAddons
     Qt::Widgets
     libkmcpclientinspectorwidgets
 )
 
-#file(GLOB_RECURSE KAICHAT_ICONS "${PROJECT_SOURCE_DIR}/src/widgets/icons/*-apps-kaichat.png")
-#ecm_add_app_icon(appIcons ICONS "${KAICHAT_ICONS}")
-#target_sources(kaichat PRIVATE ${appIcons})
+file(GLOB_RECURSE KMCPCLIENTINSPECTOR_ICONS "${PROJECT_SOURCE_DIR}/src/widgets/icons/*-apps-kmcpclientinspector.png")
+ecm_add_app_icon(appIcons ICONS "${KMCPCLIENTINSPECTOR_ICONS}")
+target_sources(kmcpclientinspector PRIVATE ${appIcons})
 
 install(
     TARGETS
