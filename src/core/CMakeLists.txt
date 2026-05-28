@@ -27,7 +27,11 @@ if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
 endif()
 generate_export_header(libkmcpclientinspectorcore BASE_NAME libkmcpclientinspectorcore)
 
-target_link_libraries(libkmcpclientinspectorcore KF6::TextAutoGenerateTextMcpProtocolCore)
+target_link_libraries(
+    libkmcpclientinspectorcore
+    KF6::TextAutoGenerateTextMcpProtocolCore
+    KF6::I18n
+)
 
 set_target_properties(
     libkmcpclientinspectorcore
