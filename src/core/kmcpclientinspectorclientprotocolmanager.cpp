@@ -92,4 +92,9 @@ void KMcpClientInspectorClientProtocolManager::listPrompts()
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolListPromptsRequest::toJson(listPromptsRequest));
 }
 
+void KMcpClientInspectorClientProtocolManager::resouceTemplates()
+{
+    // TODO
+}
+
 #include "moc_kmcpclientinspectorclientprotocolmanager.cpp"

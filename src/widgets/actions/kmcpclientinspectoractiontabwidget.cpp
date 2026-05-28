@@ -8,6 +8,7 @@
 #include "actions/kmcpclientinspectorlistpromptswidget.h"
 #include "actions/kmcpclientinspectorlisttoolswidget.h"
 #include "actions/kmcpclientinspectorpingwidget.h"
+#include "actions/kmcpclientinspectorresourcetemplateswidget.h"
 #include <KLocalizedString>
 #include <QTabWidget>
 #include <QVBoxLayout>
@@ -17,6 +18,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(KMcpClien
     , mPingWidget(new KMcpClientInspectorPingWidget(protocolManager, this))
     , mListToolsWidget(new KMcpClientInspectorListToolsWidget(protocolManager, this))
     , mListPromptsWidget(new KMcpClientInspectorListPromptsWidget(protocolManager, this))
+    , mResourceTemplatesWidget(new KMcpClientInspectorResourceTemplatesWidget(protocolManager, this))
     , mTabWidget(new QTabWidget(this))
 {
     auto mainLayout = new QVBoxLayout(this);
@@ -28,11 +30,13 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(KMcpClien
     mTabWidget->setObjectName(u"mTabWidget"_s);
     mListToolsWidget->setObjectName(u"mListToolsWidget"_s);
     mListPromptsWidget->setObjectName(u"mListPromptsWidget"_s);
+    mResourceTemplatesWidget->setObjectName(u"mResourceTemplatesWidget"_s);
 
     mainLayout->addWidget(mTabWidget);
     mTabWidget->addTab(mPingWidget, i18n("Ping"));
     mTabWidget->addTab(mListToolsWidget, i18n("List Tools"));
     mTabWidget->addTab(mListPromptsWidget, i18n("List Prompts"));
+    mTabWidget->addTab(mResourceTemplatesWidget, i18n("Resource Templates"));
 }
 
 KMcpClientInspectorActionTabWidget::~KMcpClientInspectorActionTabWidget() = default;

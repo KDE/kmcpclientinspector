@@ -25,6 +25,7 @@ public:
     void ping();
     void listTools();
     void listPrompts();
+    void resouceTemplates();
 
     [[nodiscard]] int requestId();
 
