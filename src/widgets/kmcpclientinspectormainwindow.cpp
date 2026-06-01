@@ -23,7 +23,7 @@ using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorMainWindow::KMcpClientInspectorMainWindow(const QList<KAboutRelease> &releases, QWidget *parent)
     : KXmlGuiWindow(parent)
     , mManager(new KMcpClientInspectorManager(this))
-    , mMainWidget(new KMcpClientInspectorCentralWidget(mManager, this))
+    , mMainWidget(new KMcpClientInspectorCentralWidget(releases, mManager, this))
 {
     mMainWidget->setObjectName(u"mMainWidget"_s);
     setCentralWidget(mMainWidget);

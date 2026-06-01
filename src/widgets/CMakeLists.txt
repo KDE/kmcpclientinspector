@@ -3,11 +3,7 @@
 
 add_subdirectory(icons)
 
-add_library(
-    libkmcpclientinspectorwidgets
-    actions/kmcpclientinspectorlistpromptswidget.h
-    actions/kmcpclientinspectorlistpromptswidget.cpp
-)
+add_library(libkmcpclientinspectorwidgets)
 ecm_qt_declare_logging_category(libkmcpclientinspectorwidgets HEADER kmcpclientinspector_widget_debug.h IDENTIFIER KMCPCLIENTINSPECTOR_WIDGET_LOG
     CATEGORY_NAME org.kde.kmcpclientinspector_widget DESCRIPTION "kmcpclientinspector (widget lib)" EXPORT KMCPCLIENTINSPECTOR
 )
@@ -41,6 +37,8 @@ target_sources(
         actions/kmcpclientinspectoractiontabpagebase.cpp
         actions/kmcpclientinspectorresourcetemplateswidget.cpp
         actions/kmcpclientinspectorresourcetemplateswidget.h
+        actions/kmcpclientinspectorlistpromptswidget.h
+        actions/kmcpclientinspectorlistpromptswidget.cpp
         kmcpclientinspectorconnectbuttonswidget.h
         kmcpclientinspectorconnectbuttonswidget.cpp
 )
@@ -61,7 +59,9 @@ target_link_libraries(
     KF6::ConfigGui
     KF6::ConfigWidgets
     KF6::NotifyConfig
+    KF6::CoreAddons
     KF6::TextAutoGenerateTextMcpProtocolWidgets
+    KF6::TextAddonsWidgets
     libkmcpclientinspectorcore
 )
 

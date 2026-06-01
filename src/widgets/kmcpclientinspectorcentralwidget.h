@@ -6,6 +6,7 @@
 
 #pragma once
 #include "libkmcpclientinspectorwidgets_private_export.h"
+#include <KAboutData>
 #include <QWidget>
 class KMcpClientInspectorTabWidget;
 class KMcpClientInspectorManager;
@@ -17,11 +18,12 @@ class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorCentralWidge
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorCentralWidget(KMcpClientInspectorManager *manager, QWidget *parent = nullptr);
+    explicit KMcpClientInspectorCentralWidget(const QList<KAboutRelease> &releases, KMcpClientInspectorManager *manager, QWidget *parent = nullptr);
     ~KMcpClientInspectorCentralWidget() override;
 
 private:
     KMcpClientInspectorTabWidget *const mTabWidget;
     TextAutoGenerateTextMcpProtocolWidgets::McpServerWidget *const mMcpServerWidget;
     KMcpClientInspectorManager *const mManager;
+    QList<KAboutRelease> mReleases;
 };
