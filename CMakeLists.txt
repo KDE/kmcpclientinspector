@@ -165,7 +165,9 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # see e.g. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=56556 or https://gcc.gnu.org/bugzilla/show_bug.cgi?id=79328
     string(APPEND CMAKE_CXX_FLAGS " -Wshadow")
 endif()
-string(APPEND CMAKE_CXX_FLAGS " -Wnoexcept")
+if(NOT WIN32 AND NOT APPLE)
+    string(APPEND CMAKE_CXX_FLAGS " -Wnoexcept")
+endif()
 
 set(KMCPCLIENTINSPECTOR_LIB_SOVERSION "0")
 

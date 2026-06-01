@@ -21,6 +21,8 @@ public:
     explicit KMcpClientInspectorCentralWidget(const QList<KAboutRelease> &releases, KMcpClientInspectorManager *manager, QWidget *parent = nullptr);
     ~KMcpClientInspectorCentralWidget() override;
 
+    [[nodiscard]] QList<KAboutRelease> releases() const;
+
 private:
     KMcpClientInspectorTabWidget *const mTabWidget;
     TextAutoGenerateTextMcpProtocolWidgets::McpServerWidget *const mMcpServerWidget;

@@ -12,6 +12,7 @@
 #include <KActionMenu>
 #include <KColorSchemeManager>
 #include <KColorSchemeMenu>
+#include <KLocalizedString>
 #include <KNotifyConfigWidget>
 #include <KStandardAction>
 #include <KStandardActions>
@@ -19,6 +20,7 @@
 #include <QMenuBar>
 #include <QPointer>
 #include <QToolButton>
+#include <TextAddonsWidgets/WhatsNewNgDialog>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorMainWindow::KMcpClientInspectorMainWindow(const QList<KAboutRelease> &releases, QWidget *parent)
     : KXmlGuiWindow(parent)
@@ -47,6 +49,10 @@ void KMcpClientInspectorMainWindow::setupActions()
     auto manager = KColorSchemeManager::instance();
     ac->addAction(u"colorscheme_menu"_s, KColorSchemeMenu::createMenu(manager, this));
     KStandardActions::preferences(this, &KMcpClientInspectorMainWindow::slotConfigure, ac);
+
+    auto showWhatsNewAction = new QAction(QIcon(u":/kmcpclientinspector/kmcpclientinspector.svg"_s), i18n("What's new"), this);
+    ac->addAction(u"whatsnew_kmcpclientinspector"_s, showWhatsNewAction);
+    connect(showWhatsNewAction, &QAction::triggered, this, &KMcpClientInspectorMainWindow::slotWhatsNew);
 }
 
 void KMcpClientInspectorMainWindow::slotConfigure()
@@ -81,6 +87,13 @@ void KMcpClientInspectorMainWindow::slotFullScreen(bool t)
             w->deleteLater();
         }
     }
+}
+
+void KMcpClientInspectorMainWindow::slotWhatsNew()
+{
+    TextAddonsWidgets::WhatsNewNgDialog dlg(this);
+    dlg.setReleases(mMainWidget->releases());
+    dlg.exec();
 }
 
 #include "moc_kmcpclientinspectormainwindow.cpp"

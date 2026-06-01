@@ -1,0 +1,9 @@
+#SPDX-License-Identifier: GPL-2.0-or-later
+#SPDX-FileCopyrightText: Laurent Montel <montel@kde.org>
+File=kmcpclientinspectorglobalconfig.kcfg
+ClassName=KMcpClientInspectorGlobalConfig
+Mutators=true
+Singleton=true
+ItemAccessors=true
+Visibility=LIBKMCPCLIENTINSPECTORWIDGETS_EXPORT
+IncludeFiles=libkmcpclientinspectorwidgets_export.h

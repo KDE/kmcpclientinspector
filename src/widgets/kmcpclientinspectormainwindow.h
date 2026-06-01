@@ -22,6 +22,7 @@ private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotFullScreen(bool t);
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotConfigureNotifications();
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotConfigure();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotWhatsNew();
     KMcpClientInspectorManager *const mManager;
     KMcpClientInspectorCentralWidget *const mMainWidget;
     KToggleFullScreenAction *mShowFullScreenAction = nullptr;

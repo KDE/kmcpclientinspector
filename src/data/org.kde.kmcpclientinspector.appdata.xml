@@ -33,5 +33,14 @@
   <categories>
     <category>Utility</category>
   </categories>
+  <releases>
+    <release version="0.3.0" type="snapshot">
+      <description>
+        <ul>
+	  <li>Add What's new dialog.</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
   <icon type="stock">org.kde.kmcpclientinspector</icon>
 </component>

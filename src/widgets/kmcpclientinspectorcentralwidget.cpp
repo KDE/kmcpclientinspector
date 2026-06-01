@@ -5,6 +5,7 @@
  */
 
 #include "kmcpclientinspectorcentralwidget.h"
+#include "kmcpclientinspectorglobalconfig.h"
 #include "kmcpclientinspectormanager.h"
 #include "kmcpclientinspectortabwidget.h"
 #include <QSplitter>
@@ -30,8 +31,7 @@ KMcpClientInspectorCentralWidget::KMcpClientInspectorCentralWidget(const QList<K
         newFeaturesMD5 = TextAddonsWidgets::WhatsNewNgUtils::createMD5(mReleases.constFirst().untranslatedDescription());
     }
     if (!newFeaturesMD5.isEmpty()) {
-#if 0 // TODO
-        const QString previousNewFeaturesMD5 = KAIChatGlobalConfig::self()->previousNewFeaturesMD5();
+        const QString previousNewFeaturesMD5 = KMcpClientInspectorGlobalConfig::self()->previousNewFeaturesMD5();
         if (!previousNewFeaturesMD5.isEmpty()) {
             const bool hasNewFeature = (previousNewFeaturesMD5 != newFeaturesMD5);
             if (hasNewFeature) {
@@ -39,13 +39,14 @@ KMcpClientInspectorCentralWidget::KMcpClientInspectorCentralWidget(const QList<K
                 whatsNewMessageWidget->setReleases(mReleases);
                 whatsNewMessageWidget->setObjectName(u"whatsNewMessageWidget"_s);
                 mainLayout->addWidget(whatsNewMessageWidget);
-                KAIChatGlobalConfig::self()->setPreviousNewFeaturesMD5(newFeaturesMD5);
+                KMcpClientInspectorGlobalConfig::self()->setPreviousNewFeaturesMD5(newFeaturesMD5);
+                KMcpClientInspectorGlobalConfig::self()->save();
                 whatsNewMessageWidget->animatedShow();
             }
         } else {
-            KAIChatGlobalConfig::self()->setPreviousNewFeaturesMD5(newFeaturesMD5);
+            KMcpClientInspectorGlobalConfig::self()->setPreviousNewFeaturesMD5(newFeaturesMD5);
+            KMcpClientInspectorGlobalConfig::self()->save();
         }
-#endif
     }
 
     auto splitter = new QSplitter(this);
@@ -61,4 +62,10 @@ KMcpClientInspectorCentralWidget::KMcpClientInspectorCentralWidget(const QList<K
 }
 
 KMcpClientInspectorCentralWidget::~KMcpClientInspectorCentralWidget() = default;
+
+QList<KAboutRelease> KMcpClientInspectorCentralWidget::releases() const
+{
+    return mReleases;
+}
+
 #include "moc_kmcpclientinspectorcentralwidget.cpp"

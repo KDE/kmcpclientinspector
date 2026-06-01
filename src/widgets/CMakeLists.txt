@@ -65,6 +65,9 @@ target_link_libraries(
     libkmcpclientinspectorcore
 )
 
+kconfig_add_kcfg_files(libkmcpclientinspectorwidgets settings/kmcpclientinspectorglobalconfig.kcfgc)
+install(FILES settings/kmcpclientinspectorglobalconfig.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
+
 set_target_properties(
     libkmcpclientinspectorwidgets
     PROPERTIES
