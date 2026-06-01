@@ -155,6 +155,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # see e.g. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=56556 or https://gcc.gnu.org/bugzilla/show_bug.cgi?id=79328
     string(APPEND CMAKE_CXX_FLAGS " -Wshadow")
 endif()
+string(APPEND CMAKE_CXX_FLAGS " -Wnoexcept")
 
 set(KMCPCLIENTINSPECTOR_LIB_SOVERSION "0")
 
