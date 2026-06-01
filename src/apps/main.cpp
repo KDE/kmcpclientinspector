@@ -20,15 +20,15 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon(u":/kmcpclientinspector/kmcpclientinspector.svg"_s));
+    app.setDesktopFileName(u"org.kde.kmcpclientinspector"_s);
 
     KLocalizedString::setApplicationDomain("kmcpclientinspector"_ba);
 
-    KAboutData aboutData(u"kmcpclientinspector"_s,
-                         i18n("KMcpClientInspector"),
-                         QStringLiteral(KMCPCLIENTINSPECTOR_VERSION),
-                         i18n("MCP client inspector"),
-                         KAboutLicense::GPL_V2,
-                         i18n("Copyright © 2026 Laurent Montel"));
+    KAboutData aboutData = KAboutData::fromAppStreamForApplication();
+    aboutData.setCopyrightStatement(i18n("Copyright © 2026 Laurent Montel"));
+    aboutData.setVersion(KMCPCLIENTINSPECTOR_VERSION);
+    aboutData.setComponentName(u"kmcpclientinspector"_s);
+
     aboutData.addAuthor(i18nc("@info:credit", "Laurent Montel"), i18n("Maintainer"), u"montel@kde.org"_s);
     aboutData.setOrganizationDomain("kde.org"_ba);
     aboutData.setProductName("kmcpclientinspector"_ba);
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
-    QPointer<KMcpClientInspectorMainWindow> mw{new KMcpClientInspectorMainWindow};
+    QPointer<KMcpClientInspectorMainWindow> mw{new KMcpClientInspectorMainWindow(aboutData.releases())};
     mw->show();
     if (parser.isSet(KMcpClientInspectorCommandLineParser::optionParserFromEnum(KMcpClientInspectorCommandLineParser::OptionParser::SelfTest))) {
         QTimer::singleShot(std::chrono::milliseconds(250), &app, [mw, &app]() {

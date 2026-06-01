@@ -5,6 +5,7 @@
  */
 #pragma once
 #include "libkmcpclientinspectorwidgets_export.h"
+#include <KAboutData>
 #include <KXmlGuiWindow>
 class KToggleFullScreenAction;
 class KMcpClientInspectorCentralWidget;
@@ -13,7 +14,7 @@ class LIBKMCPCLIENTINSPECTORWIDGETS_EXPORT KMcpClientInspectorMainWindow : publi
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorMainWindow(QWidget *parent = nullptr);
+    explicit KMcpClientInspectorMainWindow(const QList<KAboutRelease> &releases, QWidget *parent = nullptr);
     ~KMcpClientInspectorMainWindow() override;
 
 private:

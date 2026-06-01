@@ -143,11 +143,21 @@ set_package_properties(
             "Use AI plugin"
 )
 
+find_package(KF6TextAddonsWidgets ${KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION} CONFIG)
+set_package_properties(
+    KF6TextAddonsWidgets
+    PROPERTIES
+        DESCRIPTION
+            "Add text addons widget"
+        TYPE
+            REQUIRED
+)
+
 add_definitions(-DTRANSLATION_DOMAIN="kmcpclientinspector")
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ecm_set_disabled_deprecation_versions(QT 6.12.0
-    KF 6.26.0
+    KF 6.27.0
 )
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -190,6 +200,10 @@ file(
     GLOB_RECURSE ALL_SOURCE_FILES
     src/apps/*.h
     src/apps/*.cpp
+    src/widgets/*.cpp
+    src/widgets/*.h
+    src/core/*.cpp
+    src/core/*.h
 )
 ecm_check_outbound_license(LICENSES GPL-2.0-only  FILES ${ALL_SOURCE_FILES})
 

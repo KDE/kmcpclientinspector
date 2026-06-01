@@ -20,7 +20,7 @@
 #include <QPointer>
 #include <QToolButton>
 using namespace Qt::Literals::StringLiterals;
-KMcpClientInspectorMainWindow::KMcpClientInspectorMainWindow(QWidget *parent)
+KMcpClientInspectorMainWindow::KMcpClientInspectorMainWindow(const QList<KAboutRelease> &releases, QWidget *parent)
     : KXmlGuiWindow(parent)
     , mManager(new KMcpClientInspectorManager(this))
     , mMainWidget(new KMcpClientInspectorCentralWidget(mManager, this))
