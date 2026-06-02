@@ -10,6 +10,12 @@
 class KToggleFullScreenAction;
 class KMcpClientInspectorCentralWidget;
 class KMcpClientInspectorManager;
+#if defined(Q_OS_WIN) || defined(Q_OS_MACOS)
+namespace TextAddonsWidgets
+{
+class VerifyNewVersionWidget;
+}
+#endif
 class LIBKMCPCLIENTINSPECTORWIDGETS_EXPORT KMcpClientInspectorMainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
@@ -26,4 +32,7 @@ private:
     KMcpClientInspectorManager *const mManager;
     KMcpClientInspectorCentralWidget *const mMainWidget;
     KToggleFullScreenAction *mShowFullScreenAction = nullptr;
+#if defined(Q_OS_WIN) || defined(Q_OS_MACOS)
+    TextAddonsWidgets::VerifyNewVersionWidget *const mVerifyNewVersionWidget;
+#endif
 };

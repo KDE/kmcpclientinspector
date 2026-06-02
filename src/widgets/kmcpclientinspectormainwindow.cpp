@@ -5,6 +5,7 @@
  */
 
 #include "kmcpclientinspectormainwindow.h"
+#include "config-kmcpclientinspector.h"
 #include "configure/kmcpclientinspectorconfiguresettingsdialog.h"
 #include "kmcpclientinspectorcentralwidget.h"
 #include "kmcpclientinspectormanager.h"
@@ -21,11 +22,19 @@
 #include <QPointer>
 #include <QToolButton>
 #include <TextAddonsWidgets/WhatsNewNgDialog>
+#if defined(Q_OS_WIN) || defined(Q_OS_MACOS)
+#include <TextAddonsWidgets/VerifyNewVersionWidget>
+#endif
+
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorMainWindow::KMcpClientInspectorMainWindow(const QList<KAboutRelease> &releases, QWidget *parent)
     : KXmlGuiWindow(parent)
     , mManager(new KMcpClientInspectorManager(this))
     , mMainWidget(new KMcpClientInspectorCentralWidget(releases, mManager, this))
+#if defined(Q_OS_WIN) || defined(Q_OS_MACOS)
+    , mVerifyNewVersionWidget(new TextAddonsWidgets::VerifyNewVersionWidget(this))
+#endif
+
 {
     mMainWidget->setObjectName(u"mMainWidget"_s);
     setCentralWidget(mMainWidget);
@@ -53,6 +62,17 @@ void KMcpClientInspectorMainWindow::setupActions()
     auto showWhatsNewAction = new QAction(QIcon(u":/kmcpclientinspector/kmcpclientinspector.svg"_s), i18n("What's new"), this);
     ac->addAction(u"whatsnew_kmcpclientinspector"_s, showWhatsNewAction);
     connect(showWhatsNewAction, &QAction::triggered, this, &KMcpClientInspectorMainWindow::slotWhatsNew);
+#if defined(Q_OS_WIN) || defined(Q_OS_MACOS)
+    const QString defaultUrlPath = QStringLiteral("https://origin.cdn.kde.org/ci-builds/sdk/kmcpclientinspector/");
+    const QString stableBranch = u"0.2"_s;
+    bool stableVersion = false;
+#if KMCPCLIENTINSPECTOR_STABLE_VERSION
+    stableVersion = true;
+#endif
+    mVerifyNewVersionWidget->generateUrlInfo(stableBranch, defaultUrlPath, stableVersion);
+    auto verifyNewVersionAction = mVerifyNewVersionWidget->verifyNewVersionAction();
+    ac->addAction(u"verify_check_version"_s, verifyNewVersionAction);
+#endif
 }
 
 void KMcpClientInspectorMainWindow::slotConfigure()

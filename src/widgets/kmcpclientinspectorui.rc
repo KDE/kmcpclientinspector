@@ -3,7 +3,7 @@
   SPDX-License-Identifier: CC0-1.0
   SPDX-FileCopyrightText: 2026 Laurent Montel <montel@kde.org>
 -->
-<gui name="kmcpclientinspector" version="11">
+<gui name="kmcpclientinspector" version="12">
  <MenuBar>
   <Menu name="file" >
   </Menu>
@@ -14,6 +14,8 @@
   <Menu name="help">
    <text>&amp;Help</text>
    <Action name="whatsnew_kmcpclientinspector" />
+   <Separator/>
+   <Action name="verify_check_version" />
    <Separator/>
   </Menu>
  </MenuBar>
