@@ -49,7 +49,6 @@ KMcpClientInspectorServerSettingsWidget::~KMcpClientInspectorServerSettingsWidge
 
 void KMcpClientInspectorServerSettingsWidget::slotUpdateButtons([[maybe_unused]] bool valid)
 {
-    // TODO
     mConnectButtonsWidget->updateButtons(true, false);
 }
 
@@ -61,7 +60,6 @@ void KMcpClientInspectorServerSettingsWidget::slotDisconnectRequested()
 
 void KMcpClientInspectorServerSettingsWidget::slotConnectRequested()
 {
-    // TODO
     mConnectButtonsWidget->updateButtons(false, true);
     Q_EMIT startStopRequested(true);
 }
