@@ -6,7 +6,7 @@
 
 #include "kmcpclientinspectorclientprotocolmanager.h"
 #include "kmcpclientinspector_core_debug.h"
-#include <QDebug>
+
 #include <QJsonObject>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolInitializeRequest>
@@ -44,7 +44,19 @@ void KMcpClientInspectorClientProtocolManager::executeAction(MethodType type)
     case MethodType::ResourceTemplates:
         resouceTemplates();
         break;
+    case MethodType::Unknown:
+        qCWarning(KMCPCLIENTINSPECTOR_CORE_LOG) << "IT's a bug. MethodType::Unknown must not used.";
+        break;
     }
+}
+
+KMcpClientInspectorClientProtocolManager::MethodType KMcpClientInspectorClientProtocolManager::checkMethodType(const QJsonObject &obj) const
+{
+    if (obj.contains("id"_L1)) {
+        return mMapIdentifier.value(obj[u"id"_s].toInt(), MethodType::Unknown);
+    }
+    qCWarning(KMCPCLIENTINSPECTOR_CORE_LOG) << "KMcpClientInspectorClientProtocolManager::MethodType::Unknown ! it's a bug";
+    return MethodType::Unknown;
 }
 
 void KMcpClientInspectorClientProtocolManager::initializeClient(bool)
@@ -57,7 +69,7 @@ void KMcpClientInspectorClientProtocolManager::initializeClient(bool)
         });
         connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::received, this, [this](const QJsonObject &obj) {
             qCDebug(KMCPCLIENTINSPECTOR_CORE_LOG) << " receive " << obj;
-            Q_EMIT received(obj);
+            Q_EMIT received(obj, KMcpClientInspectorClientProtocolManager::checkMethodType(obj));
         });
         connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::started, this, [this]() {
             qCDebug(KMCPCLIENTINSPECTOR_CORE_LOG) << " Started ! ";

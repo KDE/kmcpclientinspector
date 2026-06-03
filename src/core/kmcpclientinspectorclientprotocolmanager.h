@@ -20,7 +20,8 @@ class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorClientProtocolManager
     Q_OBJECT
 public:
     enum class MethodType : uint8_t {
-        Ping = 0,
+        Unknown = 0,
+        Ping,
         ListTools,
         ListPrompts,
         ResourceTemplates,
@@ -37,7 +38,7 @@ public:
 
 Q_SIGNALS:
     void started();
-    void received(const QJsonObject &obj);
+    void received(const QJsonObject &obj, KMcpClientInspectorClientProtocolManager::MethodType type);
     void error(const QString &str);
 
 private:
@@ -45,6 +46,7 @@ private:
     LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT void listTools();
     LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT void listPrompts();
     LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT void resouceTemplates();
+    [[nodiscard]] LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT KMcpClientInspectorClientProtocolManager::MethodType checkMethodType(const QJsonObject &obj) const;
 
     int mRequestIdentifier = 0;
     TextAutoGenerateTextMcpProtocolCore::McpServer mServer;
