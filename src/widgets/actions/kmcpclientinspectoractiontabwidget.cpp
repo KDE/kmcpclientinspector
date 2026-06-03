@@ -9,6 +9,8 @@
 #include "actions/kmcpclientinspectorlisttoolswidget.h"
 #include "actions/kmcpclientinspectorpingwidget.h"
 #include "actions/kmcpclientinspectorresourcetemplateswidget.h"
+#include "kmcpclientinspector_widget_debug.h"
+#include "kmcpclientinspectorclientprotocolmanager.h"
 #include <KLocalizedString>
 #include <QTabWidget>
 #include <QVBoxLayout>
@@ -37,6 +39,25 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(KMcpClien
     mTabWidget->addTab(mListToolsWidget, i18n("List Tools"));
     mTabWidget->addTab(mListPromptsWidget, i18n("List Prompts"));
     mTabWidget->addTab(mResourceTemplatesWidget, i18n("Resource Templates"));
+    connect(protocolManager,
+            &KMcpClientInspectorClientProtocolManager::received,
+            this,
+            [this](const QJsonObject &obj, KMcpClientInspectorClientProtocolManager::MethodType type) {
+                switch (type) {
+                case KMcpClientInspectorClientProtocolManager::MethodType::Ping:
+                    break;
+                case KMcpClientInspectorClientProtocolManager::MethodType::ListTools:
+                    mListToolsWidget->setResult(obj);
+                    break;
+                case KMcpClientInspectorClientProtocolManager::MethodType::ListPrompts:
+                    break;
+                case KMcpClientInspectorClientProtocolManager::MethodType::ResourceTemplates:
+                    break;
+                case KMcpClientInspectorClientProtocolManager::MethodType::Unknown:
+                    qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << "IT's a bug. MethodType::Unknown must not used.";
+                    break;
+                }
+            });
 }
 
 KMcpClientInspectorActionTabWidget::~KMcpClientInspectorActionTabWidget() = default;

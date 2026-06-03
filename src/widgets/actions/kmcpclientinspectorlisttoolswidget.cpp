@@ -7,9 +7,11 @@
 #include "kmcpclientinspectorlisttoolswidget.h"
 #include "kmcpclientinspectorclientprotocolmanager.h"
 #include <KLocalizedString>
+#include <QJsonObject>
 #include <QPlainTextEdit>
 #include <QPushButton>
 #include <QVBoxLayout>
+
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent)
     : KMcpClientInspectorActionTabPageBase{protocolManager, parent}
@@ -32,5 +34,10 @@ KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(KMcpClien
 }
 
 KMcpClientInspectorListToolsWidget::~KMcpClientInspectorListToolsWidget() = default;
+
+void KMcpClientInspectorListToolsWidget::setResult(const QJsonObject &obj)
+{
+    // TODO
+}
 
 #include "moc_kmcpclientinspectorlisttoolswidget.cpp"
