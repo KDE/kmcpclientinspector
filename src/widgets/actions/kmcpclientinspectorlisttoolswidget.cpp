@@ -11,6 +11,8 @@
 #include <QPlainTextEdit>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolListToolsResult>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolTool>
 
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent)
@@ -35,8 +37,16 @@ KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(KMcpClien
 
 KMcpClientInspectorListToolsWidget::~KMcpClientInspectorListToolsWidget() = default;
 
-void KMcpClientInspectorListToolsWidget::setResult([[maybe_unused]] const QJsonObject &obj)
+void KMcpClientInspectorListToolsWidget::setResult(const QJsonObject &obj)
 {
+    auto result = TextAutoGenerateTextMcpProtocolCore::McpProtocolListToolsResult::fromJson(obj["result"_L1].toObject());
+    const auto tools = result.tools();
+    for (const auto &t : tools) {
+        if (t.description().has_value()) {
+            mTextEdit->appendPlainText(*t.description());
+        }
+        // qDebug() << "description:" << t.description();
+    }
     // TODO
 }
 
