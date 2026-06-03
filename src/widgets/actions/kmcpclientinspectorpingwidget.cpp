@@ -20,7 +20,7 @@ KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(KMcpClientInspector
     auto pingButton = new QPushButton(i18nc("@action:button", "Ping"), this);
     pingButton->setObjectName(u"pingButton"_s);
     connect(pingButton, &QPushButton::clicked, this, [this]() {
-        mProtocolManager->ping();
+        mProtocolManager->executeAction(KMcpClientInspectorClientProtocolManager::MethodType::Ping);
     });
     mainLayout->addWidget(pingButton);
     mainLayout->addStretch(1);

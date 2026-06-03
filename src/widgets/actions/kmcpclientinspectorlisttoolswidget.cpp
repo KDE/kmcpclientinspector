@@ -22,7 +22,7 @@ KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(KMcpClien
     auto listToolsButton = new QPushButton(i18nc("@action:button", "List Tools"), this);
     listToolsButton->setObjectName(u"listToolsButton"_s);
     connect(listToolsButton, &QPushButton::clicked, this, [this]() {
-        mProtocolManager->listTools();
+        mProtocolManager->executeAction(KMcpClientInspectorClientProtocolManager::MethodType::ListTools);
     });
     mainLayout->addWidget(listToolsButton);
 

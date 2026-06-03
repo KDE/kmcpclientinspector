@@ -7,6 +7,7 @@
 #pragma once
 
 #include "libkmcpclientinspectorcore_export.h"
+#include <QHash>
 #include <QObject>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 class QJsonObject;
@@ -18,16 +19,21 @@ class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorClientProtocolManager
 {
     Q_OBJECT
 public:
+    enum class MethodType : uint8_t {
+        Ping = 0,
+        ListTools,
+        ListPrompts,
+        ResourceTemplates,
+    };
+    Q_ENUM(MethodType)
     explicit KMcpClientInspectorClientProtocolManager(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QObject *parent = nullptr);
     ~KMcpClientInspectorClientProtocolManager() override;
 
     void initializeClient(bool started);
-    void ping();
-    void listTools();
-    void listPrompts();
-    void resouceTemplates();
 
     [[nodiscard]] int requestId();
+
+    void executeAction(MethodType type);
 
 Q_SIGNALS:
     void started();
@@ -35,7 +41,13 @@ Q_SIGNALS:
     void error(const QString &str);
 
 private:
+    LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT void ping();
+    LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT void listTools();
+    LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT void listPrompts();
+    LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT void resouceTemplates();
+
     int mRequestIdentifier = 0;
     TextAutoGenerateTextMcpProtocolCore::McpServer mServer;
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClient *mClient = nullptr;
+    QHash<int, KMcpClientInspectorClientProtocolManager::MethodType> mMapIdentifier;
 };

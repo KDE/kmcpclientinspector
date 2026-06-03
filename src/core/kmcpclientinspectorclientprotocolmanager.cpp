@@ -29,20 +29,39 @@ int KMcpClientInspectorClientProtocolManager::requestId()
     return mRequestIdentifier;
 }
 
-void KMcpClientInspectorClientProtocolManager::initializeClient(bool started)
+void KMcpClientInspectorClientProtocolManager::executeAction(MethodType type)
 {
-    Q_UNUSED(started)
+    switch (type) {
+    case MethodType::Ping:
+        ping();
+        break;
+    case MethodType::ListTools:
+        listTools();
+        break;
+    case MethodType::ListPrompts:
+        listPrompts();
+        break;
+    case MethodType::ResourceTemplates:
+        resouceTemplates();
+        break;
+    }
+}
+
+void KMcpClientInspectorClientProtocolManager::initializeClient(bool)
+{
     if (!mClient) {
         mClient = new TextAutoGenerateTextMcpProtocolCore::McpProtocolClient(mServer.transportType(), this);
-        connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::error, this, [](const QString &error) {
-            qCDebug(KMCPCLIENTINSPECTOR_CORE_LOG) << " ERROR " << error;
+        connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::error, this, [this](const QString &strError) {
+            qCDebug(KMCPCLIENTINSPECTOR_CORE_LOG) << " ERROR " << strError;
+            Q_EMIT error(strError);
         });
         connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::received, this, [this](const QJsonObject &obj) {
             qCDebug(KMCPCLIENTINSPECTOR_CORE_LOG) << " receive " << obj;
             Q_EMIT received(obj);
         });
-        connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::started, this, []() {
+        connect(mClient, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClient::started, this, [this]() {
             qCDebug(KMCPCLIENTINSPECTOR_CORE_LOG) << " Started ! ";
+            Q_EMIT started();
         });
     }
     mClient->setSettings(mServer.settings());
@@ -74,22 +93,28 @@ void KMcpClientInspectorClientProtocolManager::initializeClient(bool started)
 void KMcpClientInspectorClientProtocolManager::ping()
 {
     TextAutoGenerateTextMcpProtocolCore::McpProtocolPingRequest pingRequest;
-    pingRequest.setId(requestId());
+    const int identifier = requestId();
+    pingRequest.setId(identifier);
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolPingRequest::toJson(pingRequest));
+    mMapIdentifier.insert(identifier, MethodType::Ping);
 }
 
 void KMcpClientInspectorClientProtocolManager::listTools()
 {
     TextAutoGenerateTextMcpProtocolCore::McpProtocolListToolsRequest listToolsRequest;
-    listToolsRequest.setId(requestId());
+    const int identifier = requestId();
+    listToolsRequest.setId(identifier);
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolListToolsRequest::toJson(listToolsRequest));
+    mMapIdentifier.insert(identifier, MethodType::ListTools);
 }
 
 void KMcpClientInspectorClientProtocolManager::listPrompts()
 {
     TextAutoGenerateTextMcpProtocolCore::McpProtocolListPromptsRequest listPromptsRequest;
-    listPromptsRequest.setId(requestId());
+    const int identifier = requestId();
+    listPromptsRequest.setId(identifier);
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolListPromptsRequest::toJson(listPromptsRequest));
+    mMapIdentifier.insert(identifier, MethodType::ListPrompts);
 }
 
 void KMcpClientInspectorClientProtocolManager::resouceTemplates()

@@ -21,7 +21,7 @@ KMcpClientInspectorResourceTemplatesWidget::KMcpClientInspectorResourceTemplates
     auto resourceTemplatesButton = new QPushButton(i18nc("@action:button", "Resource Templates"), this);
     resourceTemplatesButton->setObjectName(u"resourceTemplatesButton"_s);
     connect(resourceTemplatesButton, &QPushButton::clicked, this, [this]() {
-        mProtocolManager->resouceTemplates();
+        mProtocolManager->executeAction(KMcpClientInspectorClientProtocolManager::MethodType::ResourceTemplates);
     });
     mainLayout->addWidget(resourceTemplatesButton);
     mainLayout->addStretch(1);

@@ -20,7 +20,7 @@ KMcpClientInspectorListPromptsWidget::KMcpClientInspectorListPromptsWidget(KMcpC
     auto listPromptsButton = new QPushButton(i18nc("@action:button", "List Prompts"), this);
     listPromptsButton->setObjectName(u"listPromptsButton"_s);
     connect(listPromptsButton, &QPushButton::clicked, this, [this]() {
-        mProtocolManager->listPrompts();
+        mProtocolManager->executeAction(KMcpClientInspectorClientProtocolManager::MethodType::ListPrompts);
     });
     mainLayout->addWidget(listPromptsButton);
     mainLayout->addStretch(1);
