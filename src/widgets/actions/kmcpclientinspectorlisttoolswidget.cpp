@@ -35,7 +35,7 @@ KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(KMcpClien
 
 KMcpClientInspectorListToolsWidget::~KMcpClientInspectorListToolsWidget() = default;
 
-void KMcpClientInspectorListToolsWidget::setResult(const QJsonObject &obj)
+void KMcpClientInspectorListToolsWidget::setResult([[maybe_unused]] const QJsonObject &obj)
 {
     // TODO
 }

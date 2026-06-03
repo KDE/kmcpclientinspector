@@ -29,7 +29,7 @@ KMcpClientInspectorListPromptsWidget::KMcpClientInspectorListPromptsWidget(KMcpC
 
 KMcpClientInspectorListPromptsWidget::~KMcpClientInspectorListPromptsWidget() = default;
 
-void KMcpClientInspectorListPromptsWidget::setResult(const QJsonObject &obj)
+void KMcpClientInspectorListPromptsWidget::setResult([[maybe_unused]] const QJsonObject &obj)
 {
     // TODO
 }

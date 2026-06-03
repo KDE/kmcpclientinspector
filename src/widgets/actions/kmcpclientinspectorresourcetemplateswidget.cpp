@@ -30,7 +30,7 @@ KMcpClientInspectorResourceTemplatesWidget::KMcpClientInspectorResourceTemplates
 
 KMcpClientInspectorResourceTemplatesWidget::~KMcpClientInspectorResourceTemplatesWidget() = default;
 
-void KMcpClientInspectorResourceTemplatesWidget::setResult(const QJsonObject &obj)
+void KMcpClientInspectorResourceTemplatesWidget::setResult([[maybe_unused]] const QJsonObject &obj)
 {
     // TODO
 }
