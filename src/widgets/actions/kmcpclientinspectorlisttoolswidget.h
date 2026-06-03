@@ -7,6 +7,7 @@
 #pragma once
 #include "actions/kmcpclientinspectoractiontabpagebase.h"
 #include "libkmcpclientinspectorwidgets_private_export.h"
+class QPlainTextEdit;
 class KMcpClientInspectorClientProtocolManager;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorListToolsWidget : public KMcpClientInspectorActionTabPageBase
 {
@@ -14,4 +15,7 @@ class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorListToolsWid
 public:
     explicit KMcpClientInspectorListToolsWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent = nullptr);
     ~KMcpClientInspectorListToolsWidget() override;
+
+private:
+    QPlainTextEdit *const mTextEdit;
 };

@@ -11,3 +11,4 @@ endmacro()
 
 add_kmcpclientinspector_widgets_unittest(kmcpclientinspectorserversettingswidgettest.cpp)
 add_kmcpclientinspector_widgets_unittest(kmcpclientinspectorconnectbuttonswidgettest.cpp)
+add_kmcpclientinspector_widgets_unittest(kmcpclientinspectorlisttoolswidgettest.cpp)

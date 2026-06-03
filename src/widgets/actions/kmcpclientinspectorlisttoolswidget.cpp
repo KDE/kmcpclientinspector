@@ -7,11 +7,13 @@
 #include "kmcpclientinspectorlisttoolswidget.h"
 #include "kmcpclientinspectorclientprotocolmanager.h"
 #include <KLocalizedString>
+#include <QPlainTextEdit>
 #include <QPushButton>
 #include <QVBoxLayout>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent)
     : KMcpClientInspectorActionTabPageBase{protocolManager, parent}
+    , mTextEdit(new QPlainTextEdit(this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
@@ -23,7 +25,10 @@ KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(KMcpClien
         mProtocolManager->listTools();
     });
     mainLayout->addWidget(listToolsButton);
-    mainLayout->addStretch(1);
+
+    mTextEdit->setObjectName(u"mTextEdit"_s);
+    mTextEdit->setReadOnly(true);
+    mainLayout->addWidget(mTextEdit);
 }
 
 KMcpClientInspectorListToolsWidget::~KMcpClientInspectorListToolsWidget() = default;
