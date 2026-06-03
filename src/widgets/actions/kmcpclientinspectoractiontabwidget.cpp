@@ -50,8 +50,10 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(KMcpClien
                     mListToolsWidget->setResult(obj);
                     break;
                 case KMcpClientInspectorClientProtocolManager::MethodType::ListPrompts:
+                    mListPromptsWidget->setResult(obj);
                     break;
                 case KMcpClientInspectorClientProtocolManager::MethodType::ResourceTemplates:
+                    mResourceTemplatesWidget->setResult(obj);
                     break;
                 case KMcpClientInspectorClientProtocolManager::MethodType::Unknown:
                     qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << "IT's a bug. MethodType::Unknown must not used.";

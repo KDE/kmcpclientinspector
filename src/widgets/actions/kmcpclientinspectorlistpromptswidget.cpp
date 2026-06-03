@@ -7,6 +7,7 @@
 #include "kmcpclientinspectorlistpromptswidget.h"
 #include "kmcpclientinspectorclientprotocolmanager.h"
 #include <KLocalizedString>
+#include <QJsonObject>
 #include <QPushButton>
 #include <QVBoxLayout>
 using namespace Qt::Literals::StringLiterals;
@@ -28,4 +29,8 @@ KMcpClientInspectorListPromptsWidget::KMcpClientInspectorListPromptsWidget(KMcpC
 
 KMcpClientInspectorListPromptsWidget::~KMcpClientInspectorListPromptsWidget() = default;
 
+void KMcpClientInspectorListPromptsWidget::setResult(const QJsonObject &obj)
+{
+    // TODO
+}
 #include "moc_kmcpclientinspectorlistpromptswidget.cpp"

@@ -7,6 +7,7 @@
 #include "kmcpclientinspectorresourcetemplateswidget.h"
 #include "kmcpclientinspectorclientprotocolmanager.h"
 #include <KLocalizedString>
+#include <QJsonObject>
 #include <QPushButton>
 #include <QVBoxLayout>
 using namespace Qt::Literals::StringLiterals;
@@ -28,5 +29,10 @@ KMcpClientInspectorResourceTemplatesWidget::KMcpClientInspectorResourceTemplates
 }
 
 KMcpClientInspectorResourceTemplatesWidget::~KMcpClientInspectorResourceTemplatesWidget() = default;
+
+void KMcpClientInspectorResourceTemplatesWidget::setResult(const QJsonObject &obj)
+{
+    // TODO
+}
 
 #include "moc_kmcpclientinspectorresourcetemplateswidget.cpp"
