@@ -10,6 +10,7 @@
 #include <QJsonObject>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolListPromptsResult>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorListPromptsWidget::KMcpClientInspectorListPromptsWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent)
     : KMcpClientInspectorActionTabPageBase{protocolManager, parent}
