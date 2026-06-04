@@ -47,7 +47,6 @@ void KMcpClientInspectorListToolsWidget::setResult(const QJsonObject &obj)
         }
         // qDebug() << "description:" << t.description();
     }
-    // TODO
 }
 
 #include "moc_kmcpclientinspectorlisttoolswidget.cpp"
