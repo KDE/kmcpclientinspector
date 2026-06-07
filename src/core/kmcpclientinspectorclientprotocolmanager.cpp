@@ -31,6 +31,10 @@ int KMcpClientInspectorClientProtocolManager::requestId()
 
 void KMcpClientInspectorClientProtocolManager::executeAction(MethodType type)
 {
+    if (!mClient) {
+        qCWarning(KMCPCLIENTINSPECTOR_CORE_LOG) << "Client was not initialized";
+        return;
+    }
     switch (type) {
     case MethodType::Ping:
         ping();
