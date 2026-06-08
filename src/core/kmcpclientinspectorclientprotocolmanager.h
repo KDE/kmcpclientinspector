@@ -25,6 +25,7 @@ public:
         ListTools,
         ListPrompts,
         ResourceTemplates,
+        Initialize,
     };
     Q_ENUM(MethodType)
     explicit KMcpClientInspectorClientProtocolManager(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QObject *parent = nullptr);

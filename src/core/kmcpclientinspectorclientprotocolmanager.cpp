@@ -48,6 +48,9 @@ void KMcpClientInspectorClientProtocolManager::executeAction(MethodType type)
     case MethodType::ResourceTemplates:
         resouceTemplates();
         break;
+    case MethodType::Initialize:
+        // TODO ?
+        break;
     case MethodType::Unknown:
         qCWarning(KMCPCLIENTINSPECTOR_CORE_LOG) << "IT's a bug. MethodType::Unknown must not used.";
         break;
@@ -101,9 +104,11 @@ void KMcpClientInspectorClientProtocolManager::initializeClient(bool)
 
     params.setCapabilities(capabilities);
     initRequest.setParams(params);
-    initRequest.setId(requestId());
+    const int identifier = requestId();
+    initRequest.setId(identifier);
     qCDebug(KMCPCLIENTINSPECTOR_CORE_LOG) << " initRequest " << initRequest;
     mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequest::toJson(initRequest));
+    mMapIdentifier.insert(identifier, MethodType::Initialize);
 }
 
 void KMcpClientInspectorClientProtocolManager::ping()

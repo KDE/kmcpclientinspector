@@ -55,6 +55,9 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(KMcpClien
                 case KMcpClientInspectorClientProtocolManager::MethodType::ResourceTemplates:
                     mResourceTemplatesWidget->setResult(obj);
                     break;
+                case KMcpClientInspectorClientProtocolManager::MethodType::Initialize:
+                    // TODO ?
+                    break;
                 case KMcpClientInspectorClientProtocolManager::MethodType::Unknown:
                     qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << "IT's a bug. MethodType::Unknown must not used.";
                     break;
