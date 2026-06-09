@@ -86,7 +86,11 @@ void KMcpClientInspectorClientProtocolManager::initializeClient(bool)
     }
     mClient->setSettings(mServer.settings());
     mClient->start();
+    initialize();
+}
 
+void KMcpClientInspectorClientProtocolManager::initialize()
+{
     TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequest initRequest;
     TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequestParams params;
     params.setProtocolVersion(TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::convertProtocolVersionToString(

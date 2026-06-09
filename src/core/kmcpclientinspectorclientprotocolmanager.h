@@ -47,6 +47,7 @@ private:
     LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT void listTools();
     LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT void listPrompts();
     LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT void resouceTemplates();
+    LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT void initialize();
     [[nodiscard]] LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT KMcpClientInspectorClientProtocolManager::MethodType checkMethodType(const QJsonObject &obj) const;
 
     int mRequestIdentifier = 0;
