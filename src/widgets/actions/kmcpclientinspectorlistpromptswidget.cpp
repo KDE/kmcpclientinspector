@@ -30,8 +30,10 @@ KMcpClientInspectorListPromptsWidget::KMcpClientInspectorListPromptsWidget(KMcpC
 
 KMcpClientInspectorListPromptsWidget::~KMcpClientInspectorListPromptsWidget() = default;
 
-void KMcpClientInspectorListPromptsWidget::setResult([[maybe_unused]] const QJsonObject &obj)
+void KMcpClientInspectorListPromptsWidget::setResult(const QJsonObject &obj)
 {
+    auto result = TextAutoGenerateTextMcpProtocolCore::McpProtocolListPromptsResult::fromJson(obj["result"_L1].toObject());
+    qDebug() << " result : " << result;
     // TODO
 }
 #include "moc_kmcpclientinspectorlistpromptswidget.cpp"
