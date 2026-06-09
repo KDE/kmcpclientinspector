@@ -11,6 +11,7 @@
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolInitializeRequest>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolListPromptsRequest>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolListResourceTemplatesRequest>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolListToolsRequest>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolPingRequest>
 using namespace Qt::Literals::StringLiterals;
@@ -86,7 +87,6 @@ void KMcpClientInspectorClientProtocolManager::initializeClient(bool)
     mClient->setSettings(mServer.settings());
     mClient->start();
 
-    // TODO initialize
     TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequest initRequest;
     TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeRequestParams params;
     params.setProtocolVersion(TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::convertProtocolVersionToString(
@@ -140,7 +140,11 @@ void KMcpClientInspectorClientProtocolManager::listPrompts()
 
 void KMcpClientInspectorClientProtocolManager::resouceTemplates()
 {
-    // TODO
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolListResourceTemplatesRequest resourceTemplatesRequest;
+    const int identifier = requestId();
+    resourceTemplatesRequest.setId(identifier);
+    mClient->request(TextAutoGenerateTextMcpProtocolCore::McpProtocolListResourceTemplatesRequest::toJson(resourceTemplatesRequest));
+    mMapIdentifier.insert(identifier, MethodType::ResourceTemplates);
 }
 
 #include "moc_kmcpclientinspectorclientprotocolmanager.cpp"
