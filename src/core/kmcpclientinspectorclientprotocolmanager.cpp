@@ -67,6 +67,16 @@ KMcpClientInspectorClientProtocolManager::MethodType KMcpClientInspectorClientPr
     return MethodType::Unknown;
 }
 
+QString KMcpClientInspectorClientProtocolManager::clientName() const
+{
+    return mClientName;
+}
+
+void KMcpClientInspectorClientProtocolManager::setClientName(const QString &newClientName)
+{
+    mClientName = newClientName;
+}
+
 void KMcpClientInspectorClientProtocolManager::initializeClient(bool)
 {
     if (!mClient) {
@@ -97,7 +107,7 @@ void KMcpClientInspectorClientProtocolManager::initialize()
         TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::ProtocolVersion::V2025_03_26));
 
     auto clientInfo = params.clientInfo();
-    clientInfo.setName(u"kmcpinspector"_s);
+    clientInfo.setName(mClientName);
     clientInfo.setVersion(u"1"_s);
     params.setClientInfo(clientInfo);
 

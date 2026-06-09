@@ -37,6 +37,9 @@ public:
 
     void executeAction(MethodType type);
 
+    [[nodiscard]] QString clientName() const;
+    void setClientName(const QString &newClientName);
+
 Q_SIGNALS:
     void started();
     void received(const QJsonObject &obj, KMcpClientInspectorClientProtocolManager::MethodType type);
@@ -49,6 +52,8 @@ private:
     LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT void resouceTemplates();
     LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT void initialize();
     [[nodiscard]] LIBKMCPCLIENTINSPECTORCORE_NO_EXPORT KMcpClientInspectorClientProtocolManager::MethodType checkMethodType(const QJsonObject &obj) const;
+
+    QString mClientName;
 
     int mRequestIdentifier = 0;
     TextAutoGenerateTextMcpProtocolCore::McpServer mServer;
