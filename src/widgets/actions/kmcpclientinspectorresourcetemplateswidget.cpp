@@ -5,14 +5,15 @@
  */
 
 #include "kmcpclientinspectorresourcetemplateswidget.h"
-#include "kmcpclientinspectorclientprotocolmanager.h"
 #include <KLocalizedString>
 #include <QJsonObject>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 using namespace Qt::Literals::StringLiterals;
-KMcpClientInspectorResourceTemplatesWidget::KMcpClientInspectorResourceTemplatesWidget(KMcpClientInspectorClientProtocolManager *protocolManager,
-                                                                                       QWidget *parent)
+KMcpClientInspectorResourceTemplatesWidget::KMcpClientInspectorResourceTemplatesWidget(
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
+    QWidget *parent)
     : KMcpClientInspectorActionTabPageBase{protocolManager, parent}
 {
     auto mainLayout = new QVBoxLayout(this);
@@ -22,7 +23,7 @@ KMcpClientInspectorResourceTemplatesWidget::KMcpClientInspectorResourceTemplates
     auto resourceTemplatesButton = new QPushButton(i18nc("@action:button", "Resource Templates"), this);
     resourceTemplatesButton->setObjectName(u"resourceTemplatesButton"_s);
     connect(resourceTemplatesButton, &QPushButton::clicked, this, [this]() {
-        mProtocolManager->executeAction(KMcpClientInspectorClientProtocolManager::MethodType::ResourceTemplates);
+        mProtocolManager->executeAction(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ResourceTemplates);
     });
     mainLayout->addWidget(resourceTemplatesButton);
     mainLayout->addStretch(1);

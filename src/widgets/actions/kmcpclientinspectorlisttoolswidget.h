@@ -9,12 +9,16 @@
 #include "libkmcpclientinspectorwidgets_private_export.h"
 class QPlainTextEdit;
 class QJsonObject;
-class KMcpClientInspectorClientProtocolManager;
+namespace TextAutoGenerateTextMcpProtocolCore
+{
+class McpProtocolClientProtocolManager;
+}
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorListToolsWidget : public KMcpClientInspectorActionTabPageBase
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorListToolsWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent = nullptr);
+    explicit KMcpClientInspectorListToolsWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
+                                                QWidget *parent = nullptr);
     ~KMcpClientInspectorListToolsWidget() override;
 
     void setResult(const QJsonObject &obj);

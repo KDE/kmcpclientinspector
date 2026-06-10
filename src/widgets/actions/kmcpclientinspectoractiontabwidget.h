@@ -9,19 +9,21 @@
 #include <QWidget>
 class KMcpClientInspectorPingWidget;
 class QTabWidget;
-class KMcpClientInspectorClientProtocolManager;
+
 class KMcpClientInspectorListToolsWidget;
 class KMcpClientInspectorListPromptsWidget;
 class KMcpClientInspectorResourceTemplatesWidget;
 namespace TextAutoGenerateTextMcpProtocolCore
 {
 class McpProtocolClient;
+class McpProtocolClientProtocolManager;
 }
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorActionTabWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorActionTabWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent = nullptr);
+    explicit KMcpClientInspectorActionTabWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
+                                                QWidget *parent = nullptr);
     ~KMcpClientInspectorActionTabWidget() override;
 
 private:

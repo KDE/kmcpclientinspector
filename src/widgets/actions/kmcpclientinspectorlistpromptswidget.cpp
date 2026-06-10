@@ -5,14 +5,16 @@
  */
 
 #include "kmcpclientinspectorlistpromptswidget.h"
-#include "kmcpclientinspectorclientprotocolmanager.h"
 #include <KLocalizedString>
 #include <QJsonObject>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolListPromptsResult>
 using namespace Qt::Literals::StringLiterals;
-KMcpClientInspectorListPromptsWidget::KMcpClientInspectorListPromptsWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent)
+KMcpClientInspectorListPromptsWidget::KMcpClientInspectorListPromptsWidget(
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
+    QWidget *parent)
     : KMcpClientInspectorActionTabPageBase{protocolManager, parent}
 {
     auto mainLayout = new QVBoxLayout(this);
@@ -22,7 +24,7 @@ KMcpClientInspectorListPromptsWidget::KMcpClientInspectorListPromptsWidget(KMcpC
     auto listPromptsButton = new QPushButton(i18nc("@action:button", "List Prompts"), this);
     listPromptsButton->setObjectName(u"listPromptsButton"_s);
     connect(listPromptsButton, &QPushButton::clicked, this, [this]() {
-        mProtocolManager->executeAction(KMcpClientInspectorClientProtocolManager::MethodType::ListPrompts);
+        mProtocolManager->executeAction(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListPrompts);
     });
     mainLayout->addWidget(listPromptsButton);
     mainLayout->addStretch(1);

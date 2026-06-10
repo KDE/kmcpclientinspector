@@ -5,17 +5,18 @@
  */
 
 #include "kmcpclientinspectorlisttoolswidget.h"
-#include "kmcpclientinspectorclientprotocolmanager.h"
 #include <KLocalizedString>
 #include <QJsonObject>
 #include <QPlainTextEdit>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolListToolsResult>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolTool>
 
 using namespace Qt::Literals::StringLiterals;
-KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent)
+KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
+                                                                       QWidget *parent)
     : KMcpClientInspectorActionTabPageBase{protocolManager, parent}
     , mTextEdit(new QPlainTextEdit(this))
 {
@@ -26,7 +27,7 @@ KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(KMcpClien
     auto listToolsButton = new QPushButton(i18nc("@action:button", "List Tools"), this);
     listToolsButton->setObjectName(u"listToolsButton"_s);
     connect(listToolsButton, &QPushButton::clicked, this, [this]() {
-        mProtocolManager->executeAction(KMcpClientInspectorClientProtocolManager::MethodType::ListTools);
+        mProtocolManager->executeAction(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListTools);
     });
     mainLayout->addWidget(listToolsButton);
 

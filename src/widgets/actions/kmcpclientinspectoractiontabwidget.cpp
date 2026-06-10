@@ -10,12 +10,13 @@
 #include "actions/kmcpclientinspectorpingwidget.h"
 #include "actions/kmcpclientinspectorresourcetemplateswidget.h"
 #include "kmcpclientinspector_widget_debug.h"
-#include "kmcpclientinspectorclientprotocolmanager.h"
 #include <KLocalizedString>
 #include <QTabWidget>
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 using namespace Qt::Literals::StringLiterals;
-KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent)
+KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
+                                                                       QWidget *parent)
     : QWidget{parent}
     , mPingWidget(new KMcpClientInspectorPingWidget(protocolManager, this))
     , mListToolsWidget(new KMcpClientInspectorListToolsWidget(protocolManager, this))
@@ -40,25 +41,25 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(KMcpClien
     mTabWidget->addTab(mListPromptsWidget, i18n("List Prompts"));
     mTabWidget->addTab(mResourceTemplatesWidget, i18n("Resource Templates"));
     connect(protocolManager,
-            &KMcpClientInspectorClientProtocolManager::received,
+            &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::received,
             this,
-            [this](const QJsonObject &obj, KMcpClientInspectorClientProtocolManager::MethodType type) {
+            [this](const QJsonObject &obj, TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType type) {
                 switch (type) {
-                case KMcpClientInspectorClientProtocolManager::MethodType::Ping:
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Ping:
                     break;
-                case KMcpClientInspectorClientProtocolManager::MethodType::ListTools:
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListTools:
                     mListToolsWidget->setResult(obj);
                     break;
-                case KMcpClientInspectorClientProtocolManager::MethodType::ListPrompts:
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListPrompts:
                     mListPromptsWidget->setResult(obj);
                     break;
-                case KMcpClientInspectorClientProtocolManager::MethodType::ResourceTemplates:
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ResourceTemplates:
                     mResourceTemplatesWidget->setResult(obj);
                     break;
-                case KMcpClientInspectorClientProtocolManager::MethodType::Initialize:
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Initialize:
                     // TODO ?
                     break;
-                case KMcpClientInspectorClientProtocolManager::MethodType::Unknown:
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Unknown:
                     qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << "IT's a bug. MethodType::Unknown must not used.";
                     break;
                 }

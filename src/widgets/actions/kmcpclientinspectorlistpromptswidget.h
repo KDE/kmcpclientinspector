@@ -13,7 +13,8 @@ class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorListPromptsW
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorListPromptsWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent = nullptr);
+    explicit KMcpClientInspectorListPromptsWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
+                                                  QWidget *parent = nullptr);
     ~KMcpClientInspectorListPromptsWidget() override;
 
     void setResult(const QJsonObject &obj);

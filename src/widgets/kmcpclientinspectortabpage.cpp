@@ -6,7 +6,6 @@
 
 #include "kmcpclientinspectortabpage.h"
 #include "actions/kmcpclientinspectoractiontabwidget.h"
-#include "kmcpclientinspectorclientprotocolmanager.h"
 #include "kmcpclientinspectorserversettingswidget.h"
 #include <KLocalizedString>
 #include <QJsonObject>
@@ -14,15 +13,17 @@
 #include <QSplitter>
 #include <QVBoxLayout>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolInitializeRequest>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent)
     : QWidget{parent}
-    , mProtocolManager(new KMcpClientInspectorClientProtocolManager(server, this))
+    , mProtocolManager(new TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager(server, this))
     , mServerSettings(new KMcpClientInspectorServerSettingsWidget(server, this))
     , mActionTabWidget(new KMcpClientInspectorActionTabWidget(mProtocolManager, this))
 {
+    mProtocolManager->setClientName(u"kmcpclientinspector"_s);
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName("mainLayout"_L1);
     mainLayout->setContentsMargins({});
@@ -41,7 +42,7 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
     connect(mServerSettings,
             &KMcpClientInspectorServerSettingsWidget::startStopRequested,
             mProtocolManager,
-            &KMcpClientInspectorClientProtocolManager::initializeClient);
+            &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::initializeClient);
 }
 
 KMcpClientInspectorTabPage::~KMcpClientInspectorTabPage() = default;

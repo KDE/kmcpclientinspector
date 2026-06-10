@@ -9,10 +9,10 @@
 #include <QWidget>
 class KMcpClientInspectorServerSettingsWidget;
 class KMcpClientInspectorActionTabWidget;
-class KMcpClientInspectorClientProtocolManager;
 namespace TextAutoGenerateTextMcpProtocolCore
 {
 class McpServer;
+class McpProtocolClientProtocolManager;
 }
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorTabPage : public QWidget
 {
@@ -22,7 +22,7 @@ public:
     ~KMcpClientInspectorTabPage() override;
 
 private:
-    KMcpClientInspectorClientProtocolManager *const mProtocolManager;
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *const mProtocolManager;
     KMcpClientInspectorServerSettingsWidget *const mServerSettings;
     KMcpClientInspectorActionTabWidget *const mActionTabWidget;
 };

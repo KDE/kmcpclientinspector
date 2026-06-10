@@ -5,7 +5,9 @@
  */
 #include "kmcpclientinspectoractiontabpagebase.h"
 
-KMcpClientInspectorActionTabPageBase::KMcpClientInspectorActionTabPageBase(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent)
+KMcpClientInspectorActionTabPageBase::KMcpClientInspectorActionTabPageBase(
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
+    QWidget *parent)
     : QWidget{parent}
     , mProtocolManager(protocolManager)
 {

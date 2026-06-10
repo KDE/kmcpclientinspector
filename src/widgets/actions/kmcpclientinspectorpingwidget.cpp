@@ -5,12 +5,13 @@
  */
 
 #include "kmcpclientinspectorpingwidget.h"
-#include "kmcpclientinspectorclientprotocolmanager.h"
 #include <KLocalizedString>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 using namespace Qt::Literals::StringLiterals;
-KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent)
+KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
+                                                             QWidget *parent)
     : KMcpClientInspectorActionTabPageBase{protocolManager, parent}
 {
     auto mainLayout = new QVBoxLayout(this);
@@ -20,7 +21,7 @@ KMcpClientInspectorPingWidget::KMcpClientInspectorPingWidget(KMcpClientInspector
     auto pingButton = new QPushButton(i18nc("@action:button", "Ping"), this);
     pingButton->setObjectName(u"pingButton"_s);
     connect(pingButton, &QPushButton::clicked, this, [this]() {
-        mProtocolManager->executeAction(KMcpClientInspectorClientProtocolManager::MethodType::Ping);
+        mProtocolManager->executeAction(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Ping);
     });
     mainLayout->addWidget(pingButton);
     mainLayout->addStretch(1);

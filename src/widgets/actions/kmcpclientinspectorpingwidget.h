@@ -7,11 +7,14 @@
 #pragma once
 #include "actions/kmcpclientinspectoractiontabpagebase.h"
 #include "libkmcpclientinspectorwidgets_private_export.h"
-class KMcpClientInspectorClientProtocolManager;
+namespace TextAutoGenerateTextMcpProtocolCore
+{
+class McpProtocolClientProtocolManager;
+}
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorPingWidget : public KMcpClientInspectorActionTabPageBase
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorPingWidget(KMcpClientInspectorClientProtocolManager *protocolManager, QWidget *parent = nullptr);
+    explicit KMcpClientInspectorPingWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager, QWidget *parent = nullptr);
     ~KMcpClientInspectorPingWidget() override;
 };
