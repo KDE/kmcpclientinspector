@@ -7,7 +7,7 @@
 #pragma once
 #include "actions/kmcpclientinspectoractiontabpagebase.h"
 #include "libkmcpclientinspectorwidgets_private_export.h"
-class QPlainTextEdit;
+class QTextBrowser;
 class QJsonObject;
 namespace TextAutoGenerateTextMcpProtocolCore
 {
@@ -24,5 +24,5 @@ public:
     void setResult(const QJsonObject &obj);
 
 private:
-    QPlainTextEdit *const mTextEdit;
+    QTextBrowser *const mTextBrowser;
 };

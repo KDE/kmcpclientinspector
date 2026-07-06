@@ -7,8 +7,8 @@
 #include "kmcpclientinspectorlisttoolswidget.h"
 #include <KLocalizedString>
 #include <QJsonObject>
-#include <QPlainTextEdit>
 #include <QPushButton>
+#include <QTextBrowser>
 #include <QVBoxLayout>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolListToolsResult>
@@ -18,7 +18,7 @@ using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
                                                                        QWidget *parent)
     : KMcpClientInspectorActionTabPageBase{protocolManager, parent}
-    , mTextEdit(new QPlainTextEdit(this))
+    , mTextBrowser(new QTextBrowser(this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
@@ -31,9 +31,9 @@ KMcpClientInspectorListToolsWidget::KMcpClientInspectorListToolsWidget(TextAutoG
     });
     mainLayout->addWidget(listToolsButton);
 
-    mTextEdit->setObjectName(u"mTextEdit"_s);
-    mTextEdit->setReadOnly(true);
-    mainLayout->addWidget(mTextEdit);
+    mTextBrowser->setObjectName(u"mTextBrowser"_s);
+    mTextBrowser->setReadOnly(true);
+    mainLayout->addWidget(mTextBrowser);
 }
 
 KMcpClientInspectorListToolsWidget::~KMcpClientInspectorListToolsWidget() = default;
@@ -42,12 +42,14 @@ void KMcpClientInspectorListToolsWidget::setResult(const QJsonObject &obj)
 {
     auto result = TextAutoGenerateTextMcpProtocolCore::McpProtocolListToolsResult::fromJson(obj["result"_L1].toObject());
     const auto tools = result.tools();
+    QString markdown;
     for (const auto &t : tools) {
         if (t.description().has_value()) {
-            mTextEdit->appendPlainText(*t.description());
+            markdown.append(*t.description());
         }
         // qDebug() << "description:" << t.description();
     }
+    mTextBrowser->setMarkdown(markdown);
 }
 
 #include "moc_kmcpclientinspectorlisttoolswidget.cpp"
