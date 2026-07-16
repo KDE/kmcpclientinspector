@@ -27,6 +27,7 @@ target_link_libraries(
     libkmcpclientinspectorwidgets
 )
 
+set(appIcons)
 file(GLOB_RECURSE KMCPCLIENTINSPECTOR_ICONS "${PROJECT_SOURCE_DIR}/src/widgets/icons/*-apps-kmcpclientinspector.png")
 ecm_add_app_icon(appIcons ICONS "${KMCPCLIENTINSPECTOR_ICONS}")
 target_sources(kmcpclientinspector PRIVATE ${appIcons})
