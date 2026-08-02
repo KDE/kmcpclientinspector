@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2025-2026 Laurent Montel <montel@kde.org>
 # SPDX-License-Identifier: BSD-3-Clause
 cmake_minimum_required(VERSION 3.29.0)
-set(KMCPCLIENTINSPECTOR_VERSION "0.2.0")
+set(KMCPCLIENTINSPECTOR_VERSION "0.2.1")
 project(kmcpclientinspector VERSION ${KMCPCLIENTINSPECTOR_VERSION})
 
 set(KMCPCLIENTINSPECTOR_LIB_VERSION "${KMCPCLIENTINSPECTOR_VERSION}")
@@ -115,7 +115,7 @@ set_package_properties(
             OPTIONAL
 )
 
-set(KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION "2.1.0")
+set(KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION "2.1.2")
 
 find_package(Qt6 ${QT_REQUIRED_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
 find_package(
@@ -157,7 +157,7 @@ add_definitions(-DTRANSLATION_DOMAIN="kmcpclientinspector")
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ecm_set_disabled_deprecation_versions(QT 6.12.0
-    KF 6.27.0
+    KF 6.29.0
 )
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
