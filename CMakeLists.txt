@@ -1,13 +1,13 @@
 # SPDX-FileCopyrightText: 2025-2026 Laurent Montel <montel@kde.org>
 # SPDX-License-Identifier: BSD-3-Clause
 cmake_minimum_required(VERSION 3.29.0)
-set(KMCPCLIENTINSPECTOR_VERSION "0.2.1")
+set(KMCPCLIENTINSPECTOR_VERSION "0.2.2")
 project(kmcpclientinspector VERSION ${KMCPCLIENTINSPECTOR_VERSION})
 
 set(KMCPCLIENTINSPECTOR_LIB_VERSION "${KMCPCLIENTINSPECTOR_VERSION}")
 
 # TODO: update it in each release version
-set(KMCPCLIENTINSPECTOR_RELEASE_VERSION "26.08.30") # yy.MM.dd
+set(KMCPCLIENTINSPECTOR_RELEASE_VERSION "26.11.30") # yy.MM.dd
 
 # Use true if stable version => we will check specific version
 set(KMCPCLIENTINSPECTOR_STABLE_VERSION false)
@@ -22,7 +22,7 @@ endif()
 set(KMCPCLIENTINSPECTOR_VERSION_STRING "${KMCPCLIENTINSPECTOR_VERSION}${KMCPCLIENTINSPECTOR_DEV_VERSION}")
 
 set(QT_REQUIRED_VERSION "6.10.0")
-set(KF_MIN_VERSION "6.26.0")
+set(KF_MIN_VERSION "6.29.0")
 
 set(ECM_VERSION ${KF_MIN_VERSION})
 find_package(ECM ${ECM_VERSION} REQUIRED NO_MODULE)
@@ -115,7 +115,7 @@ set_package_properties(
             OPTIONAL
 )
 
-set(KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION "2.1.2")
+set(KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION "2.2.0")
 
 find_package(Qt6 ${QT_REQUIRED_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
 find_package(
@@ -156,8 +156,8 @@ set_package_properties(
 add_definitions(-DTRANSLATION_DOMAIN="kmcpclientinspector")
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-ecm_set_disabled_deprecation_versions(QT 6.12.0
-    KF 6.29.0
+ecm_set_disabled_deprecation_versions(QT 6.13.0
+    KF 6.31.0
 )
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
