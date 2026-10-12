@@ -6,8 +6,10 @@
 
 #include "kmcpclientinspectorresourcetemplateswidget.h"
 #include <KLocalizedString>
+#include <QJsonDocument>
 #include <QJsonObject>
 #include <QPushButton>
+#include <QTextBrowser>
 #include <QVBoxLayout>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 using namespace Qt::Literals::StringLiterals;
@@ -15,6 +17,7 @@ KMcpClientInspectorResourceTemplatesWidget::KMcpClientInspectorResourceTemplates
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
     QWidget *parent)
     : KMcpClientInspectorActionTabPageBase{protocolManager, parent}
+    , mTextBrowser(new QTextBrowser(this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
@@ -26,14 +29,18 @@ KMcpClientInspectorResourceTemplatesWidget::KMcpClientInspectorResourceTemplates
         mProtocolManager->executeAction(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ResourceTemplates);
     });
     mainLayout->addWidget(resourceTemplatesButton);
-    mainLayout->addStretch(1);
+
+    mTextBrowser->setObjectName(u"mTextBrowser"_s);
+    mTextBrowser->setReadOnly(true);
+    mainLayout->addWidget(mTextBrowser);
 }
 
 KMcpClientInspectorResourceTemplatesWidget::~KMcpClientInspectorResourceTemplatesWidget() = default;
 
-void KMcpClientInspectorResourceTemplatesWidget::setResult([[maybe_unused]] const QJsonObject &obj)
+void KMcpClientInspectorResourceTemplatesWidget::setResult(const QJsonObject &obj)
 {
-    // TODO
+    const QString json = QString::fromUtf8(QJsonDocument(obj["result"_L1].toObject()).toJson(QJsonDocument::Indented));
+    mTextBrowser->setMarkdown(u"```json\n"_s + json + u"```\n"_s);
 }
 
 #include "moc_kmcpclientinspectorresourcetemplateswidget.cpp"

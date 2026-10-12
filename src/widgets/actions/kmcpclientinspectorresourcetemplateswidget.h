@@ -8,6 +8,7 @@
 #include "actions/kmcpclientinspectoractiontabpagebase.h"
 #include "libkmcpclientinspectorwidgets_private_export.h"
 class QJsonObject;
+class QTextBrowser;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorResourceTemplatesWidget : public KMcpClientInspectorActionTabPageBase
 {
     Q_OBJECT
@@ -16,4 +17,7 @@ public:
                                                         QWidget *parent = nullptr);
     ~KMcpClientInspectorResourceTemplatesWidget() override;
     void setResult(const QJsonObject &obj);
+
+private:
+    QTextBrowser *const mTextBrowser;
 };

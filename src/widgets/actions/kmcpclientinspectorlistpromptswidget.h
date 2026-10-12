@@ -9,6 +9,7 @@
 #include "actions/kmcpclientinspectoractiontabpagebase.h"
 #include "libkmcpclientinspectorwidgets_private_export.h"
 class QJsonObject;
+class QTextBrowser;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorListPromptsWidget : public KMcpClientInspectorActionTabPageBase
 {
     Q_OBJECT
@@ -18,4 +19,7 @@ public:
     ~KMcpClientInspectorListPromptsWidget() override;
 
     void setResult(const QJsonObject &obj);
+
+private:
+    QTextBrowser *const mTextBrowser;
 };
