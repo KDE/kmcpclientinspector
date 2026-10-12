@@ -46,7 +46,8 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mTabWidget->addTab(mResourceTemplatesWidget, i18n("Resource Templates"));
 
     connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::started, this, [this, protocolManager]() {
-        mResourceTemplatesWidget->setVisible(
+        mTabWidget->setTabVisible(
+            mTabWidget->indexOf(mResourceTemplatesWidget),
             protocolManager->serverSupports(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ResourceTemplates));
     });
 
