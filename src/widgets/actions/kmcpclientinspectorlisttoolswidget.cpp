@@ -40,16 +40,8 @@ KMcpClientInspectorListToolsWidget::~KMcpClientInspectorListToolsWidget() = defa
 
 void KMcpClientInspectorListToolsWidget::setResult(const QJsonObject &obj)
 {
-    auto result = TextAutoGenerateTextMcpProtocolCore::McpProtocolListToolsResult::fromJson(obj["result"_L1].toObject());
-    const auto tools = result.tools();
-    QString markdown;
-    for (const auto &t : tools) {
-        if (t.description().has_value()) {
-            markdown.append(*t.description());
-        }
-        // qDebug() << "description:" << t.description();
-    }
-    mTextBrowser->setMarkdown(markdown);
+    const QString json = QString::fromUtf8(QJsonDocument(obj).toJson(QJsonDocument::Indented));
+    mTextBrowser->setMarkdown(u"```json\n"_s + json + u"```\n"_s);
 }
 
 #include "moc_kmcpclientinspectorlisttoolswidget.cpp"
