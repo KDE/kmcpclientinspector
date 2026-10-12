@@ -57,7 +57,18 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
                     mResourceTemplatesWidget->setResult(obj);
                     break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Initialize:
-                    // TODO ?
+                    break;
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ReadResource:
+                    break;
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListResources:
+                    break;
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::GetPrompt:
+                    break;
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ServerNotification:
+                    break;
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::CallTool:
+                    break;
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ServerRequest:
                     break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Unknown:
                     qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << "IT's a bug. MethodType::Unknown must not used.";
