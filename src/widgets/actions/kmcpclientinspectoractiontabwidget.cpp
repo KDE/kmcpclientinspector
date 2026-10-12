@@ -45,10 +45,22 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mTabWidget->addTab(mListResourcesWidget, i18n("List Resources"));
     mTabWidget->addTab(mResourceTemplatesWidget, i18n("Resource Templates"));
 
+    mTabWidget->setTabVisible(mTabWidget->indexOf(mResourceTemplatesWidget), false);
+    mTabWidget->setTabVisible(mTabWidget->indexOf(mListPromptsWidget), false);
+    mTabWidget->setTabVisible(mTabWidget->indexOf(mListResourcesWidget), false);
+
     connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::started, this, [this, protocolManager]() {
         mTabWidget->setTabVisible(
             mTabWidget->indexOf(mResourceTemplatesWidget),
             protocolManager->serverSupports(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ResourceTemplates));
+
+        mTabWidget->setTabVisible(
+            mTabWidget->indexOf(mListPromptsWidget),
+            protocolManager->serverSupports(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListPrompts));
+
+        mTabWidget->setTabVisible(
+            mTabWidget->indexOf(mListResourcesWidget),
+            protocolManager->serverSupports(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListResources));
     });
 
     connect(protocolManager,
@@ -57,6 +69,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
             [this](const QJsonObject &obj, TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType type) {
                 switch (type) {
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Ping:
+                    mPingWidget->setResult(obj);
                     break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListTools:
                     mListToolsWidget->setResult(obj);
@@ -83,7 +96,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ServerRequest:
                     break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Unknown:
-                    qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << "IT's a bug. MethodType::Unknown must not used.";
+                    qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << "It's a bug. MethodType::Unknown must not used.";
                     break;
                 }
             });
