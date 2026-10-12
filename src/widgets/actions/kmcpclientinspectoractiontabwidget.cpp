@@ -6,6 +6,7 @@
 
 #include "kmcpclientinspectoractiontabwidget.h"
 #include "actions/kmcpclientinspectorlistpromptswidget.h"
+#include "actions/kmcpclientinspectorlistresourceswidget.h"
 #include "actions/kmcpclientinspectorlisttoolswidget.h"
 #include "actions/kmcpclientinspectorpingwidget.h"
 #include "actions/kmcpclientinspectorresourcetemplateswidget.h"
@@ -21,6 +22,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     , mPingWidget(new KMcpClientInspectorPingWidget(protocolManager, this))
     , mListToolsWidget(new KMcpClientInspectorListToolsWidget(protocolManager, this))
     , mListPromptsWidget(new KMcpClientInspectorListPromptsWidget(protocolManager, this))
+    , mListResourcesWidget(new KMcpClientInspectorListResourcesWidget(protocolManager, this))
     , mResourceTemplatesWidget(new KMcpClientInspectorResourceTemplatesWidget(protocolManager, this))
     , mTabWidget(new QTabWidget(this))
 {
@@ -33,12 +35,14 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mTabWidget->setObjectName(u"mTabWidget"_s);
     mListToolsWidget->setObjectName(u"mListToolsWidget"_s);
     mListPromptsWidget->setObjectName(u"mListPromptsWidget"_s);
+    mListResourcesWidget->setObjectName(u"mListResourcesWidget"_s);
     mResourceTemplatesWidget->setObjectName(u"mResourceTemplatesWidget"_s);
 
     mainLayout->addWidget(mTabWidget);
     mTabWidget->addTab(mPingWidget, i18n("Ping"));
     mTabWidget->addTab(mListToolsWidget, i18n("List Tools"));
     mTabWidget->addTab(mListPromptsWidget, i18n("List Prompts"));
+    mTabWidget->addTab(mListResourcesWidget, i18n("List Resources"));
     mTabWidget->addTab(mResourceTemplatesWidget, i18n("Resource Templates"));
     connect(protocolManager,
             &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::received,
@@ -61,6 +65,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ReadResource:
                     break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListResources:
+                    mListResourcesWidget->setResult(obj);
                     break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::GetPrompt:
                     break;

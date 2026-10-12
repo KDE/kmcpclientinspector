@@ -12,6 +12,7 @@ class QTabWidget;
 
 class KMcpClientInspectorListToolsWidget;
 class KMcpClientInspectorListPromptsWidget;
+class KMcpClientInspectorListResourcesWidget;
 class KMcpClientInspectorResourceTemplatesWidget;
 namespace TextAutoGenerateTextMcpProtocolCore
 {
@@ -30,6 +31,7 @@ private:
     KMcpClientInspectorPingWidget *const mPingWidget;
     KMcpClientInspectorListToolsWidget *const mListToolsWidget;
     KMcpClientInspectorListPromptsWidget *const mListPromptsWidget;
+    KMcpClientInspectorListResourcesWidget *const mListResourcesWidget;
     KMcpClientInspectorResourceTemplatesWidget *const mResourceTemplatesWidget;
     QTabWidget *const mTabWidget;
 };
