@@ -49,7 +49,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mTabWidget->setTabVisible(mTabWidget->indexOf(mListPromptsWidget), false);
     mTabWidget->setTabVisible(mTabWidget->indexOf(mListResourcesWidget), false);
 
-    connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::started, this, [this, protocolManager]() {
+    connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::initialized, this, [this, protocolManager]() {
         mTabWidget->setTabVisible(
             mTabWidget->indexOf(mResourceTemplatesWidget),
             protocolManager->serverSupports(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ResourceTemplates));
