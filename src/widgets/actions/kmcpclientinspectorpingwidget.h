@@ -5,23 +5,13 @@
  */
 
 #pragma once
-#include "actions/kmcpclientinspectoractiontabpagebase.h"
+
+#include "actions/kmcpclientinspectorresultwidget.h"
 #include "libkmcpclientinspectorwidgets_private_export.h"
-class QJsonObject;
-class QTextBrowser;
-namespace TextAutoGenerateTextMcpProtocolCore
-{
-class McpProtocolClientProtocolManager;
-}
-class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorPingWidget : public KMcpClientInspectorActionTabPageBase
+class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorPingWidget : public KMcpClientInspectorResultWidget
 {
     Q_OBJECT
 public:
     explicit KMcpClientInspectorPingWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager, QWidget *parent = nullptr);
     ~KMcpClientInspectorPingWidget() override;
-
-    void setResult(const QJsonObject &obj);
-
-private:
-    QTextBrowser *const mTextBrowser;
 };

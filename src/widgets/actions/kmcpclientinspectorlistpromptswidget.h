@@ -6,11 +6,9 @@
 
 #pragma once
 
-#include "actions/kmcpclientinspectoractiontabpagebase.h"
+#include "actions/kmcpclientinspectorresultwidget.h"
 #include "libkmcpclientinspectorwidgets_private_export.h"
-class QJsonObject;
-class QTextBrowser;
-class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorListPromptsWidget : public KMcpClientInspectorActionTabPageBase
+class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorListPromptsWidget : public KMcpClientInspectorResultWidget
 {
     Q_OBJECT
 public:
@@ -18,8 +16,5 @@ public:
                                                   QWidget *parent = nullptr);
     ~KMcpClientInspectorListPromptsWidget() override;
 
-    void setResult(const QJsonObject &obj);
-
-private:
-    QTextBrowser *const mTextBrowser;
+    void setResult(const QJsonObject &obj) override;
 };
