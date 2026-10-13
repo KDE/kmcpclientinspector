@@ -20,10 +20,13 @@ KMcpClientInspectorTabWidget::~KMcpClientInspectorTabWidget() = default;
 
 void KMcpClientInspectorTabWidget::loadServers()
 {
+    clear();
     const auto servers = mManager->mcpServerModel()->mcpServers();
     for (const auto &s : servers) {
-        auto page = new KMcpClientInspectorTabPage(s, this);
-        addTab(page, s.name());
+        if (s.enabled()) {
+            auto page = new KMcpClientInspectorTabPage(s, this);
+            addTab(page, s.name());
+        }
     }
 }
 
