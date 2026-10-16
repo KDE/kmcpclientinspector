@@ -39,10 +39,9 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
 
     mActionTabWidget->setObjectName(u"mActionTabWidget"_s);
     splitter->addWidget(mActionTabWidget);
-    connect(mServerSettings,
-            &KMcpClientInspectorServerSettingsWidget::startStopRequested,
-            mProtocolManager,
-            &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::initializeClient);
+    connect(mServerSettings, &KMcpClientInspectorServerSettingsWidget::startStopRequested, this, [this](bool started) {
+        started ? mProtocolManager->initializeClient() : mProtocolManager->stopClient();
+    });
 }
 
 KMcpClientInspectorTabPage::~KMcpClientInspectorTabPage() = default;
