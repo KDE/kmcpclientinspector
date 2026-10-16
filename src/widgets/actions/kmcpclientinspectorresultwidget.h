@@ -10,7 +10,7 @@
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 class QJsonObject;
-class QTextBrowser;
+class JsonPlainTextEditWidget;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorResultWidget : public KMcpClientInspectorActionTabPageBase
 {
     Q_OBJECT
@@ -27,5 +27,5 @@ protected:
     void showJson(const QJsonObject &obj);
 
 private:
-    QTextBrowser *const mTextBrowser;
+    JsonPlainTextEditWidget *const mJsonPlainTextEditWidget;
 };

@@ -5,10 +5,10 @@
  */
 
 #include "kmcpclientinspectorresultwidget.h"
+#include "misc/jsonplaintexteditwidget.h"
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QPushButton>
-#include <QTextBrowser>
 #include <QVBoxLayout>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorResultWidget::KMcpClientInspectorResultWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
@@ -16,7 +16,7 @@ KMcpClientInspectorResultWidget::KMcpClientInspectorResultWidget(TextAutoGenerat
                                                                  TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType type,
                                                                  QWidget *parent)
     : KMcpClientInspectorActionTabPageBase{protocolManager, parent}
-    , mTextBrowser(new QTextBrowser(this))
+    , mJsonPlainTextEditWidget(new JsonPlainTextEditWidget(this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
@@ -29,9 +29,8 @@ KMcpClientInspectorResultWidget::KMcpClientInspectorResultWidget(TextAutoGenerat
     });
     mainLayout->addWidget(actionButton);
 
-    mTextBrowser->setObjectName(u"mTextBrowser"_s);
-    mTextBrowser->setReadOnly(true);
-    mainLayout->addWidget(mTextBrowser);
+    mJsonPlainTextEditWidget->setObjectName(u"mJsonPlainTextEditWidget"_s);
+    mainLayout->addWidget(mJsonPlainTextEditWidget);
 }
 
 KMcpClientInspectorResultWidget::~KMcpClientInspectorResultWidget() = default;
@@ -44,7 +43,7 @@ void KMcpClientInspectorResultWidget::setResult(const QJsonObject &obj)
 void KMcpClientInspectorResultWidget::showJson(const QJsonObject &obj)
 {
     const QString json = QString::fromUtf8(QJsonDocument(obj).toJson(QJsonDocument::Indented));
-    mTextBrowser->setMarkdown(u"```json\n"_s + json + u"```\n"_s);
+    mJsonPlainTextEditWidget->setPlainText(json);
 }
 
 #include "moc_kmcpclientinspectorresultwidget.cpp"
