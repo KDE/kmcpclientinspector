@@ -5,6 +5,7 @@
  */
 
 #include "kmcpclientinspectoractiontabwidget.h"
+#include "actions/kmcpclientinspectorinitializewidget.h"
 #include "actions/kmcpclientinspectorlistpromptswidget.h"
 #include "actions/kmcpclientinspectorlistresourceswidget.h"
 #include "actions/kmcpclientinspectorlisttoolswidget.h"
@@ -19,6 +20,7 @@ using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
                                                                        QWidget *parent)
     : QWidget{parent}
+    , mInitializeWidget(new KMcpClientInspectorInitializeWidget(protocolManager, this))
     , mPingWidget(new KMcpClientInspectorPingWidget(protocolManager, this))
     , mListToolsWidget(new KMcpClientInspectorListToolsWidget(protocolManager, this))
     , mListPromptsWidget(new KMcpClientInspectorListPromptsWidget(protocolManager, this))
@@ -31,6 +33,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mainLayout->setContentsMargins({});
     mainLayout->setSpacing(0);
 
+    mInitializeWidget->setObjectName(u"mInitializeWidget"_s);
     mPingWidget->setObjectName(u"mPingWidget"_s);
     mTabWidget->setObjectName(u"mTabWidget"_s);
     mListToolsWidget->setObjectName(u"mListToolsWidget"_s);
@@ -39,6 +42,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mResourceTemplatesWidget->setObjectName(u"mResourceTemplatesWidget"_s);
 
     mainLayout->addWidget(mTabWidget);
+    mTabWidget->addTab(mInitializeWidget, i18n("Initialize"));
     mTabWidget->addTab(mPingWidget, i18n("Ping"));
     mTabWidget->addTab(mListToolsWidget, i18n("List Tools"));
     mTabWidget->addTab(mListPromptsWidget, i18n("List Prompts"));
@@ -81,6 +85,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
                     mResourceTemplatesWidget->setResult(obj);
                     break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Initialize:
+                    mInitializeWidget->setResult(obj);
                     break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ReadResource:
                     break;

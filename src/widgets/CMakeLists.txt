@@ -29,6 +29,8 @@ target_sources(
         configure/kmcpclientinspectorconfiguremcpserverswidget.h
         actions/kmcpclientinspectorpingwidget.h
         actions/kmcpclientinspectorpingwidget.cpp
+        actions/kmcpclientinspectorinitializewidget.h
+        actions/kmcpclientinspectorinitializewidget.cpp
         actions/kmcpclientinspectoractiontabwidget.h
         actions/kmcpclientinspectoractiontabwidget.cpp
         actions/kmcpclientinspectorlisttoolswidget.cpp
@@ -45,6 +47,8 @@ target_sources(
         actions/kmcpclientinspectorlistresourceswidget.cpp
         kmcpclientinspectorconnectbuttonswidget.h
         kmcpclientinspectorconnectbuttonswidget.cpp
+        misc/jsonplaintexteditwidget.h
+        misc/jsonplaintexteditwidget.cpp
 )
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(
@@ -66,6 +70,8 @@ target_link_libraries(
     KF6::CoreAddons
     KF6::TextAutoGenerateTextMcpProtocolWidgets
     KF6::TextAddonsWidgets
+    KF6::TextCustomEditor
+    KF6::SyntaxHighlighting
     libkmcpclientinspectorcore
 )
 

@@ -129,6 +129,7 @@ find_package(
         Crash
         NotifyConfig
         IconThemes
+        SyntaxHighlighting
 )
 
 find_package(KF6TextAutoGenerateTextMcpProtocolWidgets ${KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION} CONFIG)
@@ -149,6 +150,16 @@ set_package_properties(
     PROPERTIES
         DESCRIPTION
             "Add text addons widget"
+        TYPE
+            REQUIRED
+)
+
+find_package(KF6TextCustomEditor ${KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION} CONFIG)
+set_package_properties(
+    KF6TextCustomEditor
+    PROPERTIES
+        DESCRIPTION
+            "Add text custom editor (ktextaddons)"
         TYPE
             REQUIRED
 )

@@ -7,6 +7,7 @@
 #pragma once
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
+class KMcpClientInspectorInitializeWidget;
 class KMcpClientInspectorPingWidget;
 class QTabWidget;
 
@@ -28,6 +29,7 @@ public:
     ~KMcpClientInspectorActionTabWidget() override;
 
 private:
+    KMcpClientInspectorInitializeWidget *const mInitializeWidget;
     KMcpClientInspectorPingWidget *const mPingWidget;
     KMcpClientInspectorListToolsWidget *const mListToolsWidget;
     KMcpClientInspectorListPromptsWidget *const mListPromptsWidget;
