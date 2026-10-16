@@ -12,6 +12,7 @@ class KMcpClientInspectorPingWidget;
 class QTabWidget;
 
 class KMcpClientInspectorListToolsWidget;
+class KMcpClientInspectorCallToolWidget;
 class KMcpClientInspectorListPromptsWidget;
 class KMcpClientInspectorListResourcesWidget;
 class KMcpClientInspectorResourceTemplatesWidget;
@@ -32,6 +33,7 @@ private:
     KMcpClientInspectorInitializeWidget *const mInitializeWidget;
     KMcpClientInspectorPingWidget *const mPingWidget;
     KMcpClientInspectorListToolsWidget *const mListToolsWidget;
+    KMcpClientInspectorCallToolWidget *const mCallToolWidget;
     KMcpClientInspectorListPromptsWidget *const mListPromptsWidget;
     KMcpClientInspectorListResourcesWidget *const mListResourcesWidget;
     KMcpClientInspectorResourceTemplatesWidget *const mResourceTemplatesWidget;

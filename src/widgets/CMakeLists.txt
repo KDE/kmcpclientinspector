@@ -35,6 +35,10 @@ target_sources(
         actions/kmcpclientinspectoractiontabwidget.cpp
         actions/kmcpclientinspectorlisttoolswidget.cpp
         actions/kmcpclientinspectorlisttoolswidget.h
+        actions/kmcpclientinspectorcalltoolwidget.h
+        actions/kmcpclientinspectorcalltoolwidget.cpp
+        actions/kmcpclientinspectortoolargumentswidget.h
+        actions/kmcpclientinspectortoolargumentswidget.cpp
         actions/kmcpclientinspectoractiontabpagebase.h
         actions/kmcpclientinspectoractiontabpagebase.cpp
         actions/kmcpclientinspectorresultwidget.h

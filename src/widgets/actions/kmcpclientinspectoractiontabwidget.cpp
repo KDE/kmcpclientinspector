@@ -5,6 +5,7 @@
  */
 
 #include "kmcpclientinspectoractiontabwidget.h"
+#include "actions/kmcpclientinspectorcalltoolwidget.h"
 #include "actions/kmcpclientinspectorinitializewidget.h"
 #include "actions/kmcpclientinspectorlistpromptswidget.h"
 #include "actions/kmcpclientinspectorlistresourceswidget.h"
@@ -23,6 +24,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     , mInitializeWidget(new KMcpClientInspectorInitializeWidget(protocolManager, this))
     , mPingWidget(new KMcpClientInspectorPingWidget(protocolManager, this))
     , mListToolsWidget(new KMcpClientInspectorListToolsWidget(protocolManager, this))
+    , mCallToolWidget(new KMcpClientInspectorCallToolWidget(protocolManager, this))
     , mListPromptsWidget(new KMcpClientInspectorListPromptsWidget(protocolManager, this))
     , mListResourcesWidget(new KMcpClientInspectorListResourcesWidget(protocolManager, this))
     , mResourceTemplatesWidget(new KMcpClientInspectorResourceTemplatesWidget(protocolManager, this))
@@ -37,6 +39,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mPingWidget->setObjectName(u"mPingWidget"_s);
     mTabWidget->setObjectName(u"mTabWidget"_s);
     mListToolsWidget->setObjectName(u"mListToolsWidget"_s);
+    mCallToolWidget->setObjectName(u"mCallToolWidget"_s);
     mListPromptsWidget->setObjectName(u"mListPromptsWidget"_s);
     mListResourcesWidget->setObjectName(u"mListResourcesWidget"_s);
     mResourceTemplatesWidget->setObjectName(u"mResourceTemplatesWidget"_s);
@@ -45,6 +48,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mTabWidget->addTab(mInitializeWidget, i18n("Initialize"));
     mTabWidget->addTab(mPingWidget, i18n("Ping"));
     mTabWidget->addTab(mListToolsWidget, i18n("List Tools"));
+    mTabWidget->addTab(mCallToolWidget, i18n("Call Tool"));
     mTabWidget->addTab(mListPromptsWidget, i18n("List Prompts"));
     mTabWidget->addTab(mListResourcesWidget, i18n("List Resources"));
     mTabWidget->addTab(mResourceTemplatesWidget, i18n("Resource Templates"));
@@ -52,6 +56,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mTabWidget->setTabVisible(mTabWidget->indexOf(mResourceTemplatesWidget), false);
     mTabWidget->setTabVisible(mTabWidget->indexOf(mListPromptsWidget), false);
     mTabWidget->setTabVisible(mTabWidget->indexOf(mListResourcesWidget), false);
+    mTabWidget->setTabVisible(mTabWidget->indexOf(mCallToolWidget), false);
 
     connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::initialized, this, [this, protocolManager]() {
         mTabWidget->setTabVisible(
@@ -65,6 +70,9 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
         mTabWidget->setTabVisible(
             mTabWidget->indexOf(mListResourcesWidget),
             protocolManager->serverSupports(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListResources));
+
+        mTabWidget->setTabVisible(mTabWidget->indexOf(mCallToolWidget),
+                                  protocolManager->serverSupports(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::CallTool));
     });
 
     connect(protocolManager,
@@ -77,6 +85,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
                     break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListTools:
                     mListToolsWidget->setResult(obj);
+                    mCallToolWidget->setToolsList(obj);
                     break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListPrompts:
                     mListPromptsWidget->setResult(obj);
@@ -97,6 +106,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ServerNotification:
                     break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::CallTool:
+                    mCallToolWidget->setResult(obj);
                     break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ServerRequest:
                     break;
