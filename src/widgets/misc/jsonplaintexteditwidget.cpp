@@ -52,4 +52,14 @@ void JsonPlainTextEditWidget::setPlainText(const QString &str)
     mPlainTextEdit->setPlainText(str);
 }
 
+QString JsonPlainTextEditWidget::toPlainText() const
+{
+    return mPlainTextEdit->toPlainText();
+}
+
+void JsonPlainTextEditWidget::setReadOnly(bool readOnly)
+{
+    mPlainTextEdit->setReadOnly(readOnly);
+}
+
 #include "moc_jsonplaintexteditwidget.cpp"

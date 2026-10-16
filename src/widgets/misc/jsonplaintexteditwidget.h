@@ -28,6 +28,9 @@ public:
     ~JsonPlainTextEditWidget() override;
 
     void setPlainText(const QString &str);
+    [[nodiscard]] QString toPlainText() const;
+
+    void setReadOnly(bool readOnly);
 
 private:
     TextCustomEditor::PlainTextEditorWidget *const mPlainTextEdit;
