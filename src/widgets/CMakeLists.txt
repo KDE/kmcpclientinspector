@@ -23,6 +23,8 @@ target_sources(
         libkmcpclientinspectorwidgets_private_export.h
         kmcpclientinspectorserversettingswidget.h
         kmcpclientinspectorserversettingswidget.cpp
+        kmcpclientinspectorserverinfowidget.h
+        kmcpclientinspectorserverinfowidget.cpp
         configure/kmcpclientinspectorconfiguresettingsdialog.cpp
         configure/kmcpclientinspectorconfiguresettingsdialog.h
         configure/kmcpclientinspectorconfiguremcpserverswidget.cpp

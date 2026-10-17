@@ -6,15 +6,19 @@
 
 #include "kmcpclientinspectorserversettingswidget.h"
 #include "kmcpclientinspectorconnectbuttonswidget.h"
+#include "kmcpclientinspectorserverinfowidget.h"
 #include <KLocalizedString>
+#include <QHBoxLayout>
+#include <QPointer>
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServer>
-#include <TextAutoGenerateTextMcpProtocolWidgets/AddMcpServerWidget>
+#include <TextAutoGenerateTextMcpProtocolWidgets/AddMcpServerDialog>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent)
     : QWidget{parent}
-    , mMcpServerWidget(new TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget(this))
+    , mServerInfoWidget(new KMcpClientInspectorServerInfoWidget(this))
+    , mEditButton(new QPushButton(QIcon::fromTheme(u"document-edit"_s), i18nc("@action:button", "Edit…"), this))
     , mConnectButtonsWidget(new KMcpClientInspectorConnectButtonsWidget(this))
     , mServer(server)
 {
@@ -22,9 +26,18 @@ KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget
     mainLayout->setObjectName(u"mainLayout"_s);
     mainLayout->setContentsMargins({});
 
-    mMcpServerWidget->setObjectName(u"mMcpServerWidget"_s);
-    mainLayout->addWidget(mMcpServerWidget);
-    mMcpServerWidget->setServerInfo(server);
+    mServerInfoWidget->setObjectName(u"mServerInfoWidget"_s);
+    mainLayout->addWidget(mServerInfoWidget);
+    mServerInfoWidget->setServerInfo(server);
+
+    mEditButton->setObjectName(u"mEditButton"_s);
+    auto editLayout = new QHBoxLayout;
+    editLayout->setObjectName(u"editLayout"_s);
+    editLayout->setContentsMargins({});
+    editLayout->addStretch(1);
+    editLayout->addWidget(mEditButton);
+    mainLayout->addLayout(editLayout);
+
     mConnectButtonsWidget->setObjectName(u"mConnectButtonsWidget"_s);
     mainLayout->addWidget(mConnectButtonsWidget);
 
@@ -37,10 +50,7 @@ KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget
             &KMcpClientInspectorConnectButtonsWidget::disconnectRequested,
             this,
             &KMcpClientInspectorServerSettingsWidget::slotDisconnectRequested);
-    connect(mMcpServerWidget,
-            &TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerWidget::buttonOkEnabled,
-            this,
-            &KMcpClientInspectorServerSettingsWidget::slotUpdateButtons);
+    connect(mEditButton, &QPushButton::clicked, this, &KMcpClientInspectorServerSettingsWidget::slotEditServer);
 
     slotUpdateButtons(mServer.isValid());
 }
@@ -50,6 +60,21 @@ KMcpClientInspectorServerSettingsWidget::~KMcpClientInspectorServerSettingsWidge
 void KMcpClientInspectorServerSettingsWidget::slotUpdateButtons([[maybe_unused]] bool valid)
 {
     mConnectButtonsWidget->updateButtons(true, false);
+}
+
+void KMcpClientInspectorServerSettingsWidget::slotEditServer()
+{
+    QPointer<TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerDialog> dlg = new TextAutoGenerateTextMcpProtocolWidgets::AddMcpServerDialog(this);
+    dlg->setServerInfo(mServer);
+    if (dlg->exec()) {
+        const TextAutoGenerateTextMcpProtocolCore::McpServer server = dlg->serverInfo();
+        if (!(server == mServer)) {
+            mServer = server;
+            mServerInfoWidget->setServerInfo(mServer);
+            Q_EMIT serverModified(mServer);
+        }
+    }
+    delete dlg;
 }
 
 void KMcpClientInspectorServerSettingsWidget::slotDisconnectRequested()

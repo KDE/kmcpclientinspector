@@ -5,7 +5,10 @@
  */
 
 #include "kmcpclientinspectorserversettingswidgettest.h"
+#include "kmcpclientinspectorconnectbuttonswidget.h"
+#include "kmcpclientinspectorserverinfowidget.h"
 #include "kmcpclientinspectorserversettingswidget.h"
+#include <QPushButton>
 #include <QTest>
 #include <QVBoxLayout>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServer>
@@ -24,7 +27,16 @@ void KMcpClientInspectorServerSettingsWidgetTest::shouldHaveDefaultValues()
     QVERIFY(mainLayout);
     QCOMPARE(mainLayout->contentsMargins(), QMargins{});
 
-    // TODO
+    auto mServerInfoWidget = w.findChild<KMcpClientInspectorServerInfoWidget *>(u"mServerInfoWidget"_s);
+    QVERIFY(mServerInfoWidget);
+
+    auto mEditButton = w.findChild<QPushButton *>(u"mEditButton"_s);
+    QVERIFY(mEditButton);
+    QVERIFY(!mEditButton->text().isEmpty());
+    QVERIFY(mEditButton->isEnabled());
+
+    auto mConnectButtonsWidget = w.findChild<KMcpClientInspectorConnectButtonsWidget *>(u"mConnectButtonsWidget"_s);
+    QVERIFY(mConnectButtonsWidget);
 }
 
 #include "moc_kmcpclientinspectorserversettingswidgettest.cpp"
