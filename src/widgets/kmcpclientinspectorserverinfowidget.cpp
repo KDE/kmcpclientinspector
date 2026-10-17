@@ -60,7 +60,6 @@ void KMcpClientInspectorServerInfoWidget::setServerInfo(const TextAutoGenerateTe
         environments.append(u"%1=%2"_s.arg(key, value));
     }
     mEnvironments->setText(environments.join(u'\n'));
-    qDebug() << " settings.serverUrl() " << settings.serverUrl();
     mServerUrl->setText(settings.serverUrl().toDisplayString());
     mRoots->setText(settings.roots().join(u'\n'));
 
