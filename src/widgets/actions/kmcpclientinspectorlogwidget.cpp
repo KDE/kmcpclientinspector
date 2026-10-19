@@ -23,6 +23,7 @@ KMcpClientInspectorLogWidget::KMcpClientInspectorLogWidget(TextAutoGenerateTextM
 
     mSplitter->setObjectName(u"mSplitter"_s);
     mainLayout->addWidget(mSplitter);
+    mSplitter->setOrientation(Qt::Vertical);
 
     mSplitter->setChildrenCollapsible(false);
 
