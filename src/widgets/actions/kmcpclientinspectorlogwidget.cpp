@@ -15,7 +15,7 @@ KMcpClientInspectorLogWidget::KMcpClientInspectorLogWidget(TextAutoGenerateTextM
     : KMcpClientInspectorActionTabPageBase(protocolManager, parent)
     , mSplitter(new QSplitter(this))
     , mJsonPlainTextEditWidget(new JsonPlainTextEditWidget(this))
-    , mLogTreeWidget(new KMcpClientInspectorLogTreeWidget(this))
+    , mLogTreeWidget(new KMcpClientInspectorLogTreeWidget(protocolManager, this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);

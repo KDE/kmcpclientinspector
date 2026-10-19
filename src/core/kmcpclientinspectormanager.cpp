@@ -5,7 +5,7 @@
  */
 
 #include "kmcpclientinspectormanager.h"
-#include <TextAutoGenerateTextMcpProtocolCore/McpServerModel>
+
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorManager::KMcpClientInspectorManager(QObject *parent)
     : TextAutoGenerateTextMcpProtocolCore::McpServerManager{parent}
@@ -18,4 +18,5 @@ QString KMcpClientInspectorManager::serverConfigFileName() const
 {
     return u"kmcpclientinspectorrc"_s;
 }
+
 #include "moc_kmcpclientinspectormanager.cpp"

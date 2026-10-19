@@ -21,7 +21,7 @@ int KMcpClientInspectorLogModel::rowCount(const QModelIndex &parent) const
     return mLogInfos.count();
 }
 
-void KMcpClientInspectorLogModel::addLogInfo(LogInfo info)
+void KMcpClientInspectorLogModel::addLogInfo(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageInfo info)
 {
     const int rowCount = mLogInfos.count();
     beginInsertRows({}, rowCount, rowCount);
@@ -43,7 +43,9 @@ QVariant KMcpClientInspectorLogModel::data(const QModelIndex &index, int role) c
     }
     const auto &log = mLogInfos[index.row()];
     switch (role) {
+    case Identifier:
     case Qt::DisplayRole:
+        return log.identifier;
     default:
         break;
     }

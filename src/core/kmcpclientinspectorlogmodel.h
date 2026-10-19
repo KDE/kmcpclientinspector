@@ -6,18 +6,23 @@
 
 #pragma once
 #include "libkmcpclientinspectorcore_export.h"
-#include "loginfo.h"
 #include <QAbstractListModel>
 #include <QList>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 
 class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorLogModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
+    enum ProjectRoles : uint16_t {
+        Identifier = Qt::UserRole + 1,
+        MethodType,
+        DateTime,
+    };
     explicit KMcpClientInspectorLogModel(QObject *parent = nullptr);
     ~KMcpClientInspectorLogModel() override;
 
-    void addLogInfo(LogInfo info);
+    void addLogInfo(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageInfo info);
 
     [[nodiscard]] int rowCount(const QModelIndex & = {}) const override;
     void clear();
@@ -25,5 +30,5 @@ public:
     [[nodiscard]] QVariant data(const QModelIndex &index, int role) const override;
 
 private:
-    QList<LogInfo> mLogInfos;
+    QList<TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageInfo> mLogInfos;
 };

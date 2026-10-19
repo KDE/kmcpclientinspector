@@ -10,3 +10,4 @@ macro(add_kmcpclientinspector_core_unittest _source)
 endmacro()
 
 add_kmcpclientinspector_core_unittest(kmcpclientinspectorcommandlineparsertest.cpp)
+#add_kmcpclientinspector_core_unittest(kmcpclientinspectorlogmodeltest.cpp)

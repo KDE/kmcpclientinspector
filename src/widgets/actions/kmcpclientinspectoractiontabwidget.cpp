@@ -10,6 +10,7 @@
 #include "actions/kmcpclientinspectorlistpromptswidget.h"
 #include "actions/kmcpclientinspectorlistresourceswidget.h"
 #include "actions/kmcpclientinspectorlisttoolswidget.h"
+#include "actions/kmcpclientinspectorlogwidget.h"
 #include "actions/kmcpclientinspectorpingwidget.h"
 #include "actions/kmcpclientinspectorresourcetemplateswidget.h"
 #include "kmcpclientinspector_widget_debug.h"
@@ -28,6 +29,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     , mListPromptsWidget(new KMcpClientInspectorListPromptsWidget(protocolManager, this))
     , mListResourcesWidget(new KMcpClientInspectorListResourcesWidget(protocolManager, this))
     , mResourceTemplatesWidget(new KMcpClientInspectorResourceTemplatesWidget(protocolManager, this))
+    , mLogWidget(new KMcpClientInspectorLogWidget(protocolManager, this))
     , mTabWidget(new QTabWidget(this))
 {
     auto mainLayout = new QVBoxLayout(this);
@@ -52,6 +54,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mTabWidget->addTab(mListPromptsWidget, i18n("List Prompts"));
     mTabWidget->addTab(mListResourcesWidget, i18n("List Resources"));
     mTabWidget->addTab(mResourceTemplatesWidget, i18n("Resource Templates"));
+    mTabWidget->addTab(mLogWidget, i18n("Log"));
 
     mTabWidget->setTabVisible(mTabWidget->indexOf(mResourceTemplatesWidget), false);
     mTabWidget->setTabVisible(mTabWidget->indexOf(mListPromptsWidget), false);

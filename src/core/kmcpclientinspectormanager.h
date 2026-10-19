@@ -9,7 +9,6 @@
 #include "libkmcpclientinspectorcore_export.h"
 #include <QObject>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServerManager>
-
 class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorManager : public TextAutoGenerateTextMcpProtocolCore::McpServerManager
 {
     Q_OBJECT
