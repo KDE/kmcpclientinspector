@@ -29,3 +29,13 @@ void LogInfo::setIdentifier(quint64 newIdentifier)
 }
 
 bool LogInfo::operator==(const LogInfo &other) const = default;
+
+LogInfo::Direction LogInfo::direction() const
+{
+    return mDirection;
+}
+
+void LogInfo::setDirection(Direction newDirection)
+{
+    mDirection = newDirection;
+}
