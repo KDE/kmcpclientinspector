@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 #include "kmcpclientinspectorlogsortfilterproxymodel.h"
+#include "kmcpclientinspectorlogmodel.h"
 
 KMcpClientInspectorLogSortFilterProxyModel::KMcpClientInspectorLogSortFilterProxyModel(QObject *parent)
     : QSortFilterProxyModel{parent}

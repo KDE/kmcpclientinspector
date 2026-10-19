@@ -17,6 +17,13 @@ public:
     explicit KMcpClientInspectorLogModel(QObject *parent = nullptr);
     ~KMcpClientInspectorLogModel() override;
 
+    void addLogInfo(LogInfo info);
+
+    [[nodiscard]] int rowCount(const QModelIndex & = {}) const override;
+    void clear();
+
+    [[nodiscard]] QVariant data(const QModelIndex &index, int role) const override;
+
 private:
     QList<LogInfo> mLogInfos;
 };
