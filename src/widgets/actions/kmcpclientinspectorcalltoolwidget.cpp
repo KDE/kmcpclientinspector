@@ -77,6 +77,7 @@ KMcpClientInspectorCallToolWidget::KMcpClientInspectorCallToolWidget(McpProtocol
     });
 
     auto searchLine = new KListWidgetSearchLine(this, mToolsListWidget);
+    searchLine->setPlaceholderText(i18nc("@info:placeholder", "Search"));
     searchLine->setObjectName(u"searchLine"_s);
     toolsLayout->addWidget(searchLine);
 

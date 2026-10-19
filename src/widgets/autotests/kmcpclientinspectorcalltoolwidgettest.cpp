@@ -63,6 +63,7 @@ void KMcpClientInspectorCallToolWidgetTest::shouldHaveDefaultValues()
 
     auto searchLine = w.findChild<KListWidgetSearchLine *>(u"searchLine"_s);
     QVERIFY(searchLine);
+    QVERIFY(!searchLine->placeholderText().isEmpty());
 
     auto mToolNameLabel = w.findChild<QLabel *>(u"mToolNameLabel"_s);
     QVERIFY(mToolNameLabel);
