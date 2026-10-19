@@ -130,6 +130,7 @@ find_package(
         NotifyConfig
         IconThemes
         SyntaxHighlighting
+        ItemViews
 )
 
 find_package(KF6TextAutoGenerateTextMcpProtocolWidgets ${KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION} CONFIG)

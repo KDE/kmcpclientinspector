@@ -78,6 +78,7 @@ target_link_libraries(
     KF6::TextAddonsWidgets
     KF6::TextCustomEditor
     KF6::SyntaxHighlighting
+    KF6::ItemViews
     libkmcpclientinspectorcore
 )
 

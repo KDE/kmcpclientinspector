@@ -7,6 +7,7 @@
 #include "kmcpclientinspectorcalltoolwidget.h"
 #include "actions/kmcpclientinspectortoolargumentswidget.h"
 #include "misc/jsonplaintexteditwidget.h"
+#include <KListWidgetSearchLine>
 #include <KLocalizedString>
 #include <QImage>
 #include <QJsonDocument>
@@ -74,6 +75,10 @@ KMcpClientInspectorCallToolWidget::KMcpClientInspectorCallToolWidget(McpProtocol
     connect(mListToolsButton, &QPushButton::clicked, this, [this]() {
         mProtocolManager->executeAction(McpProtocolClientProtocolManager::MethodType::ListTools);
     });
+
+    auto searchLine = new KListWidgetSearchLine(this, mToolsListWidget);
+    searchLine->setObjectName(u"searchLine"_s);
+    toolsLayout->addWidget(searchLine);
 
     mToolsListWidget->setObjectName(u"mToolsListWidget"_s);
     toolsLayout->addWidget(mToolsListWidget);
