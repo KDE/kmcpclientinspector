@@ -5,12 +5,12 @@
  */
 
 #pragma once
-
+#include "libkmcpclientinspectorcore_export.h"
 #include "loginfo.h"
 #include <QAbstractListModel>
 #include <QList>
 
-class KMcpClientInspectorLogModel : public QAbstractListModel
+class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorLogModel : public QAbstractListModel
 {
     Q_OBJECT
 public:

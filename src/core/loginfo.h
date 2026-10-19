@@ -4,9 +4,10 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 #pragma once
+#include "libkmcpclientinspectorcore_export.h"
 #include <QDateTime>
 #include <QMetaType>
-class LogInfo
+class LIBKMCPCLIENTINSPECTORCORE_EXPORT LogInfo
 {
     Q_GADGET
 public:
