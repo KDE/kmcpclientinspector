@@ -12,3 +12,5 @@ KMcpClientInspectorLogModel::KMcpClientInspectorLogModel(QObject *parent)
 }
 
 KMcpClientInspectorLogModel::~KMcpClientInspectorLogModel() = default;
+
+#include "moc_kmcpclientinspectorlogmodel.cpp"
