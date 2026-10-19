@@ -12,3 +12,5 @@ KMcpClientInspectorListToolsWidgetTest::KMcpClientInspectorListToolsWidgetTest(Q
     : QObject{parent}
 {
 }
+
+#include "moc_kmcpclientinspectorlisttoolswidgettest.cpp"
