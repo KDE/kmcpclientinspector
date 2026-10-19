@@ -5,7 +5,7 @@ macro(add_kmcpclientinspector_widgets_unittest _source)
     get_filename_component(_name ${_source} NAME_WE)
     ecm_add_test(${_source} ${_name}.h TEST_NAME ${_name}
         NAME_PREFIX "kmcpclientinspector-widgets-"
-        LINK_LIBRARIES Qt::Test libkmcpclientinspectorwidgets
+        LINK_LIBRARIES Qt::Test libkmcpclientinspectorwidgets KF6::ItemViews
     )
 endmacro()
 

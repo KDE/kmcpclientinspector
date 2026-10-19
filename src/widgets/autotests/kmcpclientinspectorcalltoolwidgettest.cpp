@@ -8,6 +8,7 @@
 #include "actions/kmcpclientinspectorcalltoolwidget.h"
 #include "actions/kmcpclientinspectortoolargumentswidget.h"
 #include "misc/jsonplaintexteditwidget.h"
+#include <KListWidgetSearchLine>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLabel>
@@ -59,6 +60,9 @@ void KMcpClientInspectorCallToolWidgetTest::shouldHaveDefaultValues()
     auto mToolsListWidget = w.findChild<QListWidget *>(u"mToolsListWidget"_s);
     QVERIFY(mToolsListWidget);
     QCOMPARE(mToolsListWidget->count(), 0);
+
+    auto searchLine = w.findChild<KListWidgetSearchLine *>(u"searchLine"_s);
+    QVERIFY(searchLine);
 
     auto mToolNameLabel = w.findChild<QLabel *>(u"mToolNameLabel"_s);
     QVERIFY(mToolNameLabel);
