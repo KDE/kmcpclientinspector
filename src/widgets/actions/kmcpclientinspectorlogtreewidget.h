@@ -7,11 +7,14 @@
 
 #include <QWidget>
 class QLineEdit;
-
+class QTreeView;
 class KMcpClientInspectorLogTreeWidget : public QWidget
 {
     Q_OBJECT
 public:
     explicit KMcpClientInspectorLogTreeWidget(QWidget *parent = nullptr);
     ~KMcpClientInspectorLogTreeWidget() override;
+
+private:
+    QTreeView *const mTreeView;
 };

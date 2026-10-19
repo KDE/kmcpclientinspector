@@ -4,16 +4,22 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 #include "kmcpclientinspectorlogtreewidget.h"
+#include <QTreeView>
 #include <QVBoxLayout>
 
 using namespace Qt::Literals::StringLiterals;
 
 KMcpClientInspectorLogTreeWidget::KMcpClientInspectorLogTreeWidget(QWidget *parent)
     : QWidget{parent}
+    , mTreeView(new QTreeView(this))
+
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
     mainLayout->setContentsMargins({});
+
+    mTreeView->setObjectName(u"mTreeView"_s);
+    mainLayout->addWidget(mTreeView);
 }
 
 KMcpClientInspectorLogTreeWidget::~KMcpClientInspectorLogTreeWidget() = default;
