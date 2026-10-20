@@ -65,7 +65,7 @@ QVariant KMcpClientInspectorLogModel::headerData(int section, Qt::Orientation or
     if (role == Qt::DisplayRole && orientation == Qt::Horizontal) {
         switch (static_cast<LogRoles>(section)) {
         case LogRoles::Identifier:
-            return i18n("IDentifier");
+            return i18n("Identifier");
         case LogRoles::MethodType:
             return i18n("Method Name");
         case LogRoles::DateTime:
