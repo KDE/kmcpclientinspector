@@ -6,6 +6,10 @@
 
 #include "kmcpclientinspectorlogmodel.h"
 #include <KLocalizedString>
+#include <QLocale>
+#include <QMetaEnum>
+
+using namespace Qt::Literals::StringLiterals;
 
 KMcpClientInspectorLogModel::KMcpClientInspectorLogModel(QObject *parent)
     : QAbstractListModel{parent}
@@ -47,19 +51,30 @@ QVariant KMcpClientInspectorLogModel::data(const QModelIndex &index, int role) c
     }
 
     const auto &log = mLogInfos.at(index.row());
-    const int col = index.column();
-    switch (col) {
+    switch (static_cast<LogRoles>(index.column())) {
     case LogRoles::Identifier:
+        if (log.identifier < 0) {
+            return {};
+        }
         return log.identifier;
     case LogRoles::MethodType:
-        // TODO return log.type;
-        break;
+        return QString::fromLatin1(
+            QMetaEnum::fromType<TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType>().valueToKey(static_cast<int>(log.type)));
     case LogRoles::DateTime:
-        // TODO
+        return QLocale().toString(log.dateTime.time(), u"hh:mm:ss.zzz"_s);
     case LogRoles::Direction:
-    case LogRoles::Duration:
-    default:
+        switch (log.direction) {
+        case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageDirection::Sent:
+            return i18n("Sent");
+        case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageDirection::Received:
+            return i18n("Received");
+        }
         break;
+    case LogRoles::Duration:
+        if (log.elapsedMs < 0) {
+            return {};
+        }
+        return i18n("%1 ms", log.elapsedMs);
     }
     return {};
 }
