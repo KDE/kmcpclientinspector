@@ -5,6 +5,7 @@
  */
 
 #include "kmcpclientinspectorlogmodel.h"
+#include <KLocalizedString>
 
 KMcpClientInspectorLogModel::KMcpClientInspectorLogModel(QObject *parent)
     : QAbstractListModel{parent}
@@ -41,15 +42,43 @@ QVariant KMcpClientInspectorLogModel::data(const QModelIndex &index, int role) c
     if (index.row() < 0 || index.row() >= mLogInfos.count()) {
         return {};
     }
-    const auto &log = mLogInfos[index.row()];
-    switch (role) {
-    case Identifier:
-    case Qt::DisplayRole:
+    if (role != Qt::DisplayRole) {
+        return {};
+    }
+
+    const auto &log = mLogInfos.at(index.row());
+    const int col = index.column();
+    switch (col) {
+    case LogRoles::Identifier:
         return log.identifier;
+    case LogRoles::MethodType:
+    case LogRoles::DateTime:
+        // TODO
     default:
         break;
     }
     return {};
+}
+
+QVariant KMcpClientInspectorLogModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    if (role == Qt::DisplayRole && orientation == Qt::Horizontal) {
+        switch (static_cast<LogRoles>(section)) {
+        case LogRoles::Identifier:
+            return i18n("IDentifier");
+        case LogRoles::MethodType:
+            return i18n("Method Name");
+        case LogRoles::DateTime:
+            return i18n("Time");
+        }
+    }
+    return {};
+}
+
+int KMcpClientInspectorLogModel::columnCount([[maybe_unused]] const QModelIndex &parent) const
+{
+    constexpr int val = static_cast<int>(LogRoles::LastColumn) + 1;
+    return val;
 }
 
 #include "moc_kmcpclientinspectorlogmodel.cpp"

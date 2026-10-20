@@ -14,11 +14,14 @@ class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorLogModel : public QAb
 {
     Q_OBJECT
 public:
-    enum ProjectRoles : uint16_t {
-        Identifier = Qt::UserRole + 1,
+    enum LogRoles {
+        Identifier,
         MethodType,
         DateTime,
+        LastColumn = DateTime,
     };
+    Q_ENUM(LogRoles)
+
     explicit KMcpClientInspectorLogModel(QObject *parent = nullptr);
     ~KMcpClientInspectorLogModel() override;
 
@@ -28,6 +31,10 @@ public:
     void clear();
 
     [[nodiscard]] QVariant data(const QModelIndex &index, int role) const override;
+
+    [[nodiscard]] QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
+
+    [[nodiscard]] int columnCount(const QModelIndex &parent = QModelIndex()) const override;
 
 private:
     QList<TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageInfo> mLogInfos;
