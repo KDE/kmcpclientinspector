@@ -52,6 +52,8 @@ QVariant KMcpClientInspectorLogModel::data(const QModelIndex &index, int role) c
     case LogRoles::Identifier:
         return log.identifier;
     case LogRoles::MethodType:
+        // TODO return log.type;
+        break;
     case LogRoles::DateTime:
         // TODO
     default:
