@@ -56,6 +56,8 @@ QVariant KMcpClientInspectorLogModel::data(const QModelIndex &index, int role) c
         break;
     case LogRoles::DateTime:
         // TODO
+    case LogRoles::Direction:
+    case LogRoles::Duration:
     default:
         break;
     }
@@ -72,6 +74,10 @@ QVariant KMcpClientInspectorLogModel::headerData(int section, Qt::Orientation or
             return i18n("Method Name");
         case LogRoles::DateTime:
             return i18n("Time");
+        case LogRoles::Duration:
+            return i18n("Duration");
+        case LogRoles::Direction:
+            return i18n("Direction"); // or remove it
         }
     }
     return {};

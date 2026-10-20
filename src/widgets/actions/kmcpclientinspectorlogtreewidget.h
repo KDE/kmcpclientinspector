@@ -14,6 +14,8 @@ namespace TextAutoGenerateTextMcpProtocolCore
 class McpProtocolClientProtocolManager;
 }
 class KMcpClientInspectorLogModel;
+class KMcpClientInspectorLogSortFilterProxyModel;
+class KMcpClientInspectorLogSearchWidget;
 class KMcpClientInspectorLogTreeWidget : public QWidget
 {
     Q_OBJECT
@@ -27,4 +29,6 @@ private:
     QTreeView *const mTreeView;
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *const mProtocolManager;
     KMcpClientInspectorLogModel *const mLogModel;
+    KMcpClientInspectorLogSortFilterProxyModel *const mLogSortFilterProxyModel;
+    KMcpClientInspectorLogSearchWidget *const mLogSearchWidget;
 };

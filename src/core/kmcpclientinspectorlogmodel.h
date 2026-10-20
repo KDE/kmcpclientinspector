@@ -16,7 +16,9 @@ class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorLogModel : public QAb
 public:
     enum LogRoles {
         Identifier,
+        Direction,
         MethodType,
+        Duration,
         DateTime,
         LastColumn = DateTime,
     };
