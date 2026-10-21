@@ -76,8 +76,8 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mTabWidget->setTabVisible(mTabWidget->indexOf(mCallToolWidget), false);
 
     connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::error, this, [this](const QString &errorStr) {
-        mMessageWidget->animatedShow();
         mMessageWidget->setText(errorStr);
+        mMessageWidget->animatedShow();
     });
 
     connect(protocolManager,
