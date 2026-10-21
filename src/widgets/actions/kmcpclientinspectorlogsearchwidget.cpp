@@ -18,17 +18,13 @@ KMcpClientInspectorLogSearchWidget::KMcpClientInspectorLogSearchWidget(QWidget *
     mainLayout->setObjectName(u"mainLayout"_s);
     mainLayout->setContentsMargins({});
 
+    mSearchLineEdit->setPlaceholderText(i18nc("@info:placeholder", "Search"));
     mSearchLineEdit->setObjectName(u"mSearchLineEdit"_s);
     mainLayout->addWidget(mSearchLineEdit);
     mSearchLineEdit->setClearButtonEnabled(true);
 
-    connect(mSearchLineEdit, &QLineEdit::textChanged, this, &KMcpClientInspectorLogSearchWidget::slotSearchChanged);
+    connect(mSearchLineEdit, &QLineEdit::textChanged, this, &KMcpClientInspectorLogSearchWidget::searchTextChanged);
     // TODO add more
 }
 
 KMcpClientInspectorLogSearchWidget::~KMcpClientInspectorLogSearchWidget() = default;
-
-void KMcpClientInspectorLogSearchWidget::slotSearchChanged()
-{
-    // TODO
-}

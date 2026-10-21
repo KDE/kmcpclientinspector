@@ -15,7 +15,9 @@ public:
     explicit KMcpClientInspectorLogSearchWidget(QWidget *parent = nullptr);
     ~KMcpClientInspectorLogSearchWidget() override;
 
+Q_SIGNALS:
+    void searchTextChanged(const QString &str);
+
 private:
-    void slotSearchChanged();
     QLineEdit *const mSearchLineEdit;
 };

@@ -6,8 +6,8 @@
 #pragma once
 
 #include "libkmcpclientinspectorcore_export.h"
-#include <QSortFilterProxyModel>
-class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorLogSortFilterProxyModel : public QSortFilterProxyModel
+#include <TextAddonsWidgets/SortFilterProxyModelBase>
+class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorLogSortFilterProxyModel : public TextAddonsWidgets::SortFilterProxyModelBase
 {
     Q_OBJECT
 public:
