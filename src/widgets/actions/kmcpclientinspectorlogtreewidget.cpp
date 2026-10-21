@@ -40,8 +40,8 @@ KMcpClientInspectorLogTreeWidget::KMcpClientInspectorLogTreeWidget(TextAutoGener
 
     mTreeView->setModel(mLogSortFilterProxyModel);
     mTreeView->setSortingEnabled(true);
-    mTreeView->sortByColumn(KMcpClientInspectorLogModel::LogRoles::Identifier, Qt::AscendingOrder);
-    mTreeView->setColumnHidden(KMcpClientInspectorLogModel::LogRoles::Json, true);
+    mTreeView->sortByColumn(KMcpClientInspectorLogModel::LogColumns::Identifier, Qt::AscendingOrder);
+    mTreeView->setColumnHidden(KMcpClientInspectorLogModel::LogColumns::Json, true);
     connect(mTreeView->selectionModel(), &QItemSelectionModel::currentChanged, this, &KMcpClientInspectorLogTreeWidget::slotCurrentChanged);
     connect(mProtocolManager,
             &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::messageLogged,
@@ -65,7 +65,7 @@ void KMcpClientInspectorLogTreeWidget::slotCurrentChanged(const QModelIndex &ind
         Q_EMIT jsonSelected({});
         return;
     }
-    const QJsonObject obj = index.siblingAtColumn(KMcpClientInspectorLogModel::LogRoles::Json).data().toJsonObject();
+    const QJsonObject obj = index.siblingAtColumn(KMcpClientInspectorLogModel::LogColumns::Json).data().toJsonObject();
     Q_EMIT jsonSelected(QString::fromUtf8(QJsonDocument(obj).toJson(QJsonDocument::Indented)));
 }
 

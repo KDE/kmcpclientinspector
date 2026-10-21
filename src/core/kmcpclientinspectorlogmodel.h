@@ -14,7 +14,7 @@ class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorLogModel : public QAb
 {
     Q_OBJECT
 public:
-    enum LogRoles {
+    enum LogColumns {
         Identifier,
         Direction,
         MethodType,
@@ -23,7 +23,7 @@ public:
         Json,
         LastColumn = Json,
     };
-    Q_ENUM(LogRoles)
+    Q_ENUM(LogColumns)
 
     explicit KMcpClientInspectorLogModel(QObject *parent = nullptr);
     ~KMcpClientInspectorLogModel() override;

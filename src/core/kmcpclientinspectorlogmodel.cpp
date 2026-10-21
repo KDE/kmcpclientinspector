@@ -51,18 +51,18 @@ QVariant KMcpClientInspectorLogModel::data(const QModelIndex &index, int role) c
     }
 
     const auto &log = mLogInfos.at(index.row());
-    switch (static_cast<LogRoles>(index.column())) {
-    case LogRoles::Identifier:
+    switch (static_cast<LogColumns>(index.column())) {
+    case LogColumns::Identifier:
         if (log.identifier < 0) {
             return {};
         }
         return log.identifier;
-    case LogRoles::MethodType:
+    case LogColumns::MethodType:
         return QString::fromLatin1(
             QMetaEnum::fromType<TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType>().valueToKey(static_cast<int>(log.type)));
-    case LogRoles::DateTime:
+    case LogColumns::DateTime:
         return QLocale().toString(log.dateTime.time(), u"hh:mm:ss.zzz"_s);
-    case LogRoles::Direction:
+    case LogColumns::Direction:
         switch (log.direction) {
         case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageDirection::Sent:
             return i18n("Sent");
@@ -70,12 +70,12 @@ QVariant KMcpClientInspectorLogModel::data(const QModelIndex &index, int role) c
             return i18n("Received");
         }
         break;
-    case LogRoles::Duration:
+    case LogColumns::Duration:
         if (log.elapsedMs < 0) {
             return {};
         }
         return i18n("%1 ms", log.elapsedMs);
-    case LogRoles::Json:
+    case LogColumns::Json:
         return log.message;
     }
     return {};
@@ -84,18 +84,18 @@ QVariant KMcpClientInspectorLogModel::data(const QModelIndex &index, int role) c
 QVariant KMcpClientInspectorLogModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if (role == Qt::DisplayRole && orientation == Qt::Horizontal) {
-        switch (static_cast<LogRoles>(section)) {
-        case LogRoles::Identifier:
+        switch (static_cast<LogColumns>(section)) {
+        case LogColumns::Identifier:
             return i18n("Identifier");
-        case LogRoles::MethodType:
+        case LogColumns::MethodType:
             return i18n("Method Name");
-        case LogRoles::DateTime:
+        case LogColumns::DateTime:
             return i18n("Time");
-        case LogRoles::Duration:
+        case LogColumns::Duration:
             return i18n("Duration");
-        case LogRoles::Direction:
+        case LogColumns::Direction:
             return i18n("Direction"); // or remove it
-        case LogRoles::Json:
+        case LogColumns::Json:
             break;
         }
     }
@@ -104,7 +104,7 @@ QVariant KMcpClientInspectorLogModel::headerData(int section, Qt::Orientation or
 
 int KMcpClientInspectorLogModel::columnCount([[maybe_unused]] const QModelIndex &parent) const
 {
-    constexpr int val = static_cast<int>(LogRoles::LastColumn) + 1;
+    constexpr int val = static_cast<int>(LogColumns::LastColumn) + 1;
     return val;
 }
 
