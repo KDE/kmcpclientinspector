@@ -20,7 +20,8 @@ public:
         MethodType,
         Duration,
         DateTime,
-        LastColumn = DateTime,
+        Json,
+        LastColumn = Json,
     };
     Q_ENUM(LogRoles)
 
