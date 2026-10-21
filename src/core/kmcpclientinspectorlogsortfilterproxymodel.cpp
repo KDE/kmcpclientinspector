@@ -10,12 +10,11 @@ KMcpClientInspectorLogSortFilterProxyModel::KMcpClientInspectorLogSortFilterProx
     : QSortFilterProxyModel{parent}
 {
     setSortCaseSensitivity(Qt::CaseInsensitive);
-    sort(0, Qt::AscendingOrder);
 }
 
 KMcpClientInspectorLogSortFilterProxyModel::~KMcpClientInspectorLogSortFilterProxyModel() = default;
 
-bool KMcpClientInspectorLogSortFilterProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
+bool KMcpClientInspectorLogSortFilterProxyModel::filterAcceptsRow([[maybe_unused]] int source_row, [[maybe_unused]] const QModelIndex &source_parent) const
 {
     // TODO
     return true;
