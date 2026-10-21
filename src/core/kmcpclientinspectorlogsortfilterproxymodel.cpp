@@ -9,7 +9,15 @@
 KMcpClientInspectorLogSortFilterProxyModel::KMcpClientInspectorLogSortFilterProxyModel(QObject *parent)
     : QSortFilterProxyModel{parent}
 {
+    setSortCaseSensitivity(Qt::CaseInsensitive);
+    sort(0, Qt::AscendingOrder);
 }
 
 KMcpClientInspectorLogSortFilterProxyModel::~KMcpClientInspectorLogSortFilterProxyModel() = default;
+
+bool KMcpClientInspectorLogSortFilterProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
+{
+    // TODO
+    return true;
+}
 #include "moc_kmcpclientinspectorlogsortfilterproxymodel.cpp"

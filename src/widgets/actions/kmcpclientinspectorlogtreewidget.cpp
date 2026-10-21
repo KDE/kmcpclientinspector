@@ -37,6 +37,7 @@ KMcpClientInspectorLogTreeWidget::KMcpClientInspectorLogTreeWidget(TextAutoGener
     mLogSortFilterProxyModel->setSourceModel(mLogModel);
 
     mTreeView->setModel(mLogSortFilterProxyModel);
+    mTreeView->setSortingEnabled(true);
     connect(mProtocolManager,
             &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::messageLogged,
             this,

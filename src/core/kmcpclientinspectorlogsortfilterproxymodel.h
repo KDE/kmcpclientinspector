@@ -13,4 +13,7 @@ class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorLogSortFilterProxyMod
 public:
     explicit KMcpClientInspectorLogSortFilterProxyModel(QObject *parent = nullptr);
     ~KMcpClientInspectorLogSortFilterProxyModel() override;
+
+protected:
+    [[nodiscard]] bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
 };
