@@ -14,13 +14,13 @@ KMcpClientInspectorLogSortFilterProxyModel::KMcpClientInspectorLogSortFilterProx
 
 KMcpClientInspectorLogSortFilterProxyModel::~KMcpClientInspectorLogSortFilterProxyModel() = default;
 
-bool KMcpClientInspectorLogSortFilterProxyModel::filterAcceptsRow([[maybe_unused]] int source_row, [[maybe_unused]] const QModelIndex &source_parent) const
+bool KMcpClientInspectorLogSortFilterProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
     if (mFilterString.trimmed().isEmpty()) {
         return true;
     }
-    const QModelIndex sourceIndex = sourceModel()->index(source_row, 0, source_parent);
-    const QString methodType = sourceIndex.data(KMcpClientInspectorLogModel::MethodType).toString();
+    const QModelIndex sourceIndex = sourceModel()->index(source_row, KMcpClientInspectorLogModel::MethodType, source_parent);
+    const QString methodType = sourceIndex.data().toString();
     if (contains(methodType)) {
         return true;
     }
