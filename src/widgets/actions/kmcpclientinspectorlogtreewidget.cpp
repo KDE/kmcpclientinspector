@@ -7,6 +7,8 @@
 #include "actions/kmcpclientinspectorlogsearchwidget.h"
 #include "kmcpclientinspectorlogmodel.h"
 #include "kmcpclientinspectorlogsortfilterproxymodel.h"
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QTreeView>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServerModel>
 
@@ -38,6 +40,8 @@ KMcpClientInspectorLogTreeWidget::KMcpClientInspectorLogTreeWidget(TextAutoGener
 
     mTreeView->setModel(mLogSortFilterProxyModel);
     mTreeView->setSortingEnabled(true);
+    mTreeView->setColumnHidden(KMcpClientInspectorLogModel::LogRoles::Json, true);
+    connect(mTreeView->selectionModel(), &QItemSelectionModel::currentChanged, this, &KMcpClientInspectorLogTreeWidget::slotCurrentChanged);
     connect(mProtocolManager,
             &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::messageLogged,
             this,
@@ -50,4 +54,14 @@ void KMcpClientInspectorLogTreeWidget::slotMessageLogged(const TextAutoGenerateT
 {
     mLogModel->addLogInfo(info);
 }
+void KMcpClientInspectorLogTreeWidget::slotCurrentChanged(const QModelIndex &index)
+{
+    if (!index.isValid()) {
+        Q_EMIT jsonSelected({});
+        return;
+    }
+    const QJsonObject obj = index.siblingAtColumn(KMcpClientInspectorLogModel::LogRoles::Json).data().toJsonObject();
+    Q_EMIT jsonSelected(QString::fromUtf8(QJsonDocument(obj).toJson(QJsonDocument::Indented)));
+}
+
 #include "moc_kmcpclientinspectorlogtreewidget.cpp"

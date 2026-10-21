@@ -32,6 +32,9 @@ KMcpClientInspectorLogWidget::KMcpClientInspectorLogWidget(TextAutoGenerateTextM
 
     mJsonPlainTextEditWidget->setObjectName(u"mJsonPlainTextEditWidget"_s);
     mSplitter->addWidget(mJsonPlainTextEditWidget);
+    mJsonPlainTextEditWidget->setReadOnly(true);
+
+    connect(mLogTreeWidget, &KMcpClientInspectorLogTreeWidget::jsonSelected, mJsonPlainTextEditWidget, &JsonPlainTextEditWidget::setPlainText);
 }
 
 KMcpClientInspectorLogWidget::~KMcpClientInspectorLogWidget() = default;

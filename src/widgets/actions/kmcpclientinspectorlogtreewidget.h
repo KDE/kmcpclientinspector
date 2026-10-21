@@ -24,7 +24,11 @@ public:
                                               QWidget *parent = nullptr);
     ~KMcpClientInspectorLogTreeWidget() override;
 
+Q_SIGNALS:
+    void jsonSelected(const QString &json);
+
 private:
+    void slotCurrentChanged(const QModelIndex &index);
     void slotMessageLogged(const TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageInfo &info);
     QTreeView *const mTreeView;
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *const mProtocolManager;
