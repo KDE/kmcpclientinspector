@@ -28,3 +28,5 @@ KMcpClientInspectorLogSearchWidget::KMcpClientInspectorLogSearchWidget(QWidget *
 }
 
 KMcpClientInspectorLogSearchWidget::~KMcpClientInspectorLogSearchWidget() = default;
+
+#include "moc_kmcpclientinspectorlogsearchwidget.cpp"
