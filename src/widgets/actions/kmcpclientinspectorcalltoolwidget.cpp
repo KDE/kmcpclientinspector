@@ -310,37 +310,7 @@ QString KMcpClientInspectorCallToolWidget::resultToHtml(const McpProtocolCallToo
     const QList<McpProtocolUtils::ContentBlock> content = result.content();
     int imageIndex = 0;
     for (const McpProtocolUtils::ContentBlock &block : content) {
-        if (const auto text = std::get_if<McpProtocolTextContent>(&block)) {
-            html += preformatted(text->text());
-        } else if (const auto image = std::get_if<McpProtocolImageContent>(&block)) {
-            QImage img;
-            if (document && img.loadFromData(QByteArray::fromBase64(image->data().toLatin1()))) {
-                const QUrl url(u"mcpimage:%1"_s.arg(imageIndex++));
-                document->addResource(QTextDocument::ImageResource, url, img);
-                html += u"<p><img src=\"%1\"/></p>"_s.arg(url.toString());
-            } else {
-                html += u"<p><i>%1</i></p>"_s.arg(i18n("Image (%1, %2)", image->mimeType(), dataSize(image->data())).toHtmlEscaped());
-            }
-        } else if (const auto audio = std::get_if<McpProtocolAudioContent>(&block)) {
-            html += u"<p><i>%1</i></p>"_s.arg(i18n("Audio (%1, %2)", audio->mimeType(), dataSize(audio->data())).toHtmlEscaped());
-        } else if (const auto link = std::get_if<McpProtocolResourceLink>(&block)) {
-            html += u"<p>%1 <a href=\"%2\">%3</a></p>"_s.arg(i18n("Resource link:").toHtmlEscaped(),
-                                                             link->uri().toHtmlEscaped(),
-                                                             link->title().value_or(link->name()).toHtmlEscaped());
-            if (const QString description = link->description().value_or(QString()); !description.isEmpty()) {
-                html += u"<p>%1</p>"_s.arg(description.toHtmlEscaped());
-            }
-        } else if (const auto embedded = std::get_if<McpProtocolEmbeddedResource>(&block)) {
-            const McpProtocolUtils::EmbeddedResourceResource resource = embedded->resource();
-            if (const auto textResource = std::get_if<McpProtocolTextResourceContents>(&resource)) {
-                html += u"<p><b>%1</b></p>"_s.arg(textResource->uri().toHtmlEscaped());
-                html += preformatted(textResource->text());
-            } else if (const auto blobResource = std::get_if<McpProtocolBlobResourceContents>(&resource)) {
-                html += u"<p><b>%1</b></p>"_s.arg(blobResource->uri().toHtmlEscaped());
-                html += u"<p><i>%1</i></p>"_s.arg(
-                    i18n("Binary resource (%1, %2)", blobResource->mimeType().value_or(i18n("unknown type")), dataSize(blobResource->blob())).toHtmlEscaped());
-            }
-        }
+        html += contentBlockToHtml(block, document, imageIndex);
     }
     if (const auto structuredContent = result.structuredContent(); structuredContent.has_value()) {
         QJsonObject obj;
@@ -352,6 +322,43 @@ QString KMcpClientInspectorCallToolWidget::resultToHtml(const McpProtocolCallToo
     }
     if (html.isEmpty()) {
         html = u"<p><i>%1</i></p>"_s.arg(i18n("No content.").toHtmlEscaped());
+    }
+    return html;
+}
+
+QString KMcpClientInspectorCallToolWidget::contentBlockToHtml(const McpProtocolUtils::ContentBlock &block, QTextDocument *document, int &imageIndex)
+{
+    QString html;
+    if (const auto text = std::get_if<McpProtocolTextContent>(&block)) {
+        html += preformatted(text->text());
+    } else if (const auto image = std::get_if<McpProtocolImageContent>(&block)) {
+        QImage img;
+        if (document && img.loadFromData(QByteArray::fromBase64(image->data().toLatin1()))) {
+            const QUrl url(u"mcpimage:%1"_s.arg(imageIndex++));
+            document->addResource(QTextDocument::ImageResource, url, img);
+            html += u"<p><img src=\"%1\"/></p>"_s.arg(url.toString());
+        } else {
+            html += u"<p><i>%1</i></p>"_s.arg(i18n("Image (%1, %2)", image->mimeType(), dataSize(image->data())).toHtmlEscaped());
+        }
+    } else if (const auto audio = std::get_if<McpProtocolAudioContent>(&block)) {
+        html += u"<p><i>%1</i></p>"_s.arg(i18n("Audio (%1, %2)", audio->mimeType(), dataSize(audio->data())).toHtmlEscaped());
+    } else if (const auto link = std::get_if<McpProtocolResourceLink>(&block)) {
+        html += u"<p>%1 <a href=\"%2\">%3</a></p>"_s.arg(i18n("Resource link:").toHtmlEscaped(),
+                                                         link->uri().toHtmlEscaped(),
+                                                         link->title().value_or(link->name()).toHtmlEscaped());
+        if (const QString description = link->description().value_or(QString()); !description.isEmpty()) {
+            html += u"<p>%1</p>"_s.arg(description.toHtmlEscaped());
+        }
+    } else if (const auto embedded = std::get_if<McpProtocolEmbeddedResource>(&block)) {
+        const McpProtocolUtils::EmbeddedResourceResource resource = embedded->resource();
+        if (const auto textResource = std::get_if<McpProtocolTextResourceContents>(&resource)) {
+            html += u"<p><b>%1</b></p>"_s.arg(textResource->uri().toHtmlEscaped());
+            html += preformatted(textResource->text());
+        } else if (const auto blobResource = std::get_if<McpProtocolBlobResourceContents>(&resource)) {
+            html += u"<p><b>%1</b></p>"_s.arg(blobResource->uri().toHtmlEscaped());
+            html += u"<p><i>%1</i></p>"_s.arg(
+                i18n("Binary resource (%1, %2)", blobResource->mimeType().value_or(i18n("unknown type")), dataSize(blobResource->blob())).toHtmlEscaped());
+        }
     }
     return html;
 }

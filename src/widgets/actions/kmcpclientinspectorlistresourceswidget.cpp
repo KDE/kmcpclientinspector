@@ -16,6 +16,17 @@ KMcpClientInspectorListResourcesWidget::KMcpClientInspectorListResourcesWidget(
                                       TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListResources,
                                       parent}
 {
+    connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::initialized, this, [this]() {
+        if (mProtocolManager->serverSupports(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListResources)) {
+            mProtocolManager->executeAction(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListResources);
+        }
+    });
+    connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::resourcesListChanged, this, [this]() {
+        if (mProtocolManager->isInitialized()
+            && mProtocolManager->serverSupports(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListResources)) {
+            mProtocolManager->executeAction(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListResources);
+        }
+    });
 }
 
 KMcpClientInspectorListResourcesWidget::~KMcpClientInspectorListResourcesWidget() = default;

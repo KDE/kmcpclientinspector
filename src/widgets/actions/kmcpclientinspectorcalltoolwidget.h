@@ -10,6 +10,7 @@
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QList>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolTool>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolUtils>
 class QJsonObject;
 class QLabel;
 class QListWidget;
@@ -46,6 +47,12 @@ public:
      * Convert \a result to html. Images are added as resources to \a document when it is not null.
      */
     [[nodiscard]] static QString resultToHtml(const TextAutoGenerateTextMcpProtocolCore::McpProtocolCallToolResult &result, QTextDocument *document = nullptr);
+    /*!
+     * Convert content \a block to html. Images are added as resources to \a document when it is not null,
+     * \a imageIndex is used to create a unique url for them.
+     */
+    [[nodiscard]] static QString
+    contentBlockToHtml(const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::ContentBlock &block, QTextDocument *document, int &imageIndex);
 
 private:
     void slotCurrentToolChanged(int row);

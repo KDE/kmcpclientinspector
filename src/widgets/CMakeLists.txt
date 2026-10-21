@@ -49,6 +49,10 @@ target_sources(
         actions/kmcpclientinspectorresourcetemplateswidget.h
         actions/kmcpclientinspectorlistpromptswidget.h
         actions/kmcpclientinspectorlistpromptswidget.cpp
+        actions/kmcpclientinspectorgetpromptwidget.h
+        actions/kmcpclientinspectorgetpromptwidget.cpp
+        actions/kmcpclientinspectorpromptargumentswidget.h
+        actions/kmcpclientinspectorpromptargumentswidget.cpp
         actions/kmcpclientinspectorlistresourceswidget.h
         actions/kmcpclientinspectorlistresourceswidget.cpp
         actions/kmcpclientinspectorlogwidget.h
@@ -57,6 +61,8 @@ target_sources(
         actions/kmcpclientinspectorlogtreewidget.cpp
         actions/kmcpclientinspectorlogsearchwidget.h
         actions/kmcpclientinspectorlogsearchwidget.cpp
+        actions/kmcpclientinspectormessagewidget.h
+        actions/kmcpclientinspectormessagewidget.cpp
         kmcpclientinspectorconnectbuttonswidget.h
         kmcpclientinspectorconnectbuttonswidget.cpp
         misc/jsonplaintexteditwidget.h
