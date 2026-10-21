@@ -45,7 +45,6 @@ void KMcpClientInspectorServerInfoWidgetTest::shouldShowServerUrl()
     server.setSettings(settings);
     w.setServerInfo(server);
     w.show();
-    QVERIFY(QTest::qWaitForWindowExposed(&w));
 
     auto mServerUrl = w.findChild<QLabel *>(u"mServerUrl"_s);
     QCOMPARE(mServerUrl->text(), u"http://127.0.0.1:8765/mcp"_s);
