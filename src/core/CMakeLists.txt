@@ -17,6 +17,10 @@ target_sources(
         kmcpclientinspectorlogsortfilterproxymodel.cpp
         kmcpclientinspectorlogmodel.h
         kmcpclientinspectorlogmodel.cpp
+        kmcpclientinspectorserverlogmodel.h
+        kmcpclientinspectorserverlogmodel.cpp
+        kmcpclientinspectorserverlogsortfilterproxymodel.h
+        kmcpclientinspectorserverlogsortfilterproxymodel.cpp
 )
 
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)

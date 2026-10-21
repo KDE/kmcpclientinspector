@@ -21,6 +21,7 @@
 #include <QTabWidget>
 #include <QVBoxLayout>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolProgressNotificationParams>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
                                                                        QWidget *parent)
@@ -78,6 +79,13 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
         mMessageWidget->animatedShow();
         mMessageWidget->setText(errorStr);
     });
+
+    connect(protocolManager,
+            &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::progressReceived,
+            this,
+            [this](qint64 requestId, const TextAutoGenerateTextMcpProtocolCore::McpProtocolProgressNotificationParams &params) {
+                qDebug() << " progressReceived*********** id : " << requestId << " params " << params;
+            });
 
     connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::initialized, this, [this, protocolManager]() {
         mTabWidget->setTabVisible(
