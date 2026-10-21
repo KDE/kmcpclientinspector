@@ -113,6 +113,14 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
                     break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ServerRequest:
                     break;
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::SubscribeResource:
+                    break;
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::UnsubscribeResource:
+                    break;
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Complete:
+                    break;
+                case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::SetLoggingLevel:
+                    break;
                 case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Unknown:
                     qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << "It's a bug. MethodType::Unknown must not used.";
                     break;
