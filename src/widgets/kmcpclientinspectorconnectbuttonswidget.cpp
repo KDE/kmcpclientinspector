@@ -12,7 +12,7 @@ using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorConnectButtonsWidget::KMcpClientInspectorConnectButtonsWidget(QWidget *parent)
     : QWidget{parent}
     , mConnectButton(new QPushButton(i18nc("@action:button", "Connect"), this))
-    , mDisconnectButton(new QPushButton(i18nc("@action:button", "DisConnect"), this))
+    , mDisconnectButton(new QPushButton(i18nc("@action:button", "Disconnect"), this))
 {
     auto mainLayout = new QHBoxLayout(this);
     mainLayout->setObjectName("mainLayout"_L1);
