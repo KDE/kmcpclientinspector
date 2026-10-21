@@ -61,6 +61,19 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mTabWidget->setTabVisible(mTabWidget->indexOf(mListResourcesWidget), false);
     mTabWidget->setTabVisible(mTabWidget->indexOf(mCallToolWidget), false);
 
+    connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::promptsListChanged, this, [this]() {
+        qDebug() << " promptsListChanged";
+        // TODO
+    });
+    connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::toolsListChanged, this, [this]() {
+        qDebug() << " toolsListChanged";
+        // TODO
+    });
+    connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::resourcesListChanged, this, [this]() {
+        qDebug() << " resourcesListChanged";
+        // TODO
+    });
+
     connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::initialized, this, [this, protocolManager]() {
         mTabWidget->setTabVisible(
             mTabWidget->indexOf(mResourceTemplatesWidget),
