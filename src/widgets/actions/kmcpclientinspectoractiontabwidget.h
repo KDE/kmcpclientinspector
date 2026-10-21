@@ -18,6 +18,7 @@ class KMcpClientInspectorGetPromptWidget;
 class KMcpClientInspectorListResourcesWidget;
 class KMcpClientInspectorResourceTemplatesWidget;
 class KMcpClientInspectorLogWidget;
+class KMcpClientInspectorServerNotificationWidget;
 class KMcpClientInspectorMessageWidget;
 namespace TextAutoGenerateTextMcpProtocolCore
 {
@@ -44,4 +45,5 @@ private:
     KMcpClientInspectorLogWidget *const mLogWidget;
     QTabWidget *const mTabWidget;
     KMcpClientInspectorMessageWidget *const mMessageWidget;
+    KMcpClientInspectorServerNotificationWidget *const mServerNotificationWidget;
 };

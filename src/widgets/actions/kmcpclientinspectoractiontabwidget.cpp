@@ -15,6 +15,7 @@
 #include "actions/kmcpclientinspectormessagewidget.h"
 #include "actions/kmcpclientinspectorpingwidget.h"
 #include "actions/kmcpclientinspectorresourcetemplateswidget.h"
+#include "actions/kmcpclientinspectorservernotificationwidget.h"
 #include "kmcpclientinspector_widget_debug.h"
 #include <KLocalizedString>
 #include <QTabWidget>
@@ -35,6 +36,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     , mLogWidget(new KMcpClientInspectorLogWidget(protocolManager, this))
     , mTabWidget(new QTabWidget(this))
     , mMessageWidget(new KMcpClientInspectorMessageWidget(this))
+    , mServerNotificationWidget(new KMcpClientInspectorServerNotificationWidget(protocolManager, this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName("mainLayout"_L1);
@@ -51,6 +53,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mListResourcesWidget->setObjectName(u"mListResourcesWidget"_s);
     mResourceTemplatesWidget->setObjectName(u"mResourceTemplatesWidget"_s);
     mMessageWidget->setObjectName(u"mMessageWidget"_s);
+    mServerNotificationWidget->setObjectName(u"mServerNotificationWidget"_s);
 
     mainLayout->addWidget(mMessageWidget);
     mainLayout->addWidget(mTabWidget);
@@ -63,6 +66,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mTabWidget->addTab(mListResourcesWidget, i18n("List Resources"));
     mTabWidget->addTab(mResourceTemplatesWidget, i18n("Resource Templates"));
     mTabWidget->addTab(mLogWidget, i18n("Log"));
+    mTabWidget->addTab(mServerNotificationWidget, i18n("Server Notification"));
 
     mTabWidget->setTabVisible(mTabWidget->indexOf(mResourceTemplatesWidget), false);
     mTabWidget->setTabVisible(mTabWidget->indexOf(mListPromptsWidget), false);
