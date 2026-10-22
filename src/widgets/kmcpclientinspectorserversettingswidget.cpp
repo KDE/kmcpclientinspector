@@ -98,4 +98,19 @@ void KMcpClientInspectorServerSettingsWidget::slotConnectRequested()
     Q_EMIT startStopRequested(true);
 }
 
+bool KMcpClientInspectorServerSettingsWidget::elicatationSupport() const
+{
+    return mCapabilityWidget->elicatationSupport();
+}
+
+bool KMcpClientInspectorServerSettingsWidget::rootsSupport() const
+{
+    return mCapabilityWidget->rootsSupport();
+}
+
+bool KMcpClientInspectorServerSettingsWidget::samplingSupport() const
+{
+    return mCapabilityWidget->samplingSupport();
+}
+
 #include "moc_kmcpclientinspectorserversettingswidget.cpp"

@@ -24,6 +24,10 @@ public:
     explicit KMcpClientInspectorServerSettingsWidget(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent = nullptr);
     ~KMcpClientInspectorServerSettingsWidget() override;
 
+    [[nodiscard]] bool elicatationSupport() const;
+    [[nodiscard]] bool rootsSupport() const;
+    [[nodiscard]] bool samplingSupport() const;
+
 Q_SIGNALS:
     void startStopRequested(bool started);
     void serverModified(const TextAutoGenerateTextMcpProtocolCore::McpServer &server);

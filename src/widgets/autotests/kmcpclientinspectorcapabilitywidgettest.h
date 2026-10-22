@@ -13,4 +13,7 @@ class KMcpClientInspectorCapabilityWidgetTest : public QObject
 public:
     explicit KMcpClientInspectorCapabilityWidgetTest(QObject *parent = nullptr);
     ~KMcpClientInspectorCapabilityWidgetTest() override = default;
+
+private Q_SLOTS:
+    void shouldHaveDefaultValues();
 };

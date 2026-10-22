@@ -28,12 +28,15 @@ KMcpClientInspectorCapabilityWidget::KMcpClientInspectorCapabilityWidget(QWidget
     groupBox->setLayout(vbox);
 
     mElicitationSupported->setObjectName(u"mElicitationSupported"_s);
+    mElicitationSupported->setChecked(true);
     vbox->addWidget(mElicitationSupported);
 
     mRootsSupported->setObjectName(u"mRootsSupported"_s);
+    mRootsSupported->setChecked(true);
     vbox->addWidget(mRootsSupported);
 
     mSamplingSupported->setObjectName(u"mSamplingSupported"_s);
+    mSamplingSupported->setChecked(true);
     vbox->addWidget(mSamplingSupported);
 }
 
