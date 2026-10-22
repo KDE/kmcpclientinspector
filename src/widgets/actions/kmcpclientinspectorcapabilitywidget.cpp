@@ -12,7 +12,7 @@
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorCapabilityWidget::KMcpClientInspectorCapabilityWidget(QWidget *parent)
     : QWidget{parent}
-    , mElicitationSupported(new QCheckBox(i18nc("@option:check", "Elication"), this))
+    , mElicitationSupported(new QCheckBox(i18nc("@option:check", "Elicitation"), this))
     , mRootsSupported(new QCheckBox(i18nc("@option:check", "Roots"), this))
     , mSamplingSupported(new QCheckBox(i18nc("@option:check", "Sampling"), this))
 {
