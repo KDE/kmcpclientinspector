@@ -42,7 +42,7 @@ KMcpClientInspectorCapabilityWidget::KMcpClientInspectorCapabilityWidget(QWidget
 
 KMcpClientInspectorCapabilityWidget::~KMcpClientInspectorCapabilityWidget() = default;
 
-bool KMcpClientInspectorCapabilityWidget::elicatationSupport() const
+bool KMcpClientInspectorCapabilityWidget::elicitationSupport() const
 {
     return mElicitationSupported->isChecked();
 }

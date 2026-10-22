@@ -98,9 +98,9 @@ void KMcpClientInspectorServerSettingsWidget::slotConnectRequested()
     Q_EMIT startStopRequested(true);
 }
 
-bool KMcpClientInspectorServerSettingsWidget::elicatationSupport() const
+bool KMcpClientInspectorServerSettingsWidget::elicitationSupport() const
 {
-    return mCapabilityWidget->elicatationSupport();
+    return mCapabilityWidget->elicitationSupport();
 }
 
 bool KMcpClientInspectorServerSettingsWidget::rootsSupport() const

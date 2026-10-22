@@ -41,7 +41,7 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
     splitter->addWidget(mActionTabWidget);
     connect(mServerSettings, &KMcpClientInspectorServerSettingsWidget::startStopRequested, this, [this](bool started) {
         if (started) {
-            mProtocolManager->setElicitationSupported(mServerSettings->elicatationSupport());
+            mProtocolManager->setElicitationSupported(mServerSettings->elicitationSupport());
             mProtocolManager->setRootsSupported(mServerSettings->rootsSupport());
             mProtocolManager->setSamplingSupported(mServerSettings->samplingSupport());
             mProtocolManager->initializeClient();

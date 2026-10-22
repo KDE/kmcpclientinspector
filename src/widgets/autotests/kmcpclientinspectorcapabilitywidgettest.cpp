@@ -19,7 +19,7 @@ KMcpClientInspectorCapabilityWidgetTest::KMcpClientInspectorCapabilityWidgetTest
 void KMcpClientInspectorCapabilityWidgetTest::shouldHaveDefaultValues()
 {
     const KMcpClientInspectorCapabilityWidget w;
-    QVERIFY(w.elicatationSupport());
+    QVERIFY(w.elicitationSupport());
     QVERIFY(w.rootsSupport());
     QVERIFY(w.samplingSupport());
 

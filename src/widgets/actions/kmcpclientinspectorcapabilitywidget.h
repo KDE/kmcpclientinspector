@@ -15,7 +15,7 @@ public:
     explicit KMcpClientInspectorCapabilityWidget(QWidget *parent = nullptr);
     ~KMcpClientInspectorCapabilityWidget() override;
 
-    [[nodiscard]] bool elicatationSupport() const;
+    [[nodiscard]] bool elicitationSupport() const;
     [[nodiscard]] bool rootsSupport() const;
     [[nodiscard]] bool samplingSupport() const;
 
