@@ -36,13 +36,13 @@ KMcpClientInspectorCapabilityWidget::KMcpClientInspectorCapabilityWidget(QWidget
     mUrlElicitationSupported->setChecked(true);
     vbox->addWidget(mUrlElicitationSupported);
 
-    mRootsSupported->setObjectName(u"mRootsSupported"_s);
-    mRootsSupported->setChecked(true);
-    vbox->addWidget(mRootsSupported);
-
     mSamplingSupported->setObjectName(u"mSamplingSupported"_s);
     mSamplingSupported->setChecked(true);
     vbox->addWidget(mSamplingSupported);
+
+    mRootsSupported->setObjectName(u"mRootsSupported"_s);
+    mRootsSupported->setChecked(true);
+    vbox->addWidget(mRootsSupported);
 }
 
 KMcpClientInspectorCapabilityWidget::~KMcpClientInspectorCapabilityWidget() = default;
