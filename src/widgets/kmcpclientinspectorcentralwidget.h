@@ -10,10 +10,6 @@
 #include <QWidget>
 class KMcpClientInspectorTabWidget;
 class KMcpClientInspectorManager;
-namespace TextAutoGenerateTextMcpProtocolWidgets
-{
-class McpServerWidget;
-}
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorCentralWidget : public QWidget
 {
     Q_OBJECT
@@ -25,7 +21,6 @@ public:
 
 private:
     KMcpClientInspectorTabWidget *const mTabWidget;
-    TextAutoGenerateTextMcpProtocolWidgets::McpServerWidget *const mMcpServerWidget;
     KMcpClientInspectorManager *const mManager;
     QList<KAboutRelease> mReleases;
 };

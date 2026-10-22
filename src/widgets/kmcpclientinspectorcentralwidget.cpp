@@ -12,12 +12,11 @@
 #include <QVBoxLayout>
 #include <TextAddonsWidgets/WhatsNewMessageNgWidget>
 #include <TextAddonsWidgets/WhatsNewNgUtils>
-#include <TextAutoGenerateTextMcpProtocolWidgets/McpServerWidget>
+
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorCentralWidget::KMcpClientInspectorCentralWidget(const QList<KAboutRelease> &releases, KMcpClientInspectorManager *manager, QWidget *parent)
     : QWidget{parent}
     , mTabWidget(new KMcpClientInspectorTabWidget(manager, this))
-    , mMcpServerWidget(new TextAutoGenerateTextMcpProtocolWidgets::McpServerWidget(manager->mcpServerModel(), this))
     , mManager(manager)
     , mReleases(releases)
 {
@@ -54,10 +53,8 @@ KMcpClientInspectorCentralWidget::KMcpClientInspectorCentralWidget(const QList<K
     splitter->setChildrenCollapsible(false);
     mainLayout->addWidget(splitter);
 
-    mMcpServerWidget->setObjectName(u"mMcpServerWidget"_s);
     mTabWidget->setObjectName(u"mTabWidget"_s);
 
-    splitter->addWidget(mMcpServerWidget);
     splitter->addWidget(mTabWidget);
 }
 
