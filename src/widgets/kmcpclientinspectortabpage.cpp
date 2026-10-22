@@ -40,7 +40,11 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
     mActionTabWidget->setObjectName(u"mActionTabWidget"_s);
     splitter->addWidget(mActionTabWidget);
     connect(mServerSettings, &KMcpClientInspectorServerSettingsWidget::startStopRequested, this, [this](bool started) {
-        started ? mProtocolManager->initializeClient() : mProtocolManager->stopClient();
+        if (started) {
+            mProtocolManager->initializeClient();
+        } else {
+            mProtocolManager->stopClient();
+        }
     });
 }
 

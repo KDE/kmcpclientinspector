@@ -86,6 +86,7 @@ void KMcpClientInspectorServerSettingsWidget::slotDisconnectRequested()
 {
     mConnectButtonsWidget->updateButtons(true, false);
     mEditButton->setEnabled(true);
+    mCapabilityWidget->setEnabled(true);
     Q_EMIT startStopRequested(false);
 }
 
@@ -93,6 +94,7 @@ void KMcpClientInspectorServerSettingsWidget::slotConnectRequested()
 {
     mConnectButtonsWidget->updateButtons(false, true);
     mEditButton->setEnabled(false);
+    mCapabilityWidget->setEnabled(false);
     Q_EMIT startStopRequested(true);
 }
 
