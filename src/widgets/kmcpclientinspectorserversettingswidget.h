@@ -28,18 +28,21 @@ public:
     [[nodiscard]] bool urlElicitationSupport() const;
     [[nodiscard]] bool rootsSupport() const;
     [[nodiscard]] bool samplingSupport() const;
+    [[nodiscard]] QStringList roots() const;
 
     void wasDisconnected();
 
 Q_SIGNALS:
     void startStopRequested(bool started);
     void serverModified(const TextAutoGenerateTextMcpProtocolCore::McpServer &server);
+    void rootsChanged(const QStringList &roots);
 
 private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotConnectRequested();
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotDisconnectRequested();
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotUpdateButtons(bool valid);
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotEditServer();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotConfigureRoots();
     KMcpClientInspectorServerInfoWidget *const mServerInfoWidget;
     QPushButton *const mEditButton;
     KMcpClientInspectorConnectButtonsWidget *const mConnectButtonsWidget;

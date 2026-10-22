@@ -13,9 +13,11 @@
 #include <KLocalizedString>
 #include <KMessageWidget>
 #include <QDesktopServices>
+#include <QDir>
 #include <QJsonObject>
 #include <QPushButton>
 #include <QSplitter>
+#include <QUrl>
 #include <QVBoxLayout>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClient>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
@@ -26,8 +28,31 @@
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolElicitRequestURLParams>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolElicitResult>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolInitializeRequest>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolRoot>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 using namespace Qt::Literals::StringLiterals;
+namespace
+{
+QList<TextAutoGenerateTextMcpProtocolCore::McpProtocolRoot> convertToRoots(const QStringList &paths)
+{
+    QList<TextAutoGenerateTextMcpProtocolCore::McpProtocolRoot> roots;
+    roots.reserve(paths.count());
+    for (const QString &path : paths) {
+        if (path.trimmed().isEmpty()) {
+            continue;
+        }
+        const QString cleanPath = QDir::cleanPath(QDir::fromNativeSeparators(path.trimmed()));
+        TextAutoGenerateTextMcpProtocolCore::McpProtocolRoot root;
+        root.setUri(QUrl::fromLocalFile(cleanPath).toString());
+        if (const QString name = QDir(cleanPath).dirName(); !name.isEmpty()) {
+            root.setName(name);
+        }
+        roots.append(std::move(root));
+    }
+    return roots;
+}
+}
+
 KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent)
     : QWidget{parent}
     , mProtocolManager(new TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager(server, this))
@@ -63,12 +88,16 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
             mProtocolManager->setElicitationSupported(mServerSettings->elicitationSupport());
             mProtocolManager->setUrlElicitationSupported(mServerSettings->urlElicitationSupport());
             mProtocolManager->setRootsSupported(mServerSettings->rootsSupport());
-            // TODO add missing setRoots(...)
+            mProtocolManager->setRoots(convertToRoots(mServerSettings->roots()));
             mProtocolManager->setSamplingSupported(mServerSettings->samplingSupport());
             mProtocolManager->initializeClient();
         } else {
             mProtocolManager->stopClient();
         }
+    });
+    // Server is informed that roots list changed when client is already initialized
+    connect(mServerSettings, &KMcpClientInspectorServerSettingsWidget::rootsChanged, this, [this](const QStringList &roots) {
+        mProtocolManager->setRoots(convertToRoots(roots));
     });
     connect(mProtocolManager,
             &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::elicitationRequested,

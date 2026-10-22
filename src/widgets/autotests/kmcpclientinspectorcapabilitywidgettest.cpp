@@ -7,7 +7,9 @@
 #include "actions/kmcpclientinspectorcapabilitywidget.h"
 #include <QCheckBox>
 #include <QGroupBox>
+#include <QSignalSpy>
 #include <QTest>
+#include <QToolButton>
 #include <QVBoxLayout>
 QTEST_MAIN(KMcpClientInspectorCapabilityWidgetTest)
 using namespace Qt::Literals::StringLiterals;
@@ -47,10 +49,44 @@ void KMcpClientInspectorCapabilityWidgetTest::shouldHaveDefaultValues()
     QVERIFY(mRootsSupported->isChecked());
     QVERIFY(!mRootsSupported->text().isEmpty());
 
+    auto mConfigureRootsButton = w.findChild<QToolButton *>(u"mConfigureRootsButton"_s);
+    QVERIFY(mConfigureRootsButton);
+    QVERIFY(mConfigureRootsButton->isEnabled());
+    QVERIFY(!mConfigureRootsButton->toolTip().isEmpty());
+
     auto mSamplingSupported = w.findChild<QCheckBox *>(u"mSamplingSupported"_s);
     QVERIFY(mSamplingSupported);
     QVERIFY(mSamplingSupported->isChecked());
     QVERIFY(!mSamplingSupported->text().isEmpty());
+}
+
+void KMcpClientInspectorCapabilityWidgetTest::shouldEnableConfigureRootsButton()
+{
+    KMcpClientInspectorCapabilityWidget w;
+    auto mRootsSupported = w.findChild<QCheckBox *>(u"mRootsSupported"_s);
+    auto mConfigureRootsButton = w.findChild<QToolButton *>(u"mConfigureRootsButton"_s);
+    mRootsSupported->setChecked(false);
+    QVERIFY(!mConfigureRootsButton->isEnabled());
+    mRootsSupported->setChecked(true);
+    QVERIFY(mConfigureRootsButton->isEnabled());
+
+    QSignalSpy spy(&w, &KMcpClientInspectorCapabilityWidget::configureRootsRequested);
+    mConfigureRootsButton->click();
+    QCOMPARE(spy.count(), 1);
+}
+
+void KMcpClientInspectorCapabilityWidgetTest::shouldDisableCapabilitiesWhenConnected()
+{
+    KMcpClientInspectorCapabilityWidget w;
+    w.setConnected(true);
+    for (const auto &name : {u"mElicitationSupported"_s, u"mUrlElicitationSupported"_s, u"mRootsSupported"_s, u"mSamplingSupported"_s}) {
+        QVERIFY(!w.findChild<QCheckBox *>(name)->isEnabled());
+    }
+    // Roots can be modified when client is connected
+    QVERIFY(w.findChild<QToolButton *>(u"mConfigureRootsButton"_s)->isEnabled());
+
+    w.setConnected(false);
+    QVERIFY(w.findChild<QCheckBox *>(u"mRootsSupported"_s)->isEnabled());
 }
 
 #include "moc_kmcpclientinspectorcapabilitywidgettest.cpp"

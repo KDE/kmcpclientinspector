@@ -77,6 +77,8 @@ target_sources(
         dialogs/kmcpclientinspectorsamplingdialog.cpp
         dialogs/kmcpclientinspectorurlelicitationdialog.h
         dialogs/kmcpclientinspectorurlelicitationdialog.cpp
+        dialogs/kmcpclientinspectorrootsdialog.h
+        dialogs/kmcpclientinspectorrootsdialog.cpp
 )
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(

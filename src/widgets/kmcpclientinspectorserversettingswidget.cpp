@@ -6,6 +6,7 @@
 
 #include "kmcpclientinspectorserversettingswidget.h"
 #include "actions/kmcpclientinspectorcapabilitywidget.h"
+#include "dialogs/kmcpclientinspectorrootsdialog.h"
 #include "kmcpclientinspectorconnectbuttonswidget.h"
 #include "kmcpclientinspectorserverinfowidget.h"
 #include <KLocalizedString>
@@ -56,6 +57,10 @@ KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget
             this,
             &KMcpClientInspectorServerSettingsWidget::slotDisconnectRequested);
     connect(mEditButton, &QPushButton::clicked, this, &KMcpClientInspectorServerSettingsWidget::slotEditServer);
+    connect(mCapabilityWidget,
+            &KMcpClientInspectorCapabilityWidget::configureRootsRequested,
+            this,
+            &KMcpClientInspectorServerSettingsWidget::slotConfigureRoots);
 
     slotUpdateButtons(mServer.isValid());
 }
@@ -82,11 +87,28 @@ void KMcpClientInspectorServerSettingsWidget::slotEditServer()
     delete dlg;
 }
 
+void KMcpClientInspectorServerSettingsWidget::slotConfigureRoots()
+{
+    QPointer<KMcpClientInspectorRootsDialog> dlg = new KMcpClientInspectorRootsDialog(this);
+    dlg->setRoots(roots());
+    if (dlg->exec()) {
+        if (const QStringList newRoots = dlg->roots(); newRoots != roots()) {
+            auto settings = mServer.settings();
+            settings.setRoots(newRoots);
+            mServer.setSettings(settings);
+            mServerInfoWidget->setServerInfo(mServer);
+            Q_EMIT serverModified(mServer);
+            Q_EMIT rootsChanged(newRoots);
+        }
+    }
+    delete dlg;
+}
+
 void KMcpClientInspectorServerSettingsWidget::slotDisconnectRequested()
 {
     mConnectButtonsWidget->updateButtons(true, false);
     mEditButton->setEnabled(true);
-    mCapabilityWidget->setEnabled(true);
+    mCapabilityWidget->setConnected(false);
     Q_EMIT startStopRequested(false);
 }
 
@@ -94,7 +116,7 @@ void KMcpClientInspectorServerSettingsWidget::slotConnectRequested()
 {
     mConnectButtonsWidget->updateButtons(false, true);
     mEditButton->setEnabled(false);
-    mCapabilityWidget->setEnabled(false);
+    mCapabilityWidget->setConnected(true);
     Q_EMIT startStopRequested(true);
 }
 
@@ -116,6 +138,11 @@ bool KMcpClientInspectorServerSettingsWidget::rootsSupport() const
 bool KMcpClientInspectorServerSettingsWidget::samplingSupport() const
 {
     return mCapabilityWidget->samplingSupport();
+}
+
+QStringList KMcpClientInspectorServerSettingsWidget::roots() const
+{
+    return mServer.settings().roots();
 }
 
 void KMcpClientInspectorServerSettingsWidget::wasDisconnected()

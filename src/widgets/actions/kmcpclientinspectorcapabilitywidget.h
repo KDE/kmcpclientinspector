@@ -8,6 +8,7 @@
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
 class QCheckBox;
+class QToolButton;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorCapabilityWidget : public QWidget
 {
     Q_OBJECT
@@ -20,9 +21,19 @@ public:
     [[nodiscard]] bool rootsSupport() const;
     [[nodiscard]] bool samplingSupport() const;
 
+    /*!
+     * Capabilities can't be changed when client is connected, but roots can still be modified.
+     */
+    void setConnected(bool connected);
+
+Q_SIGNALS:
+    void configureRootsRequested();
+
 private:
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void updateRootsButton();
     QCheckBox *const mElicitationSupported;
     QCheckBox *const mUrlElicitationSupported;
     QCheckBox *const mRootsSupported;
     QCheckBox *const mSamplingSupported;
+    QToolButton *const mConfigureRootsButton;
 };
