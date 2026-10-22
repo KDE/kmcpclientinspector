@@ -12,3 +12,5 @@ KMcpClientInspectorCapabilityWidget::KMcpClientInspectorCapabilityWidget(QWidget
 }
 
 KMcpClientInspectorCapabilityWidget::~KMcpClientInspectorCapabilityWidget() = default;
+
+#include "moc_kmcpclientinspectorcapabilitywidget.cpp"

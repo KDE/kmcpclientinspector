@@ -11,3 +11,5 @@ KMcpClientInspectorCapabilityWidgetTest::KMcpClientInspectorCapabilityWidgetTest
     : QObject{parent}
 {
 }
+
+#include "moc_kmcpclientinspectorcapabilitywidgettest.cpp"
