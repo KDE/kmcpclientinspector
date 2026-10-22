@@ -26,6 +26,10 @@ public:
     explicit KMcpClientInspectorTabPage(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent = nullptr);
     ~KMcpClientInspectorTabPage() override;
 
+Q_SIGNALS:
+    void started();
+    void finished();
+
 private:
     void slotElicitationRequested(const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId &id,
                                   const TextAutoGenerateTextMcpProtocolCore::McpProtocolElicitRequest &request);

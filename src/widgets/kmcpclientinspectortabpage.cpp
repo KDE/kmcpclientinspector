@@ -85,6 +85,11 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
     connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::finished, mElicitationCompletedWidget, [this]() {
         mElicitationCompletedWidget->animatedHide();
     });
+    connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::finished, this, [this]() {
+        Q_EMIT finished();
+        mServerSettings->wasDisconnected();
+    });
+    connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::started, this, &KMcpClientInspectorTabPage::started);
 }
 
 KMcpClientInspectorTabPage::~KMcpClientInspectorTabPage() = default;

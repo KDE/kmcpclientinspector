@@ -15,6 +15,7 @@ public:
     ~KMcpClientInspectorConnectButtonsWidget() override;
 
     void updateButtons(bool connected, bool disconnected);
+
 Q_SIGNALS:
     void connectRequested();
     void disconnectRequested();

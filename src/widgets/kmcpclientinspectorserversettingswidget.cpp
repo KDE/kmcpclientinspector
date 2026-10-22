@@ -118,4 +118,9 @@ bool KMcpClientInspectorServerSettingsWidget::samplingSupport() const
     return mCapabilityWidget->samplingSupport();
 }
 
+void KMcpClientInspectorServerSettingsWidget::wasDisconnected()
+{
+    slotDisconnectRequested();
+}
+
 #include "moc_kmcpclientinspectorserversettingswidget.cpp"

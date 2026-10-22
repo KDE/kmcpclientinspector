@@ -29,6 +29,8 @@ public:
     [[nodiscard]] bool rootsSupport() const;
     [[nodiscard]] bool samplingSupport() const;
 
+    void wasDisconnected();
+
 Q_SIGNALS:
     void startStopRequested(bool started);
     void serverModified(const TextAutoGenerateTextMcpProtocolCore::McpServer &server);

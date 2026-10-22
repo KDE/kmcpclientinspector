@@ -8,7 +8,7 @@
 #include "kmcpclientinspectormanager.h"
 #include "kmcpclientinspectortabpage.h"
 #include <TextAutoGenerateTextMcpProtocolCore/McpServerModel>
-
+using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorTabWidget::KMcpClientInspectorTabWidget(KMcpClientInspectorManager *manager, QWidget *parent)
     : QTabWidget(parent)
     , mManager(manager)
@@ -20,12 +20,21 @@ KMcpClientInspectorTabWidget::~KMcpClientInspectorTabWidget() = default;
 
 void KMcpClientInspectorTabWidget::loadServers()
 {
-    clear();
+    while (count() > 0) {
+        delete widget(0);
+    }
     const auto servers = mManager->mcpServerModel()->mcpServers();
     for (const auto &s : servers) {
         if (s.enabled()) {
             auto page = new KMcpClientInspectorTabPage(s, this);
-            addTab(page, s.name());
+            const int index = addTab(page, s.name());
+            setTabIcon(index, QIcon::fromTheme(u"network-disconnect"_s));
+            connect(page, &KMcpClientInspectorTabPage::finished, this, [page, this]() {
+                setTabIcon(indexOf(page), QIcon::fromTheme(u"network-disconnect"_s));
+            });
+            connect(page, &KMcpClientInspectorTabPage::started, this, [page, this]() {
+                setTabIcon(indexOf(page), QIcon::fromTheme(u"network-connect"_s));
+            });
         }
     }
 }
