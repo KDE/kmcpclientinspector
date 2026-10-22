@@ -83,7 +83,7 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     connect(protocolManager,
             &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::progressReceived,
             this,
-            [this](qint64 requestId, const TextAutoGenerateTextMcpProtocolCore::McpProtocolProgressNotificationParams &params) {
+            [](qint64 requestId, const TextAutoGenerateTextMcpProtocolCore::McpProtocolProgressNotificationParams &params) {
                 qDebug() << " progressReceived*********** id : " << requestId << " params " << params;
             });
 
