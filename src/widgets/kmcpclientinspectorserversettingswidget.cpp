@@ -5,6 +5,7 @@
  */
 
 #include "kmcpclientinspectorserversettingswidget.h"
+#include "actions/kmcpclientinspectorcapabilitywidget.h"
 #include "kmcpclientinspectorconnectbuttonswidget.h"
 #include "kmcpclientinspectorserverinfowidget.h"
 #include <KLocalizedString>
@@ -20,6 +21,7 @@ KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget
     , mServerInfoWidget(new KMcpClientInspectorServerInfoWidget(this))
     , mEditButton(new QPushButton(QIcon::fromTheme(u"document-edit"_s), i18nc("@action:button", "Edit…"), this))
     , mConnectButtonsWidget(new KMcpClientInspectorConnectButtonsWidget(this))
+    , mCapabilityWidget(new KMcpClientInspectorCapabilityWidget(this))
     , mServer(server)
 {
     auto mainLayout = new QVBoxLayout(this);
@@ -29,6 +31,9 @@ KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget
     mServerInfoWidget->setObjectName(u"mServerInfoWidget"_s);
     mainLayout->addWidget(mServerInfoWidget);
     mServerInfoWidget->setServerInfo(server);
+
+    mCapabilityWidget->setObjectName(u"mCapabilityWidget"_s);
+    mainLayout->addWidget(mCapabilityWidget);
 
     mEditButton->setObjectName(u"mEditButton"_s);
     auto editLayout = new QHBoxLayout;

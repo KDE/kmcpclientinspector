@@ -5,6 +5,7 @@
  */
 
 #include "kmcpclientinspectorserversettingswidgettest.h"
+#include "actions/kmcpclientinspectorcapabilitywidget.h"
 #include "kmcpclientinspectorconnectbuttonswidget.h"
 #include "kmcpclientinspectorserverinfowidget.h"
 #include "kmcpclientinspectorserversettingswidget.h"
@@ -37,6 +38,9 @@ void KMcpClientInspectorServerSettingsWidgetTest::shouldHaveDefaultValues()
 
     auto mConnectButtonsWidget = w.findChild<KMcpClientInspectorConnectButtonsWidget *>(u"mConnectButtonsWidget"_s);
     QVERIFY(mConnectButtonsWidget);
+
+    auto mCapabilityWidget = w.findChild<KMcpClientInspectorCapabilityWidget *>(u"mCapabilityWidget"_s);
+    QVERIFY(mCapabilityWidget);
 }
 
 #include "moc_kmcpclientinspectorserversettingswidgettest.cpp"

@@ -9,10 +9,8 @@
 #include <QCheckBox>
 #include <QGroupBox>
 #include <QVBoxLayout>
-#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 using namespace Qt::Literals::StringLiterals;
-KMcpClientInspectorCapabilityWidget::KMcpClientInspectorCapabilityWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
-                                                                         QWidget *parent)
+KMcpClientInspectorCapabilityWidget::KMcpClientInspectorCapabilityWidget(QWidget *parent)
     : QWidget{parent}
     , mElicitationSupported(new QCheckBox(i18nc("@option:check", "Elication"), this))
     , mRootsSupported(new QCheckBox(i18nc("@option:check", "Elication"), this))

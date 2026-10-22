@@ -7,18 +7,12 @@
 
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
-#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 class QCheckBox;
-namespace TextAutoGenerateTextMcpProtocolCore
-{
-class McpProtocolClientProtocolManager;
-}
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorCapabilityWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit KMcpClientInspectorCapabilityWidget(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *protocolManager,
-                                                 QWidget *parent = nullptr);
+    explicit KMcpClientInspectorCapabilityWidget(QWidget *parent = nullptr);
     ~KMcpClientInspectorCapabilityWidget() override;
 
     [[nodiscard]] bool elicatationSupport() const;

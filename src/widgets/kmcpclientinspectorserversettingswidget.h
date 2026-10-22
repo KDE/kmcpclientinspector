@@ -13,6 +13,7 @@ namespace TextAutoGenerateTextMcpProtocolCore
 {
 class McpProtocolClient;
 }
+class KMcpClientInspectorCapabilityWidget;
 class KMcpClientInspectorConnectButtonsWidget;
 class KMcpClientInspectorServerInfoWidget;
 class QPushButton;
@@ -35,5 +36,6 @@ private:
     KMcpClientInspectorServerInfoWidget *const mServerInfoWidget;
     QPushButton *const mEditButton;
     KMcpClientInspectorConnectButtonsWidget *const mConnectButtonsWidget;
+    KMcpClientInspectorCapabilityWidget *const mCapabilityWidget;
     TextAutoGenerateTextMcpProtocolCore::McpServer mServer;
 };
