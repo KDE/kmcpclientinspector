@@ -6,9 +6,10 @@
 
 #pragma once
 
+#include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
 class QLineEdit;
-class KMcpClientInspectorLogSearchWidget : public QWidget
+class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorLogSearchWidget : public QWidget
 {
     Q_OBJECT
 public:

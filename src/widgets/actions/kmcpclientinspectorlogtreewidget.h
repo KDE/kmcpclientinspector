@@ -5,6 +5,7 @@
  */
 #pragma once
 
+#include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 class QLineEdit;
@@ -16,7 +17,7 @@ class McpProtocolClientProtocolManager;
 class KMcpClientInspectorLogModel;
 class KMcpClientInspectorLogSortFilterProxyModel;
 class KMcpClientInspectorLogSearchWidget;
-class KMcpClientInspectorLogTreeWidget : public QWidget
+class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorLogTreeWidget : public QWidget
 {
     Q_OBJECT
 public:
