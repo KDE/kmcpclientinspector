@@ -8,7 +8,6 @@
 #include "kmcpclientinspectorglobalconfig.h"
 #include "kmcpclientinspectormanager.h"
 #include "kmcpclientinspectortabwidget.h"
-#include <QSplitter>
 #include <QVBoxLayout>
 #include <TextAddonsWidgets/WhatsNewMessageNgWidget>
 #include <TextAddonsWidgets/WhatsNewNgUtils>
@@ -48,14 +47,7 @@ KMcpClientInspectorCentralWidget::KMcpClientInspectorCentralWidget(const QList<K
         }
     }
 
-    auto splitter = new QSplitter(this);
-    splitter->setObjectName(u"splitter"_s);
-    splitter->setChildrenCollapsible(false);
-    mainLayout->addWidget(splitter);
-
-    mTabWidget->setObjectName(u"mTabWidget"_s);
-
-    splitter->addWidget(mTabWidget);
+    mainLayout->addWidget(mTabWidget);
 }
 
 KMcpClientInspectorCentralWidget::~KMcpClientInspectorCentralWidget() = default;
