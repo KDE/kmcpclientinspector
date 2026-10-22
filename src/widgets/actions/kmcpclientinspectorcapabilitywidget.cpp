@@ -13,8 +13,8 @@ using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorCapabilityWidget::KMcpClientInspectorCapabilityWidget(QWidget *parent)
     : QWidget{parent}
     , mElicitationSupported(new QCheckBox(i18nc("@option:check", "Elication"), this))
-    , mRootsSupported(new QCheckBox(i18nc("@option:check", "Elication"), this))
-    , mSamplingSupported(new QCheckBox(i18nc("@option:check", "Elication"), this))
+    , mRootsSupported(new QCheckBox(i18nc("@option:check", "Roots"), this))
+    , mSamplingSupported(new QCheckBox(i18nc("@option:check", "Sampling"), this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
