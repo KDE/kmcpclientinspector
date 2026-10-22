@@ -65,6 +65,8 @@ target_sources(
         actions/kmcpclientinspectormessagewidget.cpp
         actions/kmcpclientinspectorservernotificationwidget.h
         actions/kmcpclientinspectorservernotificationwidget.cpp
+        actions/kmcpclientinspectorcapabilitywidget.h
+        actions/kmcpclientinspectorcapabilitywidget.cpp
         kmcpclientinspectorconnectbuttonswidget.h
         kmcpclientinspectorconnectbuttonswidget.cpp
         misc/jsonplaintexteditwidget.h
