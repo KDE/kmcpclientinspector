@@ -62,6 +62,7 @@ private:
     void setCallInProgress(bool inProgress);
     void updateCallButton();
     void showMessage(const QString &message, bool isError);
+    void showUrlElicitations(const QJsonObject &obj);
 
     QList<TextAutoGenerateTextMcpProtocolCore::McpProtocolTool> mTools;
     QPushButton *const mListToolsButton;

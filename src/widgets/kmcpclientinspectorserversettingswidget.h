@@ -25,6 +25,7 @@ public:
     ~KMcpClientInspectorServerSettingsWidget() override;
 
     [[nodiscard]] bool elicitationSupport() const;
+    [[nodiscard]] bool urlElicitationSupport() const;
     [[nodiscard]] bool rootsSupport() const;
     [[nodiscard]] bool samplingSupport() const;
 

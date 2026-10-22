@@ -16,11 +16,13 @@ public:
     ~KMcpClientInspectorCapabilityWidget() override;
 
     [[nodiscard]] bool elicitationSupport() const;
+    [[nodiscard]] bool urlElicitationSupport() const;
     [[nodiscard]] bool rootsSupport() const;
     [[nodiscard]] bool samplingSupport() const;
 
 private:
     QCheckBox *const mElicitationSupported;
+    QCheckBox *const mUrlElicitationSupported;
     QCheckBox *const mRootsSupported;
     QCheckBox *const mSamplingSupported;
 };

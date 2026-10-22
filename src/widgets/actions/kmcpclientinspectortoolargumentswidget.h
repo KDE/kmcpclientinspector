@@ -26,6 +26,10 @@ public:
 
     void setInputSchema(const TextAutoGenerateTextMcpProtocolCore::McpProtocolTool::InputSchema &schema);
     void clear();
+    /*!
+     * Text shown when schema has no property.
+     */
+    void setNoArgumentsText(const QString &text);
 
     /*!
      * Return arguments from form or json editor, std::nullopt if they are invalid (\a errorMessage explains why).

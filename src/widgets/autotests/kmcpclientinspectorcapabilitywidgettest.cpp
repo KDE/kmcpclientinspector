@@ -20,6 +20,7 @@ void KMcpClientInspectorCapabilityWidgetTest::shouldHaveDefaultValues()
 {
     const KMcpClientInspectorCapabilityWidget w;
     QVERIFY(w.elicitationSupport());
+    QVERIFY(w.urlElicitationSupport());
     QVERIFY(w.rootsSupport());
     QVERIFY(w.samplingSupport());
 
@@ -35,6 +36,11 @@ void KMcpClientInspectorCapabilityWidgetTest::shouldHaveDefaultValues()
     QVERIFY(mElicitationSupported);
     QVERIFY(mElicitationSupported->isChecked());
     QVERIFY(!mElicitationSupported->text().isEmpty());
+
+    auto mUrlElicitationSupported = w.findChild<QCheckBox *>(u"mUrlElicitationSupported"_s);
+    QVERIFY(mUrlElicitationSupported);
+    QVERIFY(mUrlElicitationSupported->isChecked());
+    QVERIFY(!mUrlElicitationSupported->text().isEmpty());
 
     auto mRootsSupported = w.findChild<QCheckBox *>(u"mRootsSupported"_s);
     QVERIFY(mRootsSupported);

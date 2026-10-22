@@ -6,9 +6,11 @@
 
 #include "kmcpclientinspectorcalltoolwidget.h"
 #include "actions/kmcpclientinspectortoolargumentswidget.h"
+#include "dialogs/kmcpclientinspectorurlelicitationdialog.h"
 #include "misc/jsonplaintexteditwidget.h"
 #include <KListWidgetSearchLine>
 #include <KLocalizedString>
+#include <QDesktopServices>
 #include <QImage>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -24,8 +26,10 @@
 #include <QVBoxLayout>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolCallToolResult>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolElicitRequestURLParams>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolError>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolListToolsResult>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolURLElicitationRequiredError>
 using namespace Qt::Literals::StringLiterals;
 using namespace TextAutoGenerateTextMcpProtocolCore;
 
@@ -288,9 +292,14 @@ void KMcpClientInspectorCallToolWidget::setResult(const QJsonObject &obj)
     mJsonPlainTextEditWidget->setPlainText(QString::fromUtf8(QJsonDocument(obj).toJson(QJsonDocument::Indented)));
     if (const QJsonValue errorValue = obj.value("error"_L1); errorValue.isObject()) {
         const McpProtocolError error = McpProtocolError::fromJson(errorValue.toObject());
-        showMessage(i18n("Error %1: %2", QString::number(error.code()), error.message()), true);
         mContentBrowser->clear();
         mResultTabWidget->setCurrentWidget(mJsonPlainTextEditWidget);
+        if (error.code() == McpProtocolURLElicitationRequiredError::errorCode) {
+            showMessage(i18n("The server requires an interaction in the web browser before calling this tool: %1", error.message()), true);
+            showUrlElicitations(obj);
+        } else {
+            showMessage(i18n("Error %1: %2", QString::number(error.code()), error.message()), true);
+        }
         return;
     }
     const McpProtocolCallToolResult result = McpProtocolCallToolResult::fromJson(obj.value("result"_L1).toObject());
@@ -302,6 +311,20 @@ void KMcpClientInspectorCallToolWidget::setResult(const QJsonObject &obj)
     mContentBrowser->clear();
     mContentBrowser->setHtml(resultToHtml(result, mContentBrowser->document()));
     mResultTabWidget->setCurrentWidget(mContentBrowser);
+}
+
+void KMcpClientInspectorCallToolWidget::showUrlElicitations(const QJsonObject &obj)
+{
+    const QList<McpProtocolElicitRequestURLParams> elicitations = McpProtocolURLElicitationRequiredError::fromJson(obj).elicitations();
+    for (const McpProtocolElicitRequestURLParams &params : elicitations) {
+        auto dialog = new KMcpClientInspectorUrlElicitationDialog(params, this);
+        dialog->setAttribute(Qt::WA_DeleteOnClose);
+        // No answer to send: server is informed by web page, user retries tool afterwards
+        connect(dialog, &QDialog::accepted, this, [dialog]() {
+            QDesktopServices::openUrl(dialog->url());
+        });
+        dialog->show();
+    }
 }
 
 QString KMcpClientInspectorCallToolWidget::resultToHtml(const McpProtocolCallToolResult &result, QTextDocument *document)

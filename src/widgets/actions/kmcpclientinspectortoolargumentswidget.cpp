@@ -201,6 +201,11 @@ void KMcpClientInspectorToolArgumentsWidget::clear()
     setJsonEditorActivated(false);
 }
 
+void KMcpClientInspectorToolArgumentsWidget::setNoArgumentsText(const QString &text)
+{
+    mNoArgumentsLabel->setText(text);
+}
+
 void KMcpClientInspectorToolArgumentsWidget::setInputSchema(const TextAutoGenerateTextMcpProtocolCore::McpProtocolTool::InputSchema &schema)
 {
     clear();

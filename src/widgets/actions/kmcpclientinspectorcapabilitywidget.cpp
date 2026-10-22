@@ -13,6 +13,7 @@ using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorCapabilityWidget::KMcpClientInspectorCapabilityWidget(QWidget *parent)
     : QWidget{parent}
     , mElicitationSupported(new QCheckBox(i18nc("@option:check", "Elicitation"), this))
+    , mUrlElicitationSupported(new QCheckBox(i18nc("@option:check", "URL elicitation"), this))
     , mRootsSupported(new QCheckBox(i18nc("@option:check", "Roots"), this))
     , mSamplingSupported(new QCheckBox(i18nc("@option:check", "Sampling"), this))
 {
@@ -31,6 +32,10 @@ KMcpClientInspectorCapabilityWidget::KMcpClientInspectorCapabilityWidget(QWidget
     mElicitationSupported->setChecked(true);
     vbox->addWidget(mElicitationSupported);
 
+    mUrlElicitationSupported->setObjectName(u"mUrlElicitationSupported"_s);
+    mUrlElicitationSupported->setChecked(true);
+    vbox->addWidget(mUrlElicitationSupported);
+
     mRootsSupported->setObjectName(u"mRootsSupported"_s);
     mRootsSupported->setChecked(true);
     vbox->addWidget(mRootsSupported);
@@ -45,6 +50,11 @@ KMcpClientInspectorCapabilityWidget::~KMcpClientInspectorCapabilityWidget() = de
 bool KMcpClientInspectorCapabilityWidget::elicitationSupport() const
 {
     return mElicitationSupported->isChecked();
+}
+
+bool KMcpClientInspectorCapabilityWidget::urlElicitationSupport() const
+{
+    return mUrlElicitationSupported->isChecked();
 }
 
 bool KMcpClientInspectorCapabilityWidget::rootsSupport() const

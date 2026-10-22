@@ -103,6 +103,11 @@ bool KMcpClientInspectorServerSettingsWidget::elicitationSupport() const
     return mCapabilityWidget->elicitationSupport();
 }
 
+bool KMcpClientInspectorServerSettingsWidget::urlElicitationSupport() const
+{
+    return mCapabilityWidget->urlElicitationSupport();
+}
+
 bool KMcpClientInspectorServerSettingsWidget::rootsSupport() const
 {
     return mCapabilityWidget->rootsSupport();

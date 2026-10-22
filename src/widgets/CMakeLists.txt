@@ -71,6 +71,12 @@ target_sources(
         kmcpclientinspectorconnectbuttonswidget.cpp
         misc/jsonplaintexteditwidget.h
         misc/jsonplaintexteditwidget.cpp
+        dialogs/kmcpclientinspectorelicitationdialog.h
+        dialogs/kmcpclientinspectorelicitationdialog.cpp
+        dialogs/kmcpclientinspectorsamplingdialog.h
+        dialogs/kmcpclientinspectorsamplingdialog.cpp
+        dialogs/kmcpclientinspectorurlelicitationdialog.h
+        dialogs/kmcpclientinspectorurlelicitationdialog.cpp
 )
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(
