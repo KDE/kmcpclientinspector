@@ -222,6 +222,12 @@ file(
 )
 ecm_check_outbound_license(LICENSES GPL-2.0-only  FILES ${ALL_SOURCE_FILES})
 
+ki18n_install(po)
+if(KF6DocTools_FOUND)
+    kdoctools_install(po)
+    add_subdirectory(doc)
+endif()
+
 if(GIT_SOURCE_TARBALL)
     if(DEFINED kde_configure_git_pre_commit_hook)
         kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)

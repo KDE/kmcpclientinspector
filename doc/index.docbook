@@ -1,0 +1,441 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!-- Define an entity for your application if it is not part of KDE
+       CVS -->
+  <!ENTITY i18n-kapplication "<application>KMcpClientInspector</application>">
+  <!ENTITY kappname "&i18n-kapplication;">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % English "INCLUDE">
+]>
+
+<book id="kmcpclientinspector" lang="&language;">
+
+<bookinfo>
+<title>The &kappname; Handbook</title>
+
+<authorgroup>
+<author>
+<personname>
+<firstname>Laurent</firstname>
+<surname>Montel</surname>
+</personname>
+<email>montel@kde.org</email>
+</author>
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
+</authorgroup>
+
+<copyright>
+<year>2026</year>
+<holder>Laurent Montel</holder>
+</copyright>
+
+<legalnotice>&FDLNotice;</legalnotice>
+
+<date>2026-10-22</date>
+<releaseinfo>0.2.4</releaseinfo>
+
+<abstract>
+<para>
+&kappname; is a tool to inspect and debug servers implementing the
+Model Context Protocol (<acronym>MCP</acronym>). It connects to a server
+as an <acronym>MCP</acronym> client, lets you send requests to it and shows
+the exchanged messages.
+</para>
+</abstract>
+
+<keywordset>
+<keyword>KDE</keyword>
+<keyword>MCP</keyword>
+<keyword>Model Context Protocol</keyword>
+<keyword>inspector</keyword>
+<keyword>debug</keyword>
+<keyword>kmcpclientinspector</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title>Introduction</title>
+
+<para>
+The Model Context Protocol (<acronym>MCP</acronym>) is an open protocol which
+allows applications to expose tools, prompts and resources to clients such as
+<acronym>AI</acronym> assistants. Messages are exchanged using JSON-RPC.
+</para>
+
+<para>
+&kappname; acts as an <acronym>MCP</acronym> client. It allows developers
+of <acronym>MCP</acronym> servers to:
+</para>
+
+<itemizedlist>
+<listitem><para>manage a list of <acronym>MCP</acronym> servers;</para></listitem>
+<listitem><para>connect to a server and see the result of the initialization handshake;</para></listitem>
+<listitem><para>list and call the tools provided by the server;</para></listitem>
+<listitem><para>list and retrieve the prompts provided by the server;</para></listitem>
+<listitem><para>list the resources and resource templates provided by the server;</para></listitem>
+<listitem><para>check that the server answers with a ping request;</para></listitem>
+<listitem><para>look at every JSON-RPC message sent and received;</para></listitem>
+<listitem><para>follow the log notifications emitted by the server.</para></listitem>
+</itemizedlist>
+
+</chapter>
+
+<chapter id="using-kapp">
+<title>Using &kappname;</title>
+
+<sect1 id="main-window">
+<title>The Main Window</title>
+
+<para>
+The main window is divided in two parts:
+</para>
+
+<itemizedlist>
+<listitem><para>
+On the left, the list of the configured <acronym>MCP</acronym> servers.
+From there you can add, modify, remove, enable or disable a server.
+</para></listitem>
+<listitem><para>
+On the right, one tab for each enabled server. Disabled servers do not get
+a tab.
+</para></listitem>
+</itemizedlist>
+
+<para>
+When a new version brings new features, a message is shown at the top
+of the window the first time &kappname; is started. The complete list of
+changes is available with <menuchoice><guimenu>Help</guimenu><guimenuitem>What's new</guimenuitem></menuchoice>.
+</para>
+</sect1>
+
+<sect1 id="server-tab">
+<title>The Server Tab</title>
+
+<para>
+Each server tab is split in two parts: the server settings on the left and
+the actions on the right.
+</para>
+
+<sect2 id="server-settings">
+<title>Server Settings</title>
+
+<para>
+The upper part shows information about the server:
+</para>
+
+<variablelist>
+<varlistentry>
+<term><guilabel>Name:</guilabel></term>
+<listitem><para>The name of the server.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Type:</guilabel></term>
+<listitem><para>How &kappname; communicates with the server: by starting a
+local process, or through a network <acronym>URL</acronym>.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Command:</guilabel>, <guilabel>Arguments:</guilabel>, <guilabel>Environment:</guilabel></term>
+<listitem><para>For a local server, the program started by &kappname;, its
+arguments and the environment variables passed to it.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Url:</guilabel></term>
+<listitem><para>For a remote server, the address used to reach it.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Roots:</guilabel></term>
+<listitem><para>The roots (directories or files) exposed to the server.</para></listitem>
+</varlistentry>
+</variablelist>
+
+<para>
+The <guilabel>Capabilities</guilabel> group lets you choose which client
+capabilities are announced to the server during initialization:
+<guilabel>Elicitation</guilabel>, <guilabel>Roots</guilabel> and
+<guilabel>Sampling</guilabel>. They are all enabled by default. They can only
+be changed while the server is disconnected.
+</para>
+
+<para>
+The <guibutton>Edit…</guibutton> button opens a dialog to modify the server
+settings. It is disabled while the server is connected.
+</para>
+
+<para>
+Use the <guibutton>Connect</guibutton> button to start the client and send the
+initialization request to the server, and the <guibutton>Disconnect</guibutton>
+button to stop it.
+</para>
+</sect2>
+
+<sect2 id="actions">
+<title>Actions</title>
+
+<para>
+The right part of the server tab contains one tab for each kind of request
+or information:
+</para>
+
+<variablelist>
+
+<varlistentry id="action-initialize">
+<term><guilabel>Initialize</guilabel></term>
+<listitem><para>
+Shows the JSON answer of the server to the initialization request: protocol
+version, server information and server capabilities.
+</para></listitem>
+</varlistentry>
+
+<varlistentry id="action-ping">
+<term><guilabel>Ping</guilabel></term>
+<listitem><para>
+The <guibutton>Ping</guibutton> button sends a ping request, to check that the
+server is still answering.
+</para></listitem>
+</varlistentry>
+
+<varlistentry id="action-list-tools">
+<term><guilabel>List Tools</guilabel></term>
+<listitem><para>
+The <guibutton>List Tools</guibutton> button asks the server for the list of
+the tools it provides and shows the answer.
+</para></listitem>
+</varlistentry>
+
+<varlistentry id="action-call-tool">
+<term><guilabel>Call Tool</guilabel></term>
+<listitem>
+<para>
+Click on <guibutton>List Tools</guibutton> to fill the list of tools; the
+<guilabel>Search</guilabel> field filters it. Select a tool: its arguments
+are shown, with a field adapted to each argument type (text, integer,
+number, boolean, or JSON value). Check
+<guilabel>Edit arguments as JSON</guilabel> to write all the arguments
+directly as a JSON object.
+</para>
+<para>
+Click on <guibutton>Call Tool</guibutton> to call the tool. Required arguments
+and argument types are checked before the request is sent. The result is
+shown in two tabs:
+</para>
+<itemizedlist>
+<listitem><para><guilabel>Content</guilabel>: a readable view of the
+returned content (text, images, audio, resource links, embedded resources
+and structured content), and whether the tool succeeded or returned
+an error;</para></listitem>
+<listitem><para><guilabel>JSON</guilabel>: the raw JSON answer.</para></listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-list-prompts">
+<term><guilabel>List Prompts</guilabel></term>
+<listitem><para>
+The <guibutton>List Prompts</guibutton> button asks the server for the list of
+the prompts it provides and shows the answer.
+</para></listitem>
+</varlistentry>
+
+<varlistentry id="action-get-prompt">
+<term><guilabel>Get Prompt</guilabel></term>
+<listitem>
+<para>
+Click on <guibutton>List Prompts</guibutton> to fill the list of prompts; the
+<guilabel>Search</guilabel> field filters it. Select a prompt, fill in its
+arguments, then click on <guibutton>Get Prompt</guibutton>. The result is
+shown in two tabs:
+</para>
+<itemizedlist>
+<listitem><para><guilabel>Messages</guilabel>: the messages of the prompt,
+with their role (<guilabel>User</guilabel> or
+<guilabel>Assistant</guilabel>);</para></listitem>
+<listitem><para><guilabel>JSON</guilabel>: the raw JSON answer.</para></listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-list-resources">
+<term><guilabel>List Resources</guilabel></term>
+<listitem><para>
+The <guibutton>List Resources</guibutton> button asks the server for the list
+of the resources it provides and shows the answer.
+</para></listitem>
+</varlistentry>
+
+<varlistentry id="action-resource-templates">
+<term><guilabel>Resource Templates</guilabel></term>
+<listitem><para>
+The <guibutton>Resource Templates</guibutton> button asks the server for the
+list of its resource templates and shows the answer.
+</para></listitem>
+</varlistentry>
+
+<varlistentry id="action-log">
+<term><guilabel>Log</guilabel></term>
+<listitem><para>
+Lists every JSON-RPC message exchanged with the server, with its
+<guilabel>Identifier</guilabel>, <guilabel>Method Name</guilabel>,
+<guilabel>Time</guilabel>, <guilabel>Duration</guilabel> and
+<guilabel>Direction</guilabel> (<guilabel>Sent</guilabel> or
+<guilabel>Received</guilabel>). Use the <guilabel>Search</guilabel> field to
+filter the list. Selecting a message shows its JSON content.
+</para></listitem>
+</varlistentry>
+
+<varlistentry id="action-server-notification">
+<term><guilabel>Server Notification</guilabel></term>
+<listitem><para>
+Shows the log messages sent by the server, with their
+<guilabel>Time</guilabel>, <guilabel>Level</guilabel>,
+<guilabel>Logger</guilabel> and <guilabel>Message</guilabel>. The
+<guilabel>Minimum level:</guilabel> list hides the messages below the
+selected level (<guilabel>Debug</guilabel>, <guilabel>Info</guilabel>,
+<guilabel>Notice</guilabel>, <guilabel>Warning</guilabel>,
+<guilabel>Error</guilabel>, <guilabel>Critical</guilabel>,
+<guilabel>Alert</guilabel>, <guilabel>Emergency</guilabel>). The
+<guibutton>Clear</guibutton> button empties the list.
+</para></listitem>
+</varlistentry>
+
+</variablelist>
+</sect2>
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+<title>Configuring &kappname;</title>
+
+<para>
+<menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;…</guimenuitem></menuchoice>
+opens the configuration dialog.
+</para>
+
+<sect1 id="configure-mcp-servers">
+<title>MCP Servers</title>
+<para>
+The <guilabel>MCP Servers</guilabel> page lists the configured servers. You can
+add, modify, remove, enable or disable a server. Changes are saved immediately
+and the server tabs of the main window are updated.
+</para>
+</sect1>
+
+</chapter>
+
+<chapter id="commands">
+<title>Command Reference</title>
+
+<sect1 id="kapp-mainwindow">
+<title>The Menus</title>
+
+<sect2 id="file-menu">
+<title>The File Menu</title>
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></shortcut>
+<guimenu>File</guimenu><guimenuitem>Quit</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Quits</action> &kappname;.</para></listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+
+<sect2 id="settings-menu">
+<title>The Settings Menu</title>
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo action="simul"><keycap>F11</keycap></keycombo></shortcut>
+<guimenu>Settings</guimenu><guimenuitem>Full Screen Mode</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Toggles</action> the full screen mode.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu><guisubmenu>Window Color Scheme</guisubmenu>
+</menuchoice></term>
+<listitem><para><action>Selects</action> the color scheme of the window.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu><guimenuitem>Configure Notifications…</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Configures</action> the notifications of &kappname;.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu><guimenuitem>Configure &kappname;…</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Opens</action> the <link linkend="configuration">configuration dialog</link>.</para></listitem>
+</varlistentry>
+</variablelist>
+<para>
+&kappname; also has the common &kde; <guimenu>Settings</guimenu> menu items,
+for more information read the section about the <ulink url="help:/fundamentals/menus.html#menus-settings">Settings Menu</ulink>
+of the &kde; Fundamentals.
+</para>
+</sect2>
+
+<sect2 id="help-menu">
+<title>The Help Menu</title>
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Help</guimenu><guimenuitem>What's new</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Shows</action> the new features of each release.</para></listitem>
+</varlistentry>
+</variablelist>
+<para>
+On &Windows; and &macOS;, the <guimenu>Help</guimenu> menu also contains an
+item to check whether a new version is available.
+</para>
+<para>
+&kappname; has the common &kde; <guimenu>Help</guimenu> menu items, for more
+information read the section about the <ulink url="help:/fundamentals/menus.html#menus-help">Help Menu</ulink>
+of the &kde; Fundamentals.
+</para>
+</sect2>
+
+</sect1>
+</chapter>
+
+<chapter id="credits">
+<title>Credits and License</title>
+
+<para>
+&kappname;
+</para>
+<para>
+Program copyright 2026 Laurent Montel <email>montel@kde.org</email>
+</para>
+
+<para>
+Documentation Copyright &copy; 2026 Laurent Montel <email>montel@kde.org</email>
+</para>
+
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+
+&underFDL;
+&underGPL;
+
+</chapter>
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->
