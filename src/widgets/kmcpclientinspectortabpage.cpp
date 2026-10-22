@@ -63,6 +63,7 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
             mProtocolManager->setElicitationSupported(mServerSettings->elicitationSupport());
             mProtocolManager->setUrlElicitationSupported(mServerSettings->urlElicitationSupport());
             mProtocolManager->setRootsSupported(mServerSettings->rootsSupport());
+            // TODO add missing setRoots(...)
             mProtocolManager->setSamplingSupported(mServerSettings->samplingSupport());
             mProtocolManager->initializeClient();
         } else {
