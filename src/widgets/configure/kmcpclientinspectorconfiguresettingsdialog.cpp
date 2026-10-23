@@ -33,7 +33,6 @@ KMcpClientInspectorConfigureSettingsDialog::KMcpClientInspectorConfigureSettings
     buttonBox()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
 
     connect(buttonBox()->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &KMcpClientInspectorConfigureSettingsDialog::slotAccepted);
-    connect(buttonBox()->button(QDialogButtonBox::Cancel), &QPushButton::clicked, this, &KMcpClientInspectorConfigureSettingsDialog::reject);
     connect(buttonBox()->button(QDialogButtonBox::RestoreDefaults),
             &QPushButton::clicked,
             this,
