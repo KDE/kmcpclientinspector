@@ -26,7 +26,6 @@ KMcpClientInspectorConfigureMcpServersWidget::KMcpClientInspectorConfigureMcpSer
             &TextAutoGenerateTextMcpProtocolWidgets::McpServerWidget::settingsChanged,
             this,
             &KMcpClientInspectorConfigureMcpServersWidget::save);
-    load();
 }
 
 KMcpClientInspectorConfigureMcpServersWidget::~KMcpClientInspectorConfigureMcpServersWidget() = default;
