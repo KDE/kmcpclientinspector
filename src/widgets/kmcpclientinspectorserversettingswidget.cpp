@@ -67,9 +67,13 @@ KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget
 
 KMcpClientInspectorServerSettingsWidget::~KMcpClientInspectorServerSettingsWidget() = default;
 
-void KMcpClientInspectorServerSettingsWidget::slotUpdateButtons([[maybe_unused]] bool valid)
+void KMcpClientInspectorServerSettingsWidget::slotUpdateButtons(bool valid)
 {
-    mConnectButtonsWidget->updateButtons(true, false);
+    if (valid) {
+        mConnectButtonsWidget->updateButtons(true, false);
+    } else {
+        mConnectButtonsWidget->updateButtons(false, false);
+    }
 }
 
 void KMcpClientInspectorServerSettingsWidget::slotEditServer()
@@ -78,10 +82,11 @@ void KMcpClientInspectorServerSettingsWidget::slotEditServer()
     dlg->setServerInfo(mServer);
     if (dlg->exec()) {
         const TextAutoGenerateTextMcpProtocolCore::McpServer server = dlg->serverInfo();
-        if (!(server == mServer)) {
+        if (server != mServer) {
             mServer = server;
             mServerInfoWidget->setServerInfo(mServer);
             Q_EMIT serverModified(mServer);
+            slotUpdateButtons(mServer.isValid());
         }
     }
     delete dlg;

@@ -35,6 +35,11 @@ void KMcpClientInspectorTabWidget::loadServers()
             connect(page, &KMcpClientInspectorTabPage::started, this, [page, this]() {
                 setTabIcon(indexOf(page), QIcon::fromTheme(u"network-connect"_s));
             });
+            connect(page, &KMcpClientInspectorTabPage::serverModified, this, [page, this](const TextAutoGenerateTextMcpProtocolCore::McpServer &server) {
+                mManager->mcpServerModel()->editMcpServer(server);
+                mManager->saveServers();
+                setTabText(indexOf(page), server.name());
+            });
         }
     }
 }

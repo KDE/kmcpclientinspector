@@ -29,6 +29,7 @@ public:
 Q_SIGNALS:
     void started();
     void finished();
+    void serverModified(const TextAutoGenerateTextMcpProtocolCore::McpServer &server);
 
 private:
     void slotElicitationRequested(const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId &id,
