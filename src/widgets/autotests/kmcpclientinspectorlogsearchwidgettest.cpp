@@ -11,6 +11,7 @@
 #include <QPushButton>
 #include <QSignalSpy>
 #include <QTest>
+#include <qtestmouse.h>
 QTEST_MAIN(KMcpClientInspectorLogSearchWidgetTest)
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorLogSearchWidgetTest::KMcpClientInspectorLogSearchWidgetTest(QObject *parent)
@@ -49,6 +50,15 @@ void KMcpClientInspectorLogSearchWidgetTest::shouldEmitSearchTextChanged()
     mSearchLineEdit->clear();
     QCOMPARE(searchTextChangedSpy.count(), 2);
     QVERIFY(searchTextChangedSpy.at(1).at(0).toString().isEmpty());
+}
+
+void KMcpClientInspectorLogSearchWidgetTest::shouldEmitSearchClearRequested()
+{
+    KMcpClientInspectorLogSearchWidget w;
+    QSignalSpy clearRequestedSpy(&w, &KMcpClientInspectorLogSearchWidget::clearRequested);
+    auto mClearButton = w.findChild<QPushButton *>(u"mClearButton"_s);
+    QTest::mouseClick(mClearButton, Qt::LeftButton);
+    QCOMPARE(clearRequestedSpy.count(), 1);
 }
 
 #include "moc_kmcpclientinspectorlogsearchwidgettest.cpp"
