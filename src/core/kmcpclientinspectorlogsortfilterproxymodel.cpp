@@ -26,4 +26,18 @@ bool KMcpClientInspectorLogSortFilterProxyModel::filterAcceptsRow(int source_row
     }
     return false;
 }
+
+bool KMcpClientInspectorLogSortFilterProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
+{
+    if (!sourceModel()) {
+        return false;
+    }
+    const int leftColumn{left.column()};
+    if (leftColumn == KMcpClientInspectorLogModel::Duration) {
+        const QModelIndex leftDurationModelIndex = sourceModel()->index(left.row(), KMcpClientInspectorLogModel::DurationValue, left.parent());
+        const QModelIndex rightDurationModelIndex = sourceModel()->index(right.row(), KMcpClientInspectorLogModel::DurationValue, right.parent());
+        return leftDurationModelIndex.data().toLongLong() < rightDurationModelIndex.data().toLongLong();
+    }
+    return TextAddonsWidgets::SortFilterProxyModelBase::lessThan(left, right);
+}
 #include "moc_kmcpclientinspectorlogsortfilterproxymodel.cpp"

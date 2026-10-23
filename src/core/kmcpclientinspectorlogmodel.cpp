@@ -75,6 +75,11 @@ QVariant KMcpClientInspectorLogModel::data(const QModelIndex &index, int role) c
             return {};
         }
         return i18n("%1 ms", log.elapsedMs);
+    case LogColumns::DurationValue:
+        if (log.elapsedMs < 0) {
+            return 0;
+        }
+        return log.elapsedMs;
     case LogColumns::Json:
         return log.message;
     }
@@ -96,6 +101,7 @@ QVariant KMcpClientInspectorLogModel::headerData(int section, Qt::Orientation or
         case LogColumns::Direction:
             return i18n("Direction"); // or remove it
         case LogColumns::Json:
+        case LogColumns::DurationValue:
             break;
         }
     }

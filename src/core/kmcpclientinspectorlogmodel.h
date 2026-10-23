@@ -20,6 +20,7 @@ public:
         MethodType,
         Duration,
         DateTime,
+        DurationValue,
         Json,
         LastColumn = Json,
     };

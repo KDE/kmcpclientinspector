@@ -16,4 +16,5 @@ public:
 
 protected:
     [[nodiscard]] bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
+    [[nodiscard]] bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
 };
