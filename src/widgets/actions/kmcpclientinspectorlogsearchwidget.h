@@ -9,6 +9,7 @@
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
 class QLineEdit;
+class QPushButton;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorLogSearchWidget : public QWidget
 {
     Q_OBJECT
@@ -21,4 +22,5 @@ Q_SIGNALS:
 
 private:
     QLineEdit *const mSearchLineEdit;
+    QPushButton *const mClearButton;
 };

@@ -8,11 +8,13 @@
 #include <KLocalizedString>
 #include <QHBoxLayout>
 #include <QLineEdit>
+#include <QPushButton>
 
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorLogSearchWidget::KMcpClientInspectorLogSearchWidget(QWidget *parent)
     : QWidget{parent}
     , mSearchLineEdit(new QLineEdit(this))
+    , mClearButton(new QPushButton(QIcon::fromTheme(u"edit-clear-history"_s), i18n("Clear"), this))
 {
     auto mainLayout = new QHBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
@@ -20,11 +22,13 @@ KMcpClientInspectorLogSearchWidget::KMcpClientInspectorLogSearchWidget(QWidget *
 
     mSearchLineEdit->setPlaceholderText(i18nc("@info:placeholder", "Search"));
     mSearchLineEdit->setObjectName(u"mSearchLineEdit"_s);
-    mainLayout->addWidget(mSearchLineEdit);
     mSearchLineEdit->setClearButtonEnabled(true);
+    mainLayout->addWidget(mSearchLineEdit);
+
+    mClearButton->setObjectName(u"mClearButton"_s);
+    mainLayout->addWidget(mClearButton);
 
     connect(mSearchLineEdit, &QLineEdit::textChanged, this, &KMcpClientInspectorLogSearchWidget::searchTextChanged);
-    // TODO add more
 }
 
 KMcpClientInspectorLogSearchWidget::~KMcpClientInspectorLogSearchWidget() = default;

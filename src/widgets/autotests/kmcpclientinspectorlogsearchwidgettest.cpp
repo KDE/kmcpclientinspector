@@ -8,6 +8,7 @@
 #include "actions/kmcpclientinspectorlogsearchwidget.h"
 #include <QHBoxLayout>
 #include <QLineEdit>
+#include <QPushButton>
 #include <QSignalSpy>
 #include <QTest>
 QTEST_MAIN(KMcpClientInspectorLogSearchWidgetTest)
@@ -30,6 +31,10 @@ void KMcpClientInspectorLogSearchWidgetTest::shouldHaveDefaultValues()
     QVERIFY(mSearchLineEdit->text().isEmpty());
     QVERIFY(!mSearchLineEdit->placeholderText().isEmpty());
     QVERIFY(mSearchLineEdit->isClearButtonEnabled());
+
+    auto mClearButton = w.findChild<QPushButton *>(u"mClearButton"_s);
+    QVERIFY(mClearButton);
+    QVERIFY(!mClearButton->text().isEmpty());
 }
 
 void KMcpClientInspectorLogSearchWidgetTest::shouldEmitSearchTextChanged()
