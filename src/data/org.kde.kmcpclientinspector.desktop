@@ -4,6 +4,6 @@ Type=Application
 Exec=kmcpclientinspector -qwindowtitle %c %u
 Icon=kmcpclientinspector
 GenericName=MCP client inspector
-Categories=Qt;KDE;Network;
+Categories=Qt;KDE;Development;
 SingleMainWindow=true
 Version=1.5

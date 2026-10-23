@@ -6,7 +6,7 @@
 <component type="desktop-application">
   <id>org.kde.kmcpclientinspector</id>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-2.0+</project_license>
+  <project_license>GPL-2.0-or-later</project_license>
   <developer id="org.kde">
     <name translate="no">KDE</name>
   </developer>
@@ -19,6 +19,7 @@
   </description>
   <url type="homepage">https://apps.kde.org/kmcpclientinspector</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kmcpclientinspector</url>
+  <url type="help">https://docs.kde.org/?application=kmcpclientinspector</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kmcpclientinspector&amp;source=appdata</url>
   <url type="vcs-browser">https://invent.kde.org/utilities/kmcpclientinspector</url>
   <project_group>KDE</project_group>
@@ -31,8 +32,15 @@
   </provides>
   <launchable type="desktop-id">org.kde.kmcpclientinspector.desktop</launchable>
   <categories>
-    <category>Utility</category>
+    <category>Development</category>
   </categories>
+  <keywords>
+    <keyword translate="no">MCP</keyword>
+    <keyword>Model Context Protocol</keyword>
+    <keyword>AI</keyword>
+    <keyword>Inspector</keyword>
+    <keyword>Debug</keyword>
+  </keywords>
   <releases>
     <release version="0.3.0" type="snapshot">
       <description>
