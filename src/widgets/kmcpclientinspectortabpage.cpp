@@ -87,8 +87,9 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
             &KMcpClientInspectorServerSettingsWidget::serverModified,
             this,
             [this](const TextAutoGenerateTextMcpProtocolCore::McpServer &server) {
-                mProtocolManager->setServer(server);
-                Q_EMIT serverModified(server);
+                if (mProtocolManager->setServer(server)) {
+                    Q_EMIT serverModified(server);
+                }
             });
     connect(mServerSettings, &KMcpClientInspectorServerSettingsWidget::startStopRequested, this, [this](bool started) {
         if (started) {
