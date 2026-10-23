@@ -29,6 +29,7 @@ KMcpClientInspectorLogSearchWidget::KMcpClientInspectorLogSearchWidget(QWidget *
     mainLayout->addWidget(mClearButton);
 
     connect(mSearchLineEdit, &QLineEdit::textChanged, this, &KMcpClientInspectorLogSearchWidget::searchTextChanged);
+    connect(mClearButton, &QPushButton::clicked, this, &KMcpClientInspectorLogSearchWidget::clearRequested);
 }
 
 KMcpClientInspectorLogSearchWidget::~KMcpClientInspectorLogSearchWidget() = default;

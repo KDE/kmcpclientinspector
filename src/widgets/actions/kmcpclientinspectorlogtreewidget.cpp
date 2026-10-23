@@ -52,6 +52,7 @@ KMcpClientInspectorLogTreeWidget::KMcpClientInspectorLogTreeWidget(TextAutoGener
             &KMcpClientInspectorLogSearchWidget::searchTextChanged,
             mLogSortFilterProxyModel,
             &KMcpClientInspectorLogSortFilterProxyModel::setFilterString);
+    connect(mLogSearchWidget, &KMcpClientInspectorLogSearchWidget::clearRequested, mLogModel, &KMcpClientInspectorLogModel::clear);
 }
 
 KMcpClientInspectorLogTreeWidget::~KMcpClientInspectorLogTreeWidget() = default;

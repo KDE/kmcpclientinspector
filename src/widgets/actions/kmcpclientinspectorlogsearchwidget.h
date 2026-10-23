@@ -19,6 +19,7 @@ public:
 
 Q_SIGNALS:
     void searchTextChanged(const QString &str);
+    void clearRequested();
 
 private:
     QLineEdit *const mSearchLineEdit;
