@@ -42,6 +42,7 @@ KMcpClientInspectorLogTreeWidget::KMcpClientInspectorLogTreeWidget(TextAutoGener
     mTreeView->setSortingEnabled(true);
     mTreeView->sortByColumn(KMcpClientInspectorLogModel::LogColumns::Identifier, Qt::AscendingOrder);
     mTreeView->setColumnHidden(KMcpClientInspectorLogModel::LogColumns::Json, true);
+    mTreeView->setColumnHidden(KMcpClientInspectorLogModel::LogColumns::DurationValue, true);
     connect(mTreeView->selectionModel(), &QItemSelectionModel::currentChanged, this, &KMcpClientInspectorLogTreeWidget::slotCurrentChanged);
     connect(mProtocolManager,
             &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::messageLogged,
