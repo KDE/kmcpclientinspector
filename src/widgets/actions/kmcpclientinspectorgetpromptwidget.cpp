@@ -200,6 +200,7 @@ void KMcpClientInspectorGetPromptWidget::setPromptsList(const QJsonObject &obj)
             new QListWidgetItem((title.isEmpty() || title == prompt.name()) ? prompt.name() : u"%1 (%2)"_s.arg(title, prompt.name()), mPromptsListWidget);
         item->setToolTip(prompt.description().value_or(QString()));
     }
+    mPromptsListWidget->sortItems();
 
     // Keep selected prompt when list is updated
     int row = -1;

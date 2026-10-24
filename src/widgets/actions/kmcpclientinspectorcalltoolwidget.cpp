@@ -203,6 +203,7 @@ void KMcpClientInspectorCallToolWidget::setToolsList(const QJsonObject &obj)
         auto item = new QListWidgetItem((title.isEmpty() || title == tool.name()) ? tool.name() : u"%1 (%2)"_s.arg(title, tool.name()), mToolsListWidget);
         item->setToolTip(tool.description().value_or(QString()));
     }
+    mToolsListWidget->sortItems();
 
     // Keep selected tool when list is updated
     int row = -1;
