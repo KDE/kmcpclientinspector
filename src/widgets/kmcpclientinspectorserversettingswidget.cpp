@@ -111,6 +111,7 @@ void KMcpClientInspectorServerSettingsWidget::slotConfigureRoots()
 
 void KMcpClientInspectorServerSettingsWidget::slotDisconnectRequested()
 {
+    mConnected = false;
     slotUpdateButtons(mServer.isValid());
     mEditButton->setEnabled(true);
     mCapabilityWidget->setConnected(false);
@@ -119,6 +120,7 @@ void KMcpClientInspectorServerSettingsWidget::slotDisconnectRequested()
 
 void KMcpClientInspectorServerSettingsWidget::slotConnectRequested()
 {
+    mConnected = true;
     mConnectButtonsWidget->updateButtons(false, true);
     mEditButton->setEnabled(false);
     mCapabilityWidget->setConnected(true);
@@ -148,6 +150,21 @@ bool KMcpClientInspectorServerSettingsWidget::samplingSupport() const
 QStringList KMcpClientInspectorServerSettingsWidget::roots() const
 {
     return mServer.settings().roots();
+}
+
+TextAutoGenerateTextMcpProtocolCore::McpServer KMcpClientInspectorServerSettingsWidget::server() const
+{
+    return mServer;
+}
+
+void KMcpClientInspectorServerSettingsWidget::setServer(const TextAutoGenerateTextMcpProtocolCore::McpServer &server)
+{
+    mServer = server;
+    mServerInfoWidget->setServerInfo(mServer);
+    // When connected, buttons are updated after disconnecting
+    if (!mConnected) {
+        slotUpdateButtons(mServer.isValid());
+    }
 }
 
 void KMcpClientInspectorServerSettingsWidget::wasDisconnected()

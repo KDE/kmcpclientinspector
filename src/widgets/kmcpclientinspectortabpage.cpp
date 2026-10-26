@@ -92,6 +92,8 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
             });
     connect(mServerSettings, &KMcpClientInspectorServerSettingsWidget::startStopRequested, this, [this](bool started) {
         if (started) {
+            // Server can be modified while connected (roots, preferences): it's applied when connecting
+            std::ignore = mProtocolManager->setServer(mServerSettings->server());
             mProtocolManager->setElicitationSupported(mServerSettings->elicitationSupport());
             mProtocolManager->setUrlElicitationSupported(mServerSettings->urlElicitationSupport());
             mProtocolManager->setRootsSupported(mServerSettings->rootsSupport());
@@ -129,6 +131,18 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
 }
 
 KMcpClientInspectorTabPage::~KMcpClientInspectorTabPage() = default;
+
+TextAutoGenerateTextMcpProtocolCore::McpServer KMcpClientInspectorTabPage::server() const
+{
+    return mServerSettings->server();
+}
+
+void KMcpClientInspectorTabPage::setServer(const TextAutoGenerateTextMcpProtocolCore::McpServer &server)
+{
+    mServerSettings->setServer(server);
+    // Refused when client is started: it will be used at next connection
+    std::ignore = mProtocolManager->setServer(server);
+}
 
 void KMcpClientInspectorTabPage::slotElicitationRequested(const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId &id,
                                                           const TextAutoGenerateTextMcpProtocolCore::McpProtocolElicitRequest &request)

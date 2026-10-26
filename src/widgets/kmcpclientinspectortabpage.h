@@ -26,6 +26,9 @@ public:
     explicit KMcpClientInspectorTabPage(const TextAutoGenerateTextMcpProtocolCore::McpServer &server, QWidget *parent = nullptr);
     ~KMcpClientInspectorTabPage() override;
 
+    [[nodiscard]] TextAutoGenerateTextMcpProtocolCore::McpServer server() const;
+    void setServer(const TextAutoGenerateTextMcpProtocolCore::McpServer &server);
+
 Q_SIGNALS:
     void started();
     void finished();

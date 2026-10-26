@@ -30,6 +30,9 @@ public:
     [[nodiscard]] bool samplingSupport() const;
     [[nodiscard]] QStringList roots() const;
 
+    [[nodiscard]] TextAutoGenerateTextMcpProtocolCore::McpServer server() const;
+    void setServer(const TextAutoGenerateTextMcpProtocolCore::McpServer &server);
+
     void wasDisconnected();
 
 Q_SIGNALS:
@@ -48,4 +51,5 @@ private:
     KMcpClientInspectorConnectButtonsWidget *const mConnectButtonsWidget;
     KMcpClientInspectorCapabilityWidget *const mCapabilityWidget;
     TextAutoGenerateTextMcpProtocolCore::McpServer mServer;
+    bool mConnected = false;
 };
