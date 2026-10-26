@@ -78,10 +78,10 @@ void KMcpClientInspectorMainWindow::setupActions()
 void KMcpClientInspectorMainWindow::slotConfigure()
 {
     QPointer<KMcpClientInspectorConfigureSettingsDialog> dlg = new KMcpClientInspectorConfigureSettingsDialog(mManager, this);
-    if (dlg->exec()) {
-        // TODO
-    }
+    dlg->exec();
     delete dlg;
+    // Servers are saved (Ok) or restored (Cancel): synchronize tabs in both cases
+    mMainWidget->updateServers();
 }
 
 void KMcpClientInspectorMainWindow::slotConfigureNotifications()

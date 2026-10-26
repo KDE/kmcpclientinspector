@@ -23,7 +23,6 @@ private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void readConfig();
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void writeConfig();
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotAccepted();
-    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void load();
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotRestoreDefaults();
     KMcpClientInspectorConfigureMcpServersWidget *const mConfigureMcpServersWidget;
     KPageWidgetItem *mConfigureMcpServersWidgetPage = nullptr;

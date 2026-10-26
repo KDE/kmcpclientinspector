@@ -57,4 +57,9 @@ QList<KAboutRelease> KMcpClientInspectorCentralWidget::releases() const
     return mReleases;
 }
 
+void KMcpClientInspectorCentralWidget::updateServers()
+{
+    mTabWidget->loadServers();
+}
+
 #include "moc_kmcpclientinspectorcentralwidget.cpp"

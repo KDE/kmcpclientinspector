@@ -19,6 +19,8 @@ public:
 
     [[nodiscard]] QList<KAboutRelease> releases() const;
 
+    void updateServers();
+
 private:
     KMcpClientInspectorTabWidget *const mTabWidget;
     KMcpClientInspectorManager *const mManager;

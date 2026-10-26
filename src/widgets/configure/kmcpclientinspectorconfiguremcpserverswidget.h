@@ -7,6 +7,7 @@
 #pragma once
 
 #include <QWidget>
+#include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 namespace TextAutoGenerateTextMcpProtocolWidgets
 {
 class McpServerWidget;
@@ -23,10 +24,11 @@ public:
     ~KMcpClientInspectorConfigureMcpServersWidget() override;
 
     void save();
-    void load();
+    void revert();
     void restoreToDefaults();
 
 private:
     TextAutoGenerateTextMcpProtocolWidgets::McpServerWidget *const mMcpServerWidget;
     TextAutoGenerateTextMcpProtocolCore::McpServerManager *const mManager;
+    QList<TextAutoGenerateTextMcpProtocolCore::McpServer> mOriginalServers;
 };

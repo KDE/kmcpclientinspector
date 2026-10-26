@@ -37,8 +37,9 @@ KMcpClientInspectorConfigureSettingsDialog::KMcpClientInspectorConfigureSettings
             &QPushButton::clicked,
             this,
             &KMcpClientInspectorConfigureSettingsDialog::slotRestoreDefaults);
+    // Servers are already loaded: reloading them would recreate all tabs (and stop connections)
+    connect(this, &QDialog::rejected, mConfigureMcpServersWidget, &KMcpClientInspectorConfigureMcpServersWidget::revert);
     readConfig();
-    load();
 }
 
 KMcpClientInspectorConfigureSettingsDialog::~KMcpClientInspectorConfigureSettingsDialog()
@@ -64,11 +65,6 @@ void KMcpClientInspectorConfigureSettingsDialog::writeConfig()
 void KMcpClientInspectorConfigureSettingsDialog::slotAccepted()
 {
     mConfigureMcpServersWidget->save();
-}
-
-void KMcpClientInspectorConfigureSettingsDialog::load()
-{
-    mConfigureMcpServersWidget->load();
 }
 
 void KMcpClientInspectorConfigureSettingsDialog::slotRestoreDefaults()

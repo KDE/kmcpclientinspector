@@ -7,6 +7,7 @@
 #include "kmcpclientinspectorconfiguremcpserverswidget.h"
 #include <QVBoxLayout>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServerManager>
+#include <TextAutoGenerateTextMcpProtocolCore/McpServerModel>
 #include <TextAutoGenerateTextMcpProtocolWidgets/McpServerWidget>
 
 using namespace Qt::Literals::StringLiterals;
@@ -15,6 +16,7 @@ KMcpClientInspectorConfigureMcpServersWidget::KMcpClientInspectorConfigureMcpSer
     : QWidget{parent}
     , mMcpServerWidget(new TextAutoGenerateTextMcpProtocolWidgets::McpServerWidget(manager->mcpServerModel(), this))
     , mManager(manager)
+    , mOriginalServers(manager->mcpServerModel()->mcpServers())
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
@@ -22,10 +24,6 @@ KMcpClientInspectorConfigureMcpServersWidget::KMcpClientInspectorConfigureMcpSer
 
     mMcpServerWidget->setObjectName(u"mMcpServerWidget"_s);
     mainLayout->addWidget(mMcpServerWidget);
-    connect(mMcpServerWidget,
-            &TextAutoGenerateTextMcpProtocolWidgets::McpServerWidget::settingsChanged,
-            this,
-            &KMcpClientInspectorConfigureMcpServersWidget::save);
 }
 
 KMcpClientInspectorConfigureMcpServersWidget::~KMcpClientInspectorConfigureMcpServersWidget() = default;
@@ -33,11 +31,15 @@ KMcpClientInspectorConfigureMcpServersWidget::~KMcpClientInspectorConfigureMcpSe
 void KMcpClientInspectorConfigureMcpServersWidget::save()
 {
     mManager->saveServers();
+    mOriginalServers = mManager->mcpServerModel()->mcpServers();
 }
 
-void KMcpClientInspectorConfigureMcpServersWidget::load()
+void KMcpClientInspectorConfigureMcpServersWidget::revert()
 {
-    mManager->loadServers();
+    // McpServerWidget edits model directly: restore servers as they were when dialog was opened
+    if (mManager->mcpServerModel()->mcpServers() != mOriginalServers) {
+        mManager->mcpServerModel()->setMcpServers(mOriginalServers);
+    }
 }
 
 void KMcpClientInspectorConfigureMcpServersWidget::restoreToDefaults()
