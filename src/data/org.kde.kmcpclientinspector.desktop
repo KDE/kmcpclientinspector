@@ -3,6 +3,7 @@ Name=KMcpClientInspector
 Type=Application
 Exec=kmcpclientinspector -qwindowtitle %c %u
 Icon=kmcpclientinspector
+X-DocPath=kmcpclientinspector/index.html
 GenericName=MCP client inspector
 Categories=Qt;KDE;Development;
 SingleMainWindow=true
