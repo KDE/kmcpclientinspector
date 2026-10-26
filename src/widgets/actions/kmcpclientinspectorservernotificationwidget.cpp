@@ -96,6 +96,8 @@ KMcpClientInspectorServerNotificationWidget::KMcpClientInspectorServerNotificati
             &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::loggingMessageReceived,
             this,
             &KMcpClientInspectorServerNotificationWidget::slotLoggingMessageReceived);
+
+    connect(mLogSearchWidget, &KMcpClientInspectorLogSearchWidget::clearRequested, mJsonPlainTextEditWidget, &JsonPlainTextEditWidget::clear);
 }
 
 KMcpClientInspectorServerNotificationWidget::~KMcpClientInspectorServerNotificationWidget() = default;

@@ -35,6 +35,7 @@ KMcpClientInspectorLogWidget::KMcpClientInspectorLogWidget(TextAutoGenerateTextM
     mJsonPlainTextEditWidget->setReadOnly(true);
 
     connect(mLogTreeWidget, &KMcpClientInspectorLogTreeWidget::jsonSelected, mJsonPlainTextEditWidget, &JsonPlainTextEditWidget::setPlainText);
+    connect(mLogTreeWidget, &KMcpClientInspectorLogTreeWidget::clearRequested, mJsonPlainTextEditWidget, &JsonPlainTextEditWidget::clear);
 }
 
 KMcpClientInspectorLogWidget::~KMcpClientInspectorLogWidget() = default;

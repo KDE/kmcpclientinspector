@@ -52,7 +52,10 @@ KMcpClientInspectorLogTreeWidget::KMcpClientInspectorLogTreeWidget(TextAutoGener
             &KMcpClientInspectorLogSearchWidget::searchTextChanged,
             mLogSortFilterProxyModel,
             &KMcpClientInspectorLogSortFilterProxyModel::setFilterString);
-    connect(mLogSearchWidget, &KMcpClientInspectorLogSearchWidget::clearRequested, mLogModel, &KMcpClientInspectorLogModel::clear);
+    connect(mLogSearchWidget, &KMcpClientInspectorLogSearchWidget::clearRequested, this, [this]() {
+        mLogModel->clear();
+        Q_EMIT clearRequested();
+    });
 }
 
 KMcpClientInspectorLogTreeWidget::~KMcpClientInspectorLogTreeWidget() = default;

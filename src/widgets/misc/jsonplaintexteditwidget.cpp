@@ -62,4 +62,9 @@ void JsonPlainTextEditWidget::setReadOnly(bool readOnly)
     mPlainTextEdit->setReadOnly(readOnly);
 }
 
+void JsonPlainTextEditWidget::clear()
+{
+    mPlainTextEdit->clear();
+}
+
 #include "moc_jsonplaintexteditwidget.cpp"

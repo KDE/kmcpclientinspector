@@ -27,6 +27,7 @@ public:
 
 Q_SIGNALS:
     void jsonSelected(const QString &json);
+    void clearRequested();
 
 private:
     void slotCurrentChanged(const QModelIndex &index);

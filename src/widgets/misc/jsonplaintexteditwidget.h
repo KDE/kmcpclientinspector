@@ -32,6 +32,8 @@ public:
 
     void setReadOnly(bool readOnly);
 
+    void clear();
+
 private:
     TextCustomEditor::PlainTextEditorWidget *const mPlainTextEdit;
     KSyntaxHighlighting::Repository mRepo;
