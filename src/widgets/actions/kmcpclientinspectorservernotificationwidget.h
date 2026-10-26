@@ -34,7 +34,6 @@ private:
     void slotMinimumLevelChanged();
     QComboBox *const mLevelComboBox;
     KMcpClientInspectorLogSearchWidget *const mLogSearchWidget;
-    QPushButton *const mClearButton;
     QSplitter *const mSplitter;
     QTreeView *const mTreeView;
     JsonPlainTextEditWidget *const mJsonPlainTextEditWidget;

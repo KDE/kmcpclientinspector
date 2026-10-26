@@ -32,7 +32,6 @@ KMcpClientInspectorServerNotificationWidget::KMcpClientInspectorServerNotificati
     : KMcpClientInspectorActionTabPageBase{protocolManager, parent}
     , mLevelComboBox(new QComboBox(this))
     , mLogSearchWidget(new KMcpClientInspectorLogSearchWidget(this))
-    , mClearButton(new QPushButton(QIcon::fromTheme(u"edit-clear-history"_s), i18n("Clear"), this))
     , mSplitter(new QSplitter(this))
     , mTreeView(new QTreeView(this))
     , mJsonPlainTextEditWidget(new JsonPlainTextEditWidget(this))
@@ -67,9 +66,6 @@ KMcpClientInspectorServerNotificationWidget::KMcpClientInspectorServerNotificati
     mLogSearchWidget->setObjectName(u"mLogSearchWidget"_s);
     filterLayout->addWidget(mLogSearchWidget, 1);
 
-    mClearButton->setObjectName(u"mClearButton"_s);
-    filterLayout->addWidget(mClearButton);
-
     mSplitter->setObjectName(u"mSplitter"_s);
     mSplitter->setOrientation(Qt::Vertical);
     mSplitter->setChildrenCollapsible(false);
@@ -95,7 +91,7 @@ KMcpClientInspectorServerNotificationWidget::KMcpClientInspectorServerNotificati
             &KMcpClientInspectorLogSearchWidget::searchTextChanged,
             mServerLogSortFilterProxyModel,
             &KMcpClientInspectorServerLogSortFilterProxyModel::setFilterString);
-    connect(mClearButton, &QPushButton::clicked, mServerLogModel, &KMcpClientInspectorServerLogModel::clear);
+    connect(mLogSearchWidget, &KMcpClientInspectorLogSearchWidget::clearRequested, mServerLogModel, &KMcpClientInspectorServerLogModel::clear);
     connect(mProtocolManager,
             &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::loggingMessageReceived,
             this,
