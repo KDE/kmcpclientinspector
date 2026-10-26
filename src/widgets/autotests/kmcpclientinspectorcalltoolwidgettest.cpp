@@ -109,8 +109,11 @@ void KMcpClientInspectorCallToolWidgetTest::shouldUpdateToolsList()
     QCOMPARE(mToolsListWidget->item(1)->toolTip(), u"Echo text"_s);
     QCOMPARE(mToolsListWidget->item(0)->text(), u"Addition (add)"_s);
     QCOMPARE(mToolsListWidget->currentRow(), -1);
+    // Tools are sorted like list: list row is index in tools()
+    QCOMPARE(w.tools().at(0).name(), u"add"_s);
+    QCOMPARE(w.tools().at(1).name(), u"echo"_s);
 
-    mToolsListWidget->setCurrentRow(0);
+    mToolsListWidget->setCurrentRow(1);
     QCOMPARE(w.findChild<QLabel *>(u"mToolNameLabel"_s)->text(), u"echo"_s);
     QCOMPARE(w.findChild<QLabel *>(u"mToolDescriptionLabel"_s)->text(), u"Echo text"_s);
     auto mArgumentsWidget = w.findChild<KMcpClientInspectorToolArgumentsWidget *>(u"mArgumentsWidget"_s);
@@ -120,9 +123,9 @@ void KMcpClientInspectorCallToolWidgetTest::shouldUpdateToolsList()
     QVERIFY(!w.findChild<QPushButton *>(u"mCallToolButton"_s)->isEnabled());
 
     // Selected tool is kept after update
-    mToolsListWidget->setCurrentRow(1);
+    mToolsListWidget->setCurrentRow(0);
     w.setToolsList(jsonFromText(toolsListResponse));
-    QCOMPARE(mToolsListWidget->currentRow(), 1);
+    QCOMPARE(mToolsListWidget->currentRow(), 0);
     QCOMPARE(w.findChild<QLabel *>(u"mToolNameLabel"_s)->text(), u"add"_s);
 
     // Error response keeps list

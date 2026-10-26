@@ -28,6 +28,12 @@ using namespace TextAutoGenerateTextMcpProtocolCore;
 
 namespace
 {
+QString promptDisplayName(const McpProtocolPrompt &prompt)
+{
+    const QString title = prompt.title().value_or(QString());
+    return (title.isEmpty() || title == prompt.name()) ? prompt.name() : u"%1 (%2)"_s.arg(title, prompt.name());
+}
+
 QString roleToString(McpProtocolUtils::Role role)
 {
     switch (role) {
@@ -191,16 +197,18 @@ void KMcpClientInspectorGetPromptWidget::setPromptsList(const QJsonObject &obj)
     mPrompts.clear();
     const QList<McpProtocolPrompt> prompts = result.prompts();
     for (const McpProtocolPrompt &prompt : prompts) {
-        if (prompt.name().isEmpty()) {
-            continue;
+        if (!prompt.name().isEmpty()) {
+            mPrompts.append(prompt);
         }
-        mPrompts.append(prompt);
-        const QString title = prompt.title().value_or(QString());
-        auto item =
-            new QListWidgetItem((title.isEmpty() || title == prompt.name()) ? prompt.name() : u"%1 (%2)"_s.arg(title, prompt.name()), mPromptsListWidget);
+    }
+    // Sort mPrompts itself: list widget rows are used as index in mPrompts
+    std::stable_sort(mPrompts.begin(), mPrompts.end(), [](const McpProtocolPrompt &left, const McpProtocolPrompt &right) {
+        return promptDisplayName(left).localeAwareCompare(promptDisplayName(right)) < 0;
+    });
+    for (const McpProtocolPrompt &prompt : std::as_const(mPrompts)) {
+        auto item = new QListWidgetItem(promptDisplayName(prompt), mPromptsListWidget);
         item->setToolTip(prompt.description().value_or(QString()));
     }
-    mPromptsListWidget->sortItems();
 
     // Keep selected prompt when list is updated
     int row = -1;

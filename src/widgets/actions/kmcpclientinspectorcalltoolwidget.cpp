@@ -35,6 +35,12 @@ using namespace TextAutoGenerateTextMcpProtocolCore;
 
 namespace
 {
+QString toolDisplayName(const McpProtocolTool &tool)
+{
+    const QString title = tool.title().value_or(QString());
+    return (title.isEmpty() || title == tool.name()) ? tool.name() : u"%1 (%2)"_s.arg(title, tool.name());
+}
+
 QString preformatted(const QString &text)
 {
     return u"<pre style=\"white-space: pre-wrap\">%1</pre>"_s.arg(text.toHtmlEscaped());
@@ -195,15 +201,18 @@ void KMcpClientInspectorCallToolWidget::setToolsList(const QJsonObject &obj)
     mTools.clear();
     const QList<McpProtocolTool> tools = result.tools();
     for (const McpProtocolTool &tool : tools) {
-        if (!tool.isValid()) {
-            continue;
+        if (tool.isValid()) {
+            mTools.append(tool);
         }
-        mTools.append(tool);
-        const QString title = tool.title().value_or(QString());
-        auto item = new QListWidgetItem((title.isEmpty() || title == tool.name()) ? tool.name() : u"%1 (%2)"_s.arg(title, tool.name()), mToolsListWidget);
+    }
+    // Sort mTools itself: list widget rows are used as index in mTools
+    std::stable_sort(mTools.begin(), mTools.end(), [](const McpProtocolTool &left, const McpProtocolTool &right) {
+        return toolDisplayName(left).localeAwareCompare(toolDisplayName(right)) < 0;
+    });
+    for (const McpProtocolTool &tool : std::as_const(mTools)) {
+        auto item = new QListWidgetItem(toolDisplayName(tool), mToolsListWidget);
         item->setToolTip(tool.description().value_or(QString()));
     }
-    mToolsListWidget->sortItems();
 
     // Keep selected tool when list is updated
     int row = -1;
