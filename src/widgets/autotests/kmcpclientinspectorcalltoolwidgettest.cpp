@@ -105,9 +105,9 @@ void KMcpClientInspectorCallToolWidgetTest::shouldUpdateToolsList()
 
     auto mToolsListWidget = w.findChild<QListWidget *>(u"mToolsListWidget"_s);
     QCOMPARE(mToolsListWidget->count(), 2);
-    QCOMPARE(mToolsListWidget->item(0)->text(), u"echo"_s);
-    QCOMPARE(mToolsListWidget->item(0)->toolTip(), u"Echo text"_s);
-    QCOMPARE(mToolsListWidget->item(1)->text(), u"Addition (add)"_s);
+    QCOMPARE(mToolsListWidget->item(1)->text(), u"echo"_s);
+    QCOMPARE(mToolsListWidget->item(1)->toolTip(), u"Echo text"_s);
+    QCOMPARE(mToolsListWidget->item(0)->text(), u"Addition (add)"_s);
     QCOMPARE(mToolsListWidget->currentRow(), -1);
 
     mToolsListWidget->setCurrentRow(0);
