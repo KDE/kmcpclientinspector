@@ -111,7 +111,7 @@ void KMcpClientInspectorServerSettingsWidget::slotConfigureRoots()
 
 void KMcpClientInspectorServerSettingsWidget::slotDisconnectRequested()
 {
-    mConnectButtonsWidget->updateButtons(true, false);
+    slotUpdateButtons(mServer.isValid());
     mEditButton->setEnabled(true);
     mCapabilityWidget->setConnected(false);
     Q_EMIT startStopRequested(false);

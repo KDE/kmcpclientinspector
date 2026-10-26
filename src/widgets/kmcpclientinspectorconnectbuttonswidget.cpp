@@ -26,14 +26,9 @@ KMcpClientInspectorConnectButtonsWidget::KMcpClientInspectorConnectButtonsWidget
 
     mainLayout->addWidget(mConnectButton);
     mainLayout->addWidget(mDisconnectButton);
-    connect(mConnectButton, &QPushButton::clicked, this, [this]() {
-        Q_EMIT connectRequested();
-        updateButtons(false, true);
-    });
-    connect(mDisconnectButton, &QPushButton::clicked, this, [this]() {
-        Q_EMIT disconnectRequested();
-        updateButtons(true, false);
-    });
+    // Buttons state is updated by parent: it knows if server is valid
+    connect(mConnectButton, &QPushButton::clicked, this, &KMcpClientInspectorConnectButtonsWidget::connectRequested);
+    connect(mDisconnectButton, &QPushButton::clicked, this, &KMcpClientInspectorConnectButtonsWidget::disconnectRequested);
 }
 
 KMcpClientInspectorConnectButtonsWidget::~KMcpClientInspectorConnectButtonsWidget() = default;
