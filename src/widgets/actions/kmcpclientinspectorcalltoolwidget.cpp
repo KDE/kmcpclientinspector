@@ -159,8 +159,9 @@ KMcpClientInspectorCallToolWidget::KMcpClientInspectorCallToolWidget(McpProtocol
         }
     });
     connect(mProtocolManager, &McpProtocolClientProtocolManager::finished, this, [this]() {
-        clearTools();
+        // Reset pending request first, otherwise result is not cleared
         setCallInProgress(false);
+        clearTools();
     });
     clearTools();
 }

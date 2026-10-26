@@ -155,8 +155,9 @@ KMcpClientInspectorGetPromptWidget::KMcpClientInspectorGetPromptWidget(McpProtoc
         }
     });
     connect(mProtocolManager, &McpProtocolClientProtocolManager::finished, this, [this]() {
-        clearPrompts();
+        // Reset pending request first, otherwise result is not cleared
         setRequestInProgress(false);
+        clearPrompts();
     });
     clearPrompts();
 }
