@@ -11,6 +11,7 @@
 #include <KListWidgetSearchLine>
 #include <KLocalizedString>
 #include <QDesktopServices>
+#include <QIcon>
 #include <QImage>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -37,7 +38,11 @@ namespace
 {
 QString toolDisplayName(const McpProtocolTool &tool)
 {
-    const QString title = tool.title().value_or(QString());
+    // Spec: tool title has precedence over annotations title
+    QString title = tool.title().value_or(QString());
+    if (title.isEmpty() && tool.annotations().has_value()) {
+        title = tool.annotations()->title().value_or(QString());
+    }
     return (title.isEmpty() || title == tool.name()) ? tool.name() : u"%1 (%2)"_s.arg(title, tool.name());
 }
 
@@ -50,6 +55,29 @@ QString dataSize(const QString &base64)
 {
     return QLocale().formattedDataSize(QByteArray::fromBase64(base64.toLatin1()).size());
 }
+
+QString badge(const QString &text, const QColor &color, bool isDefault)
+{
+    if (isDefault) {
+        return u"<span style=\"color: #7f8c8d\"><i>&nbsp;%1&nbsp;</i></span>"_s.arg(text.toHtmlEscaped());
+    }
+    return u"<span style=\"background-color: %1; color: white\">&nbsp;%2&nbsp;</span>"_s.arg(color.name(), text.toHtmlEscaped());
+}
+
+QString hintToolTip(const QString &name, std::optional<bool> hint, bool defaultValue)
+{
+    const auto boolToString = [](bool value) {
+        return value ? u"true"_s : u"false"_s;
+    };
+    return hint.has_value() ? u"%1: %2"_s.arg(name, boolToString(*hint)) : i18n("%1: not set (default: %2)", name, boolToString(defaultValue));
+}
+
+bool isDestructiveTool(const McpProtocolTool &tool)
+{
+    const auto annotations = tool.annotations();
+    // Only flag tools which declare it explicitly, otherwise all tools without annotations would be flagged
+    return annotations.has_value() && !annotations->readOnlyHint().value_or(false) && annotations->destructiveHint().value_or(false);
+}
 }
 
 KMcpClientInspectorCallToolWidget::KMcpClientInspectorCallToolWidget(McpProtocolClientProtocolManager *protocolManager, QWidget *parent)
@@ -58,6 +86,7 @@ KMcpClientInspectorCallToolWidget::KMcpClientInspectorCallToolWidget(McpProtocol
     , mToolsListWidget(new QListWidget(this))
     , mToolNameLabel(new QLabel(this))
     , mToolDescriptionLabel(new QLabel(this))
+    , mToolAnnotationsLabel(new QLabel(this))
     , mArgumentsWidget(new KMcpClientInspectorToolArgumentsWidget(this))
     , mCallToolButton(new QPushButton(i18nc("@action:button", "Call Tool"), this))
     , mStatusLabel(new QLabel(this))
@@ -118,6 +147,11 @@ KMcpClientInspectorCallToolWidget::KMcpClientInspectorCallToolWidget(McpProtocol
     mToolDescriptionLabel->setTextFormat(Qt::PlainText);
     mToolDescriptionLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
     argumentsLayout->addWidget(mToolDescriptionLabel);
+
+    mToolAnnotationsLabel->setObjectName(u"mToolAnnotationsLabel"_s);
+    mToolAnnotationsLabel->setTextFormat(Qt::RichText);
+    mToolAnnotationsLabel->setWordWrap(true);
+    argumentsLayout->addWidget(mToolAnnotationsLabel);
 
     mArgumentsWidget->setObjectName(u"mArgumentsWidget"_s);
     argumentsLayout->addWidget(mArgumentsWidget);
@@ -213,6 +247,9 @@ void KMcpClientInspectorCallToolWidget::setToolsList(const QJsonObject &obj)
     for (const McpProtocolTool &tool : std::as_const(mTools)) {
         auto item = new QListWidgetItem(toolDisplayName(tool), mToolsListWidget);
         item->setToolTip(tool.description().value_or(QString()));
+        if (isDestructiveTool(tool)) {
+            item->setIcon(QIcon::fromTheme(u"dialog-warning"_s));
+        }
     }
 
     // Keep selected tool when list is updated
@@ -236,6 +273,9 @@ void KMcpClientInspectorCallToolWidget::slotCurrentToolChanged(int row)
         mToolNameLabel->setText(i18n("No tool selected"));
         mToolDescriptionLabel->clear();
         mToolDescriptionLabel->setVisible(false);
+        mToolAnnotationsLabel->clear();
+        mToolAnnotationsLabel->setToolTip({});
+        mToolAnnotationsLabel->setVisible(false);
         mArgumentsWidget->clear();
         mArgumentsWidget->setEnabled(false);
     } else {
@@ -244,6 +284,9 @@ void KMcpClientInspectorCallToolWidget::slotCurrentToolChanged(int row)
         const QString description = tool.description().value_or(QString());
         mToolDescriptionLabel->setText(description);
         mToolDescriptionLabel->setVisible(!description.isEmpty());
+        mToolAnnotationsLabel->setText(annotationsToHtml(tool.annotations()));
+        mToolAnnotationsLabel->setToolTip(annotationsToolTip(tool.annotations()));
+        mToolAnnotationsLabel->setVisible(true);
         mArgumentsWidget->setInputSchema(tool.inputSchema());
         mArgumentsWidget->setEnabled(true);
     }
@@ -336,6 +379,50 @@ void KMcpClientInspectorCallToolWidget::showUrlElicitations(const QJsonObject &o
         });
         dialog->show();
     }
+}
+
+QString KMcpClientInspectorCallToolWidget::annotationsToHtml(const std::optional<McpProtocolToolAnnotations> &annotations)
+{
+    const McpProtocolToolAnnotations hints = annotations.value_or(McpProtocolToolAnnotations());
+    QStringList badges;
+    // Default values come from MCP specification
+    const std::optional<bool> readOnly = hints.readOnlyHint();
+    if (readOnly.value_or(false)) {
+        badges.append(badge(i18nc("@label tool annotation", "Read-only"), QColor(0x27, 0xae, 0x60), !readOnly.has_value()));
+    } else {
+        // Destructive and idempotent hints are meaningful only when tool is not read-only
+        const std::optional<bool> destructive = hints.destructiveHint();
+        if (destructive.value_or(true)) {
+            badges.append(badge(i18nc("@label tool annotation", "Destructive"), QColor(0xda, 0x44, 0x53), !destructive.has_value()));
+        } else {
+            badges.append(badge(i18nc("@label tool annotation", "Additive"), QColor(0x3d, 0xae, 0xe9), false));
+        }
+        const std::optional<bool> idempotent = hints.idempotentHint();
+        if (idempotent.value_or(false)) {
+            badges.append(badge(i18nc("@label tool annotation", "Idempotent"), QColor(0x3d, 0xae, 0xe9), false));
+        }
+    }
+    const std::optional<bool> openWorld = hints.openWorldHint();
+    if (openWorld.value_or(true)) {
+        badges.append(badge(i18nc("@label tool annotation", "Open world"), QColor(0x3d, 0xae, 0xe9), !openWorld.has_value()));
+    } else {
+        badges.append(badge(i18nc("@label tool annotation", "Closed world"), QColor(0x3d, 0xae, 0xe9), false));
+    }
+    return badges.join(u"&nbsp;&nbsp;"_s);
+}
+
+QString KMcpClientInspectorCallToolWidget::annotationsToolTip(const std::optional<McpProtocolToolAnnotations> &annotations)
+{
+    if (!annotations.has_value()) {
+        return i18n("The server did not send annotations: default values are used.");
+    }
+    const QStringList lines{
+        hintToolTip(u"readOnlyHint"_s, annotations->readOnlyHint(), false),
+        hintToolTip(u"destructiveHint"_s, annotations->destructiveHint(), true),
+        hintToolTip(u"idempotentHint"_s, annotations->idempotentHint(), false),
+        hintToolTip(u"openWorldHint"_s, annotations->openWorldHint(), true),
+    };
+    return lines.join(u'\n');
 }
 
 QString KMcpClientInspectorCallToolWidget::resultToHtml(const McpProtocolCallToolResult &result, QTextDocument *document)

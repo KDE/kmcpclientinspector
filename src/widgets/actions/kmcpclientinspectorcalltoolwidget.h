@@ -53,6 +53,14 @@ public:
      */
     [[nodiscard]] static QString
     contentBlockToHtml(const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::ContentBlock &block, QTextDocument *document, int &imageIndex);
+    /*!
+     * Convert tool \a annotations to html badges. Hints not set by server use default value and are grayed.
+     */
+    [[nodiscard]] static QString annotationsToHtml(const std::optional<TextAutoGenerateTextMcpProtocolCore::McpProtocolToolAnnotations> &annotations);
+    /*!
+     * Describe each hint of \a annotations, with its default value when it is not set.
+     */
+    [[nodiscard]] static QString annotationsToolTip(const std::optional<TextAutoGenerateTextMcpProtocolCore::McpProtocolToolAnnotations> &annotations);
 
 private:
     void slotCurrentToolChanged(int row);
@@ -69,6 +77,7 @@ private:
     QListWidget *const mToolsListWidget;
     QLabel *const mToolNameLabel;
     QLabel *const mToolDescriptionLabel;
+    QLabel *const mToolAnnotationsLabel;
     KMcpClientInspectorToolArgumentsWidget *const mArgumentsWidget;
     QPushButton *const mCallToolButton;
     QLabel *const mStatusLabel;

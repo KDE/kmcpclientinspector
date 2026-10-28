@@ -20,4 +20,6 @@ private Q_SLOTS:
     void shouldShowResult();
     void shouldShowError();
     void shouldConvertResultToHtml();
+    void shouldShowAnnotations();
+    void shouldConvertAnnotationsToHtml();
 };

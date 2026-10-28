@@ -9,6 +9,7 @@
 #include "actions/kmcpclientinspectortoolargumentswidget.h"
 #include "misc/jsonplaintexteditwidget.h"
 #include <KListWidgetSearchLine>
+#include <QIcon>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLabel>
@@ -19,6 +20,7 @@
 #include <QTextBrowser>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolCallToolResult>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolToolAnnotations>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 QTEST_MAIN(KMcpClientInspectorCallToolWidgetTest)
 using namespace Qt::Literals::StringLiterals;
@@ -72,6 +74,11 @@ void KMcpClientInspectorCallToolWidgetTest::shouldHaveDefaultValues()
     auto mToolDescriptionLabel = w.findChild<QLabel *>(u"mToolDescriptionLabel"_s);
     QVERIFY(mToolDescriptionLabel);
     QVERIFY(mToolDescriptionLabel->text().isEmpty());
+
+    auto mToolAnnotationsLabel = w.findChild<QLabel *>(u"mToolAnnotationsLabel"_s);
+    QVERIFY(mToolAnnotationsLabel);
+    QCOMPARE(mToolAnnotationsLabel->textFormat(), Qt::RichText);
+    QVERIFY(mToolAnnotationsLabel->text().isEmpty());
 
     auto mArgumentsWidget = w.findChild<KMcpClientInspectorToolArgumentsWidget *>(u"mArgumentsWidget"_s);
     QVERIFY(mArgumentsWidget);
@@ -176,6 +183,72 @@ void KMcpClientInspectorCallToolWidgetTest::shouldConvertResultToHtml()
     QVERIFY(html.contains(u"Foo file"_s));
     QVERIFY(html.contains(u"Bar content"_s));
     QVERIFY(html.contains(u"temperature"_s));
+}
+
+void KMcpClientInspectorCallToolWidgetTest::shouldShowAnnotations()
+{
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager manager(TextAutoGenerateTextMcpProtocolCore::McpServer{});
+    KMcpClientInspectorCallToolWidget w(&manager);
+    w.setToolsList(jsonFromText(R"({
+        "jsonrpc": "2.0",
+        "id": 2,
+        "result": {
+            "tools": [
+                {"name": "delete_file", "annotations": {"title": "Delete File", "destructiveHint": true}, "inputSchema": {"type": "object"}},
+                {"name": "read_file", "annotations": {"readOnlyHint": true}, "inputSchema": {"type": "object"}},
+                {"name": "plain", "inputSchema": {"type": "object"}}
+            ]
+        }
+    })"));
+    auto mToolsListWidget = w.findChild<QListWidget *>(u"mToolsListWidget"_s);
+    QCOMPARE(mToolsListWidget->count(), 3);
+    // Annotations title is used when tool has no title
+    QCOMPARE(mToolsListWidget->item(0)->text(), u"Delete File (delete_file)"_s);
+    // Only explicitly destructive tools have an icon
+    QCOMPARE(mToolsListWidget->item(0)->icon().isNull(), QIcon::fromTheme(u"dialog-warning"_s).isNull());
+    QVERIFY(mToolsListWidget->item(1)->icon().isNull());
+    QVERIFY(mToolsListWidget->item(2)->icon().isNull());
+
+    auto mToolAnnotationsLabel = w.findChild<QLabel *>(u"mToolAnnotationsLabel"_s);
+    mToolsListWidget->setCurrentRow(2);
+    QVERIFY(mToolAnnotationsLabel->text().contains(u"Read-only"_s));
+    QVERIFY(mToolAnnotationsLabel->toolTip().contains(u"readOnlyHint: true"_s));
+
+    mToolsListWidget->setCurrentRow(-1);
+    QVERIFY(mToolAnnotationsLabel->text().isEmpty());
+    QVERIFY(mToolAnnotationsLabel->toolTip().isEmpty());
+}
+
+void KMcpClientInspectorCallToolWidgetTest::shouldConvertAnnotationsToHtml()
+{
+    using TextAutoGenerateTextMcpProtocolCore::McpProtocolToolAnnotations;
+    // No annotations: default values are grayed
+    QString html = KMcpClientInspectorCallToolWidget::annotationsToHtml(std::nullopt);
+    QVERIFY(html.contains(u"Destructive"_s));
+    QVERIFY(html.contains(u"Open world"_s));
+    QVERIFY(!html.contains(u"background-color"_s));
+    QVERIFY(!KMcpClientInspectorCallToolWidget::annotationsToolTip(std::nullopt).isEmpty());
+
+    McpProtocolToolAnnotations annotations;
+    annotations.setReadOnlyHint(true);
+    annotations.setDestructiveHint(true);
+    annotations.setOpenWorldHint(false);
+    html = KMcpClientInspectorCallToolWidget::annotationsToHtml(annotations);
+    QVERIFY(html.contains(u"Read-only"_s));
+    // Destructive hint is ignored for read-only tool
+    QVERIFY(!html.contains(u"Destructive"_s));
+    QVERIFY(html.contains(u"Closed world"_s));
+
+    annotations = McpProtocolToolAnnotations();
+    annotations.setDestructiveHint(false);
+    annotations.setIdempotentHint(true);
+    html = KMcpClientInspectorCallToolWidget::annotationsToHtml(annotations);
+    QVERIFY(html.contains(u"Additive"_s));
+    QVERIFY(html.contains(u"Idempotent"_s));
+    const QString toolTip = KMcpClientInspectorCallToolWidget::annotationsToolTip(annotations);
+    QVERIFY(toolTip.contains(u"destructiveHint: false"_s));
+    QVERIFY(toolTip.contains(u"idempotentHint: true"_s));
+    QVERIFY(toolTip.contains(u"readOnlyHint: not set (default: false)"_s));
 }
 
 #include "moc_kmcpclientinspectorcalltoolwidgettest.cpp"
