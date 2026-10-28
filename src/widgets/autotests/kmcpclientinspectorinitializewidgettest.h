@@ -17,4 +17,6 @@ public:
 private Q_SLOTS:
     void shouldHaveDefaultValues();
     void shouldShowResult();
+    void shouldShowInitializeResult();
+    void shouldConvertCapabilitiesToText();
 };
