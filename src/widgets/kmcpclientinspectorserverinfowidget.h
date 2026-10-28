@@ -29,4 +29,5 @@ private:
     QLabel *const mEnvironments;
     QLabel *const mServerUrl;
     QLabel *const mRoots;
+    QLabel *const mIcon;
 };

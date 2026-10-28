@@ -19,10 +19,12 @@ KMcpClientInspectorServerInfoWidget::KMcpClientInspectorServerInfoWidget(QWidget
     , mEnvironments(createLabel(u"mEnvironments"_s))
     , mServerUrl(createLabel(u"mServerUrl"_s))
     , mRoots(createLabel(u"mRoots"_s))
+    , mIcon(new QLabel(this))
 {
     mMainLayout->setObjectName(u"mainLayout"_s);
     mMainLayout->setContentsMargins({});
 
+    mMainLayout->addRow(i18nc("@label", "Icon:"), mIcon);
     mMainLayout->addRow(i18nc("@label", "Name:"), mName);
     mMainLayout->addRow(i18nc("@label", "Type:"), mTransportType);
     mMainLayout->addRow(i18nc("@label", "Command:"), mCommand);
@@ -45,6 +47,7 @@ QLabel *KMcpClientInspectorServerInfoWidget::createLabel(const QString &objectNa
 
 void KMcpClientInspectorServerInfoWidget::setServerInfo(const TextAutoGenerateTextMcpProtocolCore::McpServer &server)
 {
+    const auto icon = server.icon();
     const auto type = server.transportType();
     const auto settings = server.settings();
     const bool isStdio = (type == TextAutoGenerateTextMcpProtocolCore::McpProtocolPlugin::TransportType::Stdio);
@@ -63,10 +66,13 @@ void KMcpClientInspectorServerInfoWidget::setServerInfo(const TextAutoGenerateTe
     mServerUrl->setText(settings.serverUrl().toDisplayString());
     mRoots->setText(settings.roots().join(u'\n'));
 
+    mIcon->setPixmap(icon.pixmap(24, 24));
+
     mMainLayout->setRowVisible(mCommand, isStdio);
     mMainLayout->setRowVisible(mArguments, isStdio);
     mMainLayout->setRowVisible(mEnvironments, isStdio);
     mMainLayout->setRowVisible(mServerUrl, !isStdio);
+    mMainLayout->setRowVisible(mIcon, !icon.isNull());
 }
 
 #include "moc_kmcpclientinspectorserverinfowidget.cpp"
