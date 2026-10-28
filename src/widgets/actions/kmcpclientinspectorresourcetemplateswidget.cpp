@@ -33,7 +33,7 @@ KMcpClientInspectorResourceTemplatesWidget::~KMcpClientInspectorResourceTemplate
 
 void KMcpClientInspectorResourceTemplatesWidget::setResult(const QJsonObject &obj)
 {
-    showJson(obj["result"_L1].toObject());
+    showJson(obj);
 }
 
 #include "moc_kmcpclientinspectorresourcetemplateswidget.cpp"

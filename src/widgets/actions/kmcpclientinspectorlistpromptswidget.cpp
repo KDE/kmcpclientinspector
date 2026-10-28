@@ -22,7 +22,7 @@ KMcpClientInspectorListPromptsWidget::~KMcpClientInspectorListPromptsWidget() = 
 
 void KMcpClientInspectorListPromptsWidget::setResult(const QJsonObject &obj)
 {
-    showJson(obj["result"_L1].toObject());
+    showJson(obj);
 }
 
 #include "moc_kmcpclientinspectorlistpromptswidget.cpp"
