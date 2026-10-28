@@ -7,10 +7,8 @@
 #include "configure/kmcpclientinspectorconfiguremcpserverswidget.h"
 #include "kmcpclientinspector_widget_debug.h"
 #include <KLocalizedString>
-#include <KSharedConfig>
-#include <KWindowConfig>
 #include <QPushButton>
-#include <QWindow>
+#include <TextAddonsWidgets/LoadDialogSizeUtils>
 
 namespace
 {
@@ -39,28 +37,10 @@ KMcpClientInspectorConfigureSettingsDialog::KMcpClientInspectorConfigureSettings
             &KMcpClientInspectorConfigureSettingsDialog::slotRestoreDefaults);
     // Servers are already loaded: reloading them would recreate all tabs (and stop connections)
     connect(this, &QDialog::rejected, mConfigureMcpServersWidget, &KMcpClientInspectorConfigureMcpServersWidget::revert);
-    readConfig();
+    TextAddonsWidgets::LoadDialogSizeUtils::manageDialogSize(this, QLatin1StringView(myConfigGroupName), QSize(800, 600));
 }
 
-KMcpClientInspectorConfigureSettingsDialog::~KMcpClientInspectorConfigureSettingsDialog()
-{
-    writeConfig();
-}
-
-void KMcpClientInspectorConfigureSettingsDialog::readConfig()
-{
-    create(); // ensure a window is created
-    windowHandle()->resize(QSize(800, 600));
-    const KConfigGroup group(KSharedConfig::openStateConfig(), QLatin1StringView(myConfigGroupName));
-    KWindowConfig::restoreWindowSize(windowHandle(), group);
-    resize(windowHandle()->size()); // workaround for QTBUG-40584
-}
-
-void KMcpClientInspectorConfigureSettingsDialog::writeConfig()
-{
-    KConfigGroup group(KSharedConfig::openStateConfig(), QLatin1StringView(myConfigGroupName));
-    KWindowConfig::saveWindowSize(windowHandle(), group);
-}
+KMcpClientInspectorConfigureSettingsDialog::~KMcpClientInspectorConfigureSettingsDialog() = default;
 
 void KMcpClientInspectorConfigureSettingsDialog::slotAccepted()
 {
