@@ -25,7 +25,6 @@ public:
 
     void save();
     void revert();
-    void restoreToDefaults();
 
 private:
     TextAutoGenerateTextMcpProtocolWidgets::McpServerWidget *const mMcpServerWidget;

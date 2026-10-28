@@ -5,7 +5,6 @@
  */
 #include "kmcpclientinspectorconfiguresettingsdialog.h"
 #include "configure/kmcpclientinspectorconfiguremcpserverswidget.h"
-#include "kmcpclientinspector_widget_debug.h"
 #include <KLocalizedString>
 #include <QPushButton>
 #include <TextAddonsWidgets/LoadDialogSizeUtils>
@@ -31,10 +30,6 @@ KMcpClientInspectorConfigureSettingsDialog::KMcpClientInspectorConfigureSettings
     buttonBox()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 
     connect(buttonBox()->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &KMcpClientInspectorConfigureSettingsDialog::slotAccepted);
-    connect(buttonBox()->button(QDialogButtonBox::RestoreDefaults),
-            &QPushButton::clicked,
-            this,
-            &KMcpClientInspectorConfigureSettingsDialog::slotRestoreDefaults);
     // Servers are already loaded: reloading them would recreate all tabs (and stop connections)
     connect(this, &QDialog::rejected, mConfigureMcpServersWidget, &KMcpClientInspectorConfigureMcpServersWidget::revert);
     TextAddonsWidgets::LoadDialogSizeUtils::manageDialogSize(this, QLatin1StringView(myConfigGroupName), QSize(800, 600));
@@ -45,15 +40,6 @@ KMcpClientInspectorConfigureSettingsDialog::~KMcpClientInspectorConfigureSetting
 void KMcpClientInspectorConfigureSettingsDialog::slotAccepted()
 {
     mConfigureMcpServersWidget->save();
-}
-
-void KMcpClientInspectorConfigureSettingsDialog::slotRestoreDefaults()
-{
-    if (currentPage() == mConfigureMcpServersWidgetPage) {
-        mConfigureMcpServersWidget->restoreToDefaults();
-    } else {
-        qCWarning(KMCPCLIENTINSPECTOR_WIDGET_LOG) << " slotRestoreDefault not implemented for current page";
-    }
 }
 
 #include "moc_kmcpclientinspectorconfiguresettingsdialog.cpp"

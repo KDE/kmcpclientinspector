@@ -42,9 +42,4 @@ void KMcpClientInspectorConfigureMcpServersWidget::revert()
     }
 }
 
-void KMcpClientInspectorConfigureMcpServersWidget::restoreToDefaults()
-{
-    // nothing
-}
-
 #include "moc_kmcpclientinspectorconfiguremcpserverswidget.cpp"
