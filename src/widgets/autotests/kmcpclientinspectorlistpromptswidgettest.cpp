@@ -45,8 +45,7 @@ void KMcpClientInspectorListPromptsWidgetTest::shouldShowResult()
     KMcpClientInspectorListPromptsWidget w(&manager);
     const QJsonObject obj = QJsonDocument::fromJson(R"({"jsonrpc": "2.0", "id": 1, "result": {"foo": "bar", "list": [1, 2]}})").object();
     w.setResult(obj);
-    QCOMPARE(QJsonDocument::fromJson(w.findChild<JsonPlainTextEditWidget *>(u"mJsonPlainTextEditWidget"_s)->toPlainText().toUtf8()).object(),
-             obj[u"result"_s].toObject());
+    QCOMPARE(QJsonDocument::fromJson(w.findChild<JsonPlainTextEditWidget *>(u"mJsonPlainTextEditWidget"_s)->toPlainText().toUtf8()).object(), obj);
 }
 
 #include "moc_kmcpclientinspectorlistpromptswidgettest.cpp"
