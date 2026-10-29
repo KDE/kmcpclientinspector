@@ -28,6 +28,13 @@ KMcpClientInspectorResultWidget::KMcpClientInspectorResultWidget(TextAutoGenerat
         mProtocolManager->executeAction(type);
     });
     mainLayout->addWidget(actionButton);
+    actionButton->setEnabled(mProtocolManager->isInitialized());
+    connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::initialized, actionButton, [actionButton]() {
+        actionButton->setEnabled(true);
+    });
+    connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::finished, actionButton, [actionButton]() {
+        actionButton->setEnabled(false);
+    });
 
     mJsonPlainTextEditWidget->setObjectName(u"mJsonPlainTextEditWidget"_s);
     mainLayout->addWidget(mJsonPlainTextEditWidget);
