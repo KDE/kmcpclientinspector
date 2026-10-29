@@ -14,7 +14,7 @@ using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorLogSearchWidget::KMcpClientInspectorLogSearchWidget(QWidget *parent)
     : QWidget{parent}
     , mSearchLineEdit(new QLineEdit(this))
-    , mClearButton(new QPushButton(QIcon::fromTheme(u"edit-clear-history"_s), i18n("Clear"), this))
+    , mClearButton(new QPushButton(QIcon::fromTheme(u"edit-clear-history"_s), i18nc("@action:button", "Clear"), this))
 {
     auto mainLayout = new QHBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
