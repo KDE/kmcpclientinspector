@@ -8,6 +8,8 @@
 #include "actions/kmcpclientinspectorlogsearchwidget.h"
 #include "actions/kmcpclientinspectorlogtreewidget.h"
 #include "kmcpclientinspectorlogmodel.h"
+#include "misc/directioncombobox.h"
+#include <QHBoxLayout>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLineEdit>
@@ -22,11 +24,15 @@ using namespace Qt::Literals::StringLiterals;
 namespace
 {
 TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageInfo
-createMessageInfo(qint64 identifier, TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType type)
+createMessageInfo(qint64 identifier,
+                  TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType type,
+                  TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageDirection direction =
+                      TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageDirection::Sent)
 {
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageInfo info;
     info.identifier = identifier;
     info.type = type;
+    info.direction = direction;
     info.dateTime = QDateTime::currentDateTime();
     info.message = QJsonObject({{u"jsonrpc"_s, u"2.0"_s}, {u"id"_s, identifier}});
     return info;
@@ -47,6 +53,15 @@ void KMcpClientInspectorLogTreeWidgetTest::shouldHaveDefaultValues()
     QVERIFY(mainLayout);
     QCOMPARE(mainLayout->contentsMargins(), QMargins());
 
+    auto hboxLayout = w.findChild<QHBoxLayout *>(u"hboxLayout"_s);
+    QVERIFY(hboxLayout);
+    QCOMPARE(hboxLayout->contentsMargins(), QMargins());
+
+    auto mDirectionComboBox = w.findChild<DirectionComboBox *>(u"mDirectionComboBox"_s);
+    QVERIFY(mDirectionComboBox);
+    QCOMPARE(mDirectionComboBox->count(), 3);
+    QCOMPARE(mDirectionComboBox->type(), KMcpClientInspectorLogModel::DirectionType::All);
+
     auto mLogSearchWidget = w.findChild<KMcpClientInspectorLogSearchWidget *>(u"mLogSearchWidget"_s);
     QVERIFY(mLogSearchWidget);
 
@@ -57,6 +72,8 @@ void KMcpClientInspectorLogTreeWidgetTest::shouldHaveDefaultValues()
     QVERIFY(mTreeView->model());
     QCOMPARE(mTreeView->model()->rowCount(), 0);
     QVERIFY(mTreeView->isColumnHidden(KMcpClientInspectorLogModel::LogColumns::Json));
+    QVERIFY(mTreeView->isColumnHidden(KMcpClientInspectorLogModel::LogColumns::DurationValue));
+    QVERIFY(mTreeView->isColumnHidden(KMcpClientInspectorLogModel::LogColumns::DirectionValue));
 }
 
 void KMcpClientInspectorLogTreeWidgetTest::shouldAddLogMessage()
@@ -94,6 +111,41 @@ void KMcpClientInspectorLogTreeWidgetTest::shouldFilterLog()
     QCOMPARE(mTreeView->model()->rowCount(), 1);
 
     mSearchLineEdit->clear();
+    QCOMPARE(mTreeView->model()->rowCount(), 3);
+}
+
+void KMcpClientInspectorLogTreeWidgetTest::shouldFilterDirection()
+{
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager manager(TextAutoGenerateTextMcpProtocolCore::McpServer{});
+    KMcpClientInspectorLogTreeWidget w(&manager);
+    auto mTreeView = w.findChild<QTreeView *>(u"mTreeView"_s);
+    auto mDirectionComboBox = w.findChild<DirectionComboBox *>(u"mDirectionComboBox"_s);
+
+    Q_EMIT manager.messageLogged(createMessageInfo(1,
+                                                   TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Ping,
+                                                   TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageDirection::Sent));
+    Q_EMIT manager.messageLogged(createMessageInfo(1,
+                                                   TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Ping,
+                                                   TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageDirection::Received));
+    Q_EMIT manager.messageLogged(createMessageInfo(2,
+                                                   TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::Initialize,
+                                                   TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageDirection::Sent));
+    QCOMPARE(mTreeView->model()->rowCount(), 3);
+
+    mDirectionComboBox->setCurrentIndex(mDirectionComboBox->findData(QVariant::fromValue(KMcpClientInspectorLogModel::DirectionType::Sent)));
+    QCOMPARE(mTreeView->model()->rowCount(), 2);
+
+    mDirectionComboBox->setCurrentIndex(mDirectionComboBox->findData(QVariant::fromValue(KMcpClientInspectorLogModel::DirectionType::Received)));
+    QCOMPARE(mTreeView->model()->rowCount(), 1);
+
+    // Direction and search text filters are combined
+    mDirectionComboBox->setCurrentIndex(mDirectionComboBox->findData(QVariant::fromValue(KMcpClientInspectorLogModel::DirectionType::Sent)));
+    auto mSearchLineEdit = w.findChild<QLineEdit *>(u"mSearchLineEdit"_s);
+    mSearchLineEdit->setText(u"Initialize"_s);
+    QCOMPARE(mTreeView->model()->rowCount(), 1);
+
+    mSearchLineEdit->clear();
+    mDirectionComboBox->setCurrentIndex(mDirectionComboBox->findData(QVariant::fromValue(KMcpClientInspectorLogModel::DirectionType::All)));
     QCOMPARE(mTreeView->model()->rowCount(), 3);
 }
 
