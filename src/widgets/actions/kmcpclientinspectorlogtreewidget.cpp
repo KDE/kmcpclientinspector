@@ -9,6 +9,7 @@
 #include "kmcpclientinspectorlogsortfilterproxymodel.h"
 #include "misc/directioncombobox.h"
 #include <KLocalizedString>
+#include <QHBoxLayout>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLabel>

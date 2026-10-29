@@ -8,12 +8,7 @@
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <QWidget>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
-class QLineEdit;
 class QTreeView;
-namespace TextAutoGenerateTextMcpProtocolCore
-{
-class McpProtocolClientProtocolManager;
-}
 class KMcpClientInspectorLogModel;
 class KMcpClientInspectorLogSortFilterProxyModel;
 class KMcpClientInspectorLogSearchWidget;
