@@ -26,3 +26,5 @@ KMcpClientInspectorLogModel::DirectionType DirectionComboBox::type() const
 {
     return currentData().value<KMcpClientInspectorLogModel::DirectionType>();
 }
+
+#include "moc_directioncombobox.cpp"
