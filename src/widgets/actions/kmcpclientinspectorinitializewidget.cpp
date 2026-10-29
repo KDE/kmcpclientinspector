@@ -28,7 +28,7 @@ KMcpClientInspectorInitializeWidget::KMcpClientInspectorInitializeWidget(McpProt
     , mServerWebsite(createLabel(u"mServerWebsite"_s))
     , mProtocolVersion(createLabel(u"mProtocolVersion"_s))
     , mCapabilities(createLabel(u"mCapabilities"_s))
-    , mInstructions(new QPlainTextEdit(this))
+    , mInstructions(new QTextEdit(this))
     , mJsonPlainTextEditWidget(new JsonPlainTextEditWidget(this))
 {
     auto mainLayout = new QVBoxLayout(this);
@@ -111,7 +111,7 @@ void KMcpClientInspectorInitializeWidget::setInitializeResult(const McpProtocolI
     mServerWebsite->setText(u"<a href=\"%1\">%2</a>"_s.arg(websiteUrl.toHtmlEscaped(), websiteUrl.toHtmlEscaped()));
     mProtocolVersion->setText(result.protocolVersion());
     mCapabilities->setText(capabilitiesToText(result.capabilities()));
-    mInstructions->setPlainText(result.instructions().value_or(QString()));
+    mInstructions->setMarkdown(result.instructions().value_or(QString()));
 
     mFormLayout->setRowVisible(mServerTitle, !title.isEmpty());
     mFormLayout->setRowVisible(mServerDescription, !description.isEmpty());

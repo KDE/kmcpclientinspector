@@ -10,9 +10,9 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLabel>
-#include <QPlainTextEdit>
 #include <QTabWidget>
 #include <QTest>
+#include <QTextEdit>
 #include <QVBoxLayout>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolInitializeResult>
@@ -50,7 +50,7 @@ void KMcpClientInspectorInitializeWidgetTest::shouldHaveDefaultValues()
     QVERIFY(mCapabilities);
     QCOMPARE(mCapabilities->text(), u"None"_s);
 
-    auto mInstructions = w.findChild<QPlainTextEdit *>(u"mInstructions"_s);
+    auto mInstructions = w.findChild<QTextEdit *>(u"mInstructions"_s);
     QVERIFY(mInstructions);
     QVERIFY(mInstructions->isReadOnly());
     QVERIFY(mInstructions->toPlainText().isEmpty());
@@ -82,7 +82,7 @@ void KMcpClientInspectorInitializeWidgetTest::shouldShowInitializeResult()
     QCOMPARE(w.findChild<QLabel *>(u"mServerVersion"_s)->text(), u"1.2.3"_s);
     QCOMPARE(w.findChild<QLabel *>(u"mProtocolVersion"_s)->text(), u"2025-06-18"_s);
     QCOMPARE(w.findChild<QLabel *>(u"mCapabilities"_s)->text(), u"Tools (list changed notifications)\nLogging"_s);
-    QCOMPARE(w.findChild<QPlainTextEdit *>(u"mInstructions"_s)->toPlainText(), u"Use the tools wisely."_s);
+    QCOMPARE(w.findChild<QTextEdit *>(u"mInstructions"_s)->toPlainText(), u"Use the tools wisely."_s);
 }
 
 void KMcpClientInspectorInitializeWidgetTest::shouldConvertCapabilitiesToText()

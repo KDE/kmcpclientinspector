@@ -11,7 +11,7 @@
 class JsonPlainTextEditWidget;
 class QFormLayout;
 class QLabel;
-class QPlainTextEdit;
+class QTextEdit;
 namespace TextAutoGenerateTextMcpProtocolCore
 {
 class McpProtocolInitializeResult;
@@ -40,6 +40,6 @@ private:
     QLabel *const mServerWebsite;
     QLabel *const mProtocolVersion;
     QLabel *const mCapabilities;
-    QPlainTextEdit *const mInstructions;
+    QTextEdit *const mInstructions;
     JsonPlainTextEditWidget *const mJsonPlainTextEditWidget;
 };
