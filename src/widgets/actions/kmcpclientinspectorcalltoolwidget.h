@@ -54,6 +54,10 @@ public:
     [[nodiscard]] static QString
     contentBlockToHtml(const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::ContentBlock &block, QTextDocument *document, int &imageIndex);
     /*!
+     * Convert text or binary resource contents \a resource to html.
+     */
+    [[nodiscard]] static QString resourceContentsToHtml(const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::EmbeddedResourceResource &resource);
+    /*!
      * Convert tool \a annotations to html badges. Hints not set by server use default value and are grayed.
      */
     [[nodiscard]] static QString annotationsToHtml(const std::optional<TextAutoGenerateTextMcpProtocolCore::McpProtocolToolAnnotations> &annotations);

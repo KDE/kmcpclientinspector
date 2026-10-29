@@ -471,15 +471,21 @@ QString KMcpClientInspectorCallToolWidget::contentBlockToHtml(const McpProtocolU
             html += u"<p>%1</p>"_s.arg(description.toHtmlEscaped());
         }
     } else if (const auto embedded = std::get_if<McpProtocolEmbeddedResource>(&block)) {
-        const McpProtocolUtils::EmbeddedResourceResource resource = embedded->resource();
-        if (const auto textResource = std::get_if<McpProtocolTextResourceContents>(&resource)) {
-            html += u"<p><b>%1</b></p>"_s.arg(textResource->uri().toHtmlEscaped());
-            html += preformatted(textResource->text());
-        } else if (const auto blobResource = std::get_if<McpProtocolBlobResourceContents>(&resource)) {
-            html += u"<p><b>%1</b></p>"_s.arg(blobResource->uri().toHtmlEscaped());
-            html += u"<p><i>%1</i></p>"_s.arg(
-                i18n("Binary resource (%1, %2)", blobResource->mimeType().value_or(i18n("unknown type")), dataSize(blobResource->blob())).toHtmlEscaped());
-        }
+        html += resourceContentsToHtml(embedded->resource());
+    }
+    return html;
+}
+
+QString KMcpClientInspectorCallToolWidget::resourceContentsToHtml(const McpProtocolUtils::EmbeddedResourceResource &resource)
+{
+    QString html;
+    if (const auto textResource = std::get_if<McpProtocolTextResourceContents>(&resource)) {
+        html += u"<p><b>%1</b></p>"_s.arg(textResource->uri().toHtmlEscaped());
+        html += preformatted(textResource->text());
+    } else if (const auto blobResource = std::get_if<McpProtocolBlobResourceContents>(&resource)) {
+        html += u"<p><b>%1</b></p>"_s.arg(blobResource->uri().toHtmlEscaped());
+        html += u"<p><i>%1</i></p>"_s.arg(
+            i18n("Binary resource (%1, %2)", blobResource->mimeType().value_or(i18n("unknown type")), dataSize(blobResource->blob())).toHtmlEscaped());
     }
     return html;
 }

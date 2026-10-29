@@ -55,6 +55,8 @@ target_sources(
         actions/kmcpclientinspectorpromptargumentswidget.cpp
         actions/kmcpclientinspectorlistresourceswidget.h
         actions/kmcpclientinspectorlistresourceswidget.cpp
+        actions/kmcpclientinspectorreadresourcewidget.h
+        actions/kmcpclientinspectorreadresourcewidget.cpp
         actions/kmcpclientinspectorlogwidget.h
         actions/kmcpclientinspectorlogwidget.cpp
         actions/kmcpclientinspectorlogtreewidget.h
