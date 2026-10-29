@@ -70,6 +70,14 @@ QVariant KMcpClientInspectorLogModel::data(const QModelIndex &index, int role) c
             return i18n("Received");
         }
         break;
+    case LogColumns::DirectionValue:
+        switch (log.direction) {
+        case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageDirection::Sent:
+            return QVariant::fromValue(DirectionType::Sent);
+        case TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageDirection::Received:
+            return QVariant::fromValue(DirectionType::Received);
+        }
+        break;
     case LogColumns::Duration:
         if (log.elapsedMs < 0) {
             return {};
@@ -102,6 +110,7 @@ QVariant KMcpClientInspectorLogModel::headerData(int section, Qt::Orientation or
             return i18n("Direction"); // or remove it
         case LogColumns::Json:
         case LogColumns::DurationValue:
+        case LogColumns::DirectionValue:
             break;
         }
     }

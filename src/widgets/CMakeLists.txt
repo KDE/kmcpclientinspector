@@ -71,6 +71,8 @@ target_sources(
         kmcpclientinspectorconnectbuttonswidget.cpp
         misc/jsonplaintexteditwidget.h
         misc/jsonplaintexteditwidget.cpp
+        misc/directioncombobox.h
+        misc/directioncombobox.cpp
         dialogs/kmcpclientinspectorelicitationdialog.h
         dialogs/kmcpclientinspectorelicitationdialog.cpp
         dialogs/kmcpclientinspectorsamplingdialog.h

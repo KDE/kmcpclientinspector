@@ -14,9 +14,17 @@ class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorLogModel : public QAb
 {
     Q_OBJECT
 public:
-    enum LogColumns {
-        Identifier,
+    enum class DirectionType : uint8_t {
+        All = 0,
+        Sent,
+        Received,
+    };
+    Q_ENUM(DirectionType)
+
+    enum LogColumns : uint8_t {
+        Identifier = 0,
         Direction,
+        DirectionValue,
         MethodType,
         Duration,
         DateTime,

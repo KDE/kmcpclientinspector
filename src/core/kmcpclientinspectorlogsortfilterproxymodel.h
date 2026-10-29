@@ -5,7 +5,9 @@
  */
 #pragma once
 
+#include "kmcpclientinspectorlogmodel.h"
 #include "libkmcpclientinspectorcore_export.h"
+
 #include <TextAddonsWidgets/SortFilterProxyModelBase>
 class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorLogSortFilterProxyModel : public TextAddonsWidgets::SortFilterProxyModelBase
 {
@@ -14,7 +16,13 @@ public:
     explicit KMcpClientInspectorLogSortFilterProxyModel(QObject *parent = nullptr);
     ~KMcpClientInspectorLogSortFilterProxyModel() override;
 
+    [[nodiscard]] KMcpClientInspectorLogModel::DirectionType directionType() const;
+    void setDirectionType(KMcpClientInspectorLogModel::DirectionType newDirectionType);
+
 protected:
     [[nodiscard]] bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
     [[nodiscard]] bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
+
+private:
+    KMcpClientInspectorLogModel::DirectionType mDirectionType = KMcpClientInspectorLogModel::DirectionType::All;
 };
