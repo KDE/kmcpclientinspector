@@ -18,7 +18,7 @@ DirectionComboBox::~DirectionComboBox() = default;
 void DirectionComboBox::fill()
 {
     addItem(i18n("All"), QVariant::fromValue(KMcpClientInspectorLogModel::DirectionType::All));
-    addItem(i18n("Send"), QVariant::fromValue(KMcpClientInspectorLogModel::DirectionType::Sent));
+    addItem(i18n("Sent"), QVariant::fromValue(KMcpClientInspectorLogModel::DirectionType::Sent));
     addItem(i18n("Received"), QVariant::fromValue(KMcpClientInspectorLogModel::DirectionType::Received));
 }
 

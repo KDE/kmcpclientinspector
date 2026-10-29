@@ -17,6 +17,7 @@ class McpProtocolClientProtocolManager;
 class KMcpClientInspectorLogModel;
 class KMcpClientInspectorLogSortFilterProxyModel;
 class KMcpClientInspectorLogSearchWidget;
+class DirectionComboBox;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorLogTreeWidget : public QWidget
 {
     Q_OBJECT
@@ -37,4 +38,5 @@ private:
     KMcpClientInspectorLogModel *const mLogModel;
     KMcpClientInspectorLogSortFilterProxyModel *const mLogSortFilterProxyModel;
     KMcpClientInspectorLogSearchWidget *const mLogSearchWidget;
+    DirectionComboBox *const mDirectionComboBox;
 };

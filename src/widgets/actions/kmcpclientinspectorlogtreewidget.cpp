@@ -7,12 +7,14 @@
 #include "actions/kmcpclientinspectorlogsearchwidget.h"
 #include "kmcpclientinspectorlogmodel.h"
 #include "kmcpclientinspectorlogsortfilterproxymodel.h"
+#include "misc/directioncombobox.h"
+#include <KLocalizedString>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QLabel>
 #include <QTreeView>
-#include <TextAutoGenerateTextMcpProtocolCore/McpServerModel>
-
 #include <QVBoxLayout>
+#include <TextAutoGenerateTextMcpProtocolCore/McpServerModel>
 
 using namespace Qt::Literals::StringLiterals;
 
@@ -24,13 +26,28 @@ KMcpClientInspectorLogTreeWidget::KMcpClientInspectorLogTreeWidget(TextAutoGener
     , mLogModel(new KMcpClientInspectorLogModel(this))
     , mLogSortFilterProxyModel(new KMcpClientInspectorLogSortFilterProxyModel(this))
     , mLogSearchWidget(new KMcpClientInspectorLogSearchWidget(this))
+    , mDirectionComboBox(new DirectionComboBox(this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
     mainLayout->setContentsMargins({});
 
+    auto hboxLayout = new QHBoxLayout;
+    hboxLayout->setObjectName(u"hboxLayout"_s);
+    hboxLayout->setContentsMargins({});
+
+    auto label = new QLabel(i18nc("@label:listbox", "Direction:"), this);
+
+    hboxLayout->addWidget(label);
+    label->setBuddy(mDirectionComboBox);
+
+    mDirectionComboBox->setObjectName(u"mDirectionComboBox"_s);
+    hboxLayout->addWidget(mDirectionComboBox);
+
     mLogSearchWidget->setObjectName(u"mLogSearchWidget"_s);
-    mainLayout->addWidget(mLogSearchWidget);
+    hboxLayout->addWidget(mLogSearchWidget);
+
+    mainLayout->addLayout(hboxLayout);
 
     mTreeView->setObjectName(u"mTreeView"_s);
     mainLayout->addWidget(mTreeView);
@@ -56,6 +73,9 @@ KMcpClientInspectorLogTreeWidget::KMcpClientInspectorLogTreeWidget(TextAutoGener
     connect(mLogSearchWidget, &KMcpClientInspectorLogSearchWidget::clearRequested, this, [this]() {
         mLogModel->clear();
         Q_EMIT clearRequested();
+    });
+    connect(mDirectionComboBox, &DirectionComboBox::currentIndexChanged, this, [this]() {
+        mLogSortFilterProxyModel->setDirectionType(mDirectionComboBox->type());
     });
 }
 
