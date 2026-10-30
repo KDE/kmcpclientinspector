@@ -159,6 +159,13 @@ KMcpClientInspectorGetPromptWidget::KMcpClientInspectorGetPromptWidget(McpProtoc
         setRequestInProgress(false);
         clearPrompts();
     });
+    connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::initialized, this, [this]() {
+        mListPromptsButton->setEnabled(true);
+    });
+    connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::finished, this, [this]() {
+        mListPromptsButton->setEnabled(false);
+    });
+
     clearPrompts();
 }
 

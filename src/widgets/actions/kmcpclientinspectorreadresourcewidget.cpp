@@ -139,6 +139,7 @@ KMcpClientInspectorReadResourceWidget::KMcpClientInspectorReadResourceWidget(Mcp
     mStatusLabel->setTextFormat(Qt::PlainText);
     buttonsLayout->addWidget(mStatusLabel, 1);
     resourceLayout->addLayout(buttonsLayout);
+    resourceLayout->addStretch(1);
     connect(mReadButton, &QPushButton::clicked, this, &KMcpClientInspectorReadResourceWidget::slotReadResource);
     connect(mSubscribeButton, &QPushButton::clicked, this, &KMcpClientInspectorReadResourceWidget::slotSubscribe);
     connect(mUnsubscribeButton, &QPushButton::clicked, this, &KMcpClientInspectorReadResourceWidget::slotUnsubscribe);
@@ -167,6 +168,13 @@ KMcpClientInspectorReadResourceWidget::KMcpClientInspectorReadResourceWidget(Mcp
         mSubscribedResources.clear();
         clearResources();
     });
+    connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::initialized, this, [this]() {
+        mReadButton->setEnabled(true);
+    });
+    connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::finished, this, [this]() {
+        mReadButton->setEnabled(false);
+    });
+
     clearResources();
 }
 

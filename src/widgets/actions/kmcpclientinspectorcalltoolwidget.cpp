@@ -197,6 +197,14 @@ KMcpClientInspectorCallToolWidget::KMcpClientInspectorCallToolWidget(McpProtocol
         setCallInProgress(false);
         clearTools();
     });
+
+    connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::initialized, this, [this]() {
+        mListToolsButton->setEnabled(true);
+    });
+    connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::finished, this, [this]() {
+        mListToolsButton->setEnabled(false);
+    });
+
     clearTools();
 }
 
