@@ -8,7 +8,12 @@
 #include <KLocalizedString>
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
+#include <TextAddonsWidgets/LoadDialogSizeUtils>
 #include <TextAutoGenerateTextMcpProtocolWidgets/AddMcpServerRootsWidget>
+namespace
+{
+const char myConfigKMcpClientInspectorRootsDialogGroupName[] = "KMcpClientInspectorRootsDialog";
+}
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorRootsDialog::KMcpClientInspectorRootsDialog(QWidget *parent)
     : QDialog(parent)
@@ -27,6 +32,7 @@ KMcpClientInspectorRootsDialog::KMcpClientInspectorRootsDialog(QWidget *parent)
 
     connect(buttonBox, &QDialogButtonBox::accepted, this, &KMcpClientInspectorRootsDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &KMcpClientInspectorRootsDialog::reject);
+    TextAddonsWidgets::LoadDialogSizeUtils::manageDialogSize(this, QLatin1StringView(myConfigKMcpClientInspectorRootsDialogGroupName), QSize(600, 400));
 }
 
 KMcpClientInspectorRootsDialog::~KMcpClientInspectorRootsDialog() = default;
