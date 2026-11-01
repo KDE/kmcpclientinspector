@@ -68,8 +68,8 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mTabWidget->addTab(mListPromptsWidget, i18n("List Prompts"));
     mTabWidget->addTab(mGetPromptWidget, i18n("Get Prompt"));
     mTabWidget->addTab(mListResourcesWidget, i18n("List Resources"));
-    mTabWidget->addTab(mResourceTemplatesWidget, i18n("Resource Templates"));
     mTabWidget->addTab(mReadResourceWidget, i18n("Read Resource"));
+    mTabWidget->addTab(mResourceTemplatesWidget, i18n("Resource Templates"));
     mTabWidget->addTab(mLogWidget, i18n("Log"));
     mTabWidget->addTab(mServerNotificationWidget, i18n("Server Notification"));
 
