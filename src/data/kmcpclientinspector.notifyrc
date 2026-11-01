@@ -1,0 +1,5 @@
+[Global]
+IconName=kmcpclientinspector
+Name=kmcpclientinspector
+DesktopEntry=org.kde.kmcpclientinspector
+Comment=Notification
