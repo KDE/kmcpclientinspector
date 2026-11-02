@@ -15,9 +15,16 @@
 #include <QPlainTextEdit>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <TextAddonsWidgets/LoadDialogSizeUtils>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolCreateMessageRequestParams>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolCreateMessageResult>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolTextContent>
+
+namespace
+{
+const char myConfigKMcpClientInspectorRootsDialogGroupName[] = "KMcpClientInspectorSamplingDialog";
+}
+
 using namespace Qt::Literals::StringLiterals;
 using namespace TextAutoGenerateTextMcpProtocolCore;
 KMcpClientInspectorSamplingDialog::KMcpClientInspectorSamplingDialog(const McpProtocolCreateMessageRequestParams &params, QWidget *parent)
@@ -71,7 +78,7 @@ KMcpClientInspectorSamplingDialog::KMcpClientInspectorSamplingDialog(const McpPr
     });
     connect(buttonBox, &QDialogButtonBox::accepted, this, &KMcpClientInspectorSamplingDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &KMcpClientInspectorSamplingDialog::reject);
-    resize(600, 500);
+    TextAddonsWidgets::LoadDialogSizeUtils::manageDialogSize(this, QLatin1StringView(myConfigKMcpClientInspectorRootsDialogGroupName), QSize(600, 500));
 }
 
 KMcpClientInspectorSamplingDialog::~KMcpClientInspectorSamplingDialog() = default;

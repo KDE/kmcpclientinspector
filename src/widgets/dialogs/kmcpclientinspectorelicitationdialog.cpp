@@ -12,8 +12,14 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <TextAddonsWidgets/LoadDialogSizeUtils>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolElicitRequestFormParams>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolTool>
+
+namespace
+{
+const char myConfigKMcpClientInspectorElicitationDialogGroupName[] = "KMcpClientInspectorElicitationDialog";
+}
 using namespace Qt::Literals::StringLiterals;
 using namespace TextAutoGenerateTextMcpProtocolCore;
 KMcpClientInspectorElicitationDialog::KMcpClientInspectorElicitationDialog(const McpProtocolElicitRequestFormParams &params, QWidget *parent)
@@ -49,7 +55,7 @@ KMcpClientInspectorElicitationDialog::KMcpClientInspectorElicitationDialog(const
     connect(buttonBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &KMcpClientInspectorElicitationDialog::slotAccept);
     connect(buttonBox->button(QDialogButtonBox::Cancel), &QPushButton::clicked, this, &KMcpClientInspectorElicitationDialog::reject);
     connect(declineButton, &QPushButton::clicked, this, &KMcpClientInspectorElicitationDialog::slotDecline);
-    resize(500, 400);
+    TextAddonsWidgets::LoadDialogSizeUtils::manageDialogSize(this, QLatin1StringView(myConfigKMcpClientInspectorElicitationDialogGroupName), QSize(500, 400));
 }
 
 KMcpClientInspectorElicitationDialog::~KMcpClientInspectorElicitationDialog() = default;
