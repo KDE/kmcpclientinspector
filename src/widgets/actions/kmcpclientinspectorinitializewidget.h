@@ -32,6 +32,7 @@ public:
 
 private:
     [[nodiscard]] LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT QLabel *createLabel(const QString &objectName);
+    [[nodiscard]] LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT QLabel *createInformationLabel(const QString &name);
     QFormLayout *const mFormLayout;
     QLabel *const mServerName;
     QLabel *const mServerTitle;

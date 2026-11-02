@@ -46,13 +46,13 @@ KMcpClientInspectorInitializeWidget::KMcpClientInspectorInitializeWidget(McpProt
 
     mFormLayout->setObjectName(u"mFormLayout"_s);
     mFormLayout->setContentsMargins({});
-    mFormLayout->addRow(i18nc("@label", "Name:"), mServerName);
-    mFormLayout->addRow(i18nc("@label", "Title:"), mServerTitle);
-    mFormLayout->addRow(i18nc("@label", "Version:"), mServerVersion);
-    mFormLayout->addRow(i18nc("@label", "Description:"), mServerDescription);
-    mFormLayout->addRow(i18nc("@label", "Website:"), mServerWebsite);
-    mFormLayout->addRow(i18nc("@label", "Protocol version:"), mProtocolVersion);
-    mFormLayout->addRow(i18nc("@label", "Capabilities:"), mCapabilities);
+    mFormLayout->addRow(createInformationLabel(i18nc("@label", "Name:")), mServerName);
+    mFormLayout->addRow(createInformationLabel(i18nc("@label", "Title:")), mServerTitle);
+    mFormLayout->addRow(createInformationLabel(i18nc("@label", "Version:")), mServerVersion);
+    mFormLayout->addRow(createInformationLabel(i18nc("@label", "Description:")), mServerDescription);
+    mFormLayout->addRow(createInformationLabel(i18nc("@label", "Website:")), mServerWebsite);
+    mFormLayout->addRow(createInformationLabel(i18nc("@label", "Protocol version:")), mProtocolVersion);
+    mFormLayout->addRow(createInformationLabel(i18nc("@label", "Capabilities:")), mCapabilities);
     infoLayout->addLayout(mFormLayout);
 
     mServerDescription->setWordWrap(true);
@@ -60,7 +60,7 @@ KMcpClientInspectorInitializeWidget::KMcpClientInspectorInitializeWidget(McpProt
     mServerWebsite->setTextInteractionFlags(Qt::TextBrowserInteraction);
     mServerWebsite->setOpenExternalLinks(true);
 
-    auto instructionsLabel = new QLabel(i18nc("@label", "Instructions:"), infoWidget);
+    auto instructionsLabel = createInformationLabel(i18nc("@label", "Instructions:"));
     instructionsLabel->setObjectName(u"instructionsLabel"_s);
     infoLayout->addWidget(instructionsLabel);
 
@@ -82,6 +82,16 @@ KMcpClientInspectorInitializeWidget::KMcpClientInspectorInitializeWidget(McpProt
 }
 
 KMcpClientInspectorInitializeWidget::~KMcpClientInspectorInitializeWidget() = default;
+
+QLabel *KMcpClientInspectorInitializeWidget::createInformationLabel(const QString &name)
+{
+    auto label = new QLabel(name, this);
+    auto font = label->font();
+    font.setBold(true);
+    label->setFont(font);
+    label->setTextFormat(Qt::PlainText);
+    return label;
+}
 
 QLabel *KMcpClientInspectorInitializeWidget::createLabel(const QString &objectName)
 {
