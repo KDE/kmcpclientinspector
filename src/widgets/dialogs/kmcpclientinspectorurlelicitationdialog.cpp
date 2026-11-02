@@ -47,7 +47,7 @@ KMcpClientInspectorUrlElicitationDialog::KMcpClientInspectorUrlElicitationDialog
     formLayout->addRow(i18nc("@label", "Domain:"), mDomainLabel);
 
     mUrlLabel->setObjectName(u"mUrlLabel"_s);
-    mUrlLabel->setWordWrap(true);
+    mUrlLabel->setWordWrap(false);
     mUrlLabel->setTextFormat(Qt::PlainText);
     mUrlLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
     mUrlLabel->setText(params.url());
