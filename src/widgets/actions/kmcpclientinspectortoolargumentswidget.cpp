@@ -167,9 +167,11 @@ QWidget *KMcpClientInspectorToolArgumentsWidget::createFieldWidget(const Field &
         switch (field.type) {
         case FieldType::Integer:
             lineEdit->setPlaceholderText(i18nc("@info:placeholder", "Integer"));
+            lineEdit->setValidator(new QIntValidator(lineEdit));
             break;
         case FieldType::Number:
             lineEdit->setPlaceholderText(i18nc("@info:placeholder", "Number"));
+            lineEdit->setValidator(new QDoubleValidator(lineEdit));
             break;
         case FieldType::Json:
             lineEdit->setPlaceholderText(i18nc("@info:placeholder", "JSON value"));
