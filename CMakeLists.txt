@@ -165,6 +165,16 @@ set_package_properties(
             REQUIRED
 )
 
+find_package(KF6TextUtils ${KTEXTADDONS_WITH_TEXTAUTOGENERATETEXT_VERSION} CONFIG)
+set_package_properties(
+    KF6TextUtils
+    PROPERTIES
+        DESCRIPTION
+            "Add text utils (ktextaddons)"
+        TYPE
+            REQUIRED
+)
+
 add_definitions(-DTRANSLATION_DOMAIN="kmcpclientinspector")
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})

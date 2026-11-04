@@ -21,6 +21,8 @@ target_sources(
         kmcpclientinspectorserverlogmodel.cpp
         kmcpclientinspectorserverlogsortfilterproxymodel.h
         kmcpclientinspectorserverlogsortfilterproxymodel.cpp
+        kmcpcolorsandmessageviewstyle.cpp
+        kmcpcolorsandmessageviewstyle.h
 )
 
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
@@ -38,6 +40,7 @@ target_link_libraries(
     KF6::TextAutoGenerateTextMcpProtocolCore
     KF6::I18n
     KF6::TextAddonsWidgets
+    KF6::TextUtils
 )
 
 set_target_properties(
