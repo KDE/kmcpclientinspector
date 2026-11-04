@@ -79,18 +79,12 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mTabWidget->setTabVisible(mTabWidget->indexOf(mListResourcesWidget), false);
     mTabWidget->setTabVisible(mTabWidget->indexOf(mReadResourceWidget), false);
     mTabWidget->setTabVisible(mTabWidget->indexOf(mCallToolWidget), false);
+    mTabWidget->setTabVisible(mTabWidget->indexOf(mListToolsWidget), false);
 
     connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::error, this, [this](const QString &errorStr) {
         mMessageWidget->setText(errorStr);
         mMessageWidget->animatedShow();
     });
-
-    connect(protocolManager,
-            &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::progressReceived,
-            this,
-            [](qint64 requestId, const TextAutoGenerateTextMcpProtocolCore::McpProtocolProgressNotificationParams &params) {
-                qDebug() << " progressReceived*********** id : " << requestId << " params " << params;
-            });
 
     connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::initialized, this, [this, protocolManager]() {
         mTabWidget->setTabVisible(
@@ -114,6 +108,9 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
 
         mTabWidget->setTabVisible(mTabWidget->indexOf(mCallToolWidget),
                                   protocolManager->serverSupports(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::CallTool));
+        mTabWidget->setTabVisible(
+            mTabWidget->indexOf(mListToolsWidget),
+            protocolManager->serverSupports(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListTools));
     });
 
     connect(protocolManager,
