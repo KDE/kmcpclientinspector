@@ -20,6 +20,7 @@ class QTextBrowser;
 class QTextDocument;
 class JsonPlainTextEditWidget;
 class KMcpClientInspectorToolArgumentsWidget;
+class QProgressBar;
 namespace TextAutoGenerateTextMcpProtocolCore
 {
 class McpProtocolCallToolResult;
@@ -88,5 +89,7 @@ private:
     QTabWidget *const mResultTabWidget;
     QTextBrowser *const mContentBrowser;
     JsonPlainTextEditWidget *const mJsonPlainTextEditWidget;
+    QProgressBar *const mProgressBar;
+    QLabel *const mProgressBarLabel;
     qint64 mPendingRequestId = -1;
 };

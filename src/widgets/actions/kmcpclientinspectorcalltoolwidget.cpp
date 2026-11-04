@@ -19,6 +19,7 @@
 #include <QLabel>
 #include <QListWidget>
 #include <QLocale>
+#include <QProgressBar>
 #include <QPushButton>
 #include <QSplitter>
 #include <QTabWidget>
@@ -31,6 +32,7 @@
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolElicitRequestURLParams>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolError>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolListToolsResult>
+#include <TextAutoGenerateTextMcpProtocolCore/McpProtocolProgressNotificationParams>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolURLElicitationRequiredError>
 using namespace Qt::Literals::StringLiterals;
 using namespace TextAutoGenerateTextMcpProtocolCore;
@@ -94,6 +96,8 @@ KMcpClientInspectorCallToolWidget::KMcpClientInspectorCallToolWidget(McpProtocol
     , mResultTabWidget(new QTabWidget(this))
     , mContentBrowser(new QTextBrowser(this))
     , mJsonPlainTextEditWidget(new JsonPlainTextEditWidget(this))
+    , mProgressBar(new QProgressBar(this))
+    , mProgressBarLabel(new QLabel(this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
@@ -177,7 +181,18 @@ KMcpClientInspectorCallToolWidget::KMcpClientInspectorCallToolWidget(McpProtocol
     mJsonPlainTextEditWidget->setObjectName(u"mJsonPlainTextEditWidget"_s);
     mResultTabWidget->addTab(mContentBrowser, i18nc("@title:tab", "Content"));
     mResultTabWidget->addTab(mJsonPlainTextEditWidget, i18nc("@title:tab", "JSON"));
-    toolSplitter->addWidget(mResultTabWidget);
+    auto resultWidget = new QWidget(this);
+    resultWidget->setObjectName(u"resultWidget"_s);
+    auto vboxLayout = new QVBoxLayout(resultWidget);
+    vboxLayout->addWidget(mResultTabWidget);
+    mProgressBar->setObjectName(u"mProgressBar"_s);
+    mProgressBarLabel->setObjectName(u"mProgressBarLabel"_s);
+    vboxLayout->addWidget(mProgressBar);
+    vboxLayout->addWidget(mProgressBarLabel);
+    mProgressBar->setVisible(false);
+    mProgressBarLabel->setVisible(false);
+
+    toolSplitter->addWidget(resultWidget);
 
     splitter->addWidget(toolSplitter);
     splitter->setStretchFactor(1, 1);
@@ -206,6 +221,25 @@ KMcpClientInspectorCallToolWidget::KMcpClientInspectorCallToolWidget(McpProtocol
         mListToolsButton->setEnabled(false);
     });
 
+    connect(mProtocolManager,
+            &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::progressReceived,
+            this,
+            [this](qint64 requestId, const TextAutoGenerateTextMcpProtocolCore::McpProtocolProgressNotificationParams &params) {
+                if (mPendingRequestId == requestId) {
+                    mProgressBar->setVisible(true);
+                    if (const auto total = params.total(); total && *total > 0) {
+                        mProgressBar->setRange(0, 100);
+                        mProgressBar->setValue(qRound(params.progress() * 100.0 / *total));
+                    } else {
+                        mProgressBar->setRange(0, 0); // Not defined
+                    }
+                    if (params.message().has_value()) {
+                        mProgressBarLabel->setVisible(true);
+                        mProgressBarLabel->setText(*params.message());
+                    }
+                }
+            });
+
     clearTools();
 }
 
@@ -228,6 +262,10 @@ void KMcpClientInspectorCallToolWidget::clearResult()
     mStatusLabel->clear();
     mContentBrowser->clear();
     mJsonPlainTextEditWidget->setPlainText({});
+    mProgressBar->setVisible(false);
+    mProgressBar->reset();
+    mProgressBarLabel->clear();
+    mProgressBarLabel->setVisible(false);
 }
 
 void KMcpClientInspectorCallToolWidget::setToolsList(const QJsonObject &obj)
