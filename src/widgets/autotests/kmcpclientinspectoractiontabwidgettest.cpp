@@ -56,7 +56,7 @@ void KMcpClientInspectorActionTabWidgetTest::shouldHaveDefaultValues()
 
     auto mListToolsWidget = w.findChild<KMcpClientInspectorListToolsWidget *>(u"mListToolsWidget"_s);
     QVERIFY(mListToolsWidget);
-    QVERIFY(mTabWidget->isTabVisible(mTabWidget->indexOf(mListToolsWidget)));
+    QVERIFY(!mTabWidget->isTabVisible(mTabWidget->indexOf(mListToolsWidget)));
 
     auto mServerNotificationWidget = w.findChild<KMcpClientInspectorServerNotificationWidget *>(u"mServerNotificationWidget"_s);
     QVERIFY(mServerNotificationWidget);
