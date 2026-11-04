@@ -29,7 +29,12 @@ void KMcpClientInspectorTabWidget::loadServers()
         }
     }
     int index = 0;
-    const auto servers = mManager->mcpServerModel()->mcpServers();
+    auto servers = mManager->mcpServerModel()->mcpServers();
+    std::sort(servers.begin(),
+              servers.end(),
+              [](const TextAutoGenerateTextMcpProtocolCore::McpServer &left, const TextAutoGenerateTextMcpProtocolCore::McpServer &right) {
+                  return left.name().localeAwareCompare(right.name()) < 0;
+              });
     for (const auto &s : servers) {
         if (!s.enabled()) {
             continue;
