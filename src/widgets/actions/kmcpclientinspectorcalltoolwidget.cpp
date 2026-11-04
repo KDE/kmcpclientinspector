@@ -7,6 +7,7 @@
 #include "kmcpclientinspectorcalltoolwidget.h"
 #include "actions/kmcpclientinspectortoolargumentswidget.h"
 #include "dialogs/kmcpclientinspectorurlelicitationdialog.h"
+#include "kmcpcolorsandmessageviewstyle.h"
 #include "misc/jsonplaintexteditwidget.h"
 #include <KListWidgetSearchLine>
 #include <KLocalizedString>
@@ -396,25 +397,26 @@ QString KMcpClientInspectorCallToolWidget::annotationsToHtml(const std::optional
     // Default values come from MCP specification
     const std::optional<bool> readOnly = hints.readOnlyHint();
     if (readOnly.value_or(false)) {
-        badges.append(badge(i18nc("@label tool annotation", "Read-only"), QColor(0x27, 0xae, 0x60), !readOnly.has_value()));
+        badges.append(badge(i18nc("@label tool annotation", "Read-only"), KMcpColorsAndMessageViewStyle::self().positiveText(), !readOnly.has_value()));
     } else {
         // Destructive and idempotent hints are meaningful only when tool is not read-only
         const std::optional<bool> destructive = hints.destructiveHint();
         if (destructive.value_or(true)) {
-            badges.append(badge(i18nc("@label tool annotation", "Destructive"), QColor(0xda, 0x44, 0x53), !destructive.has_value()));
+            badges.append(
+                badge(i18nc("@label tool annotation", "Destructive"), KMcpColorsAndMessageViewStyle::self().negativeText(), !destructive.has_value()));
         } else {
-            badges.append(badge(i18nc("@label tool annotation", "Additive"), QColor(0x3d, 0xae, 0xe9), false));
+            badges.append(badge(i18nc("@label tool annotation", "Additive"), KMcpColorsAndMessageViewStyle::self().neutralText(), false));
         }
         const std::optional<bool> idempotent = hints.idempotentHint();
         if (idempotent.value_or(false)) {
-            badges.append(badge(i18nc("@label tool annotation", "Idempotent"), QColor(0x3d, 0xae, 0xe9), false));
+            badges.append(badge(i18nc("@label tool annotation", "Idempotent"), KMcpColorsAndMessageViewStyle::self().neutralText(), false));
         }
     }
     const std::optional<bool> openWorld = hints.openWorldHint();
     if (openWorld.value_or(true)) {
-        badges.append(badge(i18nc("@label tool annotation", "Open world"), QColor(0x3d, 0xae, 0xe9), !openWorld.has_value()));
+        badges.append(badge(i18nc("@label tool annotation", "Open world"), KMcpColorsAndMessageViewStyle::self().neutralText(), !openWorld.has_value()));
     } else {
-        badges.append(badge(i18nc("@label tool annotation", "Closed world"), QColor(0x3d, 0xae, 0xe9), false));
+        badges.append(badge(i18nc("@label tool annotation", "Closed world"), KMcpColorsAndMessageViewStyle::self().neutralText(), false));
     }
     return badges.join(u"&nbsp;&nbsp;"_s);
 }
