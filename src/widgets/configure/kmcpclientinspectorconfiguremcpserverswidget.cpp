@@ -13,10 +13,9 @@
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorConfigureMcpServersWidget::KMcpClientInspectorConfigureMcpServersWidget(TextAutoGenerateTextMcpProtocolCore::McpServerManager *manager,
                                                                                            QWidget *parent)
-    : QWidget{parent}
+    : KMcpClientInspectorConfigureBaseWidget{parent}
     , mMcpServerWidget(new TextAutoGenerateTextMcpProtocolWidgets::McpServerWidget(manager->mcpServerModel(), this))
     , mManager(manager)
-    , mOriginalServers(manager->mcpServerModel()->mcpServers())
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
@@ -31,6 +30,11 @@ KMcpClientInspectorConfigureMcpServersWidget::~KMcpClientInspectorConfigureMcpSe
 void KMcpClientInspectorConfigureMcpServersWidget::save()
 {
     mManager->saveServers();
+    mOriginalServers = mManager->mcpServerModel()->mcpServers();
+}
+
+void KMcpClientInspectorConfigureMcpServersWidget::load()
+{
     mOriginalServers = mManager->mcpServerModel()->mcpServers();
 }
 

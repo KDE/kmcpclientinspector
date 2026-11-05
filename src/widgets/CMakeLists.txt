@@ -29,6 +29,10 @@ target_sources(
         configure/kmcpclientinspectorconfiguresettingsdialog.h
         configure/kmcpclientinspectorconfiguremcpserverswidget.cpp
         configure/kmcpclientinspectorconfiguremcpserverswidget.h
+        configure/kmcpclientinspectorconfigurebasewidget.h
+        configure/kmcpclientinspectorconfigurebasewidget.cpp
+        configure/kmcpclientinspectorconfiguregeneralwidget.h
+        configure/kmcpclientinspectorconfiguregeneralwidget.cpp
         actions/kmcpclientinspectorpingwidget.h
         actions/kmcpclientinspectorpingwidget.cpp
         actions/kmcpclientinspectorinitializewidget.h

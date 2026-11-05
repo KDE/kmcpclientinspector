@@ -27,6 +27,8 @@ KMcpClientInspectorConfigureSettingsDialog::KMcpClientInspectorConfigureSettings
     mConfigureMcpServersWidgetPage->setIcon(QIcon::fromTheme(u"preferences-system-network-server"_s));
     addPage(mConfigureMcpServersWidgetPage);
 
+    mConfigureMcpServersWidget->load();
+
     buttonBox()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 
     connect(buttonBox()->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &KMcpClientInspectorConfigureSettingsDialog::slotAccepted);

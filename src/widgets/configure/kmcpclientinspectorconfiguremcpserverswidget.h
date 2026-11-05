@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <QWidget>
+#include "kmcpclientinspectorconfigurebasewidget.h"
 #include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 namespace TextAutoGenerateTextMcpProtocolWidgets
 {
@@ -16,15 +16,16 @@ namespace TextAutoGenerateTextMcpProtocolCore
 {
 class McpServerManager;
 }
-class KMcpClientInspectorConfigureMcpServersWidget : public QWidget
+class KMcpClientInspectorConfigureMcpServersWidget : public KMcpClientInspectorConfigureBaseWidget
 {
     Q_OBJECT
 public:
     explicit KMcpClientInspectorConfigureMcpServersWidget(TextAutoGenerateTextMcpProtocolCore::McpServerManager *manager, QWidget *parent = nullptr);
     ~KMcpClientInspectorConfigureMcpServersWidget() override;
 
-    void save();
-    void revert();
+    void save() override;
+    void revert() override;
+    void load() override;
 
 private:
     TextAutoGenerateTextMcpProtocolWidgets::McpServerWidget *const mMcpServerWidget;
