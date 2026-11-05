@@ -24,6 +24,11 @@ KMcpClientInspectorConfigureSettingsDialog::KMcpClientInspectorConfigureSettings
     setWindowTitle(i18nc("@title:window", "Configure KMcpClientInspector"));
     setFaceType(KPageDialog::List);
 
+    const QString generalPageName = i18nc("@title Preferences page name", "General");
+    auto pageItem = new KPageWidgetItem(mConfigureGeneralWidget, generalPageName);
+    pageItem->setIcon(QIcon::fromTheme(u"preferences-system-network-server"_s)); // TODO fix icon
+    addPage(pageItem);
+
     const QString mcpServersPageName = i18nc("@title Preferences page name", "MCP Servers");
     mConfigureMcpServersWidgetPage = new KPageWidgetItem(mConfigureMcpServersWidget, mcpServersPageName);
     mConfigureMcpServersWidgetPage->setIcon(QIcon::fromTheme(u"preferences-system-network-server"_s));
