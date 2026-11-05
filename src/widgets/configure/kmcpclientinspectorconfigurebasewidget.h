@@ -17,4 +17,5 @@ public:
     virtual void save() = 0;
     virtual void revert() = 0;
     virtual void load() = 0;
+    virtual void restoreDefaults() = 0;
 };

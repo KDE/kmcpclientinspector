@@ -11,6 +11,7 @@ namespace TextAutoGenerateTextMcpProtocolCore
 {
 class McpServerManager;
 }
+class KMcpClientInspectorConfigureGeneralWidget;
 class KMcpClientInspectorConfigureMcpServersWidget;
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT KMcpClientInspectorConfigureSettingsDialog : public KPageDialog
 {
@@ -22,6 +23,8 @@ public:
 private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotAccepted();
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotRestoreDefaults();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotReverted();
     KMcpClientInspectorConfigureMcpServersWidget *const mConfigureMcpServersWidget;
     KPageWidgetItem *mConfigureMcpServersWidgetPage = nullptr;
+    KMcpClientInspectorConfigureGeneralWidget *const mConfigureGeneralWidget;
 };

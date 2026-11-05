@@ -38,6 +38,11 @@ void KMcpClientInspectorConfigureMcpServersWidget::load()
     mOriginalServers = mManager->mcpServerModel()->mcpServers();
 }
 
+void KMcpClientInspectorConfigureMcpServersWidget::restoreDefaults()
+{
+    // TODO
+}
+
 void KMcpClientInspectorConfigureMcpServersWidget::revert()
 {
     // McpServerWidget edits model directly: restore servers as they were when dialog was opened

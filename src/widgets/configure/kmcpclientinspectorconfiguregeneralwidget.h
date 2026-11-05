@@ -17,4 +17,5 @@ public:
     void save() override;
     void revert() override;
     void load() override;
+    void restoreDefaults() override;
 };

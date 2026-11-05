@@ -24,4 +24,8 @@ void KMcpClientInspectorConfigureGeneralWidget::load()
 {
 }
 
+void KMcpClientInspectorConfigureGeneralWidget::restoreDefaults()
+{
+}
+
 #include "moc_kmcpclientinspectorconfiguregeneralwidget.cpp"

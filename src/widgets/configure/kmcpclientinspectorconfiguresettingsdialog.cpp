@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 #include "kmcpclientinspectorconfiguresettingsdialog.h"
+#include "configure/kmcpclientinspectorconfiguregeneralwidget.h"
 #include "configure/kmcpclientinspectorconfiguremcpserverswidget.h"
 #include <KLocalizedString>
 #include <QPushButton>
@@ -18,6 +19,7 @@ KMcpClientInspectorConfigureSettingsDialog::KMcpClientInspectorConfigureSettings
                                                                                        QWidget *parent)
     : KPageDialog(parent)
     , mConfigureMcpServersWidget(new KMcpClientInspectorConfigureMcpServersWidget(manager, this))
+    , mConfigureGeneralWidget(new KMcpClientInspectorConfigureGeneralWidget(this))
 {
     setWindowTitle(i18nc("@title:window", "Configure KMcpClientInspector"));
     setFaceType(KPageDialog::List);
@@ -28,20 +30,34 @@ KMcpClientInspectorConfigureSettingsDialog::KMcpClientInspectorConfigureSettings
     addPage(mConfigureMcpServersWidgetPage);
 
     mConfigureMcpServersWidget->load();
+    mConfigureGeneralWidget->load();
 
     buttonBox()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 
     connect(buttonBox()->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &KMcpClientInspectorConfigureSettingsDialog::slotAccepted);
     // Servers are already loaded: reloading them would recreate all tabs (and stop connections)
-    connect(this, &QDialog::rejected, mConfigureMcpServersWidget, &KMcpClientInspectorConfigureMcpServersWidget::revert);
+    connect(this, &QDialog::rejected, this, &KMcpClientInspectorConfigureSettingsDialog::slotReverted);
     TextAddonsWidgets::LoadDialogSizeUtils::manageDialogSize(this, QLatin1StringView(myConfigGroupName), QSize(800, 600));
 }
 
 KMcpClientInspectorConfigureSettingsDialog::~KMcpClientInspectorConfigureSettingsDialog() = default;
 
+void KMcpClientInspectorConfigureSettingsDialog::slotReverted()
+{
+    mConfigureMcpServersWidget->revert();
+    mConfigureGeneralWidget->revert();
+}
+
 void KMcpClientInspectorConfigureSettingsDialog::slotAccepted()
 {
     mConfigureMcpServersWidget->save();
+    mConfigureGeneralWidget->save();
+}
+
+void KMcpClientInspectorConfigureSettingsDialog::slotRestoreDefaults()
+{
+    mConfigureMcpServersWidget->restoreDefaults();
+    mConfigureGeneralWidget->restoreDefaults();
 }
 
 #include "moc_kmcpclientinspectorconfiguresettingsdialog.cpp"
