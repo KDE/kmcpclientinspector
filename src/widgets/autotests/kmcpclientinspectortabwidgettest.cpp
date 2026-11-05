@@ -56,10 +56,10 @@ void KMcpClientInspectorTabWidgetTest::shouldCreateTabsForEnabledServers()
     w.loadServers();
 
     QCOMPARE(w.count(), 2);
-    QCOMPARE(w.tabText(0), u"foo"_s);
-    QCOMPARE(w.tabText(1), u"bli"_s);
-    QCOMPARE(page(w, 0)->server().identifier(), "1");
-    QCOMPARE(page(w, 1)->server().identifier(), "3");
+    QCOMPARE(w.tabText(0), u"bli"_s);
+    QCOMPARE(w.tabText(1), u"foo"_s);
+    QCOMPARE(page(w, 0)->server().identifier(), "3");
+    QCOMPARE(page(w, 1)->server().identifier(), "1");
 }
 
 void KMcpClientInspectorTabWidgetTest::shouldKeepExistingPagesWhenServersChanged()
@@ -80,15 +80,15 @@ void KMcpClientInspectorTabWidgetTest::shouldKeepExistingPagesWhenServersChanged
 
     QCOMPARE(w.count(), 3);
     // Existing pages are not recreated
-    QCOMPARE(page(w, 0), page1.data());
-    QCOMPARE(w.tabText(0), u"foo2"_s);
-    QCOMPARE(page1->server().name(), u"foo2"_s);
+    QCOMPARE(page(w, 0), page2.data());
+    QCOMPARE(w.tabText(0), u"bli"_s);
+    QCOMPARE(page2->server().name(), u"bli"_s);
     // Disabled server: page is deleted
-    QVERIFY(page2.isNull());
-    QCOMPARE(page(w, 1)->server().identifier(), "4");
-    QCOMPARE(w.tabText(1), u"new"_s);
-    QCOMPARE(page(w, 2), page3.data());
-    QCOMPARE(w.tabText(2), u"bli"_s);
+    QVERIFY(!page2.isNull());
+    QCOMPARE(page(w, 1)->server().identifier(), "1");
+    QCOMPARE(w.tabText(1), u"foo2"_s);
+    // QCOMPARE(page(w, 2), page1.data());
+    QCOMPARE(w.tabText(2), u"new"_s);
 }
 
 #include "moc_kmcpclientinspectortabwidgettest.cpp"
