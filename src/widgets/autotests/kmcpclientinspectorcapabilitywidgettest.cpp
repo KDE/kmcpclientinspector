@@ -89,4 +89,28 @@ void KMcpClientInspectorCapabilityWidgetTest::shouldDisableCapabilitiesWhenConne
     QVERIFY(w.findChild<QCheckBox *>(u"mRootsSupported"_s)->isEnabled());
 }
 
+void KMcpClientInspectorCapabilityWidgetTest::shouldSetCapabilities()
+{
+    KMcpClientInspectorCapabilityWidget w;
+    w.setElicitationSupport(false);
+    w.setUrlElicitationSupport(false);
+    w.setRootsSupport(false);
+    w.setSamplingSupport(false);
+    QVERIFY(!w.elicitationSupport());
+    QVERIFY(!w.urlElicitationSupport());
+    QVERIFY(!w.rootsSupport());
+    QVERIFY(!w.samplingSupport());
+    QVERIFY(!w.findChild<QToolButton *>(u"mConfigureRootsButton"_s)->isEnabled());
+
+    w.setElicitationSupport(true);
+    w.setUrlElicitationSupport(true);
+    w.setRootsSupport(true);
+    w.setSamplingSupport(true);
+    QVERIFY(w.elicitationSupport());
+    QVERIFY(w.urlElicitationSupport());
+    QVERIFY(w.rootsSupport());
+    QVERIFY(w.samplingSupport());
+    QVERIFY(w.findChild<QToolButton *>(u"mConfigureRootsButton"_s)->isEnabled());
+}
+
 #include "moc_kmcpclientinspectorcapabilitywidgettest.cpp"

@@ -84,6 +84,26 @@ bool KMcpClientInspectorCapabilityWidget::samplingSupport() const
     return mSamplingSupported->isChecked();
 }
 
+void KMcpClientInspectorCapabilityWidget::setElicitationSupport(bool support)
+{
+    mElicitationSupported->setChecked(support);
+}
+
+void KMcpClientInspectorCapabilityWidget::setUrlElicitationSupport(bool support)
+{
+    mUrlElicitationSupported->setChecked(support);
+}
+
+void KMcpClientInspectorCapabilityWidget::setRootsSupport(bool support)
+{
+    mRootsSupported->setChecked(support);
+}
+
+void KMcpClientInspectorCapabilityWidget::setSamplingSupport(bool support)
+{
+    mSamplingSupported->setChecked(support);
+}
+
 void KMcpClientInspectorCapabilityWidget::setConnected(bool connected)
 {
     for (auto checkBox : {mElicitationSupported, mUrlElicitationSupported, mSamplingSupported, mRootsSupported}) {

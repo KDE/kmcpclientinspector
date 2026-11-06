@@ -21,6 +21,11 @@ public:
     [[nodiscard]] bool rootsSupport() const;
     [[nodiscard]] bool samplingSupport() const;
 
+    void setElicitationSupport(bool support);
+    void setUrlElicitationSupport(bool support);
+    void setRootsSupport(bool support);
+    void setSamplingSupport(bool support);
+
     /*!
      * Capabilities can't be changed when client is connected, but roots can still be modified.
      */
