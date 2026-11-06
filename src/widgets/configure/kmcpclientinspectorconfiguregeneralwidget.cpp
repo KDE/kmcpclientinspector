@@ -30,6 +30,7 @@ void KMcpClientInspectorConfigureGeneralWidget::save()
     KMcpClientInspectorGlobalConfig::self()->setUrlElicitationSupport(mCapabilityWidget->urlElicitationSupport());
     KMcpClientInspectorGlobalConfig::self()->setRootsSupport(mCapabilityWidget->rootsSupport());
     KMcpClientInspectorGlobalConfig::self()->setSamplingSupport(mCapabilityWidget->samplingSupport());
+    KMcpClientInspectorGlobalConfig::self()->save();
 }
 
 void KMcpClientInspectorConfigureGeneralWidget::revert()
