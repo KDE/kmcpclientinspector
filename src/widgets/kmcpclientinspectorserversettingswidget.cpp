@@ -8,6 +8,7 @@
 #include "common/kmcpclientinspectorcapabilitywidget.h"
 #include "dialogs/kmcpclientinspectorrootsdialog.h"
 #include "kmcpclientinspectorconnectbuttonswidget.h"
+#include "kmcpclientinspectorglobalconfig.h"
 #include "kmcpclientinspectorserverinfowidget.h"
 #include <KLocalizedString>
 #include <QHBoxLayout>
@@ -62,6 +63,10 @@ KMcpClientInspectorServerSettingsWidget::KMcpClientInspectorServerSettingsWidget
             this,
             &KMcpClientInspectorServerSettingsWidget::slotConfigureRoots);
 
+    mCapabilityWidget->setElicitationSupport(KMcpClientInspectorGlobalConfig::self()->elicitationSupport());
+    mCapabilityWidget->setUrlElicitationSupport(KMcpClientInspectorGlobalConfig::self()->urlElicitationSupport());
+    mCapabilityWidget->setRootsSupport(KMcpClientInspectorGlobalConfig::self()->rootsSupport());
+    mCapabilityWidget->setSamplingSupport(KMcpClientInspectorGlobalConfig::self()->samplingSupport());
     slotUpdateButtons(mServer.isValid());
 }
 
