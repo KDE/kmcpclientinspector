@@ -6,6 +6,7 @@
 #pragma once
 
 #include "kmcpclientinspectorconfigurebasewidget.h"
+class KMcpClientInspectorCapabilityWidget;
 
 class KMcpClientInspectorConfigureGeneralWidget : public KMcpClientInspectorConfigureBaseWidget
 {
@@ -18,4 +19,7 @@ public:
     void revert() override;
     void load() override;
     void restoreDefaults() override;
+
+private:
+    KMcpClientInspectorCapabilityWidget *const mCapabilityWidget;
 };

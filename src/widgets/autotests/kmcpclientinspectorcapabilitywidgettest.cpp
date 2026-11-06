@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 #include "kmcpclientinspectorcapabilitywidgettest.h"
-#include "actions/kmcpclientinspectorcapabilitywidget.h"
+#include "common/kmcpclientinspectorcapabilitywidget.h"
 #include <QCheckBox>
 #include <QGroupBox>
 #include <QSignalSpy>

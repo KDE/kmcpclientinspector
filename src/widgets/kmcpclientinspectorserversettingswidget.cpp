@@ -5,7 +5,7 @@
  */
 
 #include "kmcpclientinspectorserversettingswidget.h"
-#include "actions/kmcpclientinspectorcapabilitywidget.h"
+#include "common/kmcpclientinspectorcapabilitywidget.h"
 #include "dialogs/kmcpclientinspectorrootsdialog.h"
 #include "kmcpclientinspectorconnectbuttonswidget.h"
 #include "kmcpclientinspectorserverinfowidget.h"
