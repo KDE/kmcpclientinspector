@@ -13,4 +13,18 @@
       <default></default>
     </entry>
   </group>
+  <group name="Capabilities">
+    <entry name="ElicitationSupport" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="UrlElicitationSupport" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="RootsSupport" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="SamplingSupport" type="Bool">
+      <default>true</default>
+    </entry>
+  </group>
 </kcfg>

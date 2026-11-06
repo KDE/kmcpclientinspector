@@ -5,6 +5,7 @@
 */
 #include "kmcpclientinspectorconfiguregeneralwidget.h"
 #include "common/kmcpclientinspectorcapabilitywidget.h"
+#include "kmcpclientinspectorglobalconfig.h"
 #include <QVBoxLayout>
 
 using namespace Qt::Literals::StringLiterals;
@@ -25,18 +26,28 @@ KMcpClientInspectorConfigureGeneralWidget::~KMcpClientInspectorConfigureGeneralW
 
 void KMcpClientInspectorConfigureGeneralWidget::save()
 {
+    KMcpClientInspectorGlobalConfig::self()->setElicitationSupport(mCapabilityWidget->elicitationSupport());
+    KMcpClientInspectorGlobalConfig::self()->setUrlElicitationSupport(mCapabilityWidget->urlElicitationSupport());
+    KMcpClientInspectorGlobalConfig::self()->setRootsSupport(mCapabilityWidget->rootsSupport());
+    KMcpClientInspectorGlobalConfig::self()->setSamplingSupport(mCapabilityWidget->samplingSupport());
 }
 
 void KMcpClientInspectorConfigureGeneralWidget::revert()
 {
+    // TODO
 }
 
 void KMcpClientInspectorConfigureGeneralWidget::load()
 {
+    mCapabilityWidget->setElicitationSupport(KMcpClientInspectorGlobalConfig::self()->elicitationSupport());
+    mCapabilityWidget->setUrlElicitationSupport(KMcpClientInspectorGlobalConfig::self()->urlElicitationSupport());
+    mCapabilityWidget->setRootsSupport(KMcpClientInspectorGlobalConfig::self()->rootsSupport());
+    mCapabilityWidget->setSamplingSupport(KMcpClientInspectorGlobalConfig::self()->samplingSupport());
 }
 
 void KMcpClientInspectorConfigureGeneralWidget::restoreDefaults()
 {
+    // TODO
 }
 
 #include "moc_kmcpclientinspectorconfiguregeneralwidget.cpp"
