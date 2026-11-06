@@ -26,5 +26,8 @@
     <entry name="SamplingSupport" type="Bool">
       <default>true</default>
     </entry>
+    <entry name="Roots" type="StringList">
+      <default></default>
+    </entry>
   </group>
 </kcfg>

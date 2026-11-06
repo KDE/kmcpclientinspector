@@ -6,6 +6,7 @@
 
 #include "kmcpclientinspectorserversettingswidget.h"
 #include "common/kmcpclientinspectorcapabilitywidget.h"
+#include "common/kmcpclientinspectorrootsutils.h"
 #include "dialogs/kmcpclientinspectorrootsdialog.h"
 #include "kmcpclientinspectorconnectbuttonswidget.h"
 #include "kmcpclientinspectorglobalconfig.h"
@@ -104,7 +105,10 @@ void KMcpClientInspectorServerSettingsWidget::slotConfigureRoots()
     if (dlg->exec()) {
         if (const QStringList newRoots = dlg->roots(); newRoots != roots()) {
             auto settings = mServer.settings();
-            settings.setRoots(newRoots);
+            // Same list as the global one: keep following the global roots.
+            const bool useGlobalRoots = (newRoots == KMcpClientInspectorGlobalConfig::self()->roots());
+            settings.setRoots(useGlobalRoots ? QStringList() : newRoots);
+            settings.setUseGlobalRoots(useGlobalRoots);
             mServer.setSettings(settings);
             mServerInfoWidget->setServerInfo(mServer);
             Q_EMIT serverModified(mServer);
@@ -154,7 +158,7 @@ bool KMcpClientInspectorServerSettingsWidget::samplingSupport() const
 
 QStringList KMcpClientInspectorServerSettingsWidget::roots() const
 {
-    return mServer.settings().roots();
+    return KMcpClientInspectorRootsUtils::effectiveRoots(mServer.settings(), KMcpClientInspectorGlobalConfig::self()->roots());
 }
 
 TextAutoGenerateTextMcpProtocolCore::McpServer KMcpClientInspectorServerSettingsWidget::server() const

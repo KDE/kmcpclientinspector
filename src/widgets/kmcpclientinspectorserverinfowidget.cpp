@@ -5,6 +5,8 @@
  */
 
 #include "kmcpclientinspectorserverinfowidget.h"
+#include "common/kmcpclientinspectorrootsutils.h"
+#include "kmcpclientinspectorglobalconfig.h"
 #include <KLocalizedString>
 #include <QFormLayout>
 #include <QLabel>
@@ -64,7 +66,7 @@ void KMcpClientInspectorServerInfoWidget::setServerInfo(const TextAutoGenerateTe
     }
     mEnvironments->setText(environments.join(u'\n'));
     mServerUrl->setText(settings.serverUrl().toDisplayString());
-    mRoots->setText(settings.roots().join(u'\n'));
+    mRoots->setText(KMcpClientInspectorRootsUtils::effectiveRoots(settings, KMcpClientInspectorGlobalConfig::self()->roots()).join(u'\n'));
 
     mIcon->setPixmap(icon.pixmap(24, 24));
 

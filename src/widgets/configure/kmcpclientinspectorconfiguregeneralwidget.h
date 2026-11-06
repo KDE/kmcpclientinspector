@@ -6,6 +6,7 @@
 #pragma once
 
 #include "kmcpclientinspectorconfigurebasewidget.h"
+#include <QStringList>
 class KMcpClientInspectorCapabilityWidget;
 
 class KMcpClientInspectorConfigureGeneralWidget : public KMcpClientInspectorConfigureBaseWidget
@@ -21,5 +22,7 @@ public:
     void restoreDefaults() override;
 
 private:
+    void slotConfigureRoots();
     KMcpClientInspectorCapabilityWidget *const mCapabilityWidget;
+    QStringList mRoots;
 };

@@ -5,7 +5,9 @@
 */
 #include "kmcpclientinspectorconfiguregeneralwidget.h"
 #include "common/kmcpclientinspectorcapabilitywidget.h"
+#include "dialogs/kmcpclientinspectorrootsdialog.h"
 #include "kmcpclientinspectorglobalconfig.h"
+#include <QPointer>
 #include <QVBoxLayout>
 
 using namespace Qt::Literals::StringLiterals;
@@ -20,9 +22,23 @@ KMcpClientInspectorConfigureGeneralWidget::KMcpClientInspectorConfigureGeneralWi
     mCapabilityWidget->setObjectName(u"mCapabilityWidget"_s);
     mainLayout->addWidget(mCapabilityWidget);
     mainLayout->addStretch(1);
+    connect(mCapabilityWidget,
+            &KMcpClientInspectorCapabilityWidget::configureRootsRequested,
+            this,
+            &KMcpClientInspectorConfigureGeneralWidget::slotConfigureRoots);
 }
 
 KMcpClientInspectorConfigureGeneralWidget::~KMcpClientInspectorConfigureGeneralWidget() = default;
+
+void KMcpClientInspectorConfigureGeneralWidget::slotConfigureRoots()
+{
+    QPointer<KMcpClientInspectorRootsDialog> dlg = new KMcpClientInspectorRootsDialog(this);
+    dlg->setRoots(mRoots);
+    if (dlg->exec()) {
+        mRoots = dlg->roots();
+    }
+    delete dlg;
+}
 
 void KMcpClientInspectorConfigureGeneralWidget::save()
 {
@@ -30,6 +46,7 @@ void KMcpClientInspectorConfigureGeneralWidget::save()
     KMcpClientInspectorGlobalConfig::self()->setUrlElicitationSupport(mCapabilityWidget->urlElicitationSupport());
     KMcpClientInspectorGlobalConfig::self()->setRootsSupport(mCapabilityWidget->rootsSupport());
     KMcpClientInspectorGlobalConfig::self()->setSamplingSupport(mCapabilityWidget->samplingSupport());
+    KMcpClientInspectorGlobalConfig::self()->setRoots(mRoots);
     KMcpClientInspectorGlobalConfig::self()->save();
 }
 
@@ -40,6 +57,7 @@ void KMcpClientInspectorConfigureGeneralWidget::revert()
 
 void KMcpClientInspectorConfigureGeneralWidget::load()
 {
+    mRoots = KMcpClientInspectorGlobalConfig::self()->roots();
     mCapabilityWidget->setElicitationSupport(KMcpClientInspectorGlobalConfig::self()->elicitationSupport());
     mCapabilityWidget->setUrlElicitationSupport(KMcpClientInspectorGlobalConfig::self()->urlElicitationSupport());
     mCapabilityWidget->setRootsSupport(KMcpClientInspectorGlobalConfig::self()->rootsSupport());
