@@ -30,4 +30,11 @@
       <default></default>
     </entry>
   </group>
+  <group name="RequestTimeout">
+    <entry name="RequestTimeoutInSeconds" type="Int">
+      <default>60</default>
+      <min>1</min>
+      <max>3600</max>
+    </entry>
+  </group>
 </kcfg>

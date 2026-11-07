@@ -8,7 +8,7 @@
 #include "kmcpclientinspectorconfigurebasewidget.h"
 #include <QStringList>
 class KMcpClientInspectorCapabilityWidget;
-
+class QSpinBox;
 class KMcpClientInspectorConfigureGeneralWidget : public KMcpClientInspectorConfigureBaseWidget
 {
     Q_OBJECT
@@ -25,4 +25,5 @@ private:
     void slotConfigureRoots();
     KMcpClientInspectorCapabilityWidget *const mCapabilityWidget;
     QStringList mRoots;
+    QSpinBox *const mRequestTimeout;
 };

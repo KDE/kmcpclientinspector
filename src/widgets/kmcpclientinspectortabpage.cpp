@@ -9,6 +9,7 @@
 #include "dialogs/kmcpclientinspectorelicitationdialog.h"
 #include "dialogs/kmcpclientinspectorsamplingdialog.h"
 #include "dialogs/kmcpclientinspectorurlelicitationdialog.h"
+#include "kmcpclientinspectorglobalconfig.h"
 #include "kmcpclientinspectorserversettingswidget.h"
 #include <KLocalizedString>
 #include <KMessageWidget>
@@ -61,6 +62,7 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
     , mElicitationCompletedWidget(new KMessageWidget(this))
 {
     mProtocolManager->setClientName(u"kmcpclientinspector"_s);
+    mProtocolManager->setRequestTimeout(std::chrono::seconds(KMcpClientInspectorGlobalConfig::self()->requestTimeoutInSeconds()));
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName("mainLayout"_L1);
     mainLayout->setContentsMargins({});
