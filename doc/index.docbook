@@ -36,8 +36,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2026-10-22</date>
-<releaseinfo>0.2.4</releaseinfo>
+<date>2026-11-07</date>
+<releaseinfo>0.2.7</releaseinfo>
 
 <abstract>
 <para>
@@ -79,6 +79,8 @@ of <acronym>MCP</acronym> servers to:
 <listitem><para>list and call the tools provided by the server;</para></listitem>
 <listitem><para>list and retrieve the prompts provided by the server;</para></listitem>
 <listitem><para>list the resources and resource templates provided by the server;</para></listitem>
+<listitem><para>read a resource and subscribe to its updates;</para></listitem>
+<listitem><para>answer the requests sent by the server (elicitation, sampling, roots);</para></listitem>
 <listitem><para>check that the server answers with a ping request;</para></listitem>
 <listitem><para>look at every JSON-RPC message sent and received;</para></listitem>
 <listitem><para>follow the log notifications emitted by the server.</para></listitem>
@@ -131,6 +133,10 @@ The upper part shows information about the server:
 
 <variablelist>
 <varlistentry>
+<term><guilabel>Icon:</guilabel></term>
+<listitem><para>The icon of the server.</para></listitem>
+</varlistentry>
+<varlistentry>
 <term><guilabel>Name:</guilabel></term>
 <listitem><para>The name of the server.</para></listitem>
 </varlistentry>
@@ -150,16 +156,29 @@ arguments and the environment variables passed to it.</para></listitem>
 </varlistentry>
 <varlistentry>
 <term><guilabel>Roots:</guilabel></term>
-<listitem><para>The roots (directories or files) exposed to the server.</para></listitem>
+<listitem><para>The roots (directories or files) exposed to the server. When
+no specific roots are defined for the server, the global roots defined in the
+<link linkend="configure-general">General</link> page of the configuration
+dialog are used.</para></listitem>
 </varlistentry>
 </variablelist>
 
 <para>
 The <guilabel>Capabilities</guilabel> group lets you choose which client
 capabilities are announced to the server during initialization:
-<guilabel>Elicitation</guilabel>, <guilabel>Roots</guilabel> and
-<guilabel>Sampling</guilabel>. They are all enabled by default. They can only
-be changed while the server is disconnected.
+<guilabel>Elicitation</guilabel>, <guilabel>URL elicitation</guilabel>,
+<guilabel>Sampling</guilabel> and <guilabel>Roots</guilabel>. Their initial
+state comes from the <link linkend="configure-general">General</link> page of
+the configuration dialog. They can only be changed while the server is
+disconnected.
+</para>
+
+<para>
+The button next to <guilabel>Roots</guilabel> opens the
+<guilabel>Configure Roots</guilabel> dialog, to choose the roots exposed to this
+server. If the list is the same as the global one, the server keeps following
+the global roots. When the roots are changed while the server is connected, the
+server is notified.
 </para>
 
 <para>
@@ -179,7 +198,8 @@ button to stop it.
 
 <para>
 The right part of the server tab contains one tab for each kind of request
-or information:
+or information. The tabs related to tools, prompts and resources are only shown
+when the server announces the corresponding capability during initialization.
 </para>
 
 <variablelist>
@@ -220,9 +240,18 @@ number, boolean, or JSON value). Check
 directly as a JSON object.
 </para>
 <para>
+The title of the tool and its annotations are shown as badges:
+<guilabel>Read-only</guilabel>, <guilabel>Destructive</guilabel> or
+<guilabel>Additive</guilabel>, <guilabel>Idempotent</guilabel>,
+<guilabel>Open world</guilabel> or <guilabel>Closed world</guilabel>. Badges
+in gray italic are default values, not declared by the server. Tools which
+declare themselves as destructive are marked with a warning icon in the list.
+</para>
+<para>
 Click on <guibutton>Call Tool</guibutton> to call the tool. Required arguments
-and argument types are checked before the request is sent. The result is
-shown in two tabs:
+and argument types are checked before the request is sent. When the server
+sends progress notifications, a progress bar and the progress message are
+shown during the call. The result is shown in two tabs:
 </para>
 <itemizedlist>
 <listitem><para><guilabel>Content</guilabel>: a readable view of the
@@ -268,6 +297,29 @@ of the resources it provides and shows the answer.
 </para></listitem>
 </varlistentry>
 
+<varlistentry id="action-read-resource">
+<term><guilabel>Read Resource</guilabel></term>
+<listitem>
+<para>
+Click on <guibutton>List Resources</guibutton> to fill the list of resources;
+the <guilabel>Search</guilabel> field filters it. Select a resource, or enter
+its address in the <guilabel>URI:</guilabel> field, then click on
+<guibutton>Read Resource</guibutton>. The result is shown in two tabs:
+</para>
+<itemizedlist>
+<listitem><para><guilabel>Contents</guilabel>: a readable view of the
+contents of the resource;</para></listitem>
+<listitem><para><guilabel>JSON</guilabel>: the raw JSON answer.</para></listitem>
+</itemizedlist>
+<para>
+If the server supports it, the <guibutton>Subscribe</guibutton> button asks the
+server to send a notification when the resource changes; the resource is then
+read again automatically. The <guibutton>Unsubscribe</guibutton> button stops
+these notifications.
+</para>
+</listitem>
+</varlistentry>
+
 <varlistentry id="action-resource-templates">
 <term><guilabel>Resource Templates</guilabel></term>
 <listitem><para>
@@ -307,6 +359,55 @@ selected level (<guilabel>Debug</guilabel>, <guilabel>Info</guilabel>,
 </sect2>
 </sect1>
 
+<sect1 id="server-requests">
+<title>Requests from the Server</title>
+
+<para>
+An <acronym>MCP</acronym> server can also send requests to the client, when
+the corresponding capability is enabled. &kappname; shows a dialog for each
+of them:
+</para>
+
+<variablelist>
+<varlistentry id="request-elicitation">
+<term><guilabel>Server Requests Information</guilabel></term>
+<listitem><para>
+The server asks the user for some information (elicitation). A field is shown
+for each requested value. Click on <guibutton>Accept</guibutton> to send the
+values, on <guibutton>Decline</guibutton> to refuse, or on <guibutton>Cancel</guibutton> to
+cancel the request.
+</para></listitem>
+</varlistentry>
+<varlistentry id="request-url-elicitation">
+<term><guilabel>Server Requests to Open a Web Page</guilabel></term>
+<listitem><para>
+The server asks the user to complete an interaction in a web browser
+(<acronym>URL</acronym> elicitation). The domain and the full
+<acronym>URL</acronym> are shown; the page is only opened if you click on
+<guibutton>Open</guibutton>. When the server reports that the interaction is
+complete, a message is shown in the server tab and you can retry the request.
+</para></listitem>
+</varlistentry>
+<varlistentry id="request-sampling">
+<term><guilabel>Server Requests Message Generation</guilabel></term>
+<listitem><para>
+The server asks the client to generate a message with a language model
+(sampling). The request is shown, and you write the response yourself, with
+optionally the <guilabel>Model:</guilabel> and <guilabel>Stop reason:</guilabel>
+to report. Click on <guibutton>Send</guibutton> to answer or on
+<guibutton>Reject</guibutton> to refuse.
+</para></listitem>
+</varlistentry>
+<varlistentry id="request-roots">
+<term>Roots</term>
+<listitem><para>
+When the server asks for the list of roots, &kappname; answers automatically
+with the roots of the server.
+</para></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
 </chapter>
 
 <chapter id="configuration">
@@ -316,6 +417,22 @@ selected level (<guilabel>Debug</guilabel>, <guilabel>Info</guilabel>,
 <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;…</guimenuitem></menuchoice>
 opens the configuration dialog.
 </para>
+
+<sect1 id="configure-general">
+<title>General</title>
+<para>
+The <guilabel>General</guilabel> page defines the default
+<guilabel>Capabilities</guilabel> announced to the servers:
+<guilabel>Elicitation</guilabel>, <guilabel>URL elicitation</guilabel>,
+<guilabel>Sampling</guilabel> and <guilabel>Roots</guilabel>. They are all
+enabled by default.
+</para>
+<para>
+The button next to <guilabel>Roots</guilabel> opens the
+<guilabel>Configure Roots</guilabel> dialog, to define the global roots. They
+are used by every server which does not define its own roots.
+</para>
+</sect1>
 
 <sect1 id="configure-mcp-servers">
 <title>MCP Servers</title>
