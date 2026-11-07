@@ -62,7 +62,7 @@ KMcpClientInspectorTabPage::KMcpClientInspectorTabPage(const TextAutoGenerateTex
     , mElicitationCompletedWidget(new KMessageWidget(this))
 {
     mProtocolManager->setClientName(u"kmcpclientinspector"_s);
-    mProtocolManager->setRequestTimeout(std::chrono::seconds(KMcpClientInspectorGlobalConfig::self()->requestTimeoutInSeconds()));
+    updateRequestTimeout();
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName("mainLayout"_L1);
     mainLayout->setContentsMargins({});
@@ -144,6 +144,11 @@ void KMcpClientInspectorTabPage::setServer(const TextAutoGenerateTextMcpProtocol
     mServerSettings->setServer(server);
     // Refused when client is started: it will be used at next connection
     std::ignore = mProtocolManager->setServer(server);
+}
+
+void KMcpClientInspectorTabPage::updateRequestTimeout()
+{
+    mProtocolManager->setRequestTimeout(std::chrono::seconds(KMcpClientInspectorGlobalConfig::self()->requestTimeoutInSeconds()));
 }
 
 void KMcpClientInspectorTabPage::slotElicitationRequested(const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId &id,

@@ -29,6 +29,8 @@ public:
     [[nodiscard]] TextAutoGenerateTextMcpProtocolCore::McpServer server() const;
     void setServer(const TextAutoGenerateTextMcpProtocolCore::McpServer &server);
 
+    void updateRequestTimeout();
+
 Q_SIGNALS:
     void started();
     void finished();

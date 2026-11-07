@@ -45,6 +45,7 @@ void KMcpClientInspectorTabWidget::loadServers()
                 setTabText(indexOf(page), s.name());
             }
             tabBar()->moveTab(indexOf(page), index);
+            page->updateRequestTimeout();
         } else {
             insertTab(index, createPage(s), QIcon::fromTheme(u"network-disconnect"_s), s.name());
         }
