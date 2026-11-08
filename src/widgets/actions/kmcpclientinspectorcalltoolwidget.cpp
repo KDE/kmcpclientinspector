@@ -98,6 +98,7 @@ KMcpClientInspectorCallToolWidget::KMcpClientInspectorCallToolWidget(McpProtocol
     , mJsonPlainTextEditWidget(new JsonPlainTextEditWidget(this))
     , mProgressBar(new QProgressBar(this))
     , mProgressBarLabel(new QLabel(this))
+    , mCancelToolButton(new QPushButton(i18nc("@action:button", "Cancel Tool"), this))
 {
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setObjectName(u"mainLayout"_s);
@@ -165,6 +166,9 @@ KMcpClientInspectorCallToolWidget::KMcpClientInspectorCallToolWidget(McpProtocol
     callLayout->setObjectName(u"callLayout"_s);
     mCallToolButton->setObjectName(u"mCallToolButton"_s);
     callLayout->addWidget(mCallToolButton);
+    mCancelToolButton->setObjectName(u"mCancelToolButton"_s);
+    callLayout->addWidget(mCancelToolButton);
+    connect(mCancelToolButton, &QPushButton::clicked, this, &KMcpClientInspectorCallToolWidget::slotCancelTool);
     mStatusLabel->setObjectName(u"mStatusLabel"_s);
     mStatusLabel->setWordWrap(true);
     mStatusLabel->setTextFormat(Qt::PlainText);
@@ -346,6 +350,7 @@ void KMcpClientInspectorCallToolWidget::slotCurrentToolChanged(int row)
 void KMcpClientInspectorCallToolWidget::updateCallButton()
 {
     mCallToolButton->setEnabled(mPendingRequestId < 0 && mToolsListWidget->currentRow() >= 0 && mProtocolManager->isInitialized());
+    mCancelToolButton->setVisible(mPendingRequestId >= 0);
 }
 
 void KMcpClientInspectorCallToolWidget::setCallInProgress(bool inProgress)
@@ -362,6 +367,17 @@ void KMcpClientInspectorCallToolWidget::showMessage(const QString &message, bool
     QPalette palette = mStatusLabel->palette();
     palette.setColor(QPalette::WindowText, isError ? QColor(Qt::red) : this->palette().color(QPalette::WindowText));
     mStatusLabel->setPalette(palette);
+}
+
+void KMcpClientInspectorCallToolWidget::slotCancelTool()
+{
+    if (mPendingRequestId >= 0) {
+        mProtocolManager->cancelRequest(mPendingRequestId);
+        setCallInProgress(false);
+        mProgressBar->setVisible(false);
+        mProgressBarLabel->setVisible(false);
+        showMessage(i18n("Tool call cancelled."), false);
+    }
 }
 
 void KMcpClientInspectorCallToolWidget::slotCallTool()

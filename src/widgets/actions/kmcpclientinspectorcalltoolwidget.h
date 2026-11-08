@@ -68,14 +68,15 @@ public:
     [[nodiscard]] static QString annotationsToolTip(const std::optional<TextAutoGenerateTextMcpProtocolCore::McpProtocolToolAnnotations> &annotations);
 
 private:
-    void slotCurrentToolChanged(int row);
-    void slotCallTool();
-    void clearTools();
-    void clearResult();
-    void setCallInProgress(bool inProgress);
-    void updateCallButton();
-    void showMessage(const QString &message, bool isError);
-    void showUrlElicitations(const QJsonObject &obj);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotCurrentToolChanged(int row);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotCallTool();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void clearTools();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void clearResult();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void setCallInProgress(bool inProgress);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void updateCallButton();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void showMessage(const QString &message, bool isError);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void showUrlElicitations(const QJsonObject &obj);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotCancelTool();
 
     QList<TextAutoGenerateTextMcpProtocolCore::McpProtocolTool> mTools;
     QPushButton *const mListToolsButton;
@@ -91,5 +92,6 @@ private:
     JsonPlainTextEditWidget *const mJsonPlainTextEditWidget;
     QProgressBar *const mProgressBar;
     QLabel *const mProgressBarLabel;
+    QPushButton *const mCancelToolButton;
     qint64 mPendingRequestId = -1;
 };
