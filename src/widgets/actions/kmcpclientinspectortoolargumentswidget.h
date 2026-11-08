@@ -57,13 +57,13 @@ private:
         bool required = false;
         QWidget *widget = nullptr;
     };
-    [[nodiscard]] static FieldType fieldType(const QJsonObject &property);
-    [[nodiscard]] std::optional<QJsonObject> formArguments(QString *errorMessage) const;
-    [[nodiscard]] std::optional<QJsonObject> jsonArguments(QString *errorMessage) const;
-    [[nodiscard]] QWidget *createFieldWidget(const Field &field, const QJsonObject &property);
-    void setFieldValue(const Field &field, const QJsonValue &value);
-    void clearForm();
-    void slotJsonEditorToggled(bool checked);
+    [[nodiscard]] LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT static FieldType fieldType(const QJsonObject &property);
+    [[nodiscard]] LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT std::optional<QJsonObject> formArguments(QString *errorMessage) const;
+    [[nodiscard]] LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT std::optional<QJsonObject> jsonArguments(QString *errorMessage) const;
+    [[nodiscard]] LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT QWidget *createFieldWidget(const Field &field, const QJsonObject &property);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void setFieldValue(const Field &field, const QJsonValue &value);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void clearForm();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotJsonEditorToggled(bool checked);
 
     QList<Field> mFields;
     QCheckBox *const mJsonEditorCheckBox;

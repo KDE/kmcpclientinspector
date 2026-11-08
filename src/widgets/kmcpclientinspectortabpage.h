@@ -37,12 +37,13 @@ Q_SIGNALS:
     void serverModified(const TextAutoGenerateTextMcpProtocolCore::McpServer &server);
 
 private:
-    void slotElicitationRequested(const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId &id,
-                                  const TextAutoGenerateTextMcpProtocolCore::McpProtocolElicitRequest &request);
-    void slotSamplingRequested(const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId &id,
-                               const TextAutoGenerateTextMcpProtocolCore::McpProtocolCreateMessageRequest &request);
-    void slotElicitationCompleted(const QString &elicitationId);
-    void showUserRequestDialog(QDialog *dialog, const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId &id);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotElicitationRequested(const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId &id,
+                                                                          const TextAutoGenerateTextMcpProtocolCore::McpProtocolElicitRequest &request);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotSamplingRequested(const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId &id,
+                                                                       const TextAutoGenerateTextMcpProtocolCore::McpProtocolCreateMessageRequest &request);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotElicitationCompleted(const QString &elicitationId);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void showUserRequestDialog(QDialog *dialog,
+                                                                       const TextAutoGenerateTextMcpProtocolCore::McpProtocolUtils::RequestId &id);
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *const mProtocolManager;
     KMcpClientInspectorServerSettingsWidget *const mServerSettings;
     KMcpClientInspectorActionTabWidget *const mActionTabWidget;

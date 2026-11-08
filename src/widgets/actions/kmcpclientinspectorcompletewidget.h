@@ -65,14 +65,14 @@ public:
     [[nodiscard]] static QStringList uriTemplateVariables(const QString &uriTemplate);
 
 private:
-    void slotComplete();
-    void updateReferences();
-    void updateArgumentNames();
-    void clearResult();
-    void setRequestInProgress(bool inProgress);
-    void updateCompleteButton();
-    void showMessage(const QString &message, bool isError);
-    [[nodiscard]] ReferenceType referenceType() const;
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotComplete();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void updateReferences();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void updateArgumentNames();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void clearResult();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void setRequestInProgress(bool inProgress);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void updateCompleteButton();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void showMessage(const QString &message, bool isError);
+    [[nodiscard]] LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT ReferenceType referenceType() const;
 
     QList<TextAutoGenerateTextMcpProtocolCore::McpProtocolPrompt> mPrompts;
     QList<TextAutoGenerateTextMcpProtocolCore::McpProtocolResourceTemplate> mResourceTemplates;

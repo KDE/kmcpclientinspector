@@ -48,13 +48,13 @@ public:
     [[nodiscard]] static QString resultToHtml(const TextAutoGenerateTextMcpProtocolCore::McpProtocolGetPromptResult &result, QTextDocument *document = nullptr);
 
 private:
-    void slotCurrentPromptChanged(int row);
-    void slotGetPrompt();
-    void clearPrompts();
-    void clearResult();
-    void setRequestInProgress(bool inProgress);
-    void updateGetPromptButton();
-    void showMessage(const QString &message, bool isError);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotCurrentPromptChanged(int row);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotGetPrompt();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void clearPrompts();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void clearResult();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void setRequestInProgress(bool inProgress);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void updateGetPromptButton();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void showMessage(const QString &message, bool isError);
 
     QList<TextAutoGenerateTextMcpProtocolCore::McpProtocolPrompt> mPrompts;
     QPushButton *const mListPromptsButton;

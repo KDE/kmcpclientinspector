@@ -29,9 +29,10 @@ public:
     ~KMcpClientInspectorServerNotificationWidget() override;
 
 private:
-    void slotLoggingMessageReceived(const TextAutoGenerateTextMcpProtocolCore::McpProtocolLoggingMessageNotificationParams &params);
-    void slotCurrentChanged(const QModelIndex &index);
-    void slotMinimumLevelChanged();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void
+    slotLoggingMessageReceived(const TextAutoGenerateTextMcpProtocolCore::McpProtocolLoggingMessageNotificationParams &params);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotCurrentChanged(const QModelIndex &index);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotMinimumLevelChanged();
     QComboBox *const mLevelComboBox;
     KMcpClientInspectorLogSearchWidget *const mLogSearchWidget;
     QSplitter *const mSplitter;

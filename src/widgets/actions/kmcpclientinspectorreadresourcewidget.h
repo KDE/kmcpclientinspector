@@ -54,16 +54,16 @@ public:
     [[nodiscard]] static QString resultToHtml(const TextAutoGenerateTextMcpProtocolCore::McpProtocolReadResourceResult &result);
 
 private:
-    void slotCurrentResourceChanged(int row);
-    void slotReadResource();
-    void slotSubscribe();
-    void slotUnsubscribe();
-    void slotResourceUpdated(const QString &uri);
-    void clearResources();
-    void clearResult();
-    void updateButtons();
-    void updateResourceItems();
-    void showMessage(const QString &message, bool isError);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotCurrentResourceChanged(int row);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotReadResource();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotSubscribe();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotUnsubscribe();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotResourceUpdated(const QString &uri);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void clearResources();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void clearResult();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void updateButtons();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void updateResourceItems();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void showMessage(const QString &message, bool isError);
 
     QList<TextAutoGenerateTextMcpProtocolCore::McpProtocolResource> mResources;
     QSet<QString> mSubscribedResources;

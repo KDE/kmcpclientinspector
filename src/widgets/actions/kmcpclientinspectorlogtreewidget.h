@@ -26,8 +26,9 @@ Q_SIGNALS:
     void clearRequested();
 
 private:
-    void slotCurrentChanged(const QModelIndex &index);
-    void slotMessageLogged(const TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageInfo &info);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotCurrentChanged(const QModelIndex &index);
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void
+    slotMessageLogged(const TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MessageInfo &info);
     QTreeView *const mTreeView;
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager *const mProtocolManager;
     KMcpClientInspectorLogModel *const mLogModel;

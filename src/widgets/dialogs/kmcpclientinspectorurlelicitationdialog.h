@@ -39,7 +39,7 @@ public:
     [[nodiscard]] static bool canOpenUrl(const QUrl &url);
 
 private:
-    void slotDecline();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotDecline();
 
     const QUrl mUrl;
     QLabel *const mMessageLabel;

@@ -30,8 +30,8 @@ public:
     [[nodiscard]] TextAutoGenerateTextMcpProtocolCore::McpProtocolElicitResult elicitResult() const;
 
 private:
-    void slotAccept();
-    void slotDecline();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotAccept();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotDecline();
 
     QLabel *const mMessageLabel;
     KMcpClientInspectorToolArgumentsWidget *const mArgumentsWidget;
