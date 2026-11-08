@@ -18,6 +18,7 @@ class KMcpClientInspectorGetPromptWidget;
 class KMcpClientInspectorListResourcesWidget;
 class KMcpClientInspectorResourceTemplatesWidget;
 class KMcpClientInspectorReadResourceWidget;
+class KMcpClientInspectorCompleteWidget;
 class KMcpClientInspectorLogWidget;
 class KMcpClientInspectorServerNotificationWidget;
 class KMcpClientInspectorMessageWidget;
@@ -44,6 +45,7 @@ private:
     KMcpClientInspectorListResourcesWidget *const mListResourcesWidget;
     KMcpClientInspectorResourceTemplatesWidget *const mResourceTemplatesWidget;
     KMcpClientInspectorReadResourceWidget *const mReadResourceWidget;
+    KMcpClientInspectorCompleteWidget *const mCompleteWidget;
     KMcpClientInspectorLogWidget *const mLogWidget;
     QTabWidget *const mTabWidget;
     KMcpClientInspectorMessageWidget *const mMessageWidget;

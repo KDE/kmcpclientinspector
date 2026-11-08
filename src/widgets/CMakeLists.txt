@@ -71,6 +71,8 @@ target_sources(
         actions/kmcpclientinspectormessagewidget.cpp
         actions/kmcpclientinspectorservernotificationwidget.h
         actions/kmcpclientinspectorservernotificationwidget.cpp
+        actions/kmcpclientinspectorcompletewidget.h
+        actions/kmcpclientinspectorcompletewidget.cpp
         common/kmcpclientinspectorcapabilitywidget.h
         common/kmcpclientinspectorcapabilitywidget.cpp
         common/kmcpclientinspectorrootsutils.h

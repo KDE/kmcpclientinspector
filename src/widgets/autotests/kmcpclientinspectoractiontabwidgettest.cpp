@@ -7,6 +7,7 @@
 #include "kmcpclientinspectoractiontabwidgettest.h"
 #include "actions/kmcpclientinspectoractiontabwidget.h"
 #include "actions/kmcpclientinspectorcalltoolwidget.h"
+#include "actions/kmcpclientinspectorcompletewidget.h"
 #include "actions/kmcpclientinspectorgetpromptwidget.h"
 #include "actions/kmcpclientinspectorinitializewidget.h"
 #include "actions/kmcpclientinspectorlistpromptswidget.h"
@@ -44,7 +45,7 @@ void KMcpClientInspectorActionTabWidgetTest::shouldHaveDefaultValues()
 
     auto mTabWidget = w.findChild<QTabWidget *>(u"mTabWidget"_s);
     QVERIFY(mTabWidget);
-    QCOMPARE(mTabWidget->count(), 11);
+    QCOMPARE(mTabWidget->count(), 12);
 
     auto mInitializeWidget = w.findChild<KMcpClientInspectorInitializeWidget *>(u"mInitializeWidget"_s);
     QVERIFY(mInitializeWidget);
@@ -86,6 +87,10 @@ void KMcpClientInspectorActionTabWidgetTest::shouldHaveDefaultValues()
     auto mReadResourceWidget = w.findChild<KMcpClientInspectorReadResourceWidget *>(u"mReadResourceWidget"_s);
     QVERIFY(mReadResourceWidget);
     QVERIFY(!mTabWidget->isTabVisible(mTabWidget->indexOf(mReadResourceWidget)));
+
+    auto mCompleteWidget = w.findChild<KMcpClientInspectorCompleteWidget *>(u"mCompleteWidget"_s);
+    QVERIFY(mCompleteWidget);
+    QVERIFY(!mTabWidget->isTabVisible(mTabWidget->indexOf(mCompleteWidget)));
 }
 
 #include "moc_kmcpclientinspectoractiontabwidgettest.cpp"
