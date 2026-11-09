@@ -7,6 +7,7 @@
 #include "common/kmcpclientinspectorcapabilitywidget.h"
 #include "dialogs/kmcpclientinspectorrootsdialog.h"
 #include "kmcpclientinspectorglobalconfig.h"
+#include <KLocalization>
 #include <KLocalizedString>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -34,6 +35,7 @@ KMcpClientInspectorConfigureGeneralWidget::KMcpClientInspectorConfigureGeneralWi
     label->setObjectName(u"label"_s);
     mRequestTimeout->setObjectName(u"mRequestTimeout"_s);
     label->setBuddy(mRequestTimeout);
+    KLocalization::setupSpinBoxFormatString(mRequestTimeout, ki18ncp("Interval suffix", "%v second", "%v seconds"));
 
     hboxLayout->addWidget(label);
     hboxLayout->addWidget(mRequestTimeout);
