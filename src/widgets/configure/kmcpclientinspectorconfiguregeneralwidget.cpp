@@ -72,7 +72,7 @@ void KMcpClientInspectorConfigureGeneralWidget::save()
 
 void KMcpClientInspectorConfigureGeneralWidget::revert()
 {
-    // TODO
+    // Nothing
 }
 
 void KMcpClientInspectorConfigureGeneralWidget::load()
@@ -87,7 +87,9 @@ void KMcpClientInspectorConfigureGeneralWidget::load()
 
 void KMcpClientInspectorConfigureGeneralWidget::restoreDefaults()
 {
-    // TODO
+    const bool bUseDefaults = KMcpClientInspectorGlobalConfig::self()->useDefaults(true);
+    load();
+    KMcpClientInspectorGlobalConfig::self()->useDefaults(bUseDefaults);
 }
 
 #include "moc_kmcpclientinspectorconfiguregeneralwidget.cpp"

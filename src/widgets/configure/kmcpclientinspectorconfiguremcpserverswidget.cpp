@@ -40,7 +40,7 @@ void KMcpClientInspectorConfigureMcpServersWidget::load()
 
 void KMcpClientInspectorConfigureMcpServersWidget::restoreDefaults()
 {
-    // TODO
+    // nothing
 }
 
 void KMcpClientInspectorConfigureMcpServersWidget::revert()
