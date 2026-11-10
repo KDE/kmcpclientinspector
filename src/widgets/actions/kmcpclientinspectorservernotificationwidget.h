@@ -8,6 +8,7 @@
 #include "kmcpclientinspectoractiontabpagebase.h"
 #include "libkmcpclientinspectorwidgets_private_export.h"
 class QComboBox;
+class QJsonObject;
 class QModelIndex;
 class QPushButton;
 class QSplitter;
@@ -28,11 +29,16 @@ public:
                                                          QWidget *parent = nullptr);
     ~KMcpClientInspectorServerNotificationWidget() override;
 
+    void setLoggingLevelResult(const QJsonObject &obj);
+
 private:
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void
     slotLoggingMessageReceived(const TextAutoGenerateTextMcpProtocolCore::McpProtocolLoggingMessageNotificationParams &params);
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotCurrentChanged(const QModelIndex &index);
     LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotMinimumLevelChanged();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotServerLevelActivated();
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT static void fillLevelComboBox(QComboBox *comboBox);
+    QComboBox *const mServerLevelComboBox;
     QComboBox *const mLevelComboBox;
     KMcpClientInspectorLogSearchWidget *const mLogSearchWidget;
     QSplitter *const mSplitter;

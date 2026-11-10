@@ -36,6 +36,12 @@ void KMcpClientInspectorServerNotificationWidgetTest::shouldHaveDefaultValues()
     TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager manager(TextAutoGenerateTextMcpProtocolCore::McpServer{});
     KMcpClientInspectorServerNotificationWidget w(&manager);
 
+    auto mServerLevelComboBox = w.findChild<QComboBox *>(u"mServerLevelComboBox"_s);
+    QVERIFY(mServerLevelComboBox);
+    QCOMPARE(mServerLevelComboBox->count(), 9);
+    QCOMPARE(mServerLevelComboBox->currentIndex(), 0);
+    QVERIFY(!mServerLevelComboBox->isEnabled());
+
     auto mLevelComboBox = w.findChild<QComboBox *>(u"mLevelComboBox"_s);
     QVERIFY(mLevelComboBox);
     QCOMPARE(mLevelComboBox->count(), 8);
