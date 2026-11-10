@@ -6,6 +6,7 @@
 
 #include "kmcpclientinspectorlistresourceswidget.h"
 #include <KLocalizedString>
+#include <KNotification>
 #include <QJsonObject>
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorListResourcesWidget::KMcpClientInspectorListResourcesWidget(
@@ -22,8 +23,14 @@ KMcpClientInspectorListResourcesWidget::KMcpClientInspectorListResourcesWidget(
         }
     });
     connect(mProtocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::resourcesListChanged, this, [this]() {
-        if (mProtocolManager->isInitialized()
-            && mProtocolManager->serverSupports(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListResources)) {
+        if (!mProtocolManager->isInitialized()) {
+            return;
+        }
+        auto notification = new KNotification(u"server-resources-updated"_s, KNotification::CloseOnTimeout);
+        notification->setTitle(i18n("Resources Updated"));
+        notification->setText(i18n("Resources were updated in '%1'.", mProtocolManager->initializeResult().serverInfo().name()));
+        notification->sendEvent();
+        if (mProtocolManager->serverSupports(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListResources)) {
             mProtocolManager->executeAction(TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::MethodType::ListResources);
         }
     });

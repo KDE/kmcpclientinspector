@@ -11,6 +11,7 @@
 #include "misc/jsonplaintexteditwidget.h"
 #include <KListWidgetSearchLine>
 #include <KLocalizedString>
+#include <KNotification>
 #include <QDesktopServices>
 #include <QIcon>
 #include <QImage>
@@ -209,6 +210,10 @@ KMcpClientInspectorCallToolWidget::KMcpClientInspectorCallToolWidget(McpProtocol
     });
     connect(mProtocolManager, &McpProtocolClientProtocolManager::toolsListChanged, this, [this]() {
         if (mProtocolManager->isInitialized()) {
+            auto notification = new KNotification(u"server-tools-updated"_s, KNotification::CloseOnTimeout);
+            notification->setTitle(i18n("Tools Updated"));
+            notification->setText(i18n("Tools were updated in '%1'.", mProtocolManager->initializeResult().serverInfo().name()));
+            notification->sendEvent();
             mProtocolManager->executeAction(McpProtocolClientProtocolManager::MethodType::ListTools);
         }
     });

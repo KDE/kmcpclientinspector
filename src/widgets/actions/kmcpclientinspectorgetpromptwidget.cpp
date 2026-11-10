@@ -10,6 +10,7 @@
 #include "misc/jsonplaintexteditwidget.h"
 #include <KListWidgetSearchLine>
 #include <KLocalizedString>
+#include <KNotification>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLabel>
@@ -144,13 +145,16 @@ KMcpClientInspectorGetPromptWidget::KMcpClientInspectorGetPromptWidget(McpProtoc
     splitter->setStretchFactor(1, 1);
 
     connect(mProtocolManager, &McpProtocolClientProtocolManager::initialized, this, [this]() {
-        if (mProtocolManager->serverSupports(McpProtocolClientProtocolManager::MethodType::ListPrompts)) {
-            mProtocolManager->executeAction(McpProtocolClientProtocolManager::MethodType::ListPrompts);
-        }
+        if (mProtocolManager->serverSupports(McpProtocolClientProtocolManager::MethodType::ListPrompts)) { }
         updateGetPromptButton();
     });
     connect(mProtocolManager, &McpProtocolClientProtocolManager::promptsListChanged, this, [this]() {
         if (mProtocolManager->isInitialized()) {
+            mProtocolManager->executeAction(McpProtocolClientProtocolManager::MethodType::ListPrompts);
+            auto notification = new KNotification(u"server-prompts-updated"_s, KNotification::CloseOnTimeout);
+            notification->setTitle(i18n("Prompts Updated"));
+            notification->setText(i18n("Prompts were updated in '%1'.", mProtocolManager->initializeResult().serverInfo().name()));
+            notification->sendEvent();
             mProtocolManager->executeAction(McpProtocolClientProtocolManager::MethodType::ListPrompts);
         }
     });

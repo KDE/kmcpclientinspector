@@ -3,3 +3,18 @@ IconName=kmcpclientinspector
 Name=kmcpclientinspector
 DesktopEntry=org.kde.kmcpclientinspector
 Comment=Notification
+
+[Event/server-tools-updated]
+Name=Tools Updated
+Action=Popup
+Urgency=Normal
+
+[Event/server-prompts-updated]
+Name=Prompts Updated
+Action=Popup
+Urgency=Normal
+
+[Event/server-resources-updated]
+Name=Resources Updated
+Action=Popup
+Urgency=Normal
