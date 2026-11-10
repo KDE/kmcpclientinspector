@@ -18,3 +18,8 @@ Urgency=Normal
 Name=Resources Updated
 Action=Popup
 Urgency=Normal
+
+[Event/server-error]
+Name=Server Error
+Action=Popup
+Urgency=Normal

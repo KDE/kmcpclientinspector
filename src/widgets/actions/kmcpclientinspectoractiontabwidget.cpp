@@ -20,6 +20,7 @@
 #include "actions/kmcpclientinspectorservernotificationwidget.h"
 #include "kmcpclientinspector_widget_debug.h"
 #include <KLocalizedString>
+#include <KNotification>
 #include <QTabWidget>
 #include <QVBoxLayout>
 #include <TextAutoGenerateTextMcpProtocolCore/McpProtocolClientProtocolManager>
@@ -86,10 +87,20 @@ KMcpClientInspectorActionTabWidget::KMcpClientInspectorActionTabWidget(TextAutoG
     mTabWidget->setTabVisible(mTabWidget->indexOf(mListToolsWidget), false);
     mTabWidget->setTabVisible(mTabWidget->indexOf(mCompleteWidget), false);
 
-    connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::error, this, [this](const QString &errorStr) {
-        mMessageWidget->setText(errorStr);
-        mMessageWidget->animatedShow();
-    });
+    connect(protocolManager,
+            &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::error,
+            this,
+            [this, protocolManager](const QString &errorStr) {
+                mMessageWidget->setText(errorStr);
+                mMessageWidget->animatedShow();
+                auto notification = new KNotification(u"server-error"_s, KNotification::CloseOnTimeout);
+                const QString serverName = protocolManager->initializeResult().serverInfo().name();
+                if (!serverName.isEmpty()) {
+                    notification->setTitle(i18n("Error in %1", serverName));
+                }
+                notification->setText(errorStr);
+                notification->sendEvent();
+            });
 
     connect(protocolManager, &TextAutoGenerateTextMcpProtocolCore::McpProtocolClientProtocolManager::initialized, this, [this, protocolManager]() {
         mTabWidget->setTabVisible(
