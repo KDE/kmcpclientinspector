@@ -1,12 +1,16 @@
 # KMcpClientInspector
 
-Apps which allows to inspect apps which implements mcp protocol support.
+Application to inspect and debug servers implementing
+the Model Context Protocol (MCP).
 
 ## Requirements
 
-`cmake`, `cmake-extra-tools`,
-`kwidgetaddons`, `ki18n`, `kcrash`, `kcoreaddons`,
-`iconthemes`, `xmlgui`, `ktextaddons`
+`cmake` >= 3.29, `extra-cmake-modules`, Qt >= 6.10,
+`kcoreaddons`, `ki18n`, `kxmlgui`, `kcrash`, `knotifications`,
+`knotifyconfig`, `kiconthemes`, `syntax-highlighting`, `kitemviews`,
+`ktextaddons` >= 2.2.82 (with MCP protocol support)
+
+Optional: `kdoctools` (documentation)
 
 ## Building
 
@@ -18,24 +22,29 @@ make
 make install
 ````
 
-or using CMakePresets support (need cmake > 3.20)
+or using CMakePresets support
 
 ````bash
 cmake --preset dev && cmake --build --preset dev
+````
 
 or (using mold linker)
 
-cmake --preset dev-mokd && cmake --build --preset dev-mold
+````bash
+cmake --preset dev-mold && cmake --build --preset dev-mold
 ````
 
 ## ASAN
 
-We can use sanitizers.supp file
-example: LSAN_OPTIONS=suppressions=../sanitizers.supp ./bin/kmcpclientinspector
+Use the `sanitizers.supp` file to suppress known leaks, for example:
+
+````bash
+LSAN_OPTIONS=suppressions=../sanitizers.supp ./bin/kmcpclientinspector
+````
 
 ## UNITY
 
-KMcpClientInspector can build with cmake unity support
+KMcpClientInspector can be built with CMake unity build support:
 
 ````bash
 cmake --preset unity && cmake --build --preset unity
@@ -43,7 +52,7 @@ cmake --preset unity && cmake --build --preset unity
 
 ## Contributing
 
-Contributions are welcome. We use [https://invent.kde.org/](https://invent.kde.org/)
+Contributions are welcome. We use [invent.kde.org](https://invent.kde.org/).
 
 The [KDE Community Code of Conduct](https://kde.org/code-of-conduct) is applied.
 
