@@ -20,6 +20,8 @@ KMcpClientInspectorServerInfoWidget::KMcpClientInspectorServerInfoWidget(QWidget
     , mArguments(createLabel(u"mArguments"_s))
     , mEnvironments(createLabel(u"mEnvironments"_s))
     , mServerUrl(createLabel(u"mServerUrl"_s))
+    , mHeaders(createLabel(u"mHeaders"_s))
+    , mAuthentication(createLabel(u"mAuthentication"_s))
     , mRoots(createLabel(u"mRoots"_s))
     , mIcon(new QLabel(this))
 {
@@ -33,6 +35,8 @@ KMcpClientInspectorServerInfoWidget::KMcpClientInspectorServerInfoWidget(QWidget
     mMainLayout->addRow(i18nc("@label", "Arguments:"), mArguments);
     mMainLayout->addRow(i18nc("@label", "Environment:"), mEnvironments);
     mMainLayout->addRow(i18nc("@label", "Url:"), mServerUrl);
+    mMainLayout->addRow(i18nc("@label", "Headers:"), mHeaders);
+    mMainLayout->addRow(i18nc("@label", "Authentication:"), mAuthentication);
     mMainLayout->addRow(i18nc("@label", "Roots:"), mRoots);
 }
 
@@ -66,6 +70,16 @@ void KMcpClientInspectorServerInfoWidget::setServerInfo(const TextAutoGenerateTe
     }
     mEnvironments->setText(environments.join(u'\n'));
     mServerUrl->setText(settings.serverUrl().toDisplayString());
+    // Only show header names: values can contain secrets (API keys…)
+    QStringList headerNames;
+    const QStringList headers = settings.headers();
+    for (const QString &header : headers) {
+        if (const qsizetype index = header.indexOf(u':'); index > 0) {
+            headerNames.append(header.left(index).trimmed());
+        }
+    }
+    mHeaders->setText(headerNames.join(u'\n'));
+    mAuthentication->setText(settings.authToken().isEmpty() ? i18nc("@info", "None") : i18nc("@info", "Bearer token"));
     mRoots->setText(KMcpClientInspectorRootsUtils::effectiveRoots(settings, KMcpClientInspectorGlobalConfig::self()->roots()).join(u'\n'));
 
     mIcon->setPixmap(icon.pixmap(24, 24));
@@ -74,6 +88,8 @@ void KMcpClientInspectorServerInfoWidget::setServerInfo(const TextAutoGenerateTe
     mMainLayout->setRowVisible(mArguments, isStdio);
     mMainLayout->setRowVisible(mEnvironments, isStdio);
     mMainLayout->setRowVisible(mServerUrl, !isStdio);
+    mMainLayout->setRowVisible(mHeaders, !isStdio && !headerNames.isEmpty());
+    mMainLayout->setRowVisible(mAuthentication, !isStdio);
     mMainLayout->setRowVisible(mIcon, !icon.isNull());
 }
 

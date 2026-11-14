@@ -28,6 +28,8 @@ private:
     QLabel *const mArguments;
     QLabel *const mEnvironments;
     QLabel *const mServerUrl;
+    QLabel *const mHeaders;
+    QLabel *const mAuthentication;
     QLabel *const mRoots;
     QLabel *const mIcon;
 };

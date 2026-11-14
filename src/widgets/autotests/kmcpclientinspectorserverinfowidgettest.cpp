@@ -24,7 +24,15 @@ void KMcpClientInspectorServerInfoWidgetTest::shouldHaveDefaultValues()
     QVERIFY(mainLayout);
     QCOMPARE(mainLayout->contentsMargins(), QMargins{});
 
-    for (const auto &name : {u"mName"_s, u"mTransportType"_s, u"mCommand"_s, u"mArguments"_s, u"mEnvironments"_s, u"mServerUrl"_s, u"mRoots"_s}) {
+    for (const auto &name : {u"mName"_s,
+                             u"mTransportType"_s,
+                             u"mCommand"_s,
+                             u"mArguments"_s,
+                             u"mEnvironments"_s,
+                             u"mServerUrl"_s,
+                             u"mHeaders"_s,
+                             u"mAuthentication"_s,
+                             u"mRoots"_s}) {
         auto label = w.findChild<QLabel *>(name);
         QVERIFY(label);
         QVERIFY(label->text().isEmpty());
@@ -50,6 +58,28 @@ void KMcpClientInspectorServerInfoWidgetTest::shouldShowServerUrl()
     QCOMPARE(mServerUrl->text(), u"http://127.0.0.1:8765/mcp"_s);
     QVERIFY(mServerUrl->isVisible());
     QVERIFY(!w.findChild<QLabel *>(u"mCommand"_s)->isVisible());
+    QVERIFY(!w.findChild<QLabel *>(u"mHeaders"_s)->isVisible());
+    QVERIFY(w.findChild<QLabel *>(u"mAuthentication"_s)->isVisible());
+}
+
+void KMcpClientInspectorServerInfoWidgetTest::shouldShowHeaderNamesOnly()
+{
+    KMcpClientInspectorServerInfoWidget w;
+    TextAutoGenerateTextMcpProtocolCore::McpServer server;
+    server.setName(u"foo"_s);
+    server.setTransportType(TextAutoGenerateTextMcpProtocolCore::McpProtocolPlugin::TransportType::StreamableHttp);
+    TextAutoGenerateTextMcpProtocolCore::McpProtocolSettings settings;
+    settings.setServerUrl(QUrl(u"http://127.0.0.1:8765/mcp"_s));
+    settings.setHeaders({u"X-Api-Key: secret"_s, u"X-Foo:bar"_s});
+    settings.setAuthToken("token"_ba);
+    server.setSettings(settings);
+    w.setServerInfo(server);
+    w.show();
+
+    auto mHeaders = w.findChild<QLabel *>(u"mHeaders"_s);
+    QCOMPARE(mHeaders->text(), u"X-Api-Key\nX-Foo"_s);
+    QVERIFY(mHeaders->isVisible());
+    QCOMPARE(w.findChild<QLabel *>(u"mAuthentication"_s)->text(), u"Bearer token"_s);
 }
 
 #include "moc_kmcpclientinspectorserverinfowidgettest.cpp"
