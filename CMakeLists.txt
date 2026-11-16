@@ -180,7 +180,7 @@ add_definitions(-DTRANSLATION_DOMAIN="kmcpclientinspector")
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ecm_set_disabled_deprecation_versions(QT 6.13.0
-    KF 6.31.0
+    KF 6.32.0
 )
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
