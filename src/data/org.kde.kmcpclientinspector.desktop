@@ -1,10 +1,20 @@
 [Desktop Entry]
 Name=KMcpClientInspector
+Name[ca]=KMcpClientInspector
+Name[ca@valencia]=KMcpClientInspector
+Name[nl]=KMcpClientInspecteur
+Name[pt_BR]=KMcpClientInspector
+Name[uk]=KMcpClientInspector
 Type=Application
 Exec=kmcpclientinspector -qwindowtitle %c %u
 Icon=kmcpclientinspector
 X-DocPath=kmcpclientinspector/index.html
 GenericName=MCP client inspector
+GenericName[ca]=Inspector de client MCP
+GenericName[ca@valencia]=Inspector de client MCP
+GenericName[nl]=MCP-clientinspecteur
+GenericName[pt_BR]=Inspetor de cliente MCP
+GenericName[uk]=Ревізор клієнта MCP
 Categories=Qt;KDE;Development;
 SingleMainWindow=true
 Version=1.5
