@@ -1,25 +1,61 @@
 [Global]
 IconName=kmcpclientinspector
 Name=kmcpclientinspector
+Name[ca]=kmcpclientinspector
+Name[ca@valencia]=kmcpclientinspector
+Name[nl]=kmcpclientinspecteur
+Name[pt_BR]=kmcpclientinspector
+Name[tr]=K MCP İstemcisi Denetçisi
+Name[uk]=kmcpclientinspector
 DesktopEntry=org.kde.kmcpclientinspector
 Comment=Notification
+Comment[ca]=Notificació
+Comment[ca@valencia]=Notificació
+Comment[nl]=Melding
+Comment[pt_BR]=Notificação
+Comment[tr]=Bildirim
+Comment[uk]=Сповіщення
 
 [Event/server-tools-updated]
 Name=Tools Updated
+Name[ca]=Eines actualitzades
+Name[ca@valencia]=Eines actualitzades
+Name[nl]=Hulpmiddelen bijgewerkt
+Name[pt_BR]=Ferramentas atualizadas
+Name[tr]=Araçlar Güncellendi
+Name[uk]=Інструменти оновлено
 Action=Popup
 Urgency=Normal
 
 [Event/server-prompts-updated]
 Name=Prompts Updated
+Name[ca]=Indicadors actualitzats
+Name[ca@valencia]=Indicadors actualitzats
+Name[nl]=Prompts bijgewerkt
+Name[pt_BR]=Prompts atualizados
+Name[tr]=İstemler Güncellendi
+Name[uk]=Запити оновлено
 Action=Popup
 Urgency=Normal
 
 [Event/server-resources-updated]
 Name=Resources Updated
+Name[ca]=Recursos actualitzats
+Name[ca@valencia]=Recursos actualitzats
+Name[nl]=Hulpbronnen bijgewerkt
+Name[pt_BR]=Recursos atualizados
+Name[tr]=Özkaynaklar Güncellendi
+Name[uk]=Ресурси оновлено
 Action=Popup
 Urgency=Normal
 
 [Event/server-error]
 Name=Server Error
+Name[ca]=Error del servidor
+Name[ca@valencia]=S'ha produït un error del servidor
+Name[nl]=Serverfout
+Name[pt_BR]=Erro do servidor
+Name[tr]=Sunucu Hatası
+Name[uk]=Помилка сервера
 Action=Popup
 Urgency=Normal
