@@ -11,11 +11,26 @@
     <name translate="no">KDE</name>
   </developer>
   <name>KMcpClientInspector</name>
+  <name xml:lang="ca">KMcpClientInspector</name>
+  <name xml:lang="ca-valencia">KMcpClientInspector</name>
+  <name xml:lang="nl">KMcpClientInspecteur</name>
+  <name xml:lang="pt-BR">KMcpClientInspector</name>
+  <name xml:lang="uk">KMcpClientInspector</name>
   <summary>MCP client inspector</summary>
+  <summary xml:lang="ca">Inspector de client MCP</summary>
+  <summary xml:lang="ca-valencia">Inspector de client MCP</summary>
+  <summary xml:lang="nl">MCP-clientinspecteur</summary>
+  <summary xml:lang="pt-BR">Inspetor de cliente MCP</summary>
+  <summary xml:lang="uk">Ревізор клієнта MCP</summary>
   <description>
     <p>
       KMcpClientInspector allows to show mcp client apps.
     </p>
+    <p xml:lang="ca">KMcpClientInspector permet mostrar aplicacions clients de MCP.</p>
+    <p xml:lang="ca-valencia">KMcpClientInspector permet mostrar aplicacions clients de MCP.</p>
+    <p xml:lang="nl">KMcpClientInspecteur maakt het mogelijk om MCP-client-toepassingen weer te geven.</p>
+    <p xml:lang="pt-BR">O KMcpClientInspector permite exibir aplicativos clientes MCP.</p>
+    <p xml:lang="uk">KMcpClientInspector надає змогу показувати програми-клієнти mcp.</p>
   </description>
   <url type="homepage">https://apps.kde.org/kmcpclientinspector</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kmcpclientinspector</url>
@@ -46,7 +61,17 @@
       <description>
         <ul>
           <li>Add call tool support.</li>
-	  <li>Add What's new dialog.</li>
+          <li xml:lang="ca">Afegeix la implementació d'eina d'invocació.</li>
+          <li xml:lang="ca-valencia">Afig la implementació d'eina d'invocació.</li>
+          <li xml:lang="nl">Voegt ondersteuning van aanroephulpmiddelen toe</li>
+          <li xml:lang="pt-BR">Adicionado suporte a ferramentas de chamada.</li>
+          <li xml:lang="uk">Додано підтримку виклику інструменту.</li>
+          <li>Add What's new dialog.</li>
+          <li xml:lang="ca">Afegeix el diàleg Què hi ha de nou.</li>
+          <li xml:lang="ca-valencia">Afig el diàleg Què hi ha de nou.</li>
+          <li xml:lang="nl">Dialoog Wat is nieuw toevoegen.</li>
+          <li xml:lang="pt-BR">Adicionado o diálogo "O que há de novo".</li>
+          <li xml:lang="uk">Додано вікно «Що нового?».</li>
         </ul>
       </description>
     </release>
