@@ -1,0 +1,906 @@
+<?xml version="1.0" ?>
+<!--
+  SPDX-FileCopyrightText: 2026 Laurent Montel <montel@kde.org>
+  SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!-- Define an entity for your application if it is not part of KDE
+       CVS -->
+  <!ENTITY i18n-kapplication "<application
+>KMcpClientInspector</application
+>">
+  <!ENTITY kappname "&i18n-kapplication;">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Brazilian-Portuguese "INCLUDE">
+]>
+
+<book id="kmcpclientinspector" lang="&language;">
+
+<bookinfo>
+<title
+>Manual do &kappname;</title>
+
+<authorgroup>
+<author
+><personname
+> <firstname
+>Laurent</firstname
+> <surname
+>Montel</surname
+> </personname
+> <email
+>montel@kde.org</email
+> </author>
+<othercredit role="translator"
+><firstname
+>Marcus</firstname
+><surname
+>Gama</surname
+><affiliation
+><address
+><email
+>marcus.gama@kde.org</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2026</year>
+<holder
+>Laurent Montel</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>07/11/2026</date>
+<releaseinfo
+>0.2.7</releaseinfo>
+
+<abstract>
+<para
+>O &kappname; é uma ferramenta para inspecionar e depurar servidores que implementam o Protocolo de Contexto de Modelo (<acronym
+>MCP</acronym
+>, sigla em inglês). Ele se conecta a um servidor como um cliente <acronym
+>MCP</acronym
+>, permite o envio de solicitações a ele e exibe as mensagens trocadas. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>MCP</keyword>
+<keyword
+>Protocolo de Contexto de Modelo</keyword>
+<keyword
+>inspetor</keyword>
+<keyword
+>depuração</keyword>
+<keyword
+>kmcpclientinspector</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introdução</title>
+
+<para
+>O Protocolo de Contexto de Modelo (<acronym
+>MCP</acronym
+>, sigla em inglês) é um protocolo aberto que permite a aplicações disponibilizar ferramentas, prompts e recursos para clientes, como assistentes de <acronym
+>IA</acronym
+>. As mensagens são trocadas utilizando JSON-RPC. </para>
+
+<para
+>O &kappname; atua como um cliente <acronym
+>MCP</acronym
+>. Ele permite aos desenvolvedores de servidores <acronym
+>MCP</acronym
+>: </para>
+
+<itemizedlist>
+<listitem
+><para
+>gerenciar uma lista de servidores <acronym
+>MCP</acronym
+>;</para
+></listitem>
+<listitem
+><para
+>conectar-se a um servidor e ver o resultado do handshake de inicialização;</para
+></listitem>
+<listitem
+><para
+>listar e chamar as ferramentas disponibilizadas pelo servidor;</para
+></listitem>
+<listitem
+><para
+>listar e recuperar os prompts fornecidos pelo servidor;</para
+></listitem>
+<listitem
+><para
+>listar os recursos e os modelos de recursos fornecidos pelo servidor;</para
+></listitem>
+<listitem
+><para
+>ler um recurso e inscrever-se para receber suas atualizações;</para
+></listitem>
+<listitem
+><para
+>responder às solicitações enviadas pelo servidor (elicitação, amostragem, raízes);</para
+></listitem>
+<listitem
+><para
+>verificar se o servidor responde a uma solicitação de ping;</para
+></listitem>
+<listitem
+><para
+>analisar cada mensagem JSON-RPC enviada e recebida;</para
+></listitem>
+<listitem
+><para
+>acompanhar as notificações de log emitidas pelo servidor.</para
+></listitem>
+</itemizedlist>
+
+</chapter>
+
+<chapter id="using-kapp">
+<title
+>Usando o &kappname;</title>
+
+<sect1 id="main-window">
+<title
+>A janela principal</title>
+
+<para
+>A janela principal é dividida em duas partes: </para>
+
+<itemizedlist>
+<listitem
+><para
+>À esquerda, encontra-se a lista dos servidores <acronym
+>MCP</acronym
+> configurados. A partir dela, é possível adicionar, modificar, remover, habilitar ou desabilitar um servidor. </para
+></listitem>
+<listitem
+><para
+>À direita, uma aba para cada servidor habilitado. Servidores desabilitados não possuem aba. </para
+></listitem>
+</itemizedlist>
+
+<para
+>Quando uma nova versão traz novos recursos, uma mensagem é exibida na parte superior da janela na primeira vez em que o &kappname; é iniciado. A lista completa de alterações está disponível em <menuchoice
+><guimenu
+>Ajuda</guimenu
+><guimenuitem
+>O que há de novo</guimenuitem
+></menuchoice
+>. </para>
+</sect1>
+
+<sect1 id="server-tab">
+<title
+>A aba de servidor</title>
+
+<para
+>Cada aba de servidor é dividida em duas partes: as configurações do servidor, à esquerda, e as ações, à direita. </para>
+
+<sect2 id="server-settings">
+<title
+>Configurações do servidor</title>
+
+<para
+>A parte superior apresenta informações sobre o servidor: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Ícone:</guilabel
+></term>
+<listitem
+><para
+>O ícone do servidor.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Nome:</guilabel
+></term>
+<listitem
+><para
+>O nome do servidor.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Tipo:</guilabel
+></term>
+<listitem
+><para
+>Como o &kappname; se comunica com o servidor: iniciando um processo local ou por meio de uma <acronym
+>URL</acronym
+> de rede.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comando:</guilabel
+>, <guilabel
+>Argumentos:</guilabel
+>, <guilabel
+>Ambiente:</guilabel
+></term>
+<listitem
+><para
+>Para um servidor local, o programa iniciado pelo &kappname;, seus argumentos e as variáveis ​​de ambiente a ele transmitidas.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>URL:</guilabel
+></term>
+<listitem
+><para
+>Para um servidor remoto, o endereço utilizado para acessá-lo.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Raízes:</guilabel
+></term>
+<listitem
+><para
+>As raízes (diretórios ou arquivos) expostas ao servidor. Quando nenhuma raiz específica é definida para o servidor, são utilizadas as raízes globais definidas na página <link linkend="configure-general"
+>Geral</link
+> da janela de configuração.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>O grupo <guilabel
+>Capacidades</guilabel
+> permite escolher quais funcionalidades do cliente são informadas ao servidor durante a inicialização: <guilabel
+>Elicitação</guilabel
+>, <guilabel
+>Elicitação de URL</guilabel
+>, <guilabel
+>Amostragem</guilabel
+> e <guilabel
+>Raízes</guilabel
+>. O estado inicial dessas opções é definido na página <link linkend="configure-general"
+>Geral</link
+> da janela de configuração. Elas só podem ser alteradas enquanto o servidor estiver desconectado. </para>
+
+<para
+>O botão ao lado de <guilabel
+>Raízes</guilabel
+> abre a janela <guilabel
+>Configurar raízes</guilabel
+>, para selecionar as raízes disponibilizadas a este servidor. Se a lista for idêntica à lista global, o servidor continuará utilizando as raízes globais. Caso as raízes sejam alteradas enquanto o servidor estiver conectado, o servidor será notificado. </para>
+
+<para
+>O botão <guibutton
+>Editar…</guibutton
+> abre uma janela para modificar as configurações do servidor. Ele fica desativado enquanto o servidor estiver conectado. </para>
+
+<para
+>Use o botão <guibutton
+>Conectar</guibutton
+> para iniciar o cliente e enviar a solicitação de inicialização ao servidor, e o botão <guibutton
+>Desconectar</guibutton
+> para interrompê-lo. </para>
+</sect2>
+
+<sect2 id="actions">
+<title
+>Ações</title>
+
+<para
+>A parte direita da aba do servidor contém uma aba para cada tipo de solicitação ou informação. As abas relacionadas a ferramentas, prompts e recursos só são exibidas quando o servidor anuncia a capacidade correspondente durante a inicialização. </para>
+
+<variablelist>
+
+<varlistentry id="action-initialize">
+<term
+><guilabel
+>Inicializar</guilabel
+></term>
+<listitem
+><para
+>Exibe a resposta JSON do servidor à solicitação de inicialização: versão do protocolo, informações do servidor e capacidades do servidor. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-ping">
+<term
+><guilabel
+>Ping</guilabel
+></term>
+<listitem
+><para
+>O botão <guibutton
+>Ping</guibutton
+> envia uma solicitação de ping para verificar se o servidor ainda está respondendo. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-list-tools">
+<term
+><guilabel
+>Listar ferramentas</guilabel
+></term>
+<listitem
+><para
+>O botão <guibutton
+>Listar ferramentas</guibutton
+> solicita ao servidor a lista das ferramentas que ele disponibiliza e exibe a resposta. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-call-tool">
+<term
+><guilabel
+>Chamar ferramenta</guilabel
+></term>
+<listitem>
+<para
+>Clique em <guibutton
+>Listar ferramentas</guibutton
+> para preencher a lista de ferramentas; o campo <guilabel
+>Pesquisar</guilabel
+> permite filtrá-la. Selecione uma ferramenta: seus argumentos serão exibidos, com um campo adaptado para cada tipo de argumento (texto, inteiro, número, booleano ou valor JSON). Marque a opção <guilabel
+>Editar argumentos como JSON</guilabel
+> para inserir todos os argumentos diretamente como um objeto JSON. </para>
+<para
+>O título da ferramenta e suas anotações são exibidos como indicadores: <guilabel
+>Somente leitura</guilabel
+>, <guilabel
+>Destrutiva</guilabel
+> ou <guilabel
+>Aditiva</guilabel
+>, <guilabel
+>Idempotente</guilabel
+>, <guilabel
+>Mundo aberto</guilabel
+> ou <guilabel
+>Mundo fechado</guilabel
+>. Indicadores em cinza e itálico representam valores padrão, não declarados pelo servidor. Ferramentas que se declaram como destrutivas são marcadas com um ícone de aviso na lista. </para>
+<para
+>Clique em <guibutton
+>Chamar ferramenta</guibutton
+> para acionar a ferramenta. Os argumentos obrigatórios e seus respectivos tipos são verificados antes do envio da solicitação. Quando o servidor envia notificações de progresso, uma barra de progresso e uma mensagem de acompanhamento são exibidas durante a execução. O resultado é apresentado em duas abas: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Conteúdo</guilabel
+>: uma visualização legível do conteúdo retornado (texto, imagens, áudio, links para recursos, recursos incorporados e conteúdo estruturado), bem como se a ferramenta obteve êxito ou retornou um erro;</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: a resposta em JSON bruto.</para
+></listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-list-prompts">
+<term
+><guilabel
+>Listar prompts</guilabel
+></term>
+<listitem
+><para
+>O botão <guibutton
+>Listar prompts</guibutton
+> solicita ao servidor a lista de prompts que ele disponibiliza e exibe a resposta. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-get-prompt">
+<term
+><guilabel
+>Obter prompt</guilabel
+></term>
+<listitem>
+<para
+>Clique em <guibutton
+>Listar prompts</guibutton
+> para preencher a lista de prompts; o campo <guilabel
+>Pesquisar</guilabel
+> permite filtrá-la. Selecione um prompt, preencha seus argumentos e, em seguida, clique em <guibutton
+>Obter prompt</guibutton
+>. O resultado é exibido em duas abas: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Mensagens</guilabel
+>: as mensagens do prompt, com suas respectivas funções (<guilabel
+>Usuário</guilabel
+> ou <guilabel
+>Assistente</guilabel
+>);</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: a resposta em JSON bruto.</para
+></listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-list-resources">
+<term
+><guilabel
+>Listar recursos</guilabel
+></term>
+<listitem
+><para
+>O botão <guibutton
+>Listar recursos</guibutton
+> solicita ao servidor a lista dos recursos que ele disponibiliza e exibe a resposta. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-read-resource">
+<term
+><guilabel
+>Ler recurso</guilabel
+></term>
+<listitem>
+<para
+>Clique em <guibutton
+>Listar recursos</guibutton
+> para preencher a lista de recursos; o campo <guilabel
+>Pesquisar</guilabel
+> permite filtrá-la. Selecione um recurso ou insira o endereço dele no campo <guilabel
+>URI:</guilabel
+> e, em seguida, clique em <guibutton
+>Ler recurso</guibutton
+>. O resultado é exibido em duas abas: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Conteúdo</guilabel
+>: uma visualização legível do conteúdo do recurso;</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: a resposta em JSON bruto.</para
+></listitem>
+</itemizedlist>
+<para
+>Se o servidor oferecer suporte a isso, o botão <guibutton
+>Inscrever-se</guibutton
+> solicita ao servidor que envie uma notificação quando o recurso for alterado; em seguida, o recurso é lido novamente de forma automática. O botão <guibutton
+>Cancelar inscrição</guibutton
+> interrompe essas notificações. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-resource-templates">
+<term
+><guilabel
+>Modelos de recurso</guilabel
+></term>
+<listitem
+><para
+>O botão <guibutton
+>Modelos de recurso</guibutton
+> solicita ao servidor a lista de seus modelos de recurso e exibe a resposta. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-log">
+<term
+><guilabel
+>Registro</guilabel
+></term>
+<listitem
+><para
+>Lista todas as mensagens JSON-RPC trocadas com o servidor, incluindo seu <guilabel
+>Identificador</guilabel
+>, <guilabel
+>Nome do método</guilabel
+>, <guilabel
+>Hora</guilabel
+>, <guilabel
+>Duração</guilabel
+> e <guilabel
+>Direção</guilabel
+> (<guilabel
+>Enviada</guilabel
+> ou <guilabel
+>Recebida</guilabel
+>). Utilize o campo <guilabel
+>Pesquisar</guilabel
+> para filtrar a lista. Ao selecionar uma mensagem, seu conteúdo JSON é exibido. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-server-notification">
+<term
+><guilabel
+>Notificação do servidor</guilabel
+></term>
+<listitem
+><para
+>Exibe as mensagens de log enviadas pelo servidor, com seus respectivos campos: <guilabel
+>Hora</guilabel
+>, <guilabel
+>Nível</guilabel
+>, <guilabel
+>Registrador</guilabel
+> e <guilabel
+>Mensagem</guilabel
+>. A lista <guilabel
+>Nível mínimo:</guilabel
+> oculta as mensagens abaixo do nível selecionado (<guilabel
+>Depuração</guilabel
+>, <guilabel
+>Informações</guilabel
+>, <guilabel
+>Observação</guilabel
+>, <guilabel
+>Aviso</guilabel
+>, <guilabel
+>Erro</guilabel
+>, <guilabel
+>Crítica</guilabel
+>, <guilabel
+>Alerta</guilabel
+>, <guilabel
+>Emergência</guilabel
+>). O botão <guibutton
+>Limpar</guibutton
+> esvazia a lista. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect2>
+</sect1>
+
+<sect1 id="server-requests">
+<title
+>Solicitações do servidor</title>
+
+<para
+>Um servidor <acronym
+>MCP</acronym
+> também pode enviar solicitações ao cliente, quando a funcionalidade correspondente estiver habilitada. O &kappname; exibe uma janela de diálogo para cada uma delas: </para>
+
+<variablelist>
+<varlistentry id="request-elicitation">
+<term
+><guilabel
+>Solicitação de informações ao servidor</guilabel
+></term>
+<listitem
+><para
+>O servidor solicita algumas informações ao usuário (elicitação). Um campo é exibido para cada valor solicitado. Clique em <guibutton
+>Aceitar</guibutton
+> para enviar os valores, em <guibutton
+>Recusar</guibutton
+> para recusar, ou em <guibutton
+>Cancelar</guibutton
+> para cancelar a solicitação. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-url-elicitation">
+<term
+><guilabel
+>Solicitações ao servidor para abrir uma página da web</guilabel
+></term>
+<listitem
+><para
+>O servidor solicita ao usuário que conclua uma interação em um navegador web (obtenção de uma <acronym
+>URL</acronym
+>). O domínio e a <acronym
+>URL</acronym
+> completa são exibidos; a página só é aberta se você clicar em <guibutton
+>Abrir</guibutton
+>. Quando o servidor informa que a interação foi concluída, uma mensagem é exibida na aba do servidor e você pode tentar realizar a solicitação novamente. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-sampling">
+<term
+><guilabel
+>O servidor solicita a geração de uma mensagem</guilabel
+></term>
+<listitem
+><para
+>O servidor solicita ao cliente que gere uma mensagem usando um modelo de linguagem (amostragem). A solicitação é exibida, e você mesmo escreve a resposta, podendo, opcionalmente, incluir as informações <guilabel
+>Modelo:</guilabel
+> e <guilabel
+>Motivo da parada:</guilabel
+>. Clique em <guibutton
+>Enviar</guibutton
+> para responder ou em <guibutton
+>Rejeitar</guibutton
+> para recusar. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-roots">
+<term
+>Raízes</term>
+<listitem
+><para
+>Quando o servidor solicita a lista de raízes, o &kappname; responde automaticamente com as raízes do servidor. </para
+></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+<title
+>Configurando o &kappname;</title>
+
+<para
+><menuchoice
+><guimenu
+>Configurações</guimenu
+><guimenuitem
+>Configurar o &kappname;…</guimenuitem
+></menuchoice
+> abre a janela de configuração. </para>
+
+<sect1 id="configure-general">
+<title
+>Geral</title>
+<para
+>A página <guilabel
+>Geral</guilabel
+> define as <guilabel
+>Capacidades</guilabel
+> padrão anunciadas aos servidores: <guilabel
+>Elicitação</guilabel
+>, <guilabel
+>Elicitação de URL</guilabel
+>, <guilabel
+>Amostragem</guilabel
+> e <guilabel
+>Raízes</guilabel
+>. Todas elas estão habilitadas por padrão. </para>
+<para
+>O botão ao lado de <guilabel
+>Raízes</guilabel
+> abre a janela <guilabel
+>Configurar raízes</guilabel
+>, para definir as raízes globais. Elas são utilizadas por todos os servidores que não definem suas próprias raízes. </para>
+</sect1>
+
+<sect1 id="configure-mcp-servers">
+<title
+>Servidores MCP</title>
+<para
+>A página <guilabel
+>Servidores MCP</guilabel
+> lista os servidores configurados. É possível adicionar, modificar, remover, habilitar ou desabilitar um servidor. As alterações são salvas imediatamente, e as abas de servidor na janela principal são atualizadas. </para>
+</sect1>
+
+</chapter>
+
+<chapter id="commands">
+<title
+>Referência de comandos</title>
+
+<sect1 id="kapp-mainwindow">
+<title
+>Menus</title>
+
+<sect2 id="file-menu">
+<title
+>Menu Arquivo</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Arquivo</guimenu
+><guimenuitem
+>Sair</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Sai</action
+> do &kappname;.</para
+></listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+
+<sect2 id="settings-menu">
+<title
+>Menu Configurações</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+><keycap
+>F11</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Configurações</guimenu
+><guimenuitem
+>Modo tela cheia</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Alterna</action
+> o modo de tela cheia.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+><guisubmenu
+>Esquema de cores da janela</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Seleciona</action
+> o esquema de cores da janela.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+><guimenuitem
+>Configurar notificações…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Configura</action
+> as notificações do &kappname;.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+><guimenuitem
+>Configurar o &kappname;…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Abre</action
+> a <link linkend="configuration"
+>janela de configuração</link
+>.</para
+></listitem>
+</varlistentry>
+</variablelist>
+<para
+>O &kappname; tem os itens do menu <guimenu
+>Configurações</guimenu
+> comuns do &kde;. Para mais informações, leia a seção do <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Configurações</ulink
+> nos Fundamentos do &kde;. </para>
+</sect2>
+
+<sect2 id="help-menu">
+<title
+>Menu Ajuda</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ajuda</guimenu
+><guimenuitem
+>O que há de novo</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Exibe</action
+> os novos recursos de cada versão.</para
+></listitem>
+</varlistentry>
+</variablelist>
+<para
+>No &Windows; e no &macOS;, o menu <guimenu
+>Ajuda</guimenu
+> também contém um item para verificar se uma nova versão está disponível. </para>
+<para
+>O &kappname; contém os itens comuns do menu <guimenu
+>Ajuda</guimenu
+> do &kde;; para mais informações, leia a seção sobre o <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Ajuda</ulink
+> nos Fundamentos do &kde;. </para>
+</sect2>
+
+</sect1>
+</chapter>
+
+<chapter id="credits">
+<title
+>Créditos e licença</title>
+
+<para
+>&kappname; </para>
+<para
+>Direitos autorais do programa 2026 Laurent Montel <email
+>montel@kde.org</email
+> </para>
+
+<para
+>Direitos autorais da documentação &copy; 2026 Laurent Montel <email
+>montel@kde.org</email
+> </para>
+
+<para
+>Tradução de Marcus Gama <email
+>marcus.gama@kde.org</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->
