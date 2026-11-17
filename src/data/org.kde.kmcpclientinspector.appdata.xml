@@ -36,7 +36,8 @@
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kmcpclientinspector</url>
   <url type="help">https://docs.kde.org/?application=kmcpclientinspector</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kmcpclientinspector&amp;source=appdata</url>
-  <url type="vcs-browser">https://invent.kde.org/utilities/kmcpclientinspector</url>
+  <url type="vcs-browser">https://invent.kde.org/sdk/kmcpclientinspector</url>
+  <url type="contribute">https://community.kde.org/Get_Involved</url>
   <project_group>KDE</project_group>
   <content_rating type="oars-1.1">
     <content_attribute id="social-chat">moderate</content_attribute>
