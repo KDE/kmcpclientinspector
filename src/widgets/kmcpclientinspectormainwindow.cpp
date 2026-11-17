@@ -64,7 +64,7 @@ void KMcpClientInspectorMainWindow::setupActions()
     connect(showWhatsNewAction, &QAction::triggered, this, &KMcpClientInspectorMainWindow::slotWhatsNew);
 #if defined(Q_OS_WIN) || defined(Q_OS_MACOS)
     const QString defaultUrlPath = QStringLiteral("https://origin.cdn.kde.org/ci-builds/sdk/kmcpclientinspector/");
-    const QString stableBranch = u"0.2"_s;
+    const QString stableBranch = u"0.3"_s;
     bool stableVersion = false;
 #if KMCPCLIENTINSPECTOR_STABLE_VERSION
     stableVersion = true;
