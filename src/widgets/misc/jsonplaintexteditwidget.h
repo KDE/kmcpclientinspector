@@ -6,7 +6,6 @@
 #pragma once
 
 #include "libkmcpclientinspectorwidgets_private_export.h"
-#include <KSyntaxHighlighting/Repository>
 #include <TextCustomEditor/PlainTextEditor>
 namespace TextCustomEditor
 {
@@ -36,5 +35,4 @@ public:
 
 private:
     TextCustomEditor::PlainTextEditorWidget *const mPlainTextEdit;
-    KSyntaxHighlighting::Repository mRepo;
 };
