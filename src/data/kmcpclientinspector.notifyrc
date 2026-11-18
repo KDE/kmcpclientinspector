@@ -29,8 +29,8 @@ Urgency=Normal
 
 [Event/server-prompts-updated]
 Name=Prompts Updated
-Name[ca]=Indicadors actualitzats
-Name[ca@valencia]=Indicadors actualitzats
+Name[ca]=Indicacions actualitzades
+Name[ca@valencia]=Indicacions actualitzades
 Name[nl]=Prompts bijgewerkt
 Name[pt_BR]=Prompts atualizados
 Name[tr]=İstemler Güncellendi
