@@ -18,5 +18,6 @@ GenericName[pt_BR]=Inspetor de cliente MCP
 GenericName[tr]=MCP İstemcisi Denetçisi
 GenericName[uk]=Ревізор клієнта MCP
 Categories=Qt;KDE;Development;
+Keywords=MCP;Model Context Protocol;AI;inspector;debug;
 SingleMainWindow=true
 Version=1.5
