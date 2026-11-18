@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kmcpclientinspector\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-16 04:04+0000\n"
-"PO-Revision-Date: 2026-11-16 14:12+0100\n"
+"PO-Revision-Date: 2026-11-17 14:54+0100\n"
 "Last-Translator: freek <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -127,22 +127,22 @@ msgstr "Prompts laten zien"
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:73
 #, kde-format
 msgid "Get Prompt"
-msgstr ""
+msgstr "Prompt ophalen"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:74
 #, kde-format
 msgid "List Resources"
-msgstr ""
+msgstr "Hulpbronnen laten zien"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:75
 #, kde-format
 msgid "Read Resource"
-msgstr ""
+msgstr "Hulpbron lezen"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:76
 #, kde-format
 msgid "Resource Templates"
-msgstr ""
+msgstr "Hulpbronsjablonen"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:77
 #, kde-format
@@ -157,7 +157,7 @@ msgstr "Log"
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:79
 #, kde-format
 msgid "Server Notification"
-msgstr ""
+msgstr "Servermeldingen"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:99
 #, kde-format
@@ -167,20 +167,20 @@ msgstr "Fout in %1"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:76
 #, kde-format
 msgid "%1: not set (default: %2)"
-msgstr ""
+msgstr "%1: niet ingesteld (standaard: %2)"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:89
 #: widgets/actions/kmcpclientinspectorlisttoolswidget.cpp:12
 #, kde-format
 msgctxt "@action:button"
 msgid "List Tools"
-msgstr ""
+msgstr "Hulpmiddelen laten zien"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:95
 #, kde-format
 msgctxt "@action:button"
 msgid "Call Tool"
-msgstr ""
+msgstr "Hulpmiddel aanroepen"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:102
 #, kde-format
@@ -220,23 +220,25 @@ msgstr "Hulpmiddelen bijgewerkt"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:215
 #, kde-format
 msgid "Tools were updated in '%1'."
-msgstr ""
+msgstr "Hulpmiddelen zijn in '%1' bijgewerkt."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:329
 #, kde-format
 msgid "No tool selected"
-msgstr ""
+msgstr "Geen hulpmiddel geselecteerd"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:384
 #, kde-format
 msgid "Tool call cancelled."
-msgstr ""
+msgstr "Aanroep van hulpmiddel geannuleerd."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:403
 #, kde-format
 msgid ""
 "Tool cannot be called. Is the server connected and does it support tools?"
 msgstr ""
+"Hulpmiddel kan niet worden aangeroepen. Is de server verbonden en "
+"ondersteunt deze hulpmiddelen?"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:407
 #, kde-format
@@ -249,6 +251,8 @@ msgid ""
 "The server requires an interaction in the web browser before calling this "
 "tool: %1"
 msgstr ""
+"De server vereist een interactie in de webbrowser voordat dit hulpmiddel "
+"wordt aangeroepen: %1"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:423
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:413
@@ -261,12 +265,12 @@ msgstr "Fout %1: %2"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:429
 #, kde-format
 msgid "Tool returned an error."
-msgstr ""
+msgstr "Hulpmiddel gaf een fout."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:431
 #, kde-format
 msgid "Tool executed successfully."
-msgstr ""
+msgstr "Uitvoeren van hulpmiddel was succesvol."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:459
 #, kde-format
@@ -284,7 +288,7 @@ msgstr "Destructief"
 #, kde-format
 msgctxt "@label tool annotation"
 msgid "Additive"
-msgstr ""
+msgstr "Additief"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:471
 #, kde-format
@@ -302,17 +306,19 @@ msgstr "Wereld openen"
 #, kde-format
 msgctxt "@label tool annotation"
 msgid "Closed world"
-msgstr ""
+msgstr "Gesloten wereld"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:486
 #, kde-format
 msgid "The server did not send annotations: default values are used."
 msgstr ""
+"De server heeft geen annotaties verstuurd: er worden standaardwaarden "
+"gebruikt."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:510
 #, kde-format
 msgid "Structured Content"
-msgstr ""
+msgstr "Gestructureerde inhoud"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:514
 #, kde-format
@@ -332,7 +338,7 @@ msgstr "Audio (%1, %2)"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:536
 #, kde-format
 msgid "Resource link:"
-msgstr ""
+msgstr "Hulpbronkoppeling:"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:557
 #, kde-format
@@ -342,7 +348,7 @@ msgstr "onbekend type"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:557
 #, kde-format
 msgid "Binary resource (%1, %2)"
-msgstr ""
+msgstr "Binaire hulpbron (%1, %2)"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:40
 #, kde-format
@@ -360,13 +366,13 @@ msgstr "Prompt"
 #, kde-format
 msgctxt "@item:inlistbox completion reference"
 msgid "Resource Template"
-msgstr ""
+msgstr "Hulpbronsjabloon"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:68
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Reference type:"
-msgstr ""
+msgstr "Type referentie:"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:73
 #, kde-format
@@ -384,7 +390,7 @@ msgstr "Argument:"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Value to complete"
-msgstr ""
+msgstr "Te voltooien waarde"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:83
 #, kde-format
@@ -396,7 +402,7 @@ msgstr "Waarde:"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Already resolved arguments, e.g. {\"language\": \"cpp\"}"
-msgstr ""
+msgstr "Al opgeloste argumenten, bijv. {\"taal\": \"cpp\"}"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:88
 #, kde-format
@@ -408,45 +414,45 @@ msgstr "Context:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Double-click on a value to use it"
-msgstr ""
+msgstr "Dubbelklik op een waarde om het te gebruiken"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:107
 #, kde-format
 msgctxt "@title:tab"
 msgid "Values"
-msgstr ""
+msgstr "Waarden"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:211
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Prompt name"
-msgstr ""
+msgstr "Prompt-naam"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:218
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Resource template uri, e.g. file:///{path}"
-msgstr ""
+msgstr "Hulpbronsjabloon-uri:, bijv. file://{pad}"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:302
 #, kde-format
 msgid "A reference is required."
-msgstr ""
+msgstr "Een referentie is vereist."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:307
 #, kde-format
 msgid "An argument name is required."
-msgstr ""
+msgstr "Een argument is vereist."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:336
 #, kde-format
 msgid "Context must be a JSON object, e.g. {\"language\": \"cpp\"}."
-msgstr ""
+msgstr "Context moet een JSON-object zijn, bijv. {\"taal\": \"cpp\"}."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:343
 #, kde-format
 msgid "Context value of \"%1\" must be a string."
-msgstr ""
+msgstr "Contextwaarde van \"%1\" moet een tekenreeks zijn."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:398
 #, kde-format
@@ -454,6 +460,8 @@ msgid ""
 "Completion cannot be requested. Is the server connected and does it support "
 "completions?"
 msgstr ""
+"Aanvullen kan niet worden aangevraagd. Is de server verbonden en ondersteunt "
+"deze aanvullingen?"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:402
 #, kde-format
@@ -859,6 +867,8 @@ msgctxt "@info:tooltip"
 msgid ""
 "Minimum level of the log messages sent by the server (logging/setLevel)."
 msgstr ""
+"Minimum niveau van de logberichten verzonden door de server (logging/"
+"NiveauInstellen)."
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:63
 #, kde-format
@@ -870,7 +880,7 @@ msgstr "Van tonen:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Hide received log messages below this level."
-msgstr ""
+msgstr "Ontvangen logberichten onder dit niveau verbergen."
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:123
 #, kde-format
@@ -924,12 +934,12 @@ msgstr "Noodgeval"
 #, kde-format
 msgctxt "@option:check"
 msgid "Edit arguments as JSON"
-msgstr ""
+msgstr "Argumenten bewerken als JSON"
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:49
 #, kde-format
 msgid "This tool has no arguments."
-msgstr ""
+msgstr "Dit hulpmiddel heeft geen argumenten."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:169
 #, kde-format
@@ -947,61 +957,61 @@ msgstr "Nummer"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "JSON value"
-msgstr ""
+msgstr "JSON-waarde"
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:330
 #, kde-format
 msgid "Argument \"%1\" is required."
-msgstr ""
+msgstr "Argument \"%1\" is vereist."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:340
 #, kde-format
 msgid "Argument \"%1\" must be an integer."
-msgstr ""
+msgstr "Argument \"%1\" moet een geheel getal zijn."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:349
 #, kde-format
 msgid "Argument \"%1\" must be a number."
-msgstr ""
+msgstr "Argument \"%1\" moet een getal zijn."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:358
 #, kde-format
 msgid "Argument \"%1\" is not a valid JSON value."
-msgstr ""
+msgstr "Argument \"%1\" is geen geldige JSON-waarde."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:379
 #, kde-format
 msgid "Invalid JSON arguments: %1 (offset %2)."
-msgstr ""
+msgstr "Ongeldige JSON-argumenten: %1 (offset %2)."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:385
 #, kde-format
 msgid "Arguments must be a JSON object."
-msgstr ""
+msgstr "Arguments moet een JSON-object zijn."
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:17
 #, kde-format
 msgctxt "@option:check"
 msgid "Elicitation"
-msgstr ""
+msgstr "Ontlokking"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:18
 #, kde-format
 msgctxt "@option:check"
 msgid "URL elicitation"
-msgstr ""
+msgstr "URL-ontlokking"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:19
 #, kde-format
 msgctxt "@option:check"
 msgid "Roots"
-msgstr ""
+msgstr "Roots"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:20
 #, kde-format
 msgctxt "@option:check"
 msgid "Sampling"
-msgstr ""
+msgstr "Steekproefname"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:27
 #, kde-format
@@ -1012,7 +1022,7 @@ msgstr "Mogelijkheden"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure Roots"
-msgstr ""
+msgstr "Roots configureren"
 
 #: widgets/configure/kmcpclientinspectorconfiguregeneralwidget.cpp:34
 #, kde-format

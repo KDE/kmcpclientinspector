@@ -1,0 +1,904 @@
+<?xml version="1.0" ?>
+<!--
+  SPDX-FileCopyrightText: 2026 Laurent Montel <montel@kde.org>
+  SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!-- Define an entity for your application if it is not part of KDE
+       CVS -->
+  <!ENTITY i18n-kapplication "<application
+>KMcpClientInspector</application
+>">
+  <!ENTITY kappname "&i18n-kapplication;">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Ukrainian "INCLUDE">
+]>
+
+<book id="kmcpclientinspector" lang="&language;">
+
+<bookinfo>
+<title
+>Підручник з &kappname;</title>
+
+<authorgroup>
+<author
+><personname
+> <firstname
+>Laurent</firstname
+> <surname
+>Montel</surname
+> </personname
+> <email
+>montel@kde.org</email
+> </author>
+<othercredit role="translator"
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+><affiliation
+><address
+><email
+>yurchor@ukr.net</email
+></address
+></affiliation
+><contrib
+>Переклад українською</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2026</year>
+<holder
+>Laurent Montel</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>7 листопада 2026 року</date>
+<releaseinfo
+>0.2.7</releaseinfo>
+
+<abstract>
+<para
+>&kappname; — це інструмент для перевірки та діагностики серверів, що реалізують протокол Model Context Protocol (<acronym
+>MCP</acronym
+>). Він з'єднується з сервером як клієнт <acronym
+>MCP</acronym
+>, надає змогу надсилати йому запити та показує повідомлення, якими обмінюються сторони. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>MCP</keyword>
+<keyword
+>Протокол контексту моделі</keyword>
+<keyword
+>ревізор</keyword>
+<keyword
+>діагностика</keyword>
+<keyword
+>kmcpclientinspector</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Вступ</title>
+
+<para
+>Model Context Protocol (<acronym
+>MCP</acronym
+>) — це відкритий протокол, який надає змогу програмам надавати клієнтам (наприклад, <acronym
+>ШІ</acronym
+>-асистентам) доступ до інструментів, запитів і ресурсів. Обмін повідомленнями здійснюється за допомогою JSON-RPC. </para>
+
+<para
+>&kappname; працює як клієнт <acronym
+>MCP</acronym
+>. За допомогою цієї програми розробники серверів <acronym
+>MCP</acronym
+> можуть: </para>
+
+<itemizedlist>
+<listitem
+><para
+>керувати списком серверів <acronym
+>MCP</acronym
+>;</para
+></listitem>
+<listitem
+><para
+>з'єднуватися із сервером і переглядати результат ініціалізації узгодження зв'язку;</para
+></listitem>
+<listitem
+><para
+>переглядати список інструментів, які надаються сервером, і викликати їх;</para
+></listitem>
+<listitem
+><para
+>переглядати список запитів, які надаються сервером, і отримувати їх;</para
+></listitem>
+<listitem
+><para
+>переглядати список ресурсів і шаблонів ресурсів, які надаються сервером;</para
+></listitem>
+<listitem
+><para
+>читати ресурс і підписуватися на його оновлення;</para
+></listitem>
+<listitem
+><para
+>відповідати на запити, які надіслано сервером (виявлення, вибірка, корені);</para
+></listitem>
+<listitem
+><para
+>перевіряти, чи відповідає сервер луна-запитом;</para
+></listitem>
+<listitem
+><para
+>переглядати усі надіслані і отримані повідомлення JSON-RPC;</para
+></listitem>
+<listitem
+><para
+>стежити за сповіщеннями у журналі, які видано сервером.</para
+></listitem>
+</itemizedlist>
+
+</chapter>
+
+<chapter id="using-kapp">
+<title
+>Користування &kappname;</title>
+
+<sect1 id="main-window">
+<title
+>Головне вікно</title>
+
+<para
+>Головне вікно поділено на дві частини: </para>
+
+<itemizedlist>
+<listitem
+><para
+>Ліворуч — список налаштованих серверів <acronym
+>MCP</acronym
+>. Тут можна додавати, змінювати, вилучати, вмикати або вимикати сервери. </para
+></listitem>
+<listitem
+><para
+>Праворуч — по одній вкладці для кожного увімкненого сервера. Для вимкнених серверів вкладок створено не буде. </para
+></listitem>
+</itemizedlist>
+
+<para
+>Якщо у новій версії реалізовано нові можливості, під час першого запуску &kappname; у верхній частині вікна з'явиться повідомлення. Повний перелік змін можна переглянути, обравши пункт меню <menuchoice
+><guimenu
+>Довідка</guimenu
+><guimenuitem
+>Що нового?</guimenuitem
+></menuchoice
+>. </para>
+</sect1>
+
+<sect1 id="server-tab">
+<title
+>Вкладка «Сервер»</title>
+
+<para
+>Кожна вкладка сервера розділена на дві частини: параметри сервера — ліворуч, а дії — праворуч. </para>
+
+<sect2 id="server-settings">
+<title
+>Параметри сервера</title>
+
+<para
+>У верхній частині буде показано відомості щодо сервера: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Піктограма:</guilabel
+></term>
+<listitem
+><para
+>Піктограма сервера.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Назва:</guilabel
+></term>
+<listitem
+><para
+>Назва сервера.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Тип:</guilabel
+></term>
+<listitem
+><para
+>Спосіб обміну даними між &kappname; і сервером: запуск локального процесу або за адресою у мережі.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Команда:</guilabel
+>, <guilabel
+>Аргументи:</guilabel
+>, <guilabel
+>Середовище:</guilabel
+></term>
+<listitem
+><para
+>Для локального сервера програма, яку запускає &kappname;, її аргументи і змінні середовища, які слід їй передати.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Адреса:</guilabel
+></term>
+<listitem
+><para
+>Для віддаленого сервера адреса, яку слід використати для зв'язку з ним.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Корені:</guilabel
+></term>
+<listitem
+><para
+>Кореневі елементи (каталоги або файли), доступні для сервера. Якщо для сервера не визначено конкретних кореневих елементів, буде використано загальні кореневі елементи, задані на сторінці <link linkend="configure-general"
+>Загальне</link
+> діалогового вікна налаштувань.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Група <guilabel
+>Можливості</guilabel
+> надає змогу вибрати, про які можливості клієнта повідомлятиметься серверу під час ініціалізації: <guilabel
+>Виявлення</guilabel
+>, <guilabel
+>Виявлення за адресою</guilabel
+>, <guilabel
+>Вибірка</guilabel
+> та <guilabel
+>Корені</guilabel
+>. Початковий стан цих параметрів визначається на сторінці <link linkend="configure-general"
+>Загальне</link
+> вікна параметрів. Змінювати їх можна лише тоді, коли з’єднання із сервером немає. </para>
+
+<para
+>Кнопка поруч із міткою <guilabel
+>Корені</guilabel
+> відкриває діалогове вікно <guilabel
+>Налаштовування коренів</guilabel
+>, де можна вибрати корені, доступні для цього сервера. Якщо цей список збігається із загальним списком, сервер продовжує використовувати загальні корені. Якщо корені змінюються під час встановлення з'єднання з сервером, сервер отримує відповідне сповіщення. </para>
+
+<para
+>Кнопка <guibutton
+>Змінити…</guibutton
+> відкриває діалогове вікно для зміни параметрів сервера. Вона стає недоступною, коли встановлено з'єднання з сервером. </para>
+
+<para
+>Натисніть кнопку <guibutton
+>З'єднатися</guibutton
+>, щоб запустити клієнт і надіслати запит на ініціалізацію до сервера, або кнопку <guibutton
+>Від'єднатися</guibutton
+> — щоб зупинити його. </para>
+</sect2>
+
+<sect2 id="actions">
+<title
+>Дії</title>
+
+<para
+>У правій частині вкладки сервера розміщено окремі вкладки для кожного типу запитів або відомостей. Вкладки, які стосуються інструментів, запитів і ресурсів, буде показано лише тоді, коли сервер повідомляє про наявність відповідної можливості під час ініціалізації. </para>
+
+<variablelist>
+
+<varlistentry id="action-initialize">
+<term
+><guilabel
+>ініціалізувати</guilabel
+></term>
+<listitem
+><para
+>Показує відповідь у форматі JSON від сервера на запит ініціалізації: версію протоколу, відомості про сервер та його можливості. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-ping">
+<term
+><guilabel
+>Луна-імпульс</guilabel
+></term>
+<listitem
+><para
+>Кнопка <guibutton
+>Луна-імпульс</guibutton
+> надсилає запит луна-імпульсу (ping), щоб перевірити, чи сервер продовжує відповідати на запити. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-list-tools">
+<term
+><guilabel
+>Вивести список інструментів</guilabel
+></term>
+<listitem
+><para
+>Кнопка <guibutton
+>Список інструментів</guibutton
+> надсилає запит до сервера щодо переліку інструментів, які він надає, і показує відповідь. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-call-tool">
+<term
+><guilabel
+>Викликати інструмент</guilabel
+></term>
+<listitem>
+<para
+>Натисніть кнопку <guibutton
+>Список інструментів</guibutton
+>, щоб заповнити перелік інструментів; поле <guilabel
+>Шукати</guilabel
+> надає змогу фільтрувати цей список. Виберіть інструмент — програма покаже його аргументи, причому для кожного типу аргументу (текст, ціле число, число, логічне значення або значення JSON) передбачено відповідне поле. Поставте позначку <guilabel
+>Редагувати аргументи як JSON</guilabel
+>, щоб програма вивела всі аргументи безпосередньо у вигляді об'єкта JSON. </para>
+<para
+>Назву інструменту і його характеристики буде показано у вигляді піктограм: <guilabel
+>Лише для читання</guilabel
+>, <guilabel
+>Деструктивний</guilabel
+> або <guilabel
+>Адитивний</guilabel
+>, <guilabel
+>Ідемпотентний</guilabel
+>,<guilabel
+>Відкритий для усіх</guilabel
+> або <guilabel
+>Закритий для усіх</guilabel
+>. Позначки сірим курсивом, — це типові значення, які не були явно вказані сервером. Інструменти, що характеризуються як деструктивні, позначені в списку піктограмою попередження. </para>
+<para
+>Натисніть кнопку <guibutton
+>Викликати інструмент</guibutton
+>, щоб викликати інструмент. Перед надсиланням запиту буде перевірено обов’язкові аргументи та їхні типи. Якщо сервер надсилає сповіщення про хід виконання, під час виклику буде показано індикатор поступу і відповідне повідомлення. Результат буде показано на двох вкладках: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Вміст</guilabel
+>: зручний для читання вигляд отриманих даних (текст, зображення, аудіо, посилання на ресурси, вбудовані ресурси та структурований вміст), а також відомості про те, успішно спрацював інструмент, чи повернув помилку;</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: необроблена відповідь JSON.</para
+></listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-list-prompts">
+<term
+><guilabel
+>Список запитів</guilabel
+></term>
+<listitem
+><para
+>Кнопка <guibutton
+>Список запитів</guibutton
+> запитує у сервера перелік доступних запитів і показує відповідь. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-get-prompt">
+<term
+><guilabel
+>Отримати запит</guilabel
+></term>
+<listitem>
+<para
+>Натисніть кнопку <guibutton
+>Список запитів</guibutton
+>, щоб заповнити список запитів; поле <guilabel
+>Шукати</guilabel
+> надає змогу дозволяє фільтрувати цей список. Виберіть запит, вкажіть його аргументи, а потім натисніть <guibutton
+>Отримати запит</guibutton
+>. Результат буде показано на двох вкладках: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Повідомлення</guilabel
+>: повідомлення в запиті із зазначенням їхньої ролі (<guilabel
+>Користувач</guilabel
+> або <guilabel
+>Помічник</guilabel
+>);</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: необроблена відповідь JSON.</para
+></listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-list-resources">
+<term
+><guilabel
+>Список ресурсів</guilabel
+></term>
+<listitem
+><para
+>Кнопка <guibutton
+>Список ресурсів</guibutton
+> запитує у сервера перелік ресурсів, які він надає, і показує відповідь. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-read-resource">
+<term
+><guilabel
+>Прочитати ресурс</guilabel
+></term>
+<listitem>
+<para
+>Натисніть кнопку <guibutton
+>Список ресурсів</guibutton
+>, щоб заповнити список ресурсів; поле <guilabel
+>Шукати</guilabel
+> надає змогу фільтрувати цей список. Виберіть ресурс або введіть його адресу у полі <guilabel
+>Адреса:</guilabel
+>, а потімнатисніть <guibutton
+>Прочитати ресурс</guibutton
+>. Результат буде показано на двох вкладках: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Вміст</guilabel
+>: придатний до читання перегляд вмісту ресурсу;</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: необроблена відповідь JSON.</para
+></listitem>
+</itemizedlist>
+<para
+>Якщо на сервері передбачено підтримку цього, кнопка <guibutton
+>Підписатися</guibutton
+> надсилає серверу запит на отримання сповіщення при зміні ресурсу; після цього ресурс автоматично зчитується повторно. Кнопка <guibutton
+>Скасувати підписку</guibutton
+> припиняє отримання таких сповіщень. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-resource-templates">
+<term
+><guilabel
+>Шаблони ресурсів</guilabel
+></term>
+<listitem
+><para
+>Кнопка <guibutton
+>Шаблони ресурсів</guibutton
+> надсилає запит до сервера щодо переліку його шаблонів ресурсів, які він надає, і показує відповідь. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-log">
+<term
+><guilabel
+>Журнал</guilabel
+></term>
+<listitem
+><para
+>Показує список усіх повідомлень JSON-RPC, якими відбувався обмін даними із сервером, із зазначенням їхнього <guilabel
+>ідентифікатора</guilabel
+>, <guilabel
+>назви методу</guilabel
+>, <guilabel
+>часу</guilabel
+>, <guilabel
+>тривалості</guilabel
+> та <guilabel
+>напрямку</guilabel
+> (<guilabel
+>надіслані</guilabel
+> або <guilabel
+>отримані</guilabel
+>). Для фільтрування списку скористайтеся полем <guilabel
+>Шукати</guilabel
+>. Якщо позначити повідомлення, буде показано його вміст у форматі JSON. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-server-notification">
+<term
+><guilabel
+>Сповіщення сервера</guilabel
+></term>
+<listitem
+><para
+>Показує повідомлення журналу, надіслані сервером, із зазначенням таких даних: <guilabel
+>Час</guilabel
+>, <guilabel
+>Рівень</guilabel
+>, <guilabel
+>Джерело</guilabel
+> та <guilabel
+>Повідомлення</guilabel
+>. У списку <guilabel
+>Мінімальний рівень:</guilabel
+> можна вибрати рівень, нижче якого повідомлення будуть приховані (<guilabel
+>Діагностика</guilabel
+>, <guilabel
+>Відомості</guilabel
+>, <guilabel
+>Зауваження</guilabel
+>, <guilabel
+>Попередження</guilabel
+>, <guilabel
+>Помилка</guilabel
+>, <guilabel
+>Критичні</guilabel
+>, <guilabel
+>Тривога</guilabel
+>, <guilabel
+>Екстрені</guilabel
+>). Кнопка <guibutton
+>Спорожнити</guibutton
+> вилучає всі записи зі списку. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect2>
+</sect1>
+
+<sect1 id="server-requests">
+<title
+>Запити від сервера</title>
+
+<para
+>Сервер <acronym
+>MCP</acronym
+> також може надсилати запити клієнту, якщо увімкнено відповідну можливість. &kappname; показує діалогове вікно для кожного з таких запитів: </para>
+
+<variablelist>
+<varlistentry id="request-elicitation">
+<term
+><guilabel
+>Відомості щодо запитів сервера</guilabel
+></term>
+<listitem
+><para
+>Сервер запитує у користувача певні відомості. Для кожного запитаного значення буде показано відповідне поле. Натисніть <guibutton
+>Прийняти</guibutton
+>, щоб надіслати значення, <guibutton
+>Відхилити</guibutton
+>, щоб відмовитися, або <guibutton
+>Скасувати</guibutton
+>, щоб скасувати запит. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-url-elicitation">
+<term
+><guilabel
+>Сервер надіслав запит щодо відкриття вебсторінки</guilabel
+></term>
+<listitem
+><para
+>Сервер просить користувача виконати певну дію у веббраузері (виявлення <acronym
+>URL</acronym
+>). Буде показано домен і повну <acronym
+>адресу</acronym
+>; сторінка відкривається, лише якщо натиснути кнопку <guibutton
+>Відкрити</guibutton
+>. Коли сервер повідомить про завершення цієї дії, на вкладці сервера з'явиться відповідне повідомлення, після чого можна буде повторити запит. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-sampling">
+<term
+><guilabel
+>Створення повідомлень щодо запитів сервера</guilabel
+></term>
+<listitem
+><para
+>Сервер просить клієнта створити повідомлення за допомогою мовної моделі (вибірка). Буде показано запит, а ви самостійно пишете відповідь; якщо хочете також можна вказати дані в полях <guilabel
+>Модель:</guilabel
+> та <guilabel
+>Причина зупинки:</guilabel
+>. Натисніть <guibutton
+>Надіслати</guibutton
+>, щоб відповісти, або <guibutton
+>Відхилити</guibutton
+>, щоб відмовитися. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-roots">
+<term
+>Корені</term>
+<listitem
+><para
+>Коли сервер запитує список кореневих елементів, &kappname; автоматично відповідає, надаючи кореневі елементи цього сервера. </para
+></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+<title
+>Налаштовування &kappname;</title>
+
+<para
+><menuchoice
+><guimenu
+>Параметри</guimenu
+><guimenuitem
+>Налаштувати &kappname;…</guimenuitem
+></menuchoice
+> відкриває діалогове вікно налаштовування програми. </para>
+
+<sect1 id="configure-general">
+<title
+>Загальне</title>
+<para
+>На сторінці <guilabel
+>Загальне</guilabel
+> визначаються стандартні <guilabel
+>Можливості</guilabel
+>, про які буде повідомлено серверам: <guilabel
+>Виявлення</guilabel
+>, <guilabel
+>Виявлення адрес</guilabel
+>, <guilabel
+>Вибірка</guilabel
+> та <guilabel
+>Корені</guilabel
+>. Усі вони типово увімкнені. </para>
+<para
+>Кнопка поруч із <guilabel
+>Корені</guilabel
+> відкриває діалогове вікно <guilabel
+>Налаштовування коренів</guilabel
+>, призначене для визначення загальних кореневих елементів. Вони використовуються всіма серверами, які не мають власних визначених кореневих елементів. </para>
+</sect1>
+
+<sect1 id="configure-mcp-servers">
+<title
+>Сервери MCP</title>
+<para
+>На сторінці <guilabel
+>Сервери MCP</guilabel
+> наведено список налаштованих серверів. Ви можете додавати, змінювати, вилучати, вмикати або вимикати сервери. Зміни зберігаються миттєво, а вкладки серверів у головному вікні оновлюються автоматично. </para>
+</sect1>
+
+</chapter>
+
+<chapter id="commands">
+<title
+>Довідка щодо команд</title>
+
+<sect1 id="kapp-mainwindow">
+<title
+>Меню</title>
+
+<sect2 id="file-menu">
+<title
+>Меню «Файл»</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Файл</guimenu
+><guimenuitem
+>Вийти</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Завершує роботу</action
+> &kappname;.</para
+></listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+
+<sect2 id="settings-menu">
+<title
+>Меню «Параметри»</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+><keycap
+>F11</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Параметри</guimenu
+><guimenuitem
+>Повноекранний режим</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Вмикає або вимикає</action
+> повноекранний режим.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+> <guisubmenu
+>Схема кольорів вікна</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Вибирає</action
+> схему кольорів вікна.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+><guimenuitem
+>Налаштувати сповіщення…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Відкриває вікно налаштовування</action
+> сповіщень &kappname;.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+><guimenuitem
+>Налаштувати &kappname;…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Відкриває</action
+> <link linkend="configuration"
+>діалогове вікно налаштовування програми</link
+>.</para
+></listitem>
+</varlistentry>
+</variablelist>
+<para
+>У &kappname; передбачено типові пункти меню <guimenu
+>Параметри</guimenu
+> &kde;. Щоб дізнатися більше, ознайомтеся з розділом, присвяченим <ulink url="help:/fundamentals/menus.html#menus-settings"
+>меню «Параметри»</ulink
+> підручника з основ роботи у &kde;. </para>
+</sect2>
+
+<sect2 id="help-menu">
+<title
+>Меню «Довідка»</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Довідка</guimenu
+><guimenuitem
+>Що нового?</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Показує</action
+> нові можливості кожного з випусків програми.</para
+></listitem>
+</varlistentry>
+</variablelist>
+<para
+>У &Windows; і &macOS; у меню <guimenu
+>Довідка</guimenu
+> також міститься пункт для пошуку і встановлення нових доступних версій програми. </para>
+<para
+>У &kappname; передбачено типовий пункт меню <guimenu
+>Довідка</guimenu
+> &kde;. Щоб дізнатися більше, ознайомтеся з розділом, присвяченим <ulink url="help:/fundamentals/menus.html#menus-help"
+>меню «Довідка»</ulink
+> підручника з основ роботи у &kde;. </para>
+</sect2>
+
+</sect1>
+</chapter>
+
+<chapter id="credits">
+<title
+>Подяки і ліцензування</title>
+
+<para
+>&kappname; </para>
+<para
+>Авторські права на програму належать Laurent Montel <email
+>montel@kde.org</email
+>, 2026 </para>
+
+<para
+>Авторські права на документацію належать Laurent Montel <email
+>montel@kde.org</email
+>, 2026 </para>
+
+<para
+>Переклад українською: Юрій Чорноіван <email
+>yurchor@ukr.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->

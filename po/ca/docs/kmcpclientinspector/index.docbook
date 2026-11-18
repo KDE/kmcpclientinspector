@@ -1,0 +1,890 @@
+<?xml version="1.0" ?>
+<!--
+  SPDX-FileCopyrightText: 2026 Laurent Montel <montel@kde.org>
+  SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!-- Define an entity for your application if it is not part of KDE
+       CVS -->
+  <!ENTITY i18n-kapplication "<application
+>KMcpClientInspector</application
+>">
+  <!ENTITY kappname "&i18n-kapplication;">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Catalan  "INCLUDE">
+]>
+
+<book id="kmcpclientinspector" lang="&language;">
+
+<bookinfo>
+<title
+>El manual del &kappname;</title>
+
+<authorgroup>
+<author
+><personname
+> <firstname
+>Laurent</firstname
+> <surname
+>Montel</surname
+> </personname
+> <email
+>montel@kde.org</email
+> </author>
+&traductor.JosepMa.Ferrer; 
+</authorgroup>
+
+<copyright>
+<year
+>2026</year>
+<holder
+>Laurent Montel</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>7 de novembre de 2026</date>
+<releaseinfo
+>0.2.7</releaseinfo>
+
+<abstract>
+<para
+>El &kappname; és una eina per a inspeccionar i depurar servidors que implementen el Model Context Protocol (<acronym
+>MCP</acronym
+>). Es connecta a un servidor com a client <acronym
+>MCP</acronym
+>, us permet enviar sol·licituds i mostra els missatges intercanviats. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>MCP</keyword>
+<keyword
+>Model Context Protocol</keyword>
+<keyword
+>inspector</keyword>
+<keyword
+>depuració</keyword>
+<keyword
+>kmcpclientinspector</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introducció</title>
+
+<para
+>El Model Context Protocol (<acronym
+>MCP</acronym
+>) és un protocol obert que permet a les aplicacions exposar eines, indicacions i recursos a clients com assistents d'<acronym
+>IA</acronym
+>. Els missatges s'intercanvien utilitzant JSON-RPC. </para>
+
+<para
+>El &kappname; actua com un client <acronym
+>MCP</acronym
+>. Permet als desenvolupadors de <acronym
+>servidors MCP</acronym
+>: </para>
+
+<itemizedlist>
+<listitem
+><para
+>gestionar una llista de <acronym
+>servidors MCP</acronym
+>;</para
+></listitem>
+<listitem
+><para
+>connectar a un servidor i veure el resultat de la conformitat de la inicialització;</para
+></listitem>
+<listitem
+><para
+>llistar i invocar les eines proporcionades pel servidor;</para
+></listitem>
+<listitem
+><para
+>llistar i recuperar les indicacions proporcionades pel servidor;</para
+></listitem>
+<listitem
+><para
+>llistar els recursos i les plantilles de recursos proporcionats pel servidor;</para
+></listitem>
+<listitem
+><para
+>llegir un recurs i subscriure's a les seves actualitzacions;</para
+></listitem>
+<listitem
+><para
+>respondre les sol·licituds enviades pel servidor (obtenció, mostreig, arrels);</para
+></listitem>
+<listitem
+><para
+>comprovar que el servidor respon amb una sol·licitud de ping;</para
+></listitem>
+<listitem
+><para
+>veure cada missatge JSON-RPC enviat i rebut;</para
+></listitem>
+<listitem
+><para
+>seguir les notificacions de registre emeses pel servidor.</para
+></listitem>
+</itemizedlist>
+
+</chapter>
+
+<chapter id="using-kapp">
+<title
+>Ús del &kappname;</title>
+
+<sect1 id="main-window">
+<title
+>La finestra principal</title>
+
+<para
+>La finestra principal està dividida en dues parts: </para>
+
+<itemizedlist>
+<listitem
+><para
+>A l'esquerra, la llista dels servidors <acronym
+>MCP</acronym
+> configurats. Des d'allà podeu afegir, modificar, eliminar, activar o desactivar un servidor. </para
+></listitem>
+<listitem
+><para
+>A la dreta, una pestanya per a cada servidor habilitat. Els servidors inhabilitats no tenen cap pestanya. </para
+></listitem>
+</itemizedlist>
+
+<para
+>Quan una versió nova aporta característiques noves, es mostra un missatge a la part superior de la finestra la primera vegada que s'inicia el &kappname;. La llista completa de canvis està disponible amb <menuchoice
+><guimenu
+>Help</guimenu
+><guimenuitem
+>What's new</guimenuitem
+></menuchoice
+>. </para>
+</sect1>
+
+<sect1 id="server-tab">
+<title
+>La pestanya Servidor</title>
+
+<para
+>Cada pestanya de servidor es divideix en dues parts: la configuració del servidor a l'esquerra i les accions a la dreta. </para>
+
+<sect2 id="server-settings">
+<title
+>Configuració del servidor</title>
+
+<para
+>La part superior mostra informació sobre el servidor: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Icona:</guilabel
+></term>
+<listitem
+><para
+>La icona del servidor.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Nom:</guilabel
+></term>
+<listitem
+><para
+>El nom del servidor.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Tipus:</guilabel
+></term>
+<listitem
+><para
+>Com es comunica el &kappname; amb el servidor: iniciant un procés local o mitjançant un <acronym
+>URL</acronym
+> de xarxa.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Ordre:</guilabel
+>, <guilabel
+>Arguments:</guilabel
+>, <guilabel
+>Entorn:</guilabel
+></term>
+<listitem
+><para
+>Per a un servidor local, el programa iniciat pel &kappname;, els seus arguments i les variables d'entorn que se li passen.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>URL:</guilabel
+></term>
+<listitem
+><para
+>Per a un servidor remot, l'adreça utilitzada per arribar-hi.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Arrels:</guilabel
+></term>
+<listitem
+><para
+>Les arrels (directoris o fitxers) exposades al servidor. Quan no es defineixen arrels específiques al servidor, s'utilitzen les arrels globals definides a la pàgina <link linkend="configure-general"
+>General</link
+> del diàleg de configuració.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>El grup <guilabel
+>Capacitats</guilabel
+> us permet triar quines capacitats de client s'anuncien al servidor durant la inicialització: <guilabel
+>Obtenció</guilabel
+>, <guilabel
+>Obtenció d'URL</guilabel
+>, <guilabel
+>Mostreig</guilabel
+> i <guilabel
+>Arrels</guilabel
+>. El seu estat inicial prové de la pàgina <link linkend="configure-general"
+>General</link
+> del diàleg de configuració. Només es poden canviar mentre el servidor està desconnectat. </para>
+
+<para
+>El botó al costat d'<guilabel
+>Arrels</guilabel
+> obre el diàleg <guilabel
+>Configura les arrels</guilabel
+>, per a triar les arrels exposades a aquest servidor. Si la llista és la mateixa que la global, el servidor segueix les arrels globals. Quan es canvien les arrels mentre el servidor està connectat, es notifica al servidor. </para>
+
+<para
+>El botó <guibutton
+>Edita…</guibutton
+> obre un diàleg per a modificar la configuració del servidor. Està desactivat mentre el servidor està connectat. </para>
+
+<para
+>Utilitzeu el botó <guibutton
+>Connecta</guibutton
+> per iniciar el client i enviar la sol·licitud d'inicialització al servidor, i el botó <guibutton
+>Desconnecta</guibutton
+> per aturar-lo. </para>
+</sect2>
+
+<sect2 id="actions">
+<title
+>Accions</title>
+
+<para
+>La part dreta de la pestanya del servidor conté una pestanya per a cada tipus de sol·licitud o informació. Les pestanyes relacionades amb eines, indicacions i recursos només es mostren quan el servidor anuncia la capacitat corresponent durant la inicialització. </para>
+
+<variablelist>
+
+<varlistentry id="action-initialize">
+<term
+><guilabel
+>Inicialitza</guilabel
+></term>
+<listitem
+><para
+>Mostra la resposta JSON del servidor a la sol·licitud d'inicialització: versió del protocol, informació del servidor i capacitats del servidor. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-ping">
+<term
+><guilabel
+>Ping</guilabel
+></term>
+<listitem
+><para
+>El botó <guibutton
+>Ping</guibutton
+> envia una sol·licitud de ping, per a comprovar que el servidor encara està responent. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-list-tools">
+<term
+><guilabel
+>Llista d'eines</guilabel
+></term>
+<listitem
+><para
+>El botó <guibutton
+>Llista d'eines</guibutton
+> demana al servidor la llista de les eines que proporciona i mostra la resposta. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-call-tool">
+<term
+><guilabel
+>Invocació d'eina</guilabel
+></term>
+<listitem>
+<para
+>Feu clic a <guibutton
+>Llista d'eines</guibutton
+> per omplir la llista d'eines; el camp <guilabel
+>Cerca</guilabel
+> la filtra. Seleccioneu una eina: es mostren els seus arguments, amb un camp adaptat a cada tipus d'argument (text, enter, nombre, booleà o valor JSON). Marqueu <guilabel
+>Edita els arguments com a JSON</guilabel
+> per a escriure tots els arguments directament com a objecte JSON. </para>
+<para
+>El títol de l'eina i les seves anotacions es mostren com a insígnies: <guilabel
+>Només de lectura</guilabel
+>, <guilabel
+>Destructiu</guilabel
+>, <guilabel
+>Additiu</guilabel
+>, <guilabel
+>Idempotent</guilabel
+>, <guilabel
+>Món obert</guilabel
+> o <guilabel
+>Món tancat</guilabel
+>. Les insígnies en cursiva gris són valors predeterminats, no declarats pel servidor. Les eines que es declaren destructives estan marcades amb una icona d'avís a la llista. </para>
+<para
+>Feu clic a <guibutton
+>Invocació d'eina</guibutton
+> per invocar l'eina. Els arguments i tipus d'arguments necessaris es comproven abans d'enviar la sol·licitud. Quan el servidor envia notificacions de progrés, es mostra una barra de progrés i un missatge de progrés durant la invocació. El resultat es mostra en dues pestanyes: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Contingut</guilabel
+>: una vista llegible del contingut retornat (text, imatges, àudio, enllaços de recursos, recursos incrustats i contingut estructurat), i si l'eina ha tingut èxit o ha retornat un error;</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: la resposta JSON en brut.</para
+></listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-list-prompts">
+<term
+><guilabel
+>Llista d'indicacions</guilabel
+></term>
+<listitem
+><para
+>El botó <guibutton
+>Llista d'indicacions</guibutton
+> demana al servidor la llista de les indicacions que proporciona i mostra la resposta. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-get-prompt">
+<term
+><guilabel
+>Obtén una indicació</guilabel
+></term>
+<listitem>
+<para
+>Feu clic a <guibutton
+>Llista d'indicacions</guibutton
+> per omplir la llista d'indicacions; el camp <guilabel
+>Cerca</guilabel
+> el filtra. Seleccioneu un indicador, ompliu els seus arguments i feu clic a <guibutton
+>Obtén una indicació</guibutton
+>. El resultat es mostra en dues pestanyes: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Missatges</guilabel
+>: els missatges de la indicació, amb el seu rol (<guilabel
+>Usuari</guilabel
+> o <guilabel
+>Assistent</guilabel
+>);</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: la resposta JSON en brut.</para
+></listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-list-resources">
+<term
+><guilabel
+>Llista de recursos</guilabel
+></term>
+<listitem
+><para
+>El botó <guibutton
+>Llista de recursos</guibutton
+> demana al servidor la llista dels recursos que proporciona i mostra la resposta. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-read-resource">
+<term
+><guilabel
+>Lectura de recurs</guilabel
+></term>
+<listitem>
+<para
+>Feu clic a <guibutton
+>List Resources</guibutton
+> per omplir la llista de recursos; el camp <guilabel
+>Cerca</guilabel
+> el filtra. Seleccioneu un recurs, o introduïu la seva adreça en el camp <guilabel
+>URI:</guilabel
+>, després feu clic a <guibutton
+>Lectura de recurs</guibutton
+>. El resultat es mostra en dues pestanyes: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Contingut</guilabel
+>: una vista llegible del contingut del recurs;</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: la resposta JSON en brut.</para
+></listitem>
+</itemizedlist>
+<para
+>Si el servidor ho admet, el botó <guibutton
+>Subscriu</guibutton
+> demana al servidor que enviï una notificació quan el recurs canviï; el recurs es tornarà a llegir automàticament. El botó <guibutton
+>Cancel·la la subscripció</guibutton
+> atura aquestes notificacions. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-resource-templates">
+<term
+><guilabel
+>Plantilles de recursos</guilabel
+></term>
+<listitem
+><para
+>El botó <guibutton
+>Plantilles de recursos</guibutton
+> demana al servidor la llista de les seves plantilles de recursos i mostra la resposta. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-log">
+<term
+><guilabel
+>Registre</guilabel
+></term>
+<listitem
+><para
+>Llista tots els missatges JSON-RPC intercanviats amb el servidor, amb el seu <guilabel
+>Identificador</guilabel
+>, <guilabel
+>Nom de mètode</guilabel
+>, <guilabel
+>Hora</guilabel
+>, <guilabel
+>Durada</guilabel
+> i <guilabel
+>Direcció</guilabel
+> (<guilabel
+>Enviat</guilabel
+> o <guilabel
+>Rebut</guilabel
+>). Utilitzeu el camp <guilabel
+>Cerca</guilabel
+> per filtrar la llista. En seleccionar un missatge es mostra el seu contingut JSON. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-server-notification">
+<term
+><guilabel
+>Notificació del servidor</guilabel
+></term>
+<listitem
+><para
+>Mostra els missatges de registre enviats pel servidor, amb la seva <guilabel
+>Hora</guilabel
+>, <guilabel
+>Nivell</guilabel
+>, <guilabel
+>Registrador</guilabel
+> i <guilabel
+>Missatge</guilabel
+>. La llista del <guilabel
+>Nivell mínim:</guilabel
+> oculta els missatges per sota del nivell seleccionat (<guilabel
+>Depuració</guilabel
+>, <guilabel
+>Informació</guilabel
+>, <guilabel
+>Anotació</guilabel
+>, <guilabel
+>Avís</guilabel
+>, <guilabel
+>Error </guilabel
+>, <guilabel
+>Crític</guilabel
+>, <guilabel
+>Alerta</guilabel
+> i <guilabel
+>Emergència</guilabel
+>). El botó <guibutton
+>Neteja</guibutton
+> buida la llista. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect2>
+</sect1>
+
+<sect1 id="server-requests">
+<title
+>Sol·licituds del servidor</title>
+
+<para
+>Un servidor <acronym
+>MCP</acronym
+> també pot enviar sol·licituds al client, quan la capacitat corresponent està habilitada. El &kappname; mostra un diàleg per a cadascuna d'elles: </para>
+
+<variablelist>
+<varlistentry id="request-elicitation">
+<term
+><guilabel
+>El servidor sol·licita informació</guilabel
+></term>
+<listitem
+><para
+>El servidor demana a l'usuari alguna informació (obtenció). Es mostra un camp per a cada valor sol·licitat. Feu clic a <guibutton
+>Accepta</guibutton
+> per enviar els valors, a <guibutton
+>Declina</guibutton
+> per rebutjar o a <guibutton
+>Cancel·la</guibutton
+> per cancel·lar la sol·licitud. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-url-elicitation">
+<term
+><guilabel
+>El servidor sol·licita obrir una pàgina web</guilabel
+></term>
+<listitem
+><para
+>El servidor demana a l'usuari que completi una interacció en un navegador web (obtenció d'<acronym
+>URL</acronym
+>). Es mostra el domini i l'<acronym
+>URL</acronym
+>; la pàgina només s'obre si feu clic a <guibutton
+>Obre</guibutton
+>. Quan el servidor informa que la interacció és completa, es mostra un missatge a la pestanya del servidor i podeu tornar a intentar la sol·licitud. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-sampling">
+<term
+><guilabel
+>El servidor sol·licita la generació de missatges</guilabel
+></term>
+<listitem
+><para
+>El servidor demana al client que generi un missatge amb un model de llenguatge (mostratge). Es mostra la sol·licitud i escriviu la resposta personalment, de manera opcional amb el <guilabel
+>Model:</guilabel
+> i el <guilabel
+>Motiu d'aturada:</guilabel
+> per informar. Feu clic a <guibutton
+>Envia</guibutton
+> per respondre o a <guibutton
+>Rebutja</guibutton
+> per rebutjar. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-roots">
+<term
+>Arrels</term>
+<listitem
+><para
+>Quan el servidor demana la llista d'arrels, el &kappname; respon automàticament amb les arrels del servidor. </para
+></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+<title
+>Configuració del &kappname;</title>
+
+<para
+><menuchoice
+><guimenu
+>Configuració</guimenu
+><guimenuitem
+>Configura el &kappname;…</guimenuitem
+></menuchoice
+> obre el diàleg de configuració. </para>
+
+<sect1 id="configure-general">
+<title
+>General</title>
+<para
+>La pàgina <guilabel
+>General</guilabel
+> defineix les <guilabel
+>Capacitats</guilabel
+> anunciades als servidors: <guilabel
+>Obtenció</guilabel
+>, <guilabel
+>Obtenció d'URL</guilabel
+>, <guilabel
+>Mostreig</guilabel
+> i <guilabel
+>Arrels</guilabel
+>. Totes estan habilitades de manera predeterminada. </para>
+<para
+>El botó al costat d'<guilabel
+>Arrels</guilabel
+> obre el diàleg <guilabel
+>Configura les arrels</guilabel
+>, per definir les arrels globals. S'utilitzen a cada servidor que no defineixi les seves pròpies arrels. </para>
+</sect1>
+
+<sect1 id="configure-mcp-servers">
+<title
+>Servidors MCP</title>
+<para
+>La pàgina <guilabel
+>Servidors MCP</guilabel
+> llista els servidors configurats. Podeu afegir, modificar, eliminar, activar o desactivar un servidor. Els canvis es desen immediatament i les pestanyes del servidor de la finestra principal s'actualitzen. </para>
+</sect1>
+
+</chapter>
+
+<chapter id="commands">
+<title
+>Referència d'ordres</title>
+
+<sect1 id="kapp-mainwindow">
+<title
+>Els menús</title>
+
+<sect2 id="file-menu">
+<title
+>El menú Fitxer</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fitxer</guimenu
+><guimenuitem
+>Surt</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Surt</action
+> del &kappname;.</para
+></listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+
+<sect2 id="settings-menu">
+<title
+>El menú Configuració</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+><keycap
+>F11</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Configuració</guimenu
+><guimenuitem
+>Mode de pantalla completa</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Commuta</action
+> el mode de pantalla completa.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuració</guimenu
+> <guisubmenu
+>Esquema de colors de les finestres</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Selecciona</action
+> l'esquema de colors de la finestra.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuració</guimenu
+><guimenuitem
+>Configura les notificacions…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Configura</action
+> les notificacions del &kappname;.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuració</guimenu
+> <guimenuitem
+>Configura el &kappname;…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Obre</action
+> el <link linkend="configuration"
+>diàleg de configuració</link
+>.</para
+></listitem>
+</varlistentry>
+</variablelist>
+<para
+>El &kappname; també té la configuració comuna dels elements de menú de l'<guimenu
+>Arranjament</guimenu
+> de &kde;, per a més informació, llegiu la secció sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menú arranjament</ulink
+> dels Fonaments de &kde;. </para>
+</sect2>
+
+<sect2 id="help-menu">
+<title
+>El menú Ajuda</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ajuda</guimenu
+><guimenuitem
+>Què hi ha de nou</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Mostra</action
+> les característiques noves de cada versió.</para
+></listitem>
+</varlistentry>
+</variablelist>
+<para
+>Al &Windows; i al &macOS;, el menú <guimenu
+>Ajuda</guimenu
+> també conté un element per comprovar si hi ha una versió nova disponible. </para>
+<para
+>El &kappname; té els elements de menú <guimenu
+>Ajuda</guimenu
+> comuns de &kde;, per a més informació, llegiu la secció sobre el <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menú ajuda</ulink
+> dels Fonaments de &kde;. </para>
+</sect2>
+
+</sect1>
+</chapter>
+
+<chapter id="credits">
+<title
+>Crèdits i llicència</title>
+
+<para
+>&kappname; </para>
+<para
+>Copyright del programa 2026 Laurent Montel <email
+>montel@kde.org</email
+> </para>
+
+<para
+>Copyright de la documentació &copy; 2026 Laurent Montel <email
+>montel@kde.org</email
+> </para>
+
+<para
+>Traductor de la documentació: &credits.JosepMa.Ferrer;</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->
