@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: kmcpclientinspector\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-16 01:10+0000\n"
-"PO-Revision-Date: 2026-11-16 13:58+0100\n"
-"Last-Translator: freek <freekdekruijf@kde.nl>\n"
+"PO-Revision-Date: 2026-11-17 12:23+0100\n"
+"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.04.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 26.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -102,7 +102,7 @@ msgstr "Bericht"
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:68
 #, kde-format
 msgid "Initialize"
-msgstr ""
+msgstr "Initialiseren"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:69
 #, kde-format
@@ -112,37 +112,37 @@ msgstr "Ping"
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:70
 #, kde-format
 msgid "List Tools"
-msgstr ""
+msgstr "Hulpmiddelen laten zien"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:71
 #, kde-format
 msgid "Call Tool"
-msgstr ""
+msgstr "Hulpmiddel aanroepen"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:72
 #, kde-format
 msgid "List Prompts"
-msgstr ""
+msgstr "Prompts laten zien"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:73
 #, kde-format
 msgid "Get Prompt"
-msgstr ""
+msgstr "Prompt ophalen"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:74
 #, kde-format
 msgid "List Resources"
-msgstr ""
+msgstr "Hulpbronnen laten zien"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:75
 #, kde-format
 msgid "Read Resource"
-msgstr ""
+msgstr "Hulpbron lezen"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:76
 #, kde-format
 msgid "Resource Templates"
-msgstr ""
+msgstr "Hulpbronsjablonen"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:77
 #, kde-format
@@ -157,7 +157,7 @@ msgstr "Log"
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:79
 #, kde-format
 msgid "Server Notification"
-msgstr ""
+msgstr "Servermelding"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:99
 #, kde-format
@@ -167,26 +167,26 @@ msgstr "Fout in %1"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:76
 #, kde-format
 msgid "%1: not set (default: %2)"
-msgstr ""
+msgstr "%1: niet ingesteld (standaard: %2)"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:89
 #: widgets/actions/kmcpclientinspectorlisttoolswidget.cpp:12
 #, kde-format
 msgctxt "@action:button"
 msgid "List Tools"
-msgstr ""
+msgstr "Hulpmiddelen laten zien"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:95
 #, kde-format
 msgctxt "@action:button"
 msgid "Call Tool"
-msgstr ""
+msgstr "Hulpmiddel aanroepen"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:102
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel Tool"
-msgstr ""
+msgstr "Hulpmiddel annuleren"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:126
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:87
@@ -215,12 +215,12 @@ msgstr "JSON"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:214
 #, kde-format
 msgid "Tools Updated"
-msgstr ""
+msgstr "Hulpmiddelen bijgewerkt"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:215
 #, kde-format
 msgid "Tools were updated in '%1'."
-msgstr ""
+msgstr "Hulpmiddelen zijn bijgewerkt in '%1'."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:329
 #, kde-format
