@@ -11,6 +11,7 @@ Exec=kmcpclientinspector -qwindowtitle %c %u
 Icon=kmcpclientinspector
 X-DocPath=kmcpclientinspector/index.html
 GenericName=MCP client inspector
+Comment=Inspect and debug Model Context Protocol (MCP) servers
 GenericName[ca]=Inspector de client MCP
 GenericName[ca@valencia]=Inspector de client MCP
 GenericName[nl]=MCP-clientinspecteur
