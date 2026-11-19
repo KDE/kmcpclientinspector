@@ -1,0 +1,888 @@
+<?xml version="1.0" ?>
+<!--
+  SPDX-FileCopyrightText: 2026 Laurent Montel <montel@kde.org>
+  SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!-- Define an entity for your application if it is not part of KDE
+       CVS -->
+  <!ENTITY i18n-kapplication "<application
+>KMcpClientInspecteur</application
+>">
+  <!ENTITY kappname "&i18n-kapplication;">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Dutch "INCLUDE">
+]>
+
+<book id="kmcpclientinspector" lang="&language;">
+
+<bookinfo>
+<title
+>Het handboek van &kappname; </title>
+
+<authorgroup>
+<author
+><personname
+> <firstname
+>Laurent</firstname
+> <surname
+>Montel</surname
+> </personname
+> <email
+>montel@kde.org</email
+> </author>
+&Freek.de.Kruijf; 
+</authorgroup>
+
+<copyright>
+<year
+>2026</year>
+<holder
+>Laurent Montel</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2026-11-07</date>
+<releaseinfo
+>0.2.7</releaseinfo>
+
+<abstract>
+<para
+>&kappname; is een hulpmiddel voor het inspecteren en debuggen van servers die het Model Context Protocol (<acronym
+>MCP</acronym
+>) implementeren. Het maakt verbinding met een server als een <acronym
+>MCP</acronym
+>-client, stelt u in staat verzoeken naar de server te sturen en toont de uitgewisselde berichten. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>MCP</keyword>
+<keyword
+>Model Context Protocol</keyword>
+<keyword
+>inspecteur</keyword>
+<keyword
+>debug</keyword>
+<keyword
+>kmcpclientinspecteur</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Inleiding</title>
+
+<para
+>Het Model Context Protocol (<acronym
+>MCP</acronym
+>) is een open protocol waarmee toepassingshulpmiddelen, prompts en bronnen kunnen aanbieden aan clients, zoals <acronym
+>AI</acronym
+>-assistenten. Berichten worden uitgewisseld via JSON-RPC. </para>
+
+<para
+>&kappname; fungeert als een <acronym
+>MCP</acronym
+>-client. Het stelt ontwikkelaars van <acronym
+>MCP</acronym
+>-servers in staat om: </para>
+
+<itemizedlist>
+<listitem
+><para
+>een lijst met <acronym
+>MCP</acronym
+>-servers beheren;</para
+></listitem>
+<listitem
+><para
+>verbinding maakt met een server en het resultaat bekijkt van de initialisatie-handshake;</para
+></listitem>
+<listitem
+><para
+>de door de server aangeboden hulpmiddelen opsomt en aanroept;</para
+></listitem>
+<listitem
+><para
+>de door de server verstrekte prompts weergeeft en ophaalt;</para
+></listitem>
+<listitem
+><para
+>de hulpbronnen en hulpbronsjablonen opsomt die door de server worden aangeboden;</para
+></listitem>
+<listitem
+><para
+>een bron leest en u abonneert op het bijwerken ervan;</para
+></listitem>
+<listitem
+><para
+>de verzoeken beantwoordt die door de server worden verstuurd (ontlokking, steekproefname, roots);</para
+></listitem>
+<listitem
+><para
+>controleert of de server reageert op een ping-verzoek;</para
+></listitem>
+<listitem
+><para
+>bekijkt elk verzonden en ontvangen JSON-RPC-bericht;</para
+></listitem>
+<listitem
+><para
+>de logmeldingen volgt die door de server worden gegenereerd.</para
+></listitem>
+</itemizedlist>
+
+</chapter>
+
+<chapter id="using-kapp">
+<title
+>&kappname; gebruiken</title>
+
+<sect1 id="main-window">
+<title
+>Het hoofdvenster</title>
+
+<para
+>Het hoofdvenster is opgedeeld in twee delen: </para>
+
+<itemizedlist>
+<listitem
+><para
+>Aan de linkerkant bevindt zich de lijst met geconfigureerde <acronym
+>MCP</acronym
+>-servers. Van daaruit kunt u een server toevoegen, wijzigen, verwijderen, inschakelen of uitschakelen. </para
+></listitem>
+<listitem
+><para
+>Aan de rechterkant bevindt zich voor elke ingeschakelde server een tabblad. Uitgeschakelde servers krijgen geen tabblad. </para
+></listitem>
+</itemizedlist>
+
+<para
+>Wanneer een nieuwe versie nieuwe functies bevat, wordt er bij de eerste keer dat &kappname; wordt gestart een bericht getoond bovenaan het venster. De volledige lijst met wijzigingen is te vinden via <menuchoice
+><guimenu
+>Help</guimenu
+><guimenuitem
+>Wat is er nieuw</guimenuitem
+></menuchoice
+>. </para>
+</sect1>
+
+<sect1 id="server-tab">
+<title
+>Het tabblad Server</title>
+
+<para
+>Elk servertabblad is in twee delen gesplitst: de serverinstellingen aan de linkerkant en de acties aan de rechterkant. </para>
+
+<sect2 id="server-settings">
+<title
+>Serverinstellingen</title>
+
+<para
+>Het bovenste gedeelte toont informatie over de server: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Pictogram:</guilabel
+></term>
+<listitem
+><para
+>Het pictogram van de server.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Naam:</guilabel
+></term>
+<listitem
+><para
+>De naam van de server.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Type:</guilabel
+></term>
+<listitem
+><para
+>Hoe &kappname; met de server communiceert: door een lokaal proces te starten of via een netwerk-<acronym
+>URL</acronym
+>.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Commando:</guilabel
+>, <guilabel
+>Argumenten:</guilabel
+>, <guilabel
+>Omgeving:</guilabel
+></term>
+<listitem
+><para
+>Voor een lokale server: het door &kappname; gestarte programma, de argumenten daarvan en de omgevingsvariabelen die eraan worden meegegeven.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>URL:</guilabel
+></term>
+<listitem
+><para
+>Voor een externe server: het adres dat wordt gebruikt om deze te bereiken.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Roots:</guilabel
+></term>
+<listitem
+><para
+>De roots (mappen of bestanden) die voor de server toegankelijk zijn. Wanneer er voor de server geen specifieke roots zijn gedefinieerd, worden de algemene roots gebruikt die zijn vastgelegd op de pagina <link linkend="configure-general"
+>Algemeen</link
+> van het configuratievenster.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>In de groep <guilabel
+>Mogelijkheden</guilabel
+> kunt u kiezen welke clientmogelijkheden tijdens de initialisatie aan de server worden doorgegeven: <guilabel
+>Ontlokking</guilabel
+>, <guilabel
+>URL-ontlokking</guilabel
+>, <guilabel
+>Monstername</guilabel
+> en <guilabel
+>Roots</guilabel
+>. De beginstatus hiervan is afkomstig van de pagina <link linkend="configure-general"
+>Algemeen</link
+> in het configuratievenster. Deze instellingen kunnen alleen worden gewijzigd wanneer de verbinding met de server is verbroken. </para>
+
+<para
+>De knop naast <guilabel
+>Roots</guilabel
+> opent het dialoogvenster <guilabel
+>Roots configureren</guilabel
+>, waarmee u de roots kunt kiezen die voor deze server beschikbaar worden gesteld. Als de lijst overeenkomt met de globale lijst, blijft de server de globale roots volgen. Wanneer de roots worden gewijzigd terwijl de server verbonden is, krijgt de server hiervan bericht. </para>
+
+<para
+>De knop <guibutton
+>Bewerken…</guibutton
+> opent een dialoogvenster voor het wijzigen van de serverinstellingen. Deze knop is uitgeschakeld zolang de server verbonden is. </para>
+
+<para
+>Gebruik de knop <guibutton
+>Verbinden</guibutton
+> om de client te starten en het initialisatieverzoek naar de server te sturen, en de knop <guibutton
+>Verbinding verbreken</guibutton
+> om deze te stoppen. </para>
+</sect2>
+
+<sect2 id="actions">
+<title
+>Acties</title>
+
+<para
+>Het rechtergedeelte van het tabblad Server bevat een apart tabblad voor elk type verzoek of soort informatie. De tabbladen met betrekking tot tools, prompts en hulpbronnen worden alleen getoond wanneer de server tijdens de initialisatie aangeeft dat de betreffende functionaliteit beschikbaar is. </para>
+
+<variablelist>
+
+<varlistentry id="action-initialize">
+<term
+><guilabel
+>Initialiseren</guilabel
+></term>
+<listitem
+><para
+>Toont het JSON-antwoord van de server op het initialisatieverzoek: protocolversie, serverinformatie en servermogelijkheden. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-ping">
+<term
+><guilabel
+>Ping</guilabel
+></term>
+<listitem
+><para
+>De knop <guibutton
+>Ping</guibutton
+> verstuurt een ping-verzoek om te controleren of de server nog antwoordt. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-list-tools">
+<term
+><guilabel
+>Hulpmiddelen laten zien</guilabel
+></term>
+<listitem
+><para
+>De knop <guibutton
+>Hulpmiddelen laten zien</guibutton
+> vraagt ​​de server om een ​​lijst van de hulpmiddelen die deze aanbiedt, en toont het antwoord. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-call-tool">
+<term
+><guilabel
+>Hulpmiddel aanroepen</guilabel
+></term>
+<listitem>
+<para
+>Klik op <guibutton
+>Hulpmiddelen laten zien</guibutton
+> om de lijst met hulpmiddelen te vullen; het veld <guilabel
+>Zoeken</guilabel
+> fungeert als filter. Selecteer een hulpmiddel: de bijbehorende argumenten worden getoond, waarbij elk argument een invoerveld heeft dat is afgestemd op het type (tekst, geheel getal, getal, booleaanse waarde of JSON-waarde). Schakel <guilabel
+>Argumenten als JSON bewerken</guilabel
+> in om alle argumenten rechtstreeks als JSON-object in te voeren. </para>
+<para
+>De titel van het hulpmiddel en de bijbehorende annotaties worden weergegeven als labels: <guilabel
+>Alleen-lezen</guilabel
+>, <guilabel
+>Destructief</guilabel
+> of <guilabel
+>Additief</guilabel
+>, <guilabel
+>Machteloos</guilabel
+>, <guilabel
+>Open wereld</guilabel
+> of <guilabel
+>Gesloten wereld</guilabel
+>. Labels in grijze, cursieve tekst zijn standaardwaarden die niet expliciet door de server zijn opgegeven. Hulpmiddelen die zichzelf als destructief aanmerken, worden in de lijst voorzien van een waarschuwingspictogram. </para>
+<para
+>Klik op <guibutton
+>Hulpmiddel aanroepen</guibutton
+> om het hulpmiddel aan te roepen. Vereiste argumenten en de bijbehorende typen worden gecontroleerd voordat het verzoek wordt verzonden. Wanneer de server voortgangsmeldingen verstuurt, worden tijdens de aanroep een voortgangsbalk en een voortgangsbericht getoond. Het resultaat wordt weergegeven in twee tabbladen: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Inhoud</guilabel
+>: een leesbare weergave van de geretourneerde inhoud (tekst, afbeeldingen, audio, koppelingen naar bronnen, ingesloten bronnen en gestructureerde inhoud), en of het hulpmiddel succesvol was of een foutmelding gaf;</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: het ruwe JSON antwoord.</para
+></listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-list-prompts">
+<term
+><guilabel
+>Prompts laten zien</guilabel
+></term>
+<listitem
+><para
+>De knop <guibutton
+>Prompt laten zien</guibutton
+> vraagt ​​de server om een ​​lijst van prompts die deze aanbiedt en toont het antwoord. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-get-prompt">
+<term
+><guilabel
+>Prompt ophalen</guilabel
+></term>
+<listitem>
+<para
+>Klik op <guibutton
+>Prompts laten zien</guibutton
+> om de lijst met prompts te vullen; het veld <guilabel
+>Zoeken</guilabel
+> dient om deze te filteren. Selecteer een prompt, vul de bijbehorende argumenten in en klik vervolgens op <guibutton
+>Prompt ophalen</guibutton
+>. Het resultaat wordt getoond in twee tabbladen: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Berichten</guilabel
+>: de berichten van de prompt, inclusief hun rol (<guilabel
+>Gebruiker</guilabel
+> of <guilabel
+>Assistent</guilabel
+>);</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: het ruwe JSON antwoord.</para
+></listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-list-resources">
+<term
+><guilabel
+>Hulpbronnen laten zien</guilabel
+></term>
+<listitem
+><para
+>De knop <guibutton
+>Hulpbronnen laten zien</guibutton
+> vraagt ​​de server om een ​​lijst van de hulpbronnen die deze aanbiedt en toont het antwoord. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-read-resource">
+<term
+><guilabel
+>Hulpbron lezen</guilabel
+></term>
+<listitem>
+<para
+>Klik op <guibutton
+>Hulpbronnen laten zien</guibutton
+> (Hulpbronnen weergeven) om de lijst met hulpbronnen te vullen; het veld <guilabel
+>Zoeken</guilabel
+> fungeert als filter. Selecteer een hulpbron of voer het adres ervan in het veld <guilabel
+>URI:</guilabel
+> in en klik vervolgens op <guibutton
+>Hulpbron lezen</guibutton
+>. Het resultaat wordt getoond in twee tabbladen: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Inhoud</guilabel
+>: een leesbare weergave van de inhoud van de hulpbron;</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: het ruwe JSON antwoord.</para
+></listitem>
+</itemizedlist>
+<para
+>Als de server dit ondersteunt, verzoekt de knop <guibutton
+>Abonneren</guibutton
+> de server om een ​​melding te sturen wanneer de bron wordt gewijzigd; de bron wordt vervolgens automatisch opnieuw ingelezen. De knop <guibutton
+>Abonnement opzeggen</guibutton
+> stopt deze meldingen. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-resource-templates">
+<term
+><guilabel
+>Hulpbronsjablonen</guilabel
+></term>
+<listitem
+><para
+>De knop <guibutton
+>Hulpbronsjablonen</guibutton
+> vraagt ​​de server om de lijst met diens hulpbronsjablonen en toont het antwoord. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-log">
+<term
+><guilabel
+>Log</guilabel
+></term>
+<listitem
+><para
+>Geeft een overzicht van elk JSON-RPC-bericht dat met de server is uitgewisseld, inclusief de <guilabel
+>Identifier</guilabel
+>, <guilabel
+>Methodenaam</guilabel
+>, <guilabel
+>Tijd</guilabel
+>, <guilabel
+>Tijdsduur</guilabel
+> en <guilabel
+>Richting</guilabel
+> (<guilabel
+>Verzonden</guilabel
+> of <guilabel
+>Ontvangen</guilabel
+>). Gebruik het veld <guilabel
+>Zoeken</guilabel
+> om de lijst te filteren. Wanneer u een bericht selecteert, wordt de JSON-inhoud ervan getoond. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-server-notification">
+<term
+><guilabel
+>Servermeldingen</guilabel
+></term>
+<listitem
+><para
+>Toont de logberichten die door de server zijn verzonden, inclusief hun <guilabel
+>Tijd</guilabel
+>, <guilabel
+>Niveau</guilabel
+>, <guilabel
+>Logger</guilabel
+> en <guilabel
+>Bericht</guilabel
+>. De lijst <guilabel
+>Minimum niveau:</guilabel
+> verbergt berichten onder het geselecteerde niveau (<guilabel
+>Debug</guilabel
+>, <guilabel
+>Info</guilabel
+>, <guilabel
+>Notitie</guilabel
+>, <guilabel
+>Waarschuwing</guilabel
+>, <guilabel
+>Fout</guilabel
+>, <guilabel
+>Kritiek</guilabel
+>, <guilabel
+>Alert</guilabel
+>, <guilabel
+>Noodgeval</guilabel
+>). De knop <guibutton
+>Wissen</guibutton
+> maakt de lijst leeg. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect2>
+</sect1>
+
+<sect1 id="server-requests">
+<title
+>Verzoeken van de server</title>
+
+<para
+>Een <acronym
+>MCP</acronym
+>-server kan ook verzoeken naar de client sturen, wanneer de bijbehorende functionaliteit is ingeschakeld. &kappname; toont voor elk daarvan een dialoogvenster: </para>
+
+<variablelist>
+<varlistentry id="request-elicitation">
+<term
+><guilabel
+>Server verzoekt om informatie</guilabel
+></term>
+<listitem
+><para
+>De server vraagt ​​de gebruiker om bepaalde informatie (ontlokking). Voor elke gevraagde waarde wordt een veld getoond. Klik op <guibutton
+>Accepteren</guibutton
+> om de waarden te versturen, op <guibutton
+>Afwijzen</guibutton
+> om ze te weigeren, of op <guibutton
+>Annuleren</guibutton
+> om het verzoek te annuleren. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-url-elicitation">
+<term
+><guilabel
+>Server verzoekt om een webpagina te openen</guilabel
+></term>
+<listitem
+><para
+>De server verzoekt de gebruiker om een ​​interactie in een webbrowser te voltooien (het opvragen van een <acronym
+>URL</acronym
+>). Het domein en de volledige <acronym
+>URL</acronym
+> worden getoond; de pagina wordt pas geopend als u op <guibutton
+>Openen</guibutton
+> klikt. Zodra de server meldt dat de interactie is afgerond, verschijnt er een bericht op het tabblad van de server en kunt u het verzoek opnieuw proberen. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-sampling">
+<term
+><guilabel
+>Server verzoekt om het genereren van een bericht</guilabel
+></term>
+<listitem
+><para
+>De server verzoekt de client om een ​​bericht te genereren met behulp van een taalmodel (sampling). Het verzoek wordt getoond en u schrijft zelf het antwoord, waarbij u eventueel de velden <guilabel
+>Model:</guilabel
+> en <guilabel
+>Stopreden:</guilabel
+> kunt invullen. Klik op <guibutton
+>Verzenden</guibutton
+> om te antwoorden, of op <guibutton
+>Afwijzen</guibutton
+> om het verzoek te weigeren. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-roots">
+<term
+>Roots</term>
+<listitem
+><para
+>Wanneer de server om de lijst met roots vraagt, antwoordt &kappname; automatisch met de roots van de server. </para
+></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+<title
+>&kappname; configureren</title>
+
+<para
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>&kappname; configureren…</guimenuitem
+></menuchoice
+> opent het configuratievenster. </para>
+
+<sect1 id="configure-general">
+<title
+>Algemeen</title>
+<para
+>De pagina <guilabel
+>Algemeen</guilabel
+> definieert de standaard <guilabel
+>Mogelijkheden</guilabel
+> die aan de servers worden doorgegeven: <guilabel
+>Ontlokking</guilabel
+>, <guilabel
+>URL-ontlokking</guilabel
+>, <guilabel
+>Steekproeven</guilabel
+> en <guilabel
+>Roots</guilabel
+>. Deze zijn standaard allemaal ingeschakeld. </para>
+<para
+>De knop naast <guilabel
+>Roots</guilabel
+> opent het dialoogvenster <guilabel
+>Roots configureren</guilabel
+>, waarmee de globale roots kunnen worden gedefinieerd. Deze worden gebruikt door elke server die geen eigen roots definieert. </para>
+</sect1>
+
+<sect1 id="configure-mcp-servers">
+<title
+>MCP-servers</title>
+<para
+>De pagina <guilabel
+>MCP-servers</guilabel
+> bevat een overzicht van de geconfigureerde servers. U kunt een server toevoegen, wijzigen, verwijderen, inschakelen of uitschakelen. Wijzigingen worden direct opgeslagen en de servertabbladen in het hoofdvenster worden bijgewerkt. </para>
+</sect1>
+
+</chapter>
+
+<chapter id="commands">
+<title
+>Overzicht van de opdrachten</title>
+
+<sect1 id="kapp-mainwindow">
+<title
+>De menu's</title>
+
+<sect2 id="file-menu">
+<title
+>Het menu Bestand</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Bestand</guimenu
+><guimenuitem
+>Afsluiten</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>&kappname; <action
+>Afsluiten</action
+> .</para
+></listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+
+<sect2 id="settings-menu">
+<title
+>Het menu Instellingen</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+><keycap
+>F11</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Modus volledig scherm</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Schakelt</action
+> de modus voor volledig scherm in of uit.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+><guisubmenu
+>Kleurschema van venster</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Selecteert</action
+> het kleurenschema van het venster.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Notificaties configureren...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Configureert</action
+> de meldingen van &kappname;.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>&kappname; configureren…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Opent</action
+> het <link linkend="configuration"
+>configuratievenster</link
+>.</para
+></listitem>
+</varlistentry>
+</variablelist>
+<para
+>&kappname; heeft de voor &kde; gebruikelijke menu-items in <guimenu
+>Instellingen</guimenu
+>, voor meer informatie leest u in de sectie  <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Instelllingenmenu</ulink
+> over in de Basisinformatie van &kde;. </para>
+</sect2>
+
+<sect2 id="help-menu">
+<title
+>Het menu Help</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Help</guimenu
+><guimenuitem
+>Wat is nieuw</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Toont</action
+> de nieuwe functies van elke uitgave.</para
+></listitem>
+</varlistentry>
+</variablelist>
+<para
+>Op &Windows; en &macOS; bevat het menu <guimenu
+>Help</guimenu
+> ook een optie om te controleren of er een nieuwe versie beschikbaar is. </para>
+<para
+>&kappname; bevat de gebruikelijke &kde;-menu-items onder <guimenu
+>Help</guimenu
+>; raadpleeg voor meer informatie het gedeelte over het <ulink url="help:/fundamentals/menus.html#menus-help"
+>Help-menu</ulink
+> in de &kde;-basisbeginselen. </para>
+</sect2>
+
+</sect1>
+</chapter>
+
+<chapter id="credits">
+<title
+>Dankbetuigingen en licentie</title>
+
+<para
+>&kappname; </para>
+<para
+>Program copyright 2026 Laurent Montel <email
+>montel@kde.org</email
+> </para>
+
+<para
+>Documentatie Copyright &copy; 2026 Laurent Montel <email
+>montel@kde.org</email
+> </para>
+
+&meld.fouten;&vertaling.freek; &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->
