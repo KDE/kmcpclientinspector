@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: kmcpclientinspector\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-16 04:04+0000\n"
-"PO-Revision-Date: 2026-11-17 14:54+0100\n"
+"PO-Revision-Date: 2026-11-18 14:31+0100\n"
 "Last-Translator: freek <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 26.04.1\n"
 
 #, kde-format
@@ -466,7 +466,7 @@ msgstr ""
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:402
 #, kde-format
 msgid "Requesting completion…"
-msgstr ""
+msgstr "Voltooiing wordt gevraagd…"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:422
 #, kde-format
@@ -483,7 +483,7 @@ msgstr "Totaal: %1."
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:427
 #, kde-format
 msgid "More values are available."
-msgstr ""
+msgstr "Meer waarden zijn beschikbaar."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:42
 #, kde-format
@@ -501,20 +501,20 @@ msgstr "Assistent"
 #, kde-format
 msgctxt "@title message role"
 msgid "Unknown role"
-msgstr ""
+msgstr "Onbekende rol"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:54
 #: widgets/actions/kmcpclientinspectorlistpromptswidget.cpp:15
 #, kde-format
 msgctxt "@action:button"
 msgid "List Prompts"
-msgstr ""
+msgstr "Prompts laten zien"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:59
 #, kde-format
 msgctxt "@action:button"
 msgid "Get Prompt"
-msgstr ""
+msgstr "Prompt ophalen"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:140
 #, kde-format
@@ -530,19 +530,19 @@ msgstr "Prompts bijgewerkt"
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:156
 #, kde-format
 msgid "Prompts were updated in '%1'."
-msgstr ""
+msgstr "Prompts zijn bijgewerkt in '%1'."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:243
 #, kde-format
 msgid "No prompt selected"
-msgstr ""
+msgstr "Geen prompt geselecteerd"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:292
 #, kde-format
 msgid "Argument \"%2\" is required."
 msgid_plural "Arguments %2 are required."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Argument \"%2\" is vereist."
+msgstr[1] "Argumenten %2 zijn vereist."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:297
 #, kde-format
@@ -550,23 +550,25 @@ msgid ""
 "Prompt cannot be retrieved. Is the server connected and does it support "
 "prompts?"
 msgstr ""
+"Prompt kan niet worden opgehaald. Is de server verbonden en ondersteunt deze "
+"prompts?"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:301
 #, kde-format
 msgid "Getting prompt…"
-msgstr ""
+msgstr "Prompt wordt opgehaald…"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:317
 #, kde-format
 msgid "Prompt retrieved: %1 message."
 msgid_plural "Prompt retrieved: %1 messages."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Prompt opgehaald: %1 bericht."
+msgstr[1] "Prompt opgehaald: %1 berichten."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:336
 #, kde-format
 msgid "No messages."
-msgstr ""
+msgstr "Geen berichten."
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:49
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:32
@@ -620,7 +622,7 @@ msgstr "Instructies:"
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:69
 #, kde-format
 msgid "The server did not send instructions."
-msgstr ""
+msgstr "De server heeft geen instructies verstuurd."
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:72
 #, kde-format
@@ -636,7 +638,7 @@ msgstr "JSON"
 #, kde-format
 msgctxt "@info server capability option"
 msgid "list changed notifications"
-msgstr ""
+msgstr "lijst wijzigde meldingen"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:140
 #, kde-format
@@ -648,7 +650,7 @@ msgstr "Hulpmiddelen"
 #, kde-format
 msgctxt "@info server capability"
 msgid "Prompts"
-msgstr ""
+msgstr "Prompts"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:149
 #, kde-format
@@ -697,7 +699,7 @@ msgstr "Geen"
 #, kde-format
 msgctxt "@action:button"
 msgid "List Resources"
-msgstr ""
+msgstr "Hulpbronnen laten zien"
 
 #: widgets/actions/kmcpclientinspectorlistresourceswidget.cpp:30
 #, kde-format
@@ -707,7 +709,7 @@ msgstr "Hulpbronnen bijgewerkt"
 #: widgets/actions/kmcpclientinspectorlistresourceswidget.cpp:31
 #, kde-format
 msgid "Resources were updated in '%1'."
-msgstr ""
+msgstr "Hulpbronnen zijn bijgewerkt in '%1'."
 
 #: widgets/actions/kmcpclientinspectorlogsearchwidget.cpp:17
 #, kde-format
@@ -730,13 +732,13 @@ msgstr "Ping"
 #: widgets/actions/kmcpclientinspectorpromptargumentswidget.cpp:21
 #, kde-format
 msgid "This prompt has no arguments."
-msgstr ""
+msgstr "Deze prompt heeft geen argumenten."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:52
 #, kde-format
 msgctxt "@action:button"
 msgid "Read Resource"
-msgstr ""
+msgstr "Hulpbron lezen"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:53
 #, kde-format
@@ -760,7 +762,7 @@ msgstr "URI:"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Select a resource or enter its URI"
-msgstr ""
+msgstr "Selecteer een hulpbron of voer de URI ervan in"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:154
 #, kde-format
@@ -771,12 +773,12 @@ msgstr "Inhoud"
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:262
 #, kde-format
 msgid "Subscribed to updates"
-msgstr ""
+msgstr "Geabonneerd op bijwerken"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:271
 #, kde-format
 msgid "No resource selected"
-msgstr ""
+msgstr "Geen hulpbron geselecteerd"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:323
 #, kde-format
@@ -784,76 +786,80 @@ msgid ""
 "Resource cannot be read. Is the server connected and does it support "
 "resources?"
 msgstr ""
+"Hulpbron kan niet worden gelezen. Is de server verbonden en ondersteunt deze "
+"hulpbronnen?"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:327
 #, kde-format
 msgid "Reading resource…"
-msgstr ""
+msgstr "Hulpbron lezen…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:336
 #, kde-format
 msgid ""
 "Cannot subscribe to resource. Does the server support resource subscriptions?"
 msgstr ""
+"Kan niet abonneren op de hulpbron. Ondersteunt de server abonnementen op "
+"hulpbronnen?"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:340
 #, kde-format
 msgid "Subscribing to resource…"
-msgstr ""
+msgstr "Abonneren op hulpbron…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:349
 #, kde-format
 msgid "Cannot unsubscribe from resource."
-msgstr ""
+msgstr "Kan me niet afmelden voor de hulpbron."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:353
 #, kde-format
 msgid "Unsubscribing from resource…"
-msgstr ""
+msgstr "Afmelden voor hulpbron…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:365
 #, kde-format
 msgid "Subscribed to \"%1\"."
-msgstr ""
+msgstr "Abonneren op \"%1\"."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:368
 #, kde-format
 msgid "Unsubscribed from \"%1\"."
-msgstr ""
+msgstr "Afmelden van \"%1\"."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:381
 #, kde-format
 msgid "Resource \"%1\" was updated, reading it again…"
-msgstr ""
+msgstr "Hulpbron \"%1\" is bijgewerkt, er wordt opnieuw gelezen…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:384
 #, kde-format
 msgid "Resource \"%1\" was updated."
-msgstr ""
+msgstr "Hulpbron \"%1\" is bijgewerkt."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:400
 #, kde-format
 msgid "Resource read: %1 content."
 msgid_plural "Resource read: %1 contents."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Hulpbron gelezen: %1 inhouden."
+msgstr[1] "Hulpbron gelezen: %1 inhoud."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:413
 #, kde-format
 msgid "No contents."
-msgstr ""
+msgstr "Geen inhoud."
 
 #: widgets/actions/kmcpclientinspectorresourcetemplateswidget.cpp:15
 #, kde-format
 msgctxt "@action:button"
 msgid "Resource Templates"
-msgstr ""
+msgstr "Hulpbronsjablonen"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:51
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Server level:"
-msgstr ""
+msgstr "Serverniveau:"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:57
 #, kde-format
@@ -1041,7 +1047,7 @@ msgstr[1] "%v seconden"
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure KMcpClientInspector"
-msgstr ""
+msgstr "KMcpClientInspecteur configureren"
 
 #: widgets/configure/kmcpclientinspectorconfiguresettingsdialog.cpp:27
 #, kde-format
@@ -1059,12 +1065,12 @@ msgstr "MCP-servers"
 #, kde-format
 msgctxt "@title:window"
 msgid "Server Requests Information"
-msgstr ""
+msgstr "Server verzoekt om informatie"
 
 #: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:42
 #, kde-format
 msgid "No information is requested."
-msgstr ""
+msgstr "Er is geen informatie gevraagd."
 
 #: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:50
 #, kde-format
@@ -1083,19 +1089,19 @@ msgstr "Afwijzen"
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid Information"
-msgstr ""
+msgstr "Ongeldige informatie"
 
 #: widgets/dialogs/kmcpclientinspectorrootsdialog.cpp:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Roots"
-msgstr ""
+msgstr "Roots configureren"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:37
 #, kde-format
 msgctxt "@title:window"
 msgid "Server Requests Message Generation"
-msgstr ""
+msgstr "Server verzoekt om het genereren van een bericht"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:41
 #, kde-format
@@ -1113,7 +1119,7 @@ msgstr "Model:"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Stop reason:"
-msgstr ""
+msgstr "Reden voor stoppen:"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:60
 #, kde-format
@@ -1125,7 +1131,7 @@ msgstr "Antwoord:"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Write the message generated for the server…"
-msgstr ""
+msgstr "Schrijf het bericht dat voor de server is gegenereerd…"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:71
 #, kde-format
@@ -1143,7 +1149,7 @@ msgstr "Afwijzen"
 #, kde-format
 msgctxt "@title:window"
 msgid "Server Requests to Open a Web Page"
-msgstr ""
+msgstr "Server verzoekt om een webpagina te openen"
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:47
 #, kde-format
@@ -1161,11 +1167,13 @@ msgstr "URL:"
 #, kde-format
 msgid "The page will be opened in your web browser only if you click \"Open\"."
 msgstr ""
+"De pagina wordt alleen in uw webbrowser geopend als u op \"Openen\" klikt."
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:58
 #, kde-format
 msgid "This URL is invalid or is not a web page: it cannot be opened."
 msgstr ""
+"Deze URL is ongeldig of is geen webpagina: hij kan niet worden geopend."
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:67
 #, kde-format
@@ -1242,7 +1250,7 @@ msgstr "Authenticatie:"
 #, kde-format
 msgctxt "@label"
 msgid "Roots:"
-msgstr ""
+msgstr "Roots:"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:82
 #, kde-format
@@ -1254,7 +1262,7 @@ msgstr "Geen"
 #, kde-format
 msgctxt "@info"
 msgid "Bearer token"
-msgstr ""
+msgstr "Bearer-token"
 
 #: widgets/kmcpclientinspectorserversettingswidget.cpp:25
 #, kde-format
@@ -1268,6 +1276,8 @@ msgid ""
 "The server reports that the interaction in the web browser is complete "
 "(elicitation \"%1\"). You can retry the request."
 msgstr ""
+"De server meldt dat de interactie in de webbrowser is voltooid (ontlokking "
+"\"%1\"). U kunt het verzoek opnieuw proberen."
 
 #. i18n: ectx: Menu (settings)
 #: widgets/kmcpclientinspectorui.rc:11
