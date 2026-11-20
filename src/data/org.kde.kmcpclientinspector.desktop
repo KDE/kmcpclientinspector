@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=KMcpClientInspector
+Name[ar]=KMcpClientInspector
 Name[ca]=KMcpClientInspector
 Name[ca@valencia]=KMcpClientInspector
 Name[es]=KMcpClientInspector
@@ -11,6 +12,7 @@ Exec=kmcpclientinspector -qwindowtitle %c %u
 Icon=kmcpclientinspector
 X-DocPath=kmcpclientinspector/index.html
 GenericName=MCP client inspector
+GenericName[ar]=فاحص عميل MCP
 GenericName[ca]=Inspector de client MCP
 GenericName[ca@valencia]=Inspector de client MCP
 GenericName[nl]=MCP-clientinspecteur

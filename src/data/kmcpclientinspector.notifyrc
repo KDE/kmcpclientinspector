@@ -1,6 +1,7 @@
 [Global]
 IconName=kmcpclientinspector
 Name=kmcpclientinspector
+Name[ar]=kmcpclientinspector
 Name[ca]=kmcpclientinspector
 Name[ca@valencia]=kmcpclientinspector
 Name[es]=kmcpclientinspector
@@ -9,6 +10,7 @@ Name[pt_BR]=kmcpclientinspector
 Name[uk]=kmcpclientinspector
 DesktopEntry=org.kde.kmcpclientinspector
 Comment=Notification
+Comment[ar]=إشعار
 Comment[ca]=Notificació
 Comment[ca@valencia]=Notificació
 Comment[es]=Notificación
@@ -18,6 +20,7 @@ Comment[uk]=Сповіщення
 
 [Event/server-tools-updated]
 Name=Tools Updated
+Name[ar]=حُدّثت الأدوات
 Name[ca]=Eines actualitzades
 Name[ca@valencia]=Eines actualitzades
 Name[es]=Herramientas actualizadas
@@ -29,6 +32,7 @@ Urgency=Normal
 
 [Event/server-prompts-updated]
 Name=Prompts Updated
+Name[ar]=حُدّثت المطالبات
 Name[ca]=Indicacions actualitzades
 Name[ca@valencia]=Indicacions actualitzades
 Name[nl]=Prompts bijgewerkt
@@ -39,6 +43,7 @@ Urgency=Normal
 
 [Event/server-resources-updated]
 Name=Resources Updated
+Name[ar]=حُدّثت الموارد
 Name[ca]=Recursos actualitzats
 Name[ca@valencia]=Recursos actualitzats
 Name[es]=Recursos actualizados
@@ -50,6 +55,7 @@ Urgency=Normal
 
 [Event/server-error]
 Name=Server Error
+Name[ar]=خطأ الخادم
 Name[ca]=Error del servidor
 Name[ca@valencia]=S'ha produït un error del servidor
 Name[es]=Error del servidor
