@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kmcpclientinspector\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-16 04:04+0000\n"
-"PO-Revision-Date: 2026-11-18 12:14+0400\n"
+"PO-Revision-Date: 2026-11-19 18:34+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -103,47 +103,47 @@ msgstr "الرسالة"
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:68
 #, kde-format
 msgid "Initialize"
-msgstr ""
+msgstr "تهيئة"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:69
 #, kde-format
 msgid "Ping"
-msgstr ""
+msgstr "اختبار الاتصال"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:70
 #, kde-format
 msgid "List Tools"
-msgstr ""
+msgstr "سرد الأدوات"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:71
 #, kde-format
 msgid "Call Tool"
-msgstr ""
+msgstr "استدعاء أداة"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:72
 #, kde-format
 msgid "List Prompts"
-msgstr ""
+msgstr "سرد التوجيهات"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:73
 #, kde-format
 msgid "Get Prompt"
-msgstr ""
+msgstr "اجلب التوجيه"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:74
 #, kde-format
 msgid "List Resources"
-msgstr ""
+msgstr "سرد الموارد"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:75
 #, kde-format
 msgid "Read Resource"
-msgstr ""
+msgstr "قراءة مورد"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:76
 #, kde-format
 msgid "Resource Templates"
-msgstr ""
+msgstr "قوالب الموارد"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:77
 #, kde-format
@@ -158,30 +158,30 @@ msgstr "السجل"
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:79
 #, kde-format
 msgid "Server Notification"
-msgstr ""
+msgstr "إشعار الخادم"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:99
 #, kde-format
 msgid "Error in %1"
-msgstr ""
+msgstr "خطأ في %1"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:76
 #, kde-format
 msgid "%1: not set (default: %2)"
-msgstr ""
+msgstr "%1: غير مضبوط (المبدئي: %2)"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:89
 #: widgets/actions/kmcpclientinspectorlisttoolswidget.cpp:12
 #, kde-format
 msgctxt "@action:button"
 msgid "List Tools"
-msgstr ""
+msgstr "سرد الأدوات"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:95
 #, kde-format
 msgctxt "@action:button"
 msgid "Call Tool"
-msgstr ""
+msgstr "استدعاء أداة"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:102
 #, kde-format
@@ -216,28 +216,28 @@ msgstr "جسون"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:214
 #, kde-format
 msgid "Tools Updated"
-msgstr ""
+msgstr "حُدّثت الأدوات"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:215
 #, kde-format
 msgid "Tools were updated in '%1'."
-msgstr ""
+msgstr "حُدّثت الأدوات في '%1'."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:329
 #, kde-format
 msgid "No tool selected"
-msgstr ""
+msgstr "لم تُحدَّد أداة"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:384
 #, kde-format
 msgid "Tool call cancelled."
-msgstr ""
+msgstr "أُلغي استدعاء الأداة."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:403
 #, kde-format
 msgid ""
 "Tool cannot be called. Is the server connected and does it support tools?"
-msgstr ""
+msgstr "لا يمكن استدعاء الأداة. هل الخادم موصول وهل يدعم الأدوات؟"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:407
 #, kde-format
@@ -249,7 +249,7 @@ msgstr "استدعاء الأداة…"
 msgid ""
 "The server requires an interaction in the web browser before calling this "
 "tool: %1"
-msgstr ""
+msgstr "يتطلب الخادم تفاعلًا في متصفح الويب قبل استدعاء هذه الأداة: %1"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:423
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:413
@@ -262,12 +262,12 @@ msgstr "خطأ %1: %2"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:429
 #, kde-format
 msgid "Tool returned an error."
-msgstr ""
+msgstr "أعادت الأداة خطأً."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:431
 #, kde-format
 msgid "Tool executed successfully."
-msgstr ""
+msgstr "نُفّذت الأداة بنجاح."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:459
 #, kde-format
@@ -285,7 +285,7 @@ msgstr "هدّام"
 #, kde-format
 msgctxt "@label tool annotation"
 msgid "Additive"
-msgstr ""
+msgstr "إضافي"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:471
 #, kde-format
@@ -303,17 +303,17 @@ msgstr "عالم مفتوح"
 #, kde-format
 msgctxt "@label tool annotation"
 msgid "Closed world"
-msgstr ""
+msgstr "عالم مغلق"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:486
 #, kde-format
 msgid "The server did not send annotations: default values are used."
-msgstr ""
+msgstr "لم يرسل الخادم تعليقات توضيحية: تُستخدم القيم المبدئية."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:510
 #, kde-format
 msgid "Structured Content"
-msgstr ""
+msgstr "محتوى مُهيكل"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:514
 #, kde-format
@@ -328,22 +328,22 @@ msgstr "صورة (%1, %2)"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:534
 #, kde-format
 msgid "Audio (%1, %2)"
-msgstr ""
+msgstr "صوت (%1، %2)"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:536
 #, kde-format
 msgid "Resource link:"
-msgstr ""
+msgstr "رابط المورد:"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:557
 #, kde-format
 msgid "unknown type"
-msgstr ""
+msgstr "نوع مجهول"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:557
 #, kde-format
 msgid "Binary resource (%1, %2)"
-msgstr ""
+msgstr "مورد ثنائي (%1، %2)"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:40
 #, kde-format
@@ -361,7 +361,7 @@ msgstr "الموجه"
 #, kde-format
 msgctxt "@item:inlistbox completion reference"
 msgid "Resource Template"
-msgstr ""
+msgstr "قالب مورد"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:68
 #, kde-format
@@ -385,7 +385,7 @@ msgstr "وسيط:"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Value to complete"
-msgstr ""
+msgstr "القيمة المراد إكمالها"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:83
 #, kde-format
@@ -397,7 +397,7 @@ msgstr "القيمة:"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Already resolved arguments, e.g. {\"language\": \"cpp\"}"
-msgstr ""
+msgstr "وسائط محلولة مسبقًا، مثل {\"language\": \"cpp\"}"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:88
 #, kde-format
@@ -409,7 +409,7 @@ msgstr "السّياق:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Double-click on a value to use it"
-msgstr ""
+msgstr "انقر نقرًا مزدوجًا على قيمة لاستخدامها"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:107
 #, kde-format
@@ -421,52 +421,56 @@ msgstr "القيم"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Prompt name"
-msgstr ""
+msgstr "اسم التوجيه"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:218
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Resource template uri, e.g. file:///{path}"
-msgstr ""
+msgstr "معرّف مورد قالب، مثل file:///{path}"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:302
 #, kde-format
 msgid "A reference is required."
-msgstr ""
+msgstr "المرجع مطلوب."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:307
 #, kde-format
 msgid "An argument name is required."
-msgstr ""
+msgstr "اسم الوسيط مطلوب."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:336
 #, kde-format
 msgid "Context must be a JSON object, e.g. {\"language\": \"cpp\"}."
-msgstr ""
+msgstr "يجب أن يكون السياق كائن JSON، مثل {\"language\": \"cpp\"}."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:343
 #, kde-format
 msgid "Context value of \"%1\" must be a string."
-msgstr ""
+msgstr "قيمة السياق \"%1\" يجب أن تكون نصًا."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:398
 #, kde-format
 msgid ""
 "Completion cannot be requested. Is the server connected and does it support "
 "completions?"
-msgstr ""
+msgstr "لا يمكن طلب الإكمال. هل الخادم متصل وهل يدعم الإكمالات؟"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:402
 #, kde-format
 msgid "Requesting completion…"
-msgstr ""
+msgstr "يُطلب الإكمال…"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:422
 #, kde-format
 msgid "%1 value."
 msgid_plural "%1 values."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 قيمة."
+msgstr[1] "قيمة واحدة."
+msgstr[2] "قيمتان."
+msgstr[3] "%1 قيم."
+msgstr[4] "%1 قيمة."
+msgstr[5] "%1 قيمة."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:424
 #, kde-format
@@ -476,7 +480,7 @@ msgstr "المجموع: %1."
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:427
 #, kde-format
 msgid "More values are available."
-msgstr ""
+msgstr "تتوفر قيم إضافية."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:42
 #, kde-format
@@ -494,20 +498,20 @@ msgstr "المساعد"
 #, kde-format
 msgctxt "@title message role"
 msgid "Unknown role"
-msgstr ""
+msgstr "دور مجهول"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:54
 #: widgets/actions/kmcpclientinspectorlistpromptswidget.cpp:15
 #, kde-format
 msgctxt "@action:button"
 msgid "List Prompts"
-msgstr ""
+msgstr "اسرد التوجيهات"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:59
 #, kde-format
 msgctxt "@action:button"
 msgid "Get Prompt"
-msgstr ""
+msgstr "اجلب التوجيه"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:140
 #, kde-format
@@ -518,48 +522,56 @@ msgstr "الرسائل"
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:155
 #, kde-format
 msgid "Prompts Updated"
-msgstr ""
+msgstr "حُدّثت التوجيهات"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:156
 #, kde-format
 msgid "Prompts were updated in '%1'."
-msgstr ""
+msgstr "حُدّثت التوجيهات في '%1'."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:243
 #, kde-format
 msgid "No prompt selected"
-msgstr ""
+msgstr "لم يُحدد توجيه"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:292
 #, kde-format
 msgid "Argument \"%2\" is required."
 msgid_plural "Arguments %2 are required."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "المُعامل %2 مطلوب."
+msgstr[1] "المُعامل %2 مطلوب."
+msgstr[2] "المُعاملان %2 مطلوبان."
+msgstr[3] "المُعاملات %2 مطلوبة."
+msgstr[4] "المُعاملات %2 مطلوبة."
+msgstr[5] "المُعاملات %2 مطلوبة."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:297
 #, kde-format
 msgid ""
 "Prompt cannot be retrieved. Is the server connected and does it support "
 "prompts?"
-msgstr ""
+msgstr "لا يمكن جلب التوجيه. هل الخادم متصل وهل يدعم التوجيهات؟"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:301
 #, kde-format
 msgid "Getting prompt…"
-msgstr ""
+msgstr "تُجلب التوجيه…"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:317
 #, kde-format
 msgid "Prompt retrieved: %1 message."
 msgid_plural "Prompt retrieved: %1 messages."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "جُلب التوجيه: %1 رسالة."
+msgstr[1] "جُلب التوجيه: رسالة واحدة."
+msgstr[2] "جُلب التوجيه: رسالتان."
+msgstr[3] "جُلب التوجيه: %1 رسائل."
+msgstr[4] "جُلب التوجيه: %1 رسالة."
+msgstr[5] "جُلب التوجيه: %1 رسالة."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:336
 #, kde-format
 msgid "No messages."
-msgstr ""
+msgstr "لا رسائل."
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:49
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:32
@@ -613,7 +625,7 @@ msgstr "الإرشادات:"
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:69
 #, kde-format
 msgid "The server did not send instructions."
-msgstr ""
+msgstr "لم يرسل الخادم تعليمات."
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:72
 #, kde-format
@@ -629,7 +641,7 @@ msgstr "جسون"
 #, kde-format
 msgctxt "@info server capability option"
 msgid "list changed notifications"
-msgstr ""
+msgstr "إشعارات تغيّر القائمة"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:140
 #, kde-format
@@ -641,7 +653,7 @@ msgstr "أدوات"
 #, kde-format
 msgctxt "@info server capability"
 msgid "Prompts"
-msgstr ""
+msgstr "التوجيهات"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:149
 #, kde-format
@@ -690,17 +702,17 @@ msgstr "لا شيء"
 #, kde-format
 msgctxt "@action:button"
 msgid "List Resources"
-msgstr ""
+msgstr "اسرد الموارد"
 
 #: widgets/actions/kmcpclientinspectorlistresourceswidget.cpp:30
 #, kde-format
 msgid "Resources Updated"
-msgstr ""
+msgstr "حُدّثت الموارد"
 
 #: widgets/actions/kmcpclientinspectorlistresourceswidget.cpp:31
 #, kde-format
 msgid "Resources were updated in '%1'."
-msgstr ""
+msgstr "حُدّثت الموارد في '%1'."
 
 #: widgets/actions/kmcpclientinspectorlogsearchwidget.cpp:17
 #, kde-format
@@ -718,18 +730,18 @@ msgstr "الاتّجاه:"
 #, kde-format
 msgctxt "@action:button"
 msgid "Ping"
-msgstr ""
+msgstr "بينغ"
 
 #: widgets/actions/kmcpclientinspectorpromptargumentswidget.cpp:21
 #, kde-format
 msgid "This prompt has no arguments."
-msgstr ""
+msgstr "لا وسائط لهذه التوجيه."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:52
 #, kde-format
 msgctxt "@action:button"
 msgid "Read Resource"
-msgstr ""
+msgstr "اقرأ المورد"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:53
 #, kde-format
@@ -747,13 +759,13 @@ msgstr "أزل الاشتراك"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "URI:"
-msgstr ""
+msgstr "المعرّف:"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:123
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Select a resource or enter its URI"
-msgstr ""
+msgstr "اختر موردًا أو أدخل معرّفه"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:154
 #, kde-format
@@ -764,89 +776,93 @@ msgstr "المحتويات"
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:262
 #, kde-format
 msgid "Subscribed to updates"
-msgstr ""
+msgstr "مشترك في التحديثات"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:271
 #, kde-format
 msgid "No resource selected"
-msgstr ""
+msgstr "لم يُحدد مورد"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:323
 #, kde-format
 msgid ""
 "Resource cannot be read. Is the server connected and does it support "
 "resources?"
-msgstr ""
+msgstr "لا يمكن قراءة المورد. هل الخادم متصل وهل يدعم الموارد؟"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:327
 #, kde-format
 msgid "Reading resource…"
-msgstr ""
+msgstr "يُقرأ المورد…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:336
 #, kde-format
 msgid ""
 "Cannot subscribe to resource. Does the server support resource subscriptions?"
-msgstr ""
+msgstr "تعذر الاشتراك في المورد. هل يدعم الخادم اشتراكات الموارد؟"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:340
 #, kde-format
 msgid "Subscribing to resource…"
-msgstr ""
+msgstr "يُشترك في المورد…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:349
 #, kde-format
 msgid "Cannot unsubscribe from resource."
-msgstr ""
+msgstr "تعذر إلغاء الاشتراك من المورد."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:353
 #, kde-format
 msgid "Unsubscribing from resource…"
-msgstr ""
+msgstr "يُلغي الاشتراك من المورد…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:365
 #, kde-format
 msgid "Subscribed to \"%1\"."
-msgstr ""
+msgstr "اُشترك في \"%1\"."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:368
 #, kde-format
 msgid "Unsubscribed from \"%1\"."
-msgstr ""
+msgstr "أُلغي الاشتراك من \"%1\"."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:381
 #, kde-format
 msgid "Resource \"%1\" was updated, reading it again…"
-msgstr ""
+msgstr "حُدّث المورد \"%1\"، وتُقرأ مرة أخرى…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:384
 #, kde-format
 msgid "Resource \"%1\" was updated."
-msgstr ""
+msgstr "حُدّث المورد \"%1\"."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:400
 #, kde-format
 msgid "Resource read: %1 content."
 msgid_plural "Resource read: %1 contents."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "قُرئ المورد: %1 محتوى."
+msgstr[1] "قُرئ المورد: محتوى واحد."
+msgstr[2] "قُرئ المورد: محتويان."
+msgstr[3] "قُرئ المورد: %1 محتويات."
+msgstr[4] "قُرئ المورد: %1 محتوى."
+msgstr[5] "قُرئ المورد: %1 محتوى."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:413
 #, kde-format
 msgid "No contents."
-msgstr ""
+msgstr "لا محتويات."
 
 #: widgets/actions/kmcpclientinspectorresourcetemplateswidget.cpp:15
 #, kde-format
 msgctxt "@action:button"
 msgid "Resource Templates"
-msgstr ""
+msgstr "قوالب الموارد"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:51
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Server level:"
-msgstr ""
+msgstr "مستوى الخادم:"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:57
 #, kde-format
@@ -859,7 +875,7 @@ msgstr "الخادم المبدئي"
 msgctxt "@info:tooltip"
 msgid ""
 "Minimum level of the log messages sent by the server (logging/setLevel)."
-msgstr ""
+msgstr "أدنى مستوى لرسائل السجل المرسلة من الخادم (logging/setLevel)."
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:63
 #, kde-format
@@ -871,7 +887,7 @@ msgstr "اعرض من:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Hide received log messages below this level."
-msgstr ""
+msgstr "أخفِ رسائل السجل المستلمة دون هذا المستوى."
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:123
 #, kde-format
@@ -925,12 +941,12 @@ msgstr "طوارئ"
 #, kde-format
 msgctxt "@option:check"
 msgid "Edit arguments as JSON"
-msgstr ""
+msgstr "حرّر الوسائط بصيغة JSON"
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:49
 #, kde-format
 msgid "This tool has no arguments."
-msgstr ""
+msgstr "لا وسائط لهذه الأداة."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:169
 #, kde-format
@@ -948,49 +964,49 @@ msgstr "عدد"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "JSON value"
-msgstr ""
+msgstr "قيمة JSON"
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:330
 #, kde-format
 msgid "Argument \"%1\" is required."
-msgstr ""
+msgstr "الوسيطة \"%1\" مطلوبة."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:340
 #, kde-format
 msgid "Argument \"%1\" must be an integer."
-msgstr ""
+msgstr "يجب أن تكون الوسيطة \"%1\" عددًا صحيحًا."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:349
 #, kde-format
 msgid "Argument \"%1\" must be a number."
-msgstr ""
+msgstr "يجب أن تكون الوسيطة \"%1\" عددًا."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:358
 #, kde-format
 msgid "Argument \"%1\" is not a valid JSON value."
-msgstr ""
+msgstr "الوسيطة \"%1\" ليست قيمة JSON صالحة."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:379
 #, kde-format
 msgid "Invalid JSON arguments: %1 (offset %2)."
-msgstr ""
+msgstr "وسائط JSON غير صالحة: %1 (الإزاحة %2)."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:385
 #, kde-format
 msgid "Arguments must be a JSON object."
-msgstr ""
+msgstr "يجب أن تكون الوسائط كائن JSON."
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:17
 #, kde-format
 msgctxt "@option:check"
 msgid "Elicitation"
-msgstr ""
+msgstr "الاستدعاء"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:18
 #, kde-format
 msgctxt "@option:check"
 msgid "URL elicitation"
-msgstr ""
+msgstr "استدعاء URL"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:19
 #, kde-format
@@ -1013,7 +1029,7 @@ msgstr "الإمكانيات"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure Roots"
-msgstr ""
+msgstr "اضبط الجذور"
 
 #: widgets/configure/kmcpclientinspectorconfiguregeneralwidget.cpp:34
 #, kde-format
@@ -1025,14 +1041,18 @@ msgstr "انقضى وقت الطلب:"
 msgctxt "Interval suffix"
 msgid "%v second"
 msgid_plural "%v seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "أقل من ثانية"
+msgstr[1] "ثانية"
+msgstr[2] "ثانيتان"
+msgstr[3] "%v ثواني"
+msgstr[4] "%v ثانية"
+msgstr[5] "%v ثانية"
 
 #: widgets/configure/kmcpclientinspectorconfiguresettingsdialog.cpp:24
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure KMcpClientInspector"
-msgstr ""
+msgstr "اضبط KMcpClientInspector"
 
 #: widgets/configure/kmcpclientinspectorconfiguresettingsdialog.cpp:27
 #, kde-format
@@ -1050,12 +1070,12 @@ msgstr "خوادم MCP"
 #, kde-format
 msgctxt "@title:window"
 msgid "Server Requests Information"
-msgstr ""
+msgstr "معلومات طلبات الخادم"
 
 #: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:42
 #, kde-format
 msgid "No information is requested."
-msgstr ""
+msgstr "لا تُطلب أي معلومات."
 
 #: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:50
 #, kde-format
@@ -1074,19 +1094,19 @@ msgstr "ارفض"
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid Information"
-msgstr ""
+msgstr "معلومات غير صالحة"
 
 #: widgets/dialogs/kmcpclientinspectorrootsdialog.cpp:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Roots"
-msgstr ""
+msgstr "اضبط الجذور"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:37
 #, kde-format
 msgctxt "@title:window"
 msgid "Server Requests Message Generation"
-msgstr ""
+msgstr "توليد رسائل طلبات الخادم"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:41
 #, kde-format
@@ -1104,7 +1124,7 @@ msgstr "النموذج:"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Stop reason:"
-msgstr ""
+msgstr "سبب التوقف:"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:60
 #, kde-format
@@ -1116,7 +1136,7 @@ msgstr "الرّدّ:"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Write the message generated for the server…"
-msgstr ""
+msgstr "اكتب الرسالة المولّدة للخادم…"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:71
 #, kde-format
@@ -1134,7 +1154,7 @@ msgstr "ارفض"
 #, kde-format
 msgctxt "@title:window"
 msgid "Server Requests to Open a Web Page"
-msgstr ""
+msgstr "طلبات الخادوم لفتح صفحة وب"
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:47
 #, kde-format
@@ -1151,12 +1171,12 @@ msgstr "المسار:"
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:57
 #, kde-format
 msgid "The page will be opened in your web browser only if you click \"Open\"."
-msgstr ""
+msgstr "لن تُفتح الصفحة في متصفح الوب إلا إذا نقرت \"فتح\"."
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:58
 #, kde-format
 msgid "This URL is invalid or is not a web page: it cannot be opened."
-msgstr ""
+msgstr "هذا المسار غير صالح أو ليس صفحة وب: لا يمكن فتحه."
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:67
 #, kde-format
@@ -1245,7 +1265,7 @@ msgstr "لا شيء"
 #, kde-format
 msgctxt "@info"
 msgid "Bearer token"
-msgstr ""
+msgstr "رمز حامل"
 
 #: widgets/kmcpclientinspectorserversettingswidget.cpp:25
 #, kde-format
@@ -1259,6 +1279,8 @@ msgid ""
 "The server reports that the interaction in the web browser is complete "
 "(elicitation \"%1\"). You can retry the request."
 msgstr ""
+"يُبلغ الخادوم أن التفاعل في متصفح الوب اكتمل (استدعاء \"%1\"). يمكنك إعادة "
+"محاولة الطلب."
 
 #. i18n: ectx: Menu (settings)
 #: widgets/kmcpclientinspectorui.rc:11

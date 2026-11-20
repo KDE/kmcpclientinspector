@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kmcpclientinspector\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-16 04:04+0000\n"
-"PO-Revision-Date: 2026-11-16 20:09+0200\n"
+"PO-Revision-Date: 2026-11-19 19:54+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -468,12 +468,13 @@ msgid "Requesting completion…"
 msgstr "Запит щодо доповнення…"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:422
-#, fuzzy, kde-format
+#, kde-format
 msgid "%1 value."
 msgid_plural "%1 values."
 msgstr[0] "%1 значення."
 msgstr[1] "%1 значення."
 msgstr[2] "%1 значень."
+msgstr[3] "%1 значення."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:424
 #, kde-format
@@ -538,12 +539,13 @@ msgid "No prompt selected"
 msgstr "Не позначено запиту"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:292
-#, fuzzy, kde-format
+#, kde-format
 msgid "Argument \"%2\" is required."
 msgid_plural "Arguments %2 are required."
 msgstr[0] "Потрібні аргументи «%2»."
 msgstr[1] "Потрібні аргументи «%2»."
 msgstr[2] "Потрібні аргументи «%2»."
+msgstr[3] "Потрібен аргумент «%2»."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:297
 #, kde-format
@@ -560,12 +562,13 @@ msgid "Getting prompt…"
 msgstr "Отримання запиту…"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:317
-#, fuzzy, kde-format
+#, kde-format
 msgid "Prompt retrieved: %1 message."
 msgid_plural "Prompt retrieved: %1 messages."
 msgstr[0] "Отримано запит: %1 повідомлення."
 msgstr[1] "Отримано запит: %1 повідомлення."
 msgstr[2] "Отримано запит: %1 повідомлень."
+msgstr[3] "Отримано запит: %1 повідомлення."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:336
 #, kde-format
@@ -840,12 +843,13 @@ msgid "Resource \"%1\" was updated."
 msgstr "Ресурс «%1» оновлено."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:400
-#, fuzzy, kde-format
+#, kde-format
 msgid "Resource read: %1 content."
 msgid_plural "Resource read: %1 contents."
 msgstr[0] "Читання ресурсів: %1 вміст."
 msgstr[1] "Читання ресурсів: %1 вмісти."
 msgstr[2] "Читання ресурсів: %1 вмістів."
+msgstr[3] "Читання ресурсів: %1 вміст."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:413
 #, kde-format
@@ -1039,13 +1043,14 @@ msgid "Request Timeout:"
 msgstr "Час очікування результатів запиту:"
 
 #: widgets/configure/kmcpclientinspectorconfiguregeneralwidget.cpp:38
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Interval suffix"
 msgid "%v second"
 msgid_plural "%v seconds"
 msgstr[0] "%v секунда"
 msgstr[1] "%v секунди"
 msgstr[2] "%v секунд"
+msgstr[3] "%v секунда"
 
 #: widgets/configure/kmcpclientinspectorconfiguresettingsdialog.cpp:24
 #, kde-format

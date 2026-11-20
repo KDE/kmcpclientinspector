@@ -1,0 +1,906 @@
+<?xml version="1.0" ?>
+<!--
+  SPDX-FileCopyrightText: 2026 Laurent Montel <montel@kde.org>
+  SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!-- Define an entity for your application if it is not part of KDE
+       CVS -->
+  <!ENTITY i18n-kapplication "<application
+>KMcpClientInspector</application
+>">
+  <!ENTITY kappname "&i18n-kapplication;">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Arabic "INCLUDE">
+]>
+
+<book id="kmcpclientinspector" lang="&language;">
+
+<bookinfo>
+<title
+>كتيب استعمال &kappname;</title>
+
+<authorgroup>
+<author
+><personname
+> <firstname
+>Laurent</firstname
+> <surname
+>Montel</surname
+> </personname
+> <email
+>montel@kde.org</email
+> </author>
+<othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2026</year>
+<holder
+>لوران مونتال</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2026-11-07</date>
+<releaseinfo
+>0.2.7</releaseinfo>
+
+<abstract>
+<para
+>‏&kappname; أداة لفحص وتنقيح الخوادم التي تطبّق ميفاق سياق النموذج (<acronym
+>MCP</acronym
+>). تتصل بخادم بصفة عميل <acronym
+>MCP</acronym
+>، وتتيح لك إرسال الطلبات إليه وعرض الرسائل المتبادلة. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>كيدي</keyword>
+<keyword
+>MCP</keyword>
+<keyword
+>ميفاق سياق النموذج</keyword>
+<keyword
+>مفتش</keyword>
+<keyword
+>نقّح</keyword>
+<keyword
+>kmcpclientinspector</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>مقدمة</title>
+
+<para
+>ميفاق سياق النموذج (<acronym
+>MCP</acronym
+>) ميفاق مفتوح يتيح للتطبيقات كشف الأدوات والمطالبات والموارد للعملاء مثل مساعدي <acronym
+>AI</acronym
+>. تُتبادل الرسائل باستخدام JSON-RPC. </para>
+
+<para
+>يعمل &kappname; بصفة عميل <acronym
+>MCP</acronym
+>. يتيح لمطوري خوادم <acronym
+>MCP</acronym
+>: </para>
+
+<itemizedlist>
+<listitem
+><para
+>إدارة قائمة بخوادم <acronym
+>MCP</acronym
+>؛</para
+></listitem>
+<listitem
+><para
+>الاتصال بخادم ورؤية نتيجة مصافحة التهيئة؛</para
+></listitem>
+<listitem
+><para
+>سرد الأدوات التي يوفرها الخادم واستدعاؤها؛</para
+></listitem>
+<listitem
+><para
+>سرد المطالبات التي يوفرها الخادم واسترجاعها؛</para
+></listitem>
+<listitem
+><para
+>سرد الموارد وقوالب الموارد التي يوفرها الخادم؛</para
+></listitem>
+<listitem
+><para
+>قراءة مورد والاشتراك في تحديثاته؛</para
+></listitem>
+<listitem
+><para
+>الرد على الطلبات التي يرسلها الخادم (الاستنباط، أخذ العينات، الجذور)؛</para
+></listitem>
+<listitem
+><para
+>التحقق من أن الخادم يستجيب لطلب ping؛</para
+></listitem>
+<listitem
+><para
+>الاطلاع على كل رسالة JSON-RPC مُرسلة ومُستلمة؛</para
+></listitem>
+<listitem
+><para
+>متابعة إشعارات السجل التي يصدرها الخادم.</para
+></listitem>
+</itemizedlist>
+
+</chapter>
+
+<chapter id="using-kapp">
+<title
+>استخدام &kappname;</title>
+
+<sect1 id="main-window">
+<title
+>النافذة الرئيسة</title>
+
+<para
+>تنقسم النافذة الرئيسة إلى جزأين: </para>
+
+<itemizedlist>
+<listitem
+><para
+>على اليسار، قائمة خوادم <acronym
+>MCP</acronym
+> المضبوطة. من هناك يمكنك إضافة خادم أو تعديله أو إزالته أو تمكينه أو تعطيله. </para
+></listitem>
+<listitem
+><para
+>على اليمين، تبويب لكل خادم ممكّن. لا يحصل الخادم المعطّل على تبويب. </para
+></listitem>
+</itemizedlist>
+
+<para
+>عندما يجلب إصدار جديد ميزات جديدة، تظهر رسالة في أعلى النافذة عند تشغيل &kappname; لأول مرة. تتوفر القائمة الكاملة للتغييرات عبر <menuchoice
+><guimenu
+>مساعدة</guimenu
+><guimenuitem
+>ما الجديد</guimenuitem
+></menuchoice
+>. </para>
+</sect1>
+
+<sect1 id="server-tab">
+<title
+>تبويب الخادم</title>
+
+<para
+>ينقسم كل تبويب خادم إلى جزأين: إعدادات الخادم على اليسار والإجراءات على اليمين. </para>
+
+<sect2 id="server-settings">
+<title
+>إعدادات الخادم</title>
+
+<para
+>يعرض الجزء العلوي معلومات عن الخادم: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>الأيقونة:</guilabel
+></term>
+<listitem
+><para
+>أيقونة الخادم.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>الاسم:</guilabel
+></term>
+<listitem
+><para
+>اسم الخادم.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>النوع:</guilabel
+></term>
+<listitem
+><para
+>كيف يتواصل &kappname; مع الخادم: ببدء عملية محلية، أو عبر <acronym
+>URL</acronym
+> شبكي.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>الأمر:</guilabel
+>، <guilabel
+>الوسائط:</guilabel
+>، <guilabel
+>البيئة:</guilabel
+></term>
+<listitem
+><para
+>بالنسبة لخادم محلي، البرنامج الذي يبدأه &kappname;، ووسائطه، ومتغيرات البيئة التي تُمرر إليه.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>الرابط:</guilabel
+></term>
+<listitem
+><para
+>بالنسبة لخادم بعيد، العنوان المستخدم للوصول إليه.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>الجذور:</guilabel
+></term>
+<listitem
+><para
+>الجذور (المجلدات أو الملفات) المكشوفة للخادم. عندما لا تُعرّف جذور خاصة بالخادم، تُستخدم الجذور العامة المعرّفة في صفحة <link linkend="configure-general"
+>عام</link
+> من حوار الضبط.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>تتيح مجموعة <guilabel
+>القدرات</guilabel
+> اختيار قدرات العميل التي تُعلن للخادم أثناء التهيئة: <guilabel
+>الاستنباط</guilabel
+>، <guilabel
+>استنباط URL</guilabel
+>، <guilabel
+>أخذ العينات</guilabel
+> و<guilabel
+>الجذور</guilabel
+>. تأتي حالتها الأولية من صفحة <link linkend="configure-general"
+>عام</link
+> من حوار الضبط. لا يمكن تغييرها إلا عندما يكون الخادم غير متصل. </para>
+
+<para
+>يفتح الزر المجاور لـ<guilabel
+>الجذور</guilabel
+> حوار <guilabel
+>اضبط الجذور</guilabel
+>، لاختيار الجذور المكشوفة لهذا الخادم. إذا كانت القائمة مطابقة للقائمة العامة، يبقى الخادم متابعًا للجذور العامة. عندما تتغير الجذور بينما يكون الخادم متصلًا، يُخطر الخادم. </para>
+
+<para
+>يفتح زر <guibutton
+>حرّر…</guibutton
+> حوارًا لتعديل إعدادات الخادم. يكون معطّلًا بينما يكون الخادم متصلًا. </para>
+
+<para
+>استخدم زر <guibutton
+>اتصل</guibutton
+> لبدء العميل وإرسال طلب التهيئة إلى الخادم، وزر <guibutton
+>افصل</guibutton
+> لإيقافه. </para>
+</sect2>
+
+<sect2 id="actions">
+<title
+>الإجراءات</title>
+
+<para
+>يحتوي الجزء الأيمن من تبويب الخادم على تبويب لكل نوع من الطلبات أو المعلومات. لا تظهر التبويبات المتعلقة بالأدوات والمطالبات والموارد إلا عندما يعلن الخادم القدرة المقابلة أثناء التهيئة. </para>
+
+<variablelist>
+
+<varlistentry id="action-initialize">
+<term
+><guilabel
+>تهيئة</guilabel
+></term>
+<listitem
+><para
+>يعرض إجابة JSON من الخادم لطلب التهيئة: إصدار الميفاق، ومعلومات الخادم، وقدرات الخادم. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-ping">
+<term
+><guilabel
+>وخزة Ping</guilabel
+></term>
+<listitem
+><para
+>يرسل زر <guibutton
+>بينغ</guibutton
+> طلب بينغ للتحقق من أن الخادم ما يزال يستجيب. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-list-tools">
+<term
+><guilabel
+>سرد الأدوات</guilabel
+></term>
+<listitem
+><para
+>يطلب زر <guibutton
+>اسرد الأدوات</guibutton
+> من الخادم قائمة الأدوات التي يوفرها ويعرض الإجابة. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-call-tool">
+<term
+><guilabel
+>استدعاء أداة</guilabel
+></term>
+<listitem>
+<para
+>انقر على <guibutton
+>اسرد الأدوات</guibutton
+> لملء قائمة الأدوات؛ يرشّحها حقل <guilabel
+>بحث</guilabel
+>. اختر أداة: تُعرض وسائطها مع حقل ملائم لكل نوع وسيط (نص، عدد صحيح، عدد، منطقي، أو قيمة JSON). فعّل <guilabel
+>حرّر الوسائط بصيغة JSON</guilabel
+> لكتابة جميع الوسائط مباشرة ككائن JSON. </para>
+<para
+>يُعرض عنوان الأداة وتعليقاتها كشارات: <guilabel
+>للقراءة فقط</guilabel
+>، <guilabel
+>مدمّرة</guilabel
+> أو <guilabel
+>إضافية</guilabel
+>، <guilabel
+>عديمة الأثر</guilabel
+>، <guilabel
+>عالم مفتوح</guilabel
+> أو <guilabel
+>عالم مغلق</guilabel
+>. الشارات بالخط المائل الرمادي هي قيم مبدئية لم يعلنها الخادم. تُعلَّم الأدوات التي تصرّح بأنها مدمّرة بأيقونة تحذير في القائمة. </para>
+<para
+>انقر على <guibutton
+>استدعِ الأداة</guibutton
+> لاستدعاء الأداة. تُفحص الوسائط المطلوبة وأنواع الوسائط قبل إرسال الطلب. عندما يرسل الخادم إشعارات تقدّم، يُعرض شريط تقدّم ورسالة التقدّم أثناء الاستدعاء. تُعرض النتيجة في تبويبين: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>المحتوى</guilabel
+>: عرض مقروء للمحتوى المُعاد (نص، صور، صوت، روابط موارد، موارد مضمّنة ومحتوى منظّم)، وما إذا نجحت الأداة أو أعادت خطأً؛</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: إجابة JSON الخام.</para
+></listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-list-prompts">
+<term
+><guilabel
+>اسرد المطالبات</guilabel
+></term>
+<listitem
+><para
+>يطلب زر <guibutton
+>اسرد المطالبات</guibutton
+> من الخادم قائمة المطالبات التي يوفرها ويعرض الإجابة. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-get-prompt">
+<term
+><guilabel
+>اجلب التوجيه</guilabel
+></term>
+<listitem>
+<para
+>انقر على <guibutton
+>اسرد المطالبات</guibutton
+> لملء قائمة المطالبات؛ يرشّحها حقل <guilabel
+>بحث</guilabel
+>. اختر مطالبة، املأ وسائطها، ثم انقر على <guibutton
+>اجلب المطالبة</guibutton
+>. تُعرض النتيجة في تبويبين: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>الرسائل</guilabel
+>: رسائل المطالبة مع دورها (<guilabel
+>مستخدم</guilabel
+> أو <guilabel
+>مساعد</guilabel
+>)؛</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: إجابة JSON الخام.</para
+></listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-list-resources">
+<term
+><guilabel
+>سرد الموارد</guilabel
+></term>
+<listitem
+><para
+>يطلب زر <guibutton
+>اسرد الموارد</guibutton
+> من الخادم قائمة الموارد التي يوفرها ويعرض الإجابة. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-read-resource">
+<term
+><guilabel
+>قراءة المورد</guilabel
+></term>
+<listitem>
+<para
+>انقر على <guibutton
+>اسرد الموارد</guibutton
+> لملء قائمة الموارد؛ يرشّحها حقل <guilabel
+>بحث</guilabel
+>. اختر موردًا، أو أدخل عنوانه في حقل <guilabel
+>URI:</guilabel
+>، ثم انقر على <guibutton
+>اقرأ المورد</guibutton
+>. تُعرض النتيجة في تبويبين: </para>
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>المحتويات</guilabel
+>: عرض مقروء لمحتويات المورد؛</para
+></listitem>
+<listitem
+><para
+><guilabel
+>JSON</guilabel
+>: إجابة JSON الخام.</para
+></listitem>
+</itemizedlist>
+<para
+>إذا دعم الخادم ذلك، يطلب زر <guibutton
+>اشترك</guibutton
+> من الخادم إرسال إشعار عند تغيّر المورد؛ ثم يُقرأ المورد مجددًا آليًا. يوقف زر <guibutton
+>ألغِ الاشتراك</guibutton
+> هذه الإشعارات. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="action-resource-templates">
+<term
+><guilabel
+>قوالب الموارد</guilabel
+></term>
+<listitem
+><para
+>يطلب زر <guibutton
+>قوالب الموارد</guibutton
+> من الخادم قائمة قوالبه للموارد ويعرض الإجابة. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-log">
+<term
+><guilabel
+>السجل</guilabel
+></term>
+<listitem
+><para
+>يسرد كل رسالة JSON-RPC متبادلة مع الخادم، مع <guilabel
+>المعرّف</guilabel
+>، <guilabel
+>اسم الدالة</guilabel
+>، <guilabel
+>الوقت</guilabel
+>، <guilabel
+>المدة</guilabel
+> و<guilabel
+>الاتجاه</guilabel
+> (<guilabel
+>مُرسلة</guilabel
+> أو <guilabel
+>مُستلمة</guilabel
+>). استخدم حقل <guilabel
+>بحث</guilabel
+> لترشيح القائمة. يؤدي اختيار رسالة إلى عرض محتواها بصيغة JSON. </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="action-server-notification">
+<term
+><guilabel
+>إشعار الخادم</guilabel
+></term>
+<listitem
+><para
+>يعرض رسائل السجل التي أرسلها الخادم، مع <guilabel
+>الوقت</guilabel
+>، <guilabel
+>المستوى</guilabel
+>، <guilabel
+>المسجّل</guilabel
+> و<guilabel
+>الرسالة</guilabel
+>. تخفي قائمة <guilabel
+>أدنى مستوى:</guilabel
+> الرسائل دون المستوى المحدد (<guilabel
+>تنقيح</guilabel
+>، <guilabel
+>معلومات</guilabel
+>، <guilabel
+>ملاحظة</guilabel
+>، <guilabel
+>تحذير</guilabel
+>، <guilabel
+>خطأ</guilabel
+>، <guilabel
+>حرج</guilabel
+>، <guilabel
+>إنذار</guilabel
+>، <guilabel
+>طارئ</guilabel
+>). يفرّغ زر <guibutton
+>امسح</guibutton
+> القائمة. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect2>
+</sect1>
+
+<sect1 id="server-requests">
+<title
+>طلبات من الخادم</title>
+
+<para
+>يمكن لخادم <acronym
+>MCP</acronym
+> أيضًا إرسال طلبات إلى العميل عندما تكون القدرة المقابلة مفعّلة. يعرض &kappname; مربع حوار لكل منها: </para>
+
+<variablelist>
+<varlistentry id="request-elicitation">
+<term
+><guilabel
+>معلومات طلبات الخادم</guilabel
+></term>
+<listitem
+><para
+>يطلب الخادم من المستخدم بعض المعلومات (استجلاء). يُعرض حقل لكل قيمة مطلوبة. انقر على <guibutton
+>اقبل</guibutton
+> لإرسال القيم، أو على <guibutton
+>ارفض</guibutton
+> للرفض، أو على <guibutton
+>ألغِ</guibutton
+> لإلغاء الطلب. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-url-elicitation">
+<term
+><guilabel
+>طلبات الخادوم لفتح صفحة وب</guilabel
+></term>
+<listitem
+><para
+>يطلب الخادم من المستخدم إتمام تفاعل في متصفح ويب (استجلاء <acronym
+>URL</acronym
+>). يُعرض النطاق و<acronym
+>URL</acronym
+> الكامل؛ لا تُفتح الصفحة إلا إذا نقرت على <guibutton
+>افتح</guibutton
+>. عندما يبلّغ الخادم بأن التفاعل اكتمل، تُعرض رسالة في تبويب الخادم ويمكنك إعادة محاولة الطلب. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-sampling">
+<term
+><guilabel
+>توليد رسائل طلبات الخادم</guilabel
+></term>
+<listitem
+><para
+>يطلب الخادم من العميل توليد رسالة باستخدام نموذج لغوي (أخذ عينات). يُعرض الطلب، وتكتب الرد بنفسك، مع إمكانية تحديد <guilabel
+>النموذج:</guilabel
+> و<guilabel
+>سبب التوقف:</guilabel
+> للإبلاغ. انقر على <guibutton
+>أرسل</guibutton
+> للإجابة أو على <guibutton
+>ارفض</guibutton
+> للرفض. </para
+></listitem>
+</varlistentry>
+<varlistentry id="request-roots">
+<term
+>الجذور</term>
+<listitem
+><para
+>عندما يطلب الخادم قائمة الجذور، يجيب &kappname; آليًا بجذور الخادم. </para
+></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+<title
+>ضبط &kappname;</title>
+
+<para
+><menuchoice
+><guimenu
+>الإعدادات</guimenu
+><guimenuitem
+>اضبط &kappname;…</guimenuitem
+></menuchoice
+> يفتح مربع حوار الضبط. </para>
+
+<sect1 id="configure-general">
+<title
+>عامّ</title>
+<para
+>تحدد صفحة <guilabel
+>عام</guilabel
+> <guilabel
+>القدرات</guilabel
+> المبدئية المعلنة للخوادم: <guilabel
+>الاستجلاء</guilabel
+>، <guilabel
+>استجلاء URL</guilabel
+>، <guilabel
+>أخذ العينات</guilabel
+> و<guilabel
+>الجذور</guilabel
+>. جميعها مفعّلة مبدئيًا. </para>
+<para
+>يفتح الزر المجاور لـ<guilabel
+>الجذور</guilabel
+> مربع حوار <guilabel
+>اضبط الجذور</guilabel
+> لتعريف الجذور العامة. يستخدمها كل خادم لا يعرّف جذوره الخاصة. </para>
+</sect1>
+
+<sect1 id="configure-mcp-servers">
+<title
+>خوادم MCP</title>
+<para
+>تسرد صفحة <guilabel
+>خوادم MCP</guilabel
+> الخوادم المضبوطة. يمكنك إضافة خادم أو تعديله أو إزالته أو تفعيله أو تعطيله. تُحفظ التغييرات فورًا وتُحدَّث تبويبات الخادم في النافذة الرئيسة. </para>
+</sect1>
+
+</chapter>
+
+<chapter id="commands">
+<title
+>مرجع الأوامر</title>
+
+<sect1 id="kapp-mainwindow">
+<title
+>القوائم</title>
+
+<sect2 id="file-menu">
+<title
+>قائمة ملف</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>ملف</guimenu
+><guimenuitem
+>أنهِ</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>يخرج</action
+> من &kappname;.</para
+></listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+
+<sect2 id="settings-menu">
+<title
+>قائمة الإعدادات</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+><keycap
+>F11</keycap
+></keycombo
+></shortcut
+> <guimenu
+>الإعدادات</guimenu
+><guimenuitem
+>وضع ملء الشاشة</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>يبدّل</action
+> وضع ملء الشاشة.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+><guisubmenu
+>مخطط ألوان النافذة</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>يحدد</action
+> نظام ألوان النافذة.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+><guimenuitem
+>اضبط الإشعارات</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>يضبط</action
+> إشعارات &kappname;.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+><guimenuitem
+>ضبط &kappname;…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>يفتح</action
+> <link linkend="configuration"
+>حوار الضبط</link
+>.</para
+></listitem>
+</varlistentry>
+</variablelist>
+<para
+>يمتلك &kappname; أيضًا عناصر قائمة <guimenu
+>الإعدادات</guimenu
+> المشتركة في &kde;، لمزيد من المعلومات اقرأ القسم حول <ulink url="help:/fundamentals/menus.html#menus-settings"
+>قائمة الإعدادات</ulink
+> من أساسيات &kde;. </para>
+</sect2>
+
+<sect2 id="help-menu">
+<title
+>قائمة مساعدة</title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>مساعدة</guimenu
+><guimenuitem
+>ما الجديد</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>يعرض</action
+> الميزات الجديدة في كل إصدار.</para
+></listitem>
+</varlistentry>
+</variablelist>
+<para
+>في &Windows; و&macOS;، تحتوي قائمة <guimenu
+>مساعدة</guimenu
+> أيضًا على عنصر للتحقق من توفر إصدار جديد. </para>
+<para
+>يمتلك &kappname; عناصر قائمة <guimenu
+>مساعدة</guimenu
+> المشتركة في &kde;، لمزيد من المعلومات اقرأ القسم حول <ulink url="help:/fundamentals/menus.html#menus-help"
+>قائمة مساعدة</ulink
+> من أساسيات &kde;. </para>
+</sect2>
+
+</sect1>
+</chapter>
+
+<chapter id="credits">
+<title
+>الحقوق والترخيص</title>
+
+<para
+>&kappname; </para>
+<para
+>حقوق نشر البرنامج 2026 Laurent Montel <email
+>montel@kde.org</email
+> </para>
+
+<para
+>حقوق نشر التوثيق &copy; 2026 Laurent Montel <email
+>montel@kde.org</email
+> </para>
+
+<para
+>الترجمة: زايد السعيدي <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->
