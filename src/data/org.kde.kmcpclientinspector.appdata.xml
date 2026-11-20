@@ -65,7 +65,14 @@
     <keyword>Debug</keyword>
   </keywords>
   <releases>
-    <release version="0.3.0" type="snapshot">
+    <release version="0.4.0" type="snapshot">
+      <description>
+        <ul>
+          <li>Add MCP server menu.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.3.0" type="2026-11-20">
       <description>
         <ul>
           <li>Add call tool support.</li>
