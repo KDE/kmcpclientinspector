@@ -11,6 +11,7 @@
     <name translate="no">KDE</name>
   </developer>
   <name>KMcpClientInspector</name>
+  <name xml:lang="ar">KMcpClientInspector</name>
   <name xml:lang="ca">KMcpClientInspector</name>
   <name xml:lang="ca-valencia">KMcpClientInspector</name>
   <name xml:lang="es">KMcpClientInspector</name>
@@ -19,6 +20,7 @@
   <name xml:lang="tr">K MCP İstemcisi Denetçisi</name>
   <name xml:lang="uk">KMcpClientInspector</name>
   <summary>MCP client inspector</summary>
+  <summary xml:lang="ar">فاحص عميل MCP</summary>
   <summary xml:lang="ca">Inspector de client MCP</summary>
   <summary xml:lang="ca-valencia">Inspector de client MCP</summary>
   <summary xml:lang="nl">MCP-clientinspecteur</summary>
@@ -29,6 +31,7 @@
     <p>
       KMcpClientInspector allows to show mcp client apps.
     </p>
+    <p xml:lang="ar">يتيح KMcpClientInspector عرض تطبيقات عميل MCP.</p>
     <p xml:lang="ca">KMcpClientInspector permet mostrar aplicacions clients de MCP.</p>
     <p xml:lang="ca-valencia">KMcpClientInspector permet mostrar aplicacions clients de MCP.</p>
     <p xml:lang="nl">KMcpClientInspecteur maakt het mogelijk om MCP-client-toepassingen weer te geven.</p>
@@ -66,6 +69,7 @@
       <description>
         <ul>
           <li>Add call tool support.</li>
+          <li xml:lang="ar">أضف دعم أداة الاستدعاء.</li>
           <li xml:lang="ca">Afegeix la implementació d'eina d'invocació.</li>
           <li xml:lang="ca-valencia">Afig la implementació d'eina d'invocació.</li>
           <li xml:lang="nl">Voegt ondersteuning van aanroephulpmiddelen toe</li>
@@ -73,6 +77,7 @@
           <li xml:lang="tr">Çağrı aracı desteği eklendi.</li>
           <li xml:lang="uk">Додано підтримку виклику інструменту.</li>
           <li>Add What's new dialog.</li>
+          <li xml:lang="ar">إضافة حوار «ما الجديد»</li>
           <li xml:lang="ca">Afegeix el diàleg Què hi ha de nou.</li>
           <li xml:lang="ca-valencia">Afig el diàleg Què hi ha de nou.</li>
           <li xml:lang="nl">Dialoog Wat is nieuw toevoegen.</li>
