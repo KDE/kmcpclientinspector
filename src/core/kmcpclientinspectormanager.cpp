@@ -5,6 +5,7 @@
  */
 
 #include "kmcpclientinspectormanager.h"
+#include <TextAutoGenerateTextMcpProtocolCore/McpServerModel>
 
 using namespace Qt::Literals::StringLiterals;
 KMcpClientInspectorManager::KMcpClientInspectorManager(QObject *parent)
@@ -17,6 +18,20 @@ KMcpClientInspectorManager::~KMcpClientInspectorManager() = default;
 QString KMcpClientInspectorManager::serverConfigFileName() const
 {
     return u"kmcpclientinspectorrc"_s;
+}
+
+QList<TextAutoGenerateTextMcpProtocolCore::McpServer> KMcpClientInspectorManager::enabledSortedServers() const
+{
+    auto servers = mcpServerModel()->mcpServers();
+    servers.removeIf([](const TextAutoGenerateTextMcpProtocolCore::McpServer &server) {
+        return !server.enabled();
+    });
+    std::sort(servers.begin(),
+              servers.end(),
+              [](const TextAutoGenerateTextMcpProtocolCore::McpServer &left, const TextAutoGenerateTextMcpProtocolCore::McpServer &right) {
+                  return left.name().localeAwareCompare(right.name()) < 0;
+              });
+    return servers;
 }
 
 #include "moc_kmcpclientinspectormanager.cpp"

@@ -8,6 +8,7 @@
 
 #include "libkmcpclientinspectorcore_export.h"
 #include <QObject>
+#include <TextAutoGenerateTextMcpProtocolCore/McpServer>
 #include <TextAutoGenerateTextMcpProtocolCore/McpServerManager>
 class LIBKMCPCLIENTINSPECTORCORE_EXPORT KMcpClientInspectorManager : public TextAutoGenerateTextMcpProtocolCore::McpServerManager
 {
@@ -17,4 +18,6 @@ public:
     ~KMcpClientInspectorManager() override;
 
     [[nodiscard]] QString serverConfigFileName() const override;
+
+    [[nodiscard]] QList<TextAutoGenerateTextMcpProtocolCore::McpServer> enabledSortedServers() const;
 };

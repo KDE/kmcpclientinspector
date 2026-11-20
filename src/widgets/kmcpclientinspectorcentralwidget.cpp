@@ -48,6 +48,7 @@ KMcpClientInspectorCentralWidget::KMcpClientInspectorCentralWidget(const QList<K
     }
 
     mainLayout->addWidget(mTabWidget);
+    connect(mTabWidget, &KMcpClientInspectorTabWidget::currentChanged, this, &KMcpClientInspectorCentralWidget::serverChanged);
 }
 
 KMcpClientInspectorCentralWidget::~KMcpClientInspectorCentralWidget() = default;
@@ -60,6 +61,11 @@ QList<KAboutRelease> KMcpClientInspectorCentralWidget::releases() const
 void KMcpClientInspectorCentralWidget::updateServers()
 {
     mTabWidget->loadServers();
+}
+
+void KMcpClientInspectorCentralWidget::setServerSelected(int index)
+{
+    mTabWidget->setCurrentIndex(index);
 }
 
 #include "moc_kmcpclientinspectorcentralwidget.cpp"

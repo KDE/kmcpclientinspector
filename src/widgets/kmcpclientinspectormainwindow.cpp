@@ -9,6 +9,7 @@
 #include "configure/kmcpclientinspectorconfiguresettingsdialog.h"
 #include "kmcpclientinspectorcentralwidget.h"
 #include "kmcpclientinspectormanager.h"
+#include "misc/mcpservermenu.h"
 #include <KActionCollection>
 #include <KActionMenu>
 #include <KColorSchemeManager>
@@ -34,13 +35,16 @@ KMcpClientInspectorMainWindow::KMcpClientInspectorMainWindow(const QList<KAboutR
 #if defined(Q_OS_WIN) || defined(Q_OS_MACOS)
     , mVerifyNewVersionWidget(new TextAddonsWidgets::VerifyNewVersionWidget(this))
 #endif
-
+    , mServerMenu(new McpServerMenu(mManager, this))
 {
     mMainWidget->setObjectName(u"mMainWidget"_s);
     setCentralWidget(mMainWidget);
     setupActions();
     setupGUI();
     mManager->loadServers();
+    mServerMenu->slotUpdateServerMenu();
+    connect(mServerMenu, &McpServerMenu::serverSelected, mMainWidget, &KMcpClientInspectorCentralWidget::setServerSelected);
+    connect(mMainWidget, &KMcpClientInspectorCentralWidget::serverChanged, mServerMenu, &McpServerMenu::setCurrentServer);
 }
 
 KMcpClientInspectorMainWindow::~KMcpClientInspectorMainWindow() = default;
@@ -48,6 +52,8 @@ KMcpClientInspectorMainWindow::~KMcpClientInspectorMainWindow() = default;
 void KMcpClientInspectorMainWindow::setupActions()
 {
     KActionCollection *ac = actionCollection();
+    mServerMenu->setActionCollection(ac);
+    ac->addAction(u"server_menu"_s, mServerMenu);
     KStandardActions::quit(this, &KMcpClientInspectorMainWindow::close, ac);
     KStandardActions::configureNotifications(this, &KMcpClientInspectorMainWindow::slotConfigureNotifications, ac);
 
@@ -82,6 +88,7 @@ void KMcpClientInspectorMainWindow::slotConfigure()
     delete dlg;
     // Servers are saved (Ok) or restored (Cancel): synchronize tabs in both cases
     mMainWidget->updateServers();
+    mServerMenu->slotUpdateServerMenu();
 }
 
 void KMcpClientInspectorMainWindow::slotConfigureNotifications()

@@ -21,6 +21,11 @@ public:
 
     void updateServers();
 
+    void setServerSelected(int index);
+
+Q_SIGNALS:
+    void serverChanged(int index);
+
 private:
     KMcpClientInspectorTabWidget *const mTabWidget;
     KMcpClientInspectorManager *const mManager;

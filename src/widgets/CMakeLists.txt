@@ -83,6 +83,8 @@ target_sources(
         misc/jsonplaintexteditwidget.cpp
         misc/directioncombobox.h
         misc/directioncombobox.cpp
+        misc/mcpservermenu.cpp
+        misc/mcpservermenu.h
         dialogs/kmcpclientinspectorelicitationdialog.h
         dialogs/kmcpclientinspectorelicitationdialog.cpp
         dialogs/kmcpclientinspectorsamplingdialog.h

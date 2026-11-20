@@ -10,6 +10,7 @@
 class KToggleFullScreenAction;
 class KMcpClientInspectorCentralWidget;
 class KMcpClientInspectorManager;
+class McpServerMenu;
 #if defined(Q_OS_WIN) || defined(Q_OS_MACOS)
 namespace TextAddonsWidgets
 {
@@ -35,4 +36,5 @@ private:
 #if defined(Q_OS_WIN) || defined(Q_OS_MACOS)
     TextAddonsWidgets::VerifyNewVersionWidget *const mVerifyNewVersionWidget;
 #endif
+    McpServerMenu *const mServerMenu;
 };
