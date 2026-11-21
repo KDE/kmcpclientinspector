@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmcpclientinspector\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-16 01:10+0000\n"
-"PO-Revision-Date: 2026-11-18 02:54+0100\n"
+"POT-Creation-Date: 2026-11-21 01:14+0000\n"
+"PO-Revision-Date: 2026-11-21 01:27+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -123,12 +123,12 @@ msgstr "Llamar herramienta"
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:72
 #, kde-format
 msgid "List Prompts"
-msgstr ""
+msgstr "Listar indicaciones"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:73
 #, kde-format
 msgid "Get Prompt"
-msgstr ""
+msgstr "Obtener indicación"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:74
 #, kde-format
@@ -148,17 +148,17 @@ msgstr "Plantillas de recursos"
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:77
 #, kde-format
 msgid "Complete"
-msgstr ""
+msgstr "Completar"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:78
 #, kde-format
 msgid "Log"
-msgstr ""
+msgstr "Registro"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:79
 #, kde-format
 msgid "Server Notification"
-msgstr ""
+msgstr "Notificación del servidor"
 
 #: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:99
 #, kde-format
@@ -168,7 +168,7 @@ msgstr "Error en %1"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:76
 #, kde-format
 msgid "%1: not set (default: %2)"
-msgstr ""
+msgstr "%1: no definido (predeterminado: %2)"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:89
 #: widgets/actions/kmcpclientinspectorlisttoolswidget.cpp:12
@@ -221,28 +221,30 @@ msgstr "Herramientas actualizadas"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:215
 #, kde-format
 msgid "Tools were updated in '%1'."
-msgstr ""
+msgstr "Se han actualizado las herramientas en «%1»."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:329
 #, kde-format
 msgid "No tool selected"
-msgstr ""
+msgstr "Ninguna herramienta seleccionada"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:384
 #, kde-format
 msgid "Tool call cancelled."
-msgstr ""
+msgstr "Llamada de herramienta cancelada."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:403
 #, kde-format
 msgid ""
 "Tool cannot be called. Is the server connected and does it support tools?"
 msgstr ""
+"No se puede llamar a la herramienta. ¿Está conectado el servidor y permite "
+"usar herramientas?"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:407
 #, kde-format
 msgid "Calling tool…"
-msgstr ""
+msgstr "Llamando a la herramienta…"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:420
 #, kde-format
@@ -250,6 +252,8 @@ msgid ""
 "The server requires an interaction in the web browser before calling this "
 "tool: %1"
 msgstr ""
+"Este servidor necesita una interacción en el navegador web antes de llamar a "
+"esta herramienta: %1"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:423
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:413
@@ -262,7 +266,7 @@ msgstr "Error %1: %2"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:429
 #, kde-format
 msgid "Tool returned an error."
-msgstr ""
+msgstr "La herramienta ha devuelto un error."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:431
 #, kde-format
@@ -279,36 +283,37 @@ msgstr "Solo lectura"
 #, kde-format
 msgctxt "@label tool annotation"
 msgid "Destructive"
-msgstr ""
+msgstr "Destructiva"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:467
 #, kde-format
 msgctxt "@label tool annotation"
 msgid "Additive"
-msgstr ""
+msgstr "Aditiva"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:471
 #, kde-format
 msgctxt "@label tool annotation"
 msgid "Idempotent"
-msgstr ""
+msgstr "Idempotente"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:476
 #, kde-format
 msgctxt "@label tool annotation"
 msgid "Open world"
-msgstr ""
+msgstr "Mundo abierto"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:478
 #, kde-format
 msgctxt "@label tool annotation"
 msgid "Closed world"
-msgstr ""
+msgstr "Mundo cerrado"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:486
 #, kde-format
 msgid "The server did not send annotations: default values are used."
 msgstr ""
+"El servidor no ha enviado anotaciones: se usan los valores predeterminados."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:510
 #, kde-format
@@ -318,7 +323,7 @@ msgstr "Contenido estructurado"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:514
 #, kde-format
 msgid "No content."
-msgstr ""
+msgstr "Sin contenido."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:531
 #, kde-format
@@ -333,7 +338,7 @@ msgstr "Sonido (%1, %2)"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:536
 #, kde-format
 msgid "Resource link:"
-msgstr ""
+msgstr "Enlace de recurso:"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:557
 #, kde-format
@@ -349,13 +354,13 @@ msgstr "Recurso binario (%1, %2)"
 #, kde-format
 msgctxt "@action:button"
 msgid "Complete"
-msgstr ""
+msgstr "Completar"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:66
 #, kde-format
 msgctxt "@item:inlistbox completion reference"
 msgid "Prompt"
-msgstr ""
+msgstr "Indicaciones"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:67
 #, kde-format
@@ -385,7 +390,7 @@ msgstr "Argumento:"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Value to complete"
-msgstr ""
+msgstr "Valor a completar"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:83
 #, kde-format
@@ -397,7 +402,7 @@ msgstr "Valor:"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Already resolved arguments, e.g. {\"language\": \"cpp\"}"
-msgstr ""
+msgstr "Argumentos ya resueltos, como {\"language\": \"cpp\"}"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:88
 #, kde-format
@@ -409,7 +414,7 @@ msgstr "Contexto:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Double-click on a value to use it"
-msgstr ""
+msgstr "Doble clic sobre un valor para usarlo"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:107
 #, kde-format
@@ -421,33 +426,33 @@ msgstr "Valores"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Prompt name"
-msgstr ""
+msgstr "Nombre de la indicación"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:218
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Resource template uri, e.g. file:///{path}"
-msgstr ""
+msgstr "URI de plantilla de recurso, como file:///{ruta}"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:302
 #, kde-format
 msgid "A reference is required."
-msgstr ""
+msgstr "Se requiere una referencia."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:307
 #, kde-format
 msgid "An argument name is required."
-msgstr ""
+msgstr "Se requiere un nombre de argumento."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:336
 #, kde-format
 msgid "Context must be a JSON object, e.g. {\"language\": \"cpp\"}."
-msgstr ""
+msgstr "El contexto debe ser un objeto JSON, como {\"language\": \"cpp\"}."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:343
 #, kde-format
 msgid "Context value of \"%1\" must be a string."
-msgstr ""
+msgstr "El valor del contexto de «%1» debe ser una cadena de texto."
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:398
 #, kde-format
@@ -1176,7 +1181,7 @@ msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "Desconectar"
 
-#: widgets/kmcpclientinspectormainwindow.cpp:62
+#: widgets/kmcpclientinspectormainwindow.cpp:68
 #, kde-format
 msgid "What's new"
 msgstr "Novedades"
@@ -1261,13 +1266,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: Menu (settings)
-#: widgets/kmcpclientinspectorui.rc:11
+#: widgets/kmcpclientinspectorui.rc:12
 #, kde-format
 msgid "&Settings"
 msgstr "&Preferencias"
 
 #. i18n: ectx: Menu (help)
-#: widgets/kmcpclientinspectorui.rc:15
+#: widgets/kmcpclientinspectorui.rc:16
 #, kde-format
 msgid "&Help"
 msgstr "A&yuda"
@@ -1289,3 +1294,10 @@ msgstr "Enviado"
 msgctxt "@item:inlistbox message direction"
 msgid "Received"
 msgstr "Recibido"
+
+#: widgets/misc/mcpservermenu.cpp:22
+#, fuzzy, kde-format
+#| msgctxt "@title Preferences page name"
+#| msgid "MCP Servers"
+msgid "Server"
+msgstr "Servidores MCP"

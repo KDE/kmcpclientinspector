@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmcpclientinspector\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-16 01:10+0000\n"
+"POT-Creation-Date: 2026-11-21 01:14+0000\n"
 "PO-Revision-Date: 2026-11-19 18:34+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -1196,7 +1196,7 @@ msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "اقطع الاتصال"
 
-#: widgets/kmcpclientinspectormainwindow.cpp:62
+#: widgets/kmcpclientinspectormainwindow.cpp:68
 #, kde-format
 msgid "What's new"
 msgstr "ما الجديد"
@@ -1283,13 +1283,13 @@ msgstr ""
 "محاولة الطلب."
 
 #. i18n: ectx: Menu (settings)
-#: widgets/kmcpclientinspectorui.rc:11
+#: widgets/kmcpclientinspectorui.rc:12
 #, kde-format
 msgid "&Settings"
 msgstr "إ&عدادات"
 
 #. i18n: ectx: Menu (help)
-#: widgets/kmcpclientinspectorui.rc:15
+#: widgets/kmcpclientinspectorui.rc:16
 #, kde-format
 msgid "&Help"
 msgstr "م&ساعدة"
@@ -1311,3 +1311,10 @@ msgstr "أُرسلت"
 msgctxt "@item:inlistbox message direction"
 msgid "Received"
 msgstr "استُلِمت"
+
+#: widgets/misc/mcpservermenu.cpp:22
+#, fuzzy, kde-format
+#| msgctxt "@title Preferences page name"
+#| msgid "MCP Servers"
+msgid "Server"
+msgstr "خوادم MCP"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmcpclientinspector\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-16 01:10+0000\n"
+"POT-Creation-Date: 2026-11-21 01:14+0000\n"
 "PO-Revision-Date: 2026-11-18 14:29+0100\n"
 "Last-Translator: freek <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1193,7 +1193,7 @@ msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "Verbinding verbreken"
 
-#: widgets/kmcpclientinspectormainwindow.cpp:62
+#: widgets/kmcpclientinspectormainwindow.cpp:68
 #, kde-format
 msgid "What's new"
 msgstr "Wat is nieuw"
@@ -1280,13 +1280,13 @@ msgstr ""
 "\"%1\"). U kunt het verzoek opnieuw proberen."
 
 #. i18n: ectx: Menu (settings)
-#: widgets/kmcpclientinspectorui.rc:11
+#: widgets/kmcpclientinspectorui.rc:12
 #, kde-format
 msgid "&Settings"
 msgstr "&Instellingen"
 
 #. i18n: ectx: Menu (help)
-#: widgets/kmcpclientinspectorui.rc:15
+#: widgets/kmcpclientinspectorui.rc:16
 #, kde-format
 msgid "&Help"
 msgstr "&Help"
@@ -1308,3 +1308,10 @@ msgstr "Verzonden"
 msgctxt "@item:inlistbox message direction"
 msgid "Received"
 msgstr "Ontvangen"
+
+#: widgets/misc/mcpservermenu.cpp:22
+#, fuzzy, kde-format
+#| msgctxt "@title Preferences page name"
+#| msgid "MCP Servers"
+msgid "Server"
+msgstr "MCP-servers"
