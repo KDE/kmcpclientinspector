@@ -77,7 +77,7 @@
         </ul>
       </description>
     </release>
-    <release version="0.3.0" type="2026-11-20">
+    <release version="0.3.0" date="2026-11-20">
       <description>
         <ul>
           <li>Add call tool support.</li>
@@ -105,4 +105,10 @@
     </release>
   </releases>
   <icon type="stock">org.kde.kmcpclientinspector</icon>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Default Interface</caption>
+      <image type="source">https://cdn.kde.org/screenshots/kmcpclientinspector/kmcpclientinspector.png</image>
+    </screenshot>
+  </screenshots>
 </component>
