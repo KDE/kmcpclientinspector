@@ -1,0 +1,1303 @@
+# Slovak translations for kmcpclientinspector package
+# Slovenské preklady pre balík kmcpclientinspector.
+# Copyright (C) 2026 This file is copyright:
+# This file is distributed under the same license as the kmcpclientinspector package.
+# Roman Paholík <wizzardsk@gmail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kmcpclientinspector\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2026-11-16 04:04+0000\n"
+"PO-Revision-Date: 2026-11-20 12:50+0000\n"
+"Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
+"Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Michal Gašpar,Jozef Říha"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "miguel@portugal.sk,jose1711@gmail.com"
+
+#: apps/main.cpp:28
+#, kde-format
+msgid "Copyright © 2026 Laurent Montel"
+msgstr "Copyright © 2026 Laurent Montel"
+
+#: apps/main.cpp:32
+#, kde-format
+msgctxt "@info:credit"
+msgid "Laurent Montel"
+msgstr "Laurent Montel"
+
+#: apps/main.cpp:32
+#, kde-format
+msgid "Maintainer"
+msgstr "Správca"
+
+#: core/kmcpclientinspectorlogmodel.cpp:68
+#, kde-format
+msgid "Sent"
+msgstr "Odoslané"
+
+#: core/kmcpclientinspectorlogmodel.cpp:70
+#, kde-format
+msgid "Received"
+msgstr "Prijaté"
+
+#: core/kmcpclientinspectorlogmodel.cpp:85
+#, kde-format
+msgid "%1 ms"
+msgstr "%1 ms"
+
+#: core/kmcpclientinspectorlogmodel.cpp:102
+#, kde-format
+msgid "Identifier"
+msgstr "Identifikátor"
+
+#: core/kmcpclientinspectorlogmodel.cpp:104
+#, kde-format
+msgid "Method Name"
+msgstr "Názov metódy"
+
+#: core/kmcpclientinspectorlogmodel.cpp:106
+#: core/kmcpclientinspectorserverlogmodel.cpp:121
+#, kde-format
+msgid "Time"
+msgstr "Čas"
+
+#: core/kmcpclientinspectorlogmodel.cpp:108
+#, kde-format
+msgid "Duration"
+msgstr "Trvanie"
+
+#: core/kmcpclientinspectorlogmodel.cpp:110
+#, kde-format
+msgid "Direction"
+msgstr "Smer"
+
+#: core/kmcpclientinspectorserverlogmodel.cpp:123
+#, kde-format
+msgid "Level"
+msgstr "Úroveň"
+
+#: core/kmcpclientinspectorserverlogmodel.cpp:125
+#, kde-format
+msgid "Logger"
+msgstr "Zaznamenávač"
+
+#: core/kmcpclientinspectorserverlogmodel.cpp:127
+#, kde-format
+msgid "Message"
+msgstr "Správa"
+
+#: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:68
+#, kde-format
+msgid "Initialize"
+msgstr "Inicializovať"
+
+#: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:69
+#, kde-format
+msgid "Ping"
+msgstr "Ping"
+
+#: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:70
+#, kde-format
+msgid "List Tools"
+msgstr "Zoznam nástrojov"
+
+#: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:71
+#, kde-format
+msgid "Call Tool"
+msgstr "Zavolať nástroj"
+
+#: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:72
+#, kde-format
+msgid "List Prompts"
+msgstr "Zoznam výziev"
+
+#: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:73
+#, kde-format
+msgid "Get Prompt"
+msgstr "Získať výzvu"
+
+#: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:74
+#, kde-format
+msgid "List Resources"
+msgstr "Zoznam zdrojov"
+
+#: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:75
+#, kde-format
+msgid "Read Resource"
+msgstr "Načítať zdroj"
+
+#: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:76
+#, kde-format
+msgid "Resource Templates"
+msgstr "Šablóny zdrojov"
+
+#: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:77
+#, kde-format
+msgid "Complete"
+msgstr "Hotovo"
+
+#: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:78
+#, kde-format
+msgid "Log"
+msgstr "Log"
+
+#: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:79
+#, kde-format
+msgid "Server Notification"
+msgstr "Upozornenie servera"
+
+#: widgets/actions/kmcpclientinspectoractiontabwidget.cpp:99
+#, kde-format
+msgid "Error in %1"
+msgstr "Chyba v %1"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:76
+#, kde-format
+msgid "%1: not set (default: %2)"
+msgstr "%1: nenastavené (predvolené: %2)"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:89
+#: widgets/actions/kmcpclientinspectorlisttoolswidget.cpp:12
+#, kde-format
+msgctxt "@action:button"
+msgid "List Tools"
+msgstr "Zoznam nástrojov"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:95
+#, kde-format
+msgctxt "@action:button"
+msgid "Call Tool"
+msgstr "Zavolať nástroj"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:102
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel Tool"
+msgstr "Zrušiť nástroj"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:126
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:87
+#: widgets/actions/kmcpclientinspectorlogsearchwidget.cpp:23
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:82
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Search"
+msgstr "Hľadať"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:187
+#, kde-format
+msgctxt "@title:tab"
+msgid "Content"
+msgstr "Obsah"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:188
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:108
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:141
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:155
+#, kde-format
+msgctxt "@title:tab"
+msgid "JSON"
+msgstr "JSON"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:214
+#, kde-format
+msgid "Tools Updated"
+msgstr "Nástroje aktualizované"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:215
+#, kde-format
+msgid "Tools were updated in '%1'."
+msgstr "Nástroje boli aktualizované v „%1“."
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:329
+#, kde-format
+msgid "No tool selected"
+msgstr "Nie je vybraný žiadny nástroj"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:384
+#, kde-format
+msgid "Tool call cancelled."
+msgstr "Volanie nástroja bolo zrušené."
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:403
+#, kde-format
+msgid ""
+"Tool cannot be called. Is the server connected and does it support tools?"
+msgstr "Nástroj sa nedá zavolať. Je server pripojený a podporuje nástroje?"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:407
+#, kde-format
+msgid "Calling tool…"
+msgstr "Volá sa nástroj…"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:420
+#, kde-format
+msgid ""
+"The server requires an interaction in the web browser before calling this "
+"tool: %1"
+msgstr ""
+"Server pred volaním tohto nástroja vyžaduje interakciu vo webovom "
+"prehliadači: %1"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:423
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:413
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:311
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:41
+#, kde-format
+msgid "Error %1: %2"
+msgstr "Chyba %1: %2"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:429
+#, kde-format
+msgid "Tool returned an error."
+msgstr "Nástroj vrátil chybu."
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:431
+#, kde-format
+msgid "Tool executed successfully."
+msgstr "Nástroj bol úspešne vykonaný."
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:459
+#, kde-format
+msgctxt "@label tool annotation"
+msgid "Read-only"
+msgstr "Iba na čítanie"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:465
+#, kde-format
+msgctxt "@label tool annotation"
+msgid "Destructive"
+msgstr "Deštruktívny"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:467
+#, kde-format
+msgctxt "@label tool annotation"
+msgid "Additive"
+msgstr "Aditívny"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:471
+#, kde-format
+msgctxt "@label tool annotation"
+msgid "Idempotent"
+msgstr "Idempotentný"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:476
+#, kde-format
+msgctxt "@label tool annotation"
+msgid "Open world"
+msgstr "Otvorený svet"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:478
+#, kde-format
+msgctxt "@label tool annotation"
+msgid "Closed world"
+msgstr "Uzavretý svet"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:486
+#, kde-format
+msgid "The server did not send annotations: default values are used."
+msgstr "Server neposlal anotácie: použijú sa predvolené hodnoty."
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:510
+#, kde-format
+msgid "Structured Content"
+msgstr "Štruktúrovaný obsah"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:514
+#, kde-format
+msgid "No content."
+msgstr "Žiadny obsah."
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:531
+#, kde-format
+msgid "Image (%1, %2)"
+msgstr "Obrázok (%1, %2)"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:534
+#, kde-format
+msgid "Audio (%1, %2)"
+msgstr "Zvuk (%1, %2)"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:536
+#, kde-format
+msgid "Resource link:"
+msgstr "Odkaz na zdroj:"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:557
+#, kde-format
+msgid "unknown type"
+msgstr "neznámy typ"
+
+#: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:557
+#, kde-format
+msgid "Binary resource (%1, %2)"
+msgstr "Binárny zdroj (%1, %2)"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:40
+#, kde-format
+msgctxt "@action:button"
+msgid "Complete"
+msgstr "Dokončené"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:66
+#, kde-format
+msgctxt "@item:inlistbox completion reference"
+msgid "Prompt"
+msgstr "Výzva"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:67
+#, kde-format
+msgctxt "@item:inlistbox completion reference"
+msgid "Resource Template"
+msgstr "Šablóna zdroja"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:68
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Reference type:"
+msgstr "Typ odkazu:"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:73
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Reference:"
+msgstr "Odkaz:"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:78
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Argument:"
+msgstr "Argument:"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:82
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Value to complete"
+msgstr "Hodnota na doplnenie"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:83
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Value:"
+msgstr "&Hodnota:"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:87
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Already resolved arguments, e.g. {\"language\": \"cpp\"}"
+msgstr "Už vyriešené argumenty, napr. {\"language\": \"cpp\"}"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:88
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Context:"
+msgstr "Kontext:"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:105
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Double-click on a value to use it"
+msgstr "Dvojitým kliknutím na hodnotu ju použijete"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:107
+#, kde-format
+msgctxt "@title:tab"
+msgid "Values"
+msgstr "Hodnoty"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:211
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Prompt name"
+msgstr "Názov výzvy"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:218
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Resource template uri, e.g. file:///{path}"
+msgstr "URI šablóny zdroja, napr. file:///{path}"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:302
+#, kde-format
+msgid "A reference is required."
+msgstr "Odkaz je povinný."
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:307
+#, kde-format
+msgid "An argument name is required."
+msgstr "Názov argumentu je povinný."
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:336
+#, kde-format
+msgid "Context must be a JSON object, e.g. {\"language\": \"cpp\"}."
+msgstr "Kontext musí byť objekt JSON, napr. {\"language\": \"cpp\"}."
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:343
+#, kde-format
+msgid "Context value of \"%1\" must be a string."
+msgstr "Hodnota kontextu „%1“ musí byť reťazec."
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:398
+#, kde-format
+msgid ""
+"Completion cannot be requested. Is the server connected and does it support "
+"completions?"
+msgstr ""
+"Doplnenie nie je možné vyžiadať. Je server pripojený a podporuje doplňovanie?"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:402
+#, kde-format
+msgid "Requesting completion…"
+msgstr "Vyžaduje sa doplnenie…"
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:422
+#, kde-format
+msgid "%1 value."
+msgid_plural "%1 values."
+msgstr[0] "%1 hodnota."
+msgstr[1] "%1 hodnoty."
+msgstr[2] "%1 hodnôt."
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:424
+#, kde-format
+msgid "Total: %1."
+msgstr "Spolu: %1."
+
+#: widgets/actions/kmcpclientinspectorcompletewidget.cpp:427
+#, kde-format
+msgid "More values are available."
+msgstr "K dispozícii sú ďalšie hodnoty."
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:42
+#, kde-format
+msgctxt "@title message role"
+msgid "User"
+msgstr "Používateľ"
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:44
+#, kde-format
+msgctxt "@title message role"
+msgid "Assistant"
+msgstr "Asistent"
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:48
+#, kde-format
+msgctxt "@title message role"
+msgid "Unknown role"
+msgstr "Neznáma rola"
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:54
+#: widgets/actions/kmcpclientinspectorlistpromptswidget.cpp:15
+#, kde-format
+msgctxt "@action:button"
+msgid "List Prompts"
+msgstr "Zoznam výziev"
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:59
+#, kde-format
+msgctxt "@action:button"
+msgid "Get Prompt"
+msgstr "Získať výzvu"
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:140
+#, kde-format
+msgctxt "@title:tab"
+msgid "Messages"
+msgstr "Správy"
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:155
+#, kde-format
+msgid "Prompts Updated"
+msgstr "Výzvy aktualizované"
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:156
+#, kde-format
+msgid "Prompts were updated in '%1'."
+msgstr "Výzvy boli aktualizované v „%1“."
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:243
+#, kde-format
+msgid "No prompt selected"
+msgstr "Nie je vybraná žiadna výzva"
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:292
+#, kde-format
+msgid "Argument \"%2\" is required."
+msgid_plural "Arguments %2 are required."
+msgstr[0] "Argument „%2“ je povinný."
+msgstr[1] "Argumenty %2 sú povinné."
+msgstr[2] "Argumenty %2 sú povinné."
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:297
+#, kde-format
+msgid ""
+"Prompt cannot be retrieved. Is the server connected and does it support "
+"prompts?"
+msgstr "Výzvu nie je možné získať. Je server pripojený a podporuje výzvy?"
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:301
+#, kde-format
+msgid "Getting prompt…"
+msgstr "Získava sa výzva…"
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:317
+#, kde-format
+msgid "Prompt retrieved: %1 message."
+msgid_plural "Prompt retrieved: %1 messages."
+msgstr[0] "Výzva získaná: %1 správa."
+msgstr[1] "Výzva získaná: %1 správy."
+msgstr[2] "Výzva získaná: %1 správ."
+
+#: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:336
+#, kde-format
+msgid "No messages."
+msgstr "Žiadne správy."
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:49
+#: widgets/kmcpclientinspectorserverinfowidget.cpp:32
+#, kde-format
+msgctxt "@label"
+msgid "Name:"
+msgstr "Názov:"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:50
+#, kde-format
+msgctxt "@label"
+msgid "Title:"
+msgstr "Názov:"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:51
+#, kde-format
+msgctxt "@label"
+msgid "Version:"
+msgstr "Verzia:"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:52
+#, kde-format
+msgctxt "@label"
+msgid "Description:"
+msgstr "Popis:"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:53
+#, kde-format
+msgctxt "@label"
+msgid "Website:"
+msgstr "Webová stránka:"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:54
+#, kde-format
+msgctxt "@label"
+msgid "Protocol version:"
+msgstr "Verzia protokolu:"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:55
+#, kde-format
+msgctxt "@label"
+msgid "Capabilities:"
+msgstr "Schopnosti:"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:63
+#, kde-format
+msgctxt "@label"
+msgid "Instructions:"
+msgstr "Pokyny:"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:69
+#, kde-format
+msgid "The server did not send instructions."
+msgstr "Server neposlal pokyny."
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:72
+#, kde-format
+msgid "Information"
+msgstr "Informácie"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:75
+#, kde-format
+msgid "JSON"
+msgstr "JSON"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:136
+#, kde-format
+msgctxt "@info server capability option"
+msgid "list changed notifications"
+msgstr "upozornenia na zmenu zoznamu"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:140
+#, kde-format
+msgctxt "@info server capability"
+msgid "Tools"
+msgstr "Nástroje"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:144
+#, kde-format
+msgctxt "@info server capability"
+msgid "Prompts"
+msgstr "Výzvy"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:149
+#, kde-format
+msgctxt "@info server capability option"
+msgid "subscribe"
+msgstr "odber"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:154
+#, kde-format
+msgctxt "@info server capability"
+msgid "Resources"
+msgstr "Zdroje"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:157
+#, kde-format
+msgctxt "@info server capability"
+msgid "Logging"
+msgstr "Záznam"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:160
+#, kde-format
+msgctxt "@info server capability"
+msgid "Completions"
+msgstr "Doplňovanie"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:163
+#, kde-format
+msgctxt "@info server capability"
+msgid "Tasks"
+msgstr "Úlohy"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:166
+#, kde-format
+msgctxt "@info server capability"
+msgid "Experimental"
+msgstr "Experimentálne"
+
+#: widgets/actions/kmcpclientinspectorinitializewidget.cpp:169
+#, kde-format
+msgctxt "@info server capabilities"
+msgid "None"
+msgstr "Žiadne"
+
+#: widgets/actions/kmcpclientinspectorlistresourceswidget.cpp:16
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:47
+#, kde-format
+msgctxt "@action:button"
+msgid "List Resources"
+msgstr "Zoznam zdrojov"
+
+#: widgets/actions/kmcpclientinspectorlistresourceswidget.cpp:30
+#, kde-format
+msgid "Resources Updated"
+msgstr "Zdroje aktualizované"
+
+#: widgets/actions/kmcpclientinspectorlistresourceswidget.cpp:31
+#, kde-format
+msgid "Resources were updated in '%1'."
+msgstr "Zdroje boli aktualizované v „%1“."
+
+#: widgets/actions/kmcpclientinspectorlogsearchwidget.cpp:17
+#, kde-format
+msgctxt "@action:button"
+msgid "Clear"
+msgstr "Vymazať"
+
+#: widgets/actions/kmcpclientinspectorlogtreewidget.cpp:40
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Direction:"
+msgstr "Smer:"
+
+#: widgets/actions/kmcpclientinspectorpingwidget.cpp:12
+#, kde-format
+msgctxt "@action:button"
+msgid "Ping"
+msgstr "Ping"
+
+#: widgets/actions/kmcpclientinspectorpromptargumentswidget.cpp:21
+#, kde-format
+msgid "This prompt has no arguments."
+msgstr "Táto výzva nemá žiadne argumenty."
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:52
+#, kde-format
+msgctxt "@action:button"
+msgid "Read Resource"
+msgstr "Načítať zdroj"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:53
+#, kde-format
+msgctxt "@action:button"
+msgid "Subscribe"
+msgstr "Odoberať"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:54
+#, kde-format
+msgctxt "@action:button"
+msgid "Unsubscribe"
+msgstr "Odhlásiť sa"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:118
+#, kde-format
+msgctxt "@label:textbox"
+msgid "URI:"
+msgstr "URI:"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:123
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Select a resource or enter its URI"
+msgstr "Vyberte zdroj alebo zadajte jeho URI"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:154
+#, kde-format
+msgctxt "@title:tab"
+msgid "Contents"
+msgstr "Obsah"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:262
+#, kde-format
+msgid "Subscribed to updates"
+msgstr "Odoberajú sa aktualizácie"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:271
+#, kde-format
+msgid "No resource selected"
+msgstr "Nie je vybraný žiadny zdroj"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:323
+#, kde-format
+msgid ""
+"Resource cannot be read. Is the server connected and does it support "
+"resources?"
+msgstr "Zdroj nie je možné načítať. Je server pripojený a podporuje zdroje?"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:327
+#, kde-format
+msgid "Reading resource…"
+msgstr "Načítava sa zdroj…"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:336
+#, kde-format
+msgid ""
+"Cannot subscribe to resource. Does the server support resource subscriptions?"
+msgstr "Zdroj nie je možné odoberať. Podporuje server odber zdrojov?"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:340
+#, kde-format
+msgid "Subscribing to resource…"
+msgstr "Prihlasuje sa odber zdroja…"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:349
+#, kde-format
+msgid "Cannot unsubscribe from resource."
+msgstr "Odber zdroja nie je možné zrušiť."
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:353
+#, kde-format
+msgid "Unsubscribing from resource…"
+msgstr "Ruší sa odber zdroja…"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:365
+#, kde-format
+msgid "Subscribed to \"%1\"."
+msgstr "Odoberá sa „%1“."
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:368
+#, kde-format
+msgid "Unsubscribed from \"%1\"."
+msgstr "Odber „%1“ bol zrušený."
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:381
+#, kde-format
+msgid "Resource \"%1\" was updated, reading it again…"
+msgstr "Zdroj „%1“ bol aktualizovaný, znova sa načítava…"
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:384
+#, kde-format
+msgid "Resource \"%1\" was updated."
+msgstr "Zdroj „%1“ bol aktualizovaný."
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:400
+#, kde-format
+msgid "Resource read: %1 content."
+msgid_plural "Resource read: %1 contents."
+msgstr[0] "Zdroj načítaný: %1 obsah."
+msgstr[1] "Zdroj načítaný: %1 obsahy."
+msgstr[2] "Zdroj načítaný: %1 obsahov."
+
+#: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:413
+#, kde-format
+msgid "No contents."
+msgstr "Žiadny obsah."
+
+#: widgets/actions/kmcpclientinspectorresourcetemplateswidget.cpp:15
+#, kde-format
+msgctxt "@action:button"
+msgid "Resource Templates"
+msgstr "Šablóny zdrojov"
+
+#: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:51
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Server level:"
+msgstr "Úroveň servera:"
+
+#: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:57
+#, kde-format
+msgctxt "@item:inlistbox logging level"
+msgid "Server Default"
+msgstr "Predvolená servera"
+
+#: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:60
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Minimum level of the log messages sent by the server (logging/setLevel)."
+msgstr ""
+"Najnižšia úroveň správ záznamu, ktoré server posiela (logging/setLevel)."
+
+#: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:63
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Show from:"
+msgstr "Zobraziť od:"
+
+#: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:70
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Hide received log messages below this level."
+msgstr "Skryť prijaté správy záznamu pod touto úrovňou."
+
+#: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:123
+#, kde-format
+msgctxt "@item:inlistbox logging level"
+msgid "Debug"
+msgstr "Ladenie"
+
+#: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:124
+#, kde-format
+msgctxt "@item:inlistbox logging level"
+msgid "Info"
+msgstr "Informácia"
+
+#: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:125
+#, kde-format
+msgctxt "@item:inlistbox logging level"
+msgid "Notice"
+msgstr "Oznámenie"
+
+#: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:126
+#, kde-format
+msgctxt "@item:inlistbox logging level"
+msgid "Warning"
+msgstr "Varovanie"
+
+#: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:127
+#, kde-format
+msgctxt "@item:inlistbox logging level"
+msgid "Error"
+msgstr "Chyba"
+
+#: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:128
+#, kde-format
+msgctxt "@item:inlistbox logging level"
+msgid "Critical"
+msgstr "Kritická"
+
+#: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:129
+#, kde-format
+msgctxt "@item:inlistbox logging level"
+msgid "Alert"
+msgstr "Výstraha"
+
+#: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:130
+#, kde-format
+msgctxt "@item:inlistbox logging level"
+msgid "Emergency"
+msgstr "Núdzová"
+
+#: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:45
+#, kde-format
+msgctxt "@option:check"
+msgid "Edit arguments as JSON"
+msgstr "Upravovať argumenty ako JSON"
+
+#: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:49
+#, kde-format
+msgid "This tool has no arguments."
+msgstr "Tento nástroj nemá žiadne argumenty."
+
+#: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:169
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Integer"
+msgstr "Celé číslo"
+
+#: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:173
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Number"
+msgstr "Číslo"
+
+#: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:177
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "JSON value"
+msgstr "Hodnota JSON"
+
+#: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:330
+#, kde-format
+msgid "Argument \"%1\" is required."
+msgstr "Argument „%1“ je povinný."
+
+#: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:340
+#, kde-format
+msgid "Argument \"%1\" must be an integer."
+msgstr "Argument „%1“ musí byť celé číslo."
+
+#: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:349
+#, kde-format
+msgid "Argument \"%1\" must be a number."
+msgstr "Argument „%1“ musí byť číslo."
+
+#: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:358
+#, kde-format
+msgid "Argument \"%1\" is not a valid JSON value."
+msgstr "Argument „%1“ nie je platná hodnota JSON."
+
+#: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:379
+#, kde-format
+msgid "Invalid JSON arguments: %1 (offset %2)."
+msgstr "Neplatné argumenty JSON: %1 (posun %2)."
+
+#: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:385
+#, kde-format
+msgid "Arguments must be a JSON object."
+msgstr "Argumenty musia byť objekt JSON."
+
+#: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:17
+#, kde-format
+msgctxt "@option:check"
+msgid "Elicitation"
+msgstr "Vyžiadanie údajov"
+
+#: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:18
+#, kde-format
+msgctxt "@option:check"
+msgid "URL elicitation"
+msgstr "Vyžiadanie údajov cez URL"
+
+#: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:19
+#, kde-format
+msgctxt "@option:check"
+msgid "Roots"
+msgstr "Korene"
+
+#: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:20
+#, kde-format
+msgctxt "@option:check"
+msgid "Sampling"
+msgstr "Vzorkovanie"
+
+#: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:27
+#, kde-format
+msgid "Capabilities"
+msgstr "Schopnosti"
+
+#: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:56
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Configure Roots"
+msgstr "Nastaviť korene"
+
+#: widgets/configure/kmcpclientinspectorconfiguregeneralwidget.cpp:34
+#, kde-format
+msgid "Request Timeout:"
+msgstr "Časový limit požiadavky:"
+
+#: widgets/configure/kmcpclientinspectorconfiguregeneralwidget.cpp:38
+#, kde-format
+msgctxt "Interval suffix"
+msgid "%v second"
+msgid_plural "%v seconds"
+msgstr[0] "%v sekunda"
+msgstr[1] "%v sekundy"
+msgstr[2] "%v sekúnd"
+
+#: widgets/configure/kmcpclientinspectorconfiguresettingsdialog.cpp:24
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure KMcpClientInspector"
+msgstr "Nastaviť KMcpClientInspector"
+
+#: widgets/configure/kmcpclientinspectorconfiguresettingsdialog.cpp:27
+#, kde-format
+msgctxt "@title Preferences page name"
+msgid "General"
+msgstr "Všeobecné"
+
+#: widgets/configure/kmcpclientinspectorconfiguresettingsdialog.cpp:32
+#, kde-format
+msgctxt "@title Preferences page name"
+msgid "MCP Servers"
+msgstr "MCP servery"
+
+#: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:30
+#, kde-format
+msgctxt "@title:window"
+msgid "Server Requests Information"
+msgstr "Server žiada informácie"
+
+#: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:42
+#, kde-format
+msgid "No information is requested."
+msgstr "Nežiadajú sa žiadne informácie."
+
+#: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:50
+#, kde-format
+msgctxt "@action:button"
+msgid "Accept"
+msgstr "Prijať"
+
+#: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:51
+#: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:73
+#, kde-format
+msgctxt "@action:button"
+msgid "Decline"
+msgstr "Odmietnuť"
+
+#: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:68
+#, kde-format
+msgctxt "@title:window"
+msgid "Invalid Information"
+msgstr "Neplatné informácie"
+
+#: widgets/dialogs/kmcpclientinspectorrootsdialog.cpp:22
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure Roots"
+msgstr "Nastaviť korene"
+
+#: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:37
+#, kde-format
+msgctxt "@title:window"
+msgid "Server Requests Message Generation"
+msgstr "Server žiada vygenerovanie správy"
+
+#: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:41
+#, kde-format
+msgctxt "@label"
+msgid "Request:"
+msgstr "Požiadavka:"
+
+#: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:54
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Model:"
+msgstr "Model:"
+
+#: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:57
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Stop reason:"
+msgstr "Dôvod zastavenia:"
+
+#: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:60
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Response:"
+msgstr "Odpoveď:"
+
+#: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:65
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Write the message generated for the server…"
+msgstr "Napíšte správu vygenerovanú pre server…"
+
+#: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:71
+#, kde-format
+msgctxt "@action:button"
+msgid "Send"
+msgstr "Odoslať"
+
+#: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:73
+#, kde-format
+msgctxt "@action:button"
+msgid "Reject"
+msgstr "Odmietnuť"
+
+#: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:24
+#, kde-format
+msgctxt "@title:window"
+msgid "Server Requests to Open a Web Page"
+msgstr "Server žiada otvorenie webovej stránky"
+
+#: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:47
+#, kde-format
+msgctxt "@label"
+msgid "Domain:"
+msgstr "Doména:"
+
+#: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:54
+#, kde-format
+msgctxt "@label"
+msgid "URL:"
+msgstr "URL:"
+
+#: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:57
+#, kde-format
+msgid "The page will be opened in your web browser only if you click \"Open\"."
+msgstr ""
+"Stránka sa otvorí vo webovom prehliadači, len ak kliknete na „Otvoriť“."
+
+#: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:58
+#, kde-format
+msgid "This URL is invalid or is not a web page: it cannot be opened."
+msgstr "Táto URL je neplatná alebo nie je webová stránka: nedá sa otvoriť."
+
+#: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:67
+#, kde-format
+msgctxt "@action:button"
+msgid "Open"
+msgstr "Otvoriť"
+
+#: widgets/kmcpclientinspectorconnectbuttonswidget.cpp:14
+#, kde-format
+msgctxt "@action:button"
+msgid "Connect"
+msgstr "Pripojiť"
+
+#: widgets/kmcpclientinspectorconnectbuttonswidget.cpp:15
+#, kde-format
+msgctxt "@action:button"
+msgid "Disconnect"
+msgstr "Odpojiť"
+
+#: widgets/kmcpclientinspectormainwindow.cpp:62
+#, kde-format
+msgid "What's new"
+msgstr "What's new"
+
+#: widgets/kmcpclientinspectorserverinfowidget.cpp:31
+#, kde-format
+msgctxt "@label"
+msgid "Icon:"
+msgstr "Ikona:"
+
+#: widgets/kmcpclientinspectorserverinfowidget.cpp:33
+#, kde-format
+msgctxt "@label"
+msgid "Type:"
+msgstr "Typ:"
+
+#: widgets/kmcpclientinspectorserverinfowidget.cpp:34
+#, kde-format
+msgctxt "@label"
+msgid "Command:"
+msgstr "Príkaz:"
+
+#: widgets/kmcpclientinspectorserverinfowidget.cpp:35
+#, kde-format
+msgctxt "@label"
+msgid "Arguments:"
+msgstr "Argumenty:"
+
+#: widgets/kmcpclientinspectorserverinfowidget.cpp:36
+#, kde-format
+msgctxt "@label"
+msgid "Environment:"
+msgstr "Prostredie:"
+
+#: widgets/kmcpclientinspectorserverinfowidget.cpp:37
+#, kde-format
+msgctxt "@label"
+msgid "Url:"
+msgstr "URL:"
+
+#: widgets/kmcpclientinspectorserverinfowidget.cpp:38
+#, kde-format
+msgctxt "@label"
+msgid "Headers:"
+msgstr "Hlavičky"
+
+#: widgets/kmcpclientinspectorserverinfowidget.cpp:39
+#, kde-format
+msgctxt "@label"
+msgid "Authentication:"
+msgstr "Overenie:"
+
+#: widgets/kmcpclientinspectorserverinfowidget.cpp:40
+#, kde-format
+msgctxt "@label"
+msgid "Roots:"
+msgstr "Korene:"
+
+#: widgets/kmcpclientinspectorserverinfowidget.cpp:82
+#, kde-format
+msgctxt "@info"
+msgid "None"
+msgstr "Žiadne"
+
+#: widgets/kmcpclientinspectorserverinfowidget.cpp:82
+#, kde-format
+msgctxt "@info"
+msgid "Bearer token"
+msgstr "Token Bearer"
+
+#: widgets/kmcpclientinspectorserversettingswidget.cpp:25
+#, kde-format
+msgctxt "@action:button"
+msgid "Edit…"
+msgstr "&Upraviť"
+
+#: widgets/kmcpclientinspectortabpage.cpp:180
+#, kde-format
+msgid ""
+"The server reports that the interaction in the web browser is complete "
+"(elicitation \"%1\"). You can retry the request."
+msgstr ""
+"Server hlási, že interakcia vo webovom prehliadači je dokončená (vyžiadanie "
+"údajov „%1“). Požiadavku môžete zopakovať."
+
+#. i18n: ectx: Menu (settings)
+#: widgets/kmcpclientinspectorui.rc:11
+#, kde-format
+msgid "&Settings"
+msgstr "Na&stavenia"
+
+#. i18n: ectx: Menu (help)
+#: widgets/kmcpclientinspectorui.rc:15
+#, kde-format
+msgid "&Help"
+msgstr "&Pomocník"
+
+#: widgets/misc/directioncombobox.cpp:20
+#, kde-format
+msgctxt "@item:inlistbox message direction"
+msgid "All"
+msgstr "Všetky"
+
+#: widgets/misc/directioncombobox.cpp:21
+#, kde-format
+msgctxt "@item:inlistbox message direction"
+msgid "Sent"
+msgstr "Odoslané"
+
+#: widgets/misc/directioncombobox.cpp:22
+#, kde-format
+msgctxt "@item:inlistbox message direction"
+msgid "Received"
+msgstr "Prijaté"
