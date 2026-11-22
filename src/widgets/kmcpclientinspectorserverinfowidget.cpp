@@ -86,11 +86,12 @@ void KMcpClientInspectorServerInfoWidget::setServerInfo(const TextAutoGenerateTe
 
     mMainLayout->setRowVisible(mCommand, isStdio);
     mMainLayout->setRowVisible(mArguments, isStdio);
-    mMainLayout->setRowVisible(mEnvironments, isStdio);
+    mMainLayout->setRowVisible(mEnvironments, isStdio && !mEnvironments->text().isEmpty());
     mMainLayout->setRowVisible(mServerUrl, !isStdio);
     mMainLayout->setRowVisible(mHeaders, !isStdio && !headerNames.isEmpty());
     mMainLayout->setRowVisible(mAuthentication, !isStdio);
     mMainLayout->setRowVisible(mIcon, !icon.isNull());
+    mMainLayout->setRowVisible(mRoots, !mRoots->text().isEmpty());
 }
 
 #include "moc_kmcpclientinspectorserverinfowidget.cpp"
