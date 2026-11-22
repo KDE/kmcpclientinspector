@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kmcpclientinspector\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-21 01:14+0000\n"
-"PO-Revision-Date: 2026-11-16 08:18-0300\n"
+"PO-Revision-Date: 2026-11-21 04:31-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@kde.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -1309,8 +1309,6 @@ msgid "Received"
 msgstr "Recebida"
 
 #: widgets/misc/mcpservermenu.cpp:22
-#, fuzzy, kde-format
-#| msgctxt "@title Preferences page name"
-#| msgid "MCP Servers"
+#, kde-format
 msgid "Server"
-msgstr "Servidores MCP"
+msgstr "Servidor"
