@@ -74,6 +74,10 @@
       <description>
         <ul>
           <li>Add MCP server menu.</li>
+          <li xml:lang="ca">Afegeix el menú de servidor MCP.</li>
+          <li xml:lang="nl">MCP-servermenu toevoegen.</li>
+          <li xml:lang="pt-BR">Adicionado menu de servidor MCP.</li>
+          <li xml:lang="uk">Додано меню сервера MCP.</li>
         </ul>
       </description>
     </release>
