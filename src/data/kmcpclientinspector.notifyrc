@@ -10,6 +10,7 @@ Name[pt_BR]=kmcpclientinspector
 Name[sk]=kmcpclientinspector
 Name[tr]=K MCP İstemcisi Denetçisi
 Name[uk]=kmcpclientinspector
+Name[zh_CN]=kmcpclientinspector
 DesktopEntry=org.kde.kmcpclientinspector
 Comment=Notification
 Comment[ar]=إشعار
@@ -21,6 +22,7 @@ Comment[pt_BR]=Notificação
 Comment[sk]=Upozornenie
 Comment[tr]=Bildirim
 Comment[uk]=Сповіщення
+Comment[zh_CN]=通知
 
 [Event/server-tools-updated]
 Name=Tools Updated
@@ -33,6 +35,7 @@ Name[pt_BR]=Ferramentas atualizadas
 Name[sk]=Nástroje aktualizované
 Name[tr]=Araçlar Güncellendi
 Name[uk]=Інструменти оновлено
+Name[zh_CN]=工具已更新
 Action=Popup
 Urgency=Normal
 
@@ -47,6 +50,7 @@ Name[pt_BR]=Prompts atualizados
 Name[sk]=Výzvy aktualizované
 Name[tr]=İstemler Güncellendi
 Name[uk]=Запити оновлено
+Name[zh_CN]=提示词已更新
 Action=Popup
 Urgency=Normal
 
@@ -61,6 +65,7 @@ Name[pt_BR]=Recursos atualizados
 Name[sk]=Zdroje aktualizované
 Name[tr]=Özkaynaklar Güncellendi
 Name[uk]=Ресурси оновлено
+Name[zh_CN]=资源已更新
 Action=Popup
 Urgency=Normal
 
@@ -75,5 +80,6 @@ Name[pt_BR]=Erro do servidor
 Name[sk]=Chyba servera
 Name[tr]=Sunucu Hatası
 Name[uk]=Помилка сервера
+Name[zh_CN]=服务器错误
 Action=Popup
 Urgency=Normal
