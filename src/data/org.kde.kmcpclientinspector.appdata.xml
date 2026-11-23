@@ -19,6 +19,7 @@
   <name xml:lang="pt-BR">KMcpClientInspector</name>
   <name xml:lang="sk">KMcpClientInspector</name>
   <name xml:lang="uk">KMcpClientInspector</name>
+  <name xml:lang="zh-CN">KMcpClientInspector</name>
   <summary>MCP client inspector</summary>
   <summary xml:lang="ar">فاحص عميل MCP</summary>
   <summary xml:lang="ca">Inspector de client MCP</summary>
@@ -28,6 +29,7 @@
   <summary xml:lang="pt-BR">Inspetor de cliente MCP</summary>
   <summary xml:lang="sk">Inšpektor MCP klientov</summary>
   <summary xml:lang="uk">Ревізор клієнта MCP</summary>
+  <summary xml:lang="zh-CN">MCP 客户端检查器</summary>
   <description>
     <p>
       KMcpClientInspector allows to show mcp client apps.
@@ -40,6 +42,7 @@
     <p xml:lang="pt-BR">O KMcpClientInspector permite exibir aplicativos clientes MCP.</p>
     <p xml:lang="sk">KMcpClientInspector umožňuje zobraziť aplikácie MCP klientov.</p>
     <p xml:lang="uk">KMcpClientInspector надає змогу показувати програми-клієнти mcp.</p>
+    <p xml:lang="zh-CN">KMcpClientInspector 允许显示 mcp 客户端应用。</p>
   </description>
   <url type="homepage">https://apps.kde.org/kmcpclientinspector</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kmcpclientinspector</url>
@@ -79,6 +82,7 @@
           <li xml:lang="pt-BR">Adicionado suporte a ferramentas de chamada.</li>
           <li xml:lang="sk">Pridaná podpora volania nástrojov.</li>
           <li xml:lang="uk">Додано підтримку виклику інструменту.</li>
+          <li xml:lang="zh-CN">添加工具调用支持。</li>
           <li>Add What's new dialog.</li>
           <li xml:lang="ar">إضافة حوار «ما الجديد»</li>
           <li xml:lang="ca">Afegeix el diàleg Què hi ha de nou.</li>
@@ -88,6 +92,7 @@
           <li xml:lang="pt-BR">Adicionado o diálogo "O que há de novo".</li>
           <li xml:lang="sk">Pridaný dialóg Čo je nové.</li>
           <li xml:lang="uk">Додано вікно «Що нового?».</li>
+          <li xml:lang="zh-CN">添加新功能对话框。</li>
         </ul>
       </description>
     </release>
@@ -96,6 +101,10 @@
   <screenshots>
     <screenshot type="default">
       <caption>Default Interface</caption>
+      <caption xml:lang="ca">Interfície predeterminada</caption>
+      <caption xml:lang="nl">Standaard interface</caption>
+      <caption xml:lang="pt-BR">Interface padrão</caption>
+      <caption xml:lang="uk">Типовий інтерфейс</caption>
       <image type="source">https://cdn.kde.org/screenshots/kmcpclientinspector/kmcpclientinspector.png</image>
     </screenshot>
   </screenshots>
