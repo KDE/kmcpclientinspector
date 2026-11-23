@@ -7,6 +7,7 @@
 
 #include "libkmcpclientinspectorwidgets_private_export.h"
 #include <TextCustomEditor/PlainTextEditor>
+class QMenu;
 namespace TextCustomEditor
 {
 class PlainTextEditorWidget;
@@ -17,6 +18,12 @@ class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT JsonPlainTextEditor : public Te
 public:
     explicit JsonPlainTextEditor(QWidget *parent = nullptr);
     ~JsonPlainTextEditor() override;
+
+protected:
+    void addExtraMenuEntry(QMenu *menu, QPoint pos) override;
+
+private:
+    LIBKMCPCLIENTINSPECTORWIDGETS_NO_EXPORT void slotSaveAs();
 };
 
 class LIBKMCPCLIENTINSPECTORWIDGETS_TESTS_EXPORT JsonPlainTextEditWidget : public QWidget
