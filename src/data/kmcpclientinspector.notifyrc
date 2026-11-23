@@ -9,6 +9,7 @@ Name[nl]=kmcpclientinspecteur
 Name[pt_BR]=kmcpclientinspector
 Name[sk]=kmcpclientinspector
 Name[uk]=kmcpclientinspector
+Name[zh_CN]=kmcpclientinspector
 DesktopEntry=org.kde.kmcpclientinspector
 Comment=Notification
 Comment[ar]=إشعار
@@ -19,6 +20,7 @@ Comment[nl]=Melding
 Comment[pt_BR]=Notificação
 Comment[sk]=Upozornenie
 Comment[uk]=Сповіщення
+Comment[zh_CN]=通知
 
 [Event/server-tools-updated]
 Name=Tools Updated
@@ -30,6 +32,7 @@ Name[nl]=Hulpmiddelen bijgewerkt
 Name[pt_BR]=Ferramentas atualizadas
 Name[sk]=Nástroje aktualizované
 Name[uk]=Інструменти оновлено
+Name[zh_CN]=工具已更新
 Action=Popup
 Urgency=Normal
 
@@ -43,6 +46,7 @@ Name[nl]=Prompts bijgewerkt
 Name[pt_BR]=Prompts atualizados
 Name[sk]=Výzvy aktualizované
 Name[uk]=Запити оновлено
+Name[zh_CN]=提示词已更新
 Action=Popup
 Urgency=Normal
 
@@ -56,6 +60,7 @@ Name[nl]=Hulpbronnen bijgewerkt
 Name[pt_BR]=Recursos atualizados
 Name[sk]=Zdroje aktualizované
 Name[uk]=Ресурси оновлено
+Name[zh_CN]=资源已更新
 Action=Popup
 Urgency=Normal
 
@@ -69,5 +74,6 @@ Name[nl]=Serverfout
 Name[pt_BR]=Erro do servidor
 Name[sk]=Chyba servera
 Name[uk]=Помилка сервера
+Name[zh_CN]=服务器错误
 Action=Popup
 Urgency=Normal
