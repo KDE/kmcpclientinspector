@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmcpclientinspector\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-21 01:14+0000\n"
+"POT-Creation-Date: 2026-11-24 01:08+0000\n"
 "PO-Revision-Date: 2026-11-21 12:40+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1308,6 +1308,24 @@ msgstr "Verzonden"
 msgctxt "@item:inlistbox message direction"
 msgid "Received"
 msgstr "Ontvangen"
+
+#: widgets/misc/jsonplaintexteditwidget.cpp:51
+#, kde-format
+msgid ""
+"Could not write the file %1:\n"
+"\"%2\" is the detailed error description."
+msgstr ""
+
+#: widgets/misc/jsonplaintexteditwidget.cpp:55
+#, kde-format
+msgctxt "@title:window"
+msgid "Save File Error"
+msgstr ""
+
+#: widgets/misc/jsonplaintexteditwidget.cpp:81
+#, kde-format
+msgid "JSON Files (*.json);;All Files (*)"
+msgstr ""
 
 #: widgets/misc/mcpservermenu.cpp:22
 #, kde-format

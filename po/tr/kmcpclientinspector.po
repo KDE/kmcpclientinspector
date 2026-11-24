@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmcpclientinspector\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-21 01:14+0000\n"
-"PO-Revision-Date: 2026-11-16 18:31+0300\n"
+"POT-Creation-Date: 2026-11-24 01:08+0000\n"
+"PO-Revision-Date: 2026-11-23 18:14+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -167,7 +167,7 @@ msgstr "%1 içinde hata"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:76
 #, kde-format
 msgid "%1: not set (default: %2)"
-msgstr "%1: Ayarlı değil (öntanımlı: %2"
+msgstr "%1: Ayarlı değil (varsayılan: %2"
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:89
 #: widgets/actions/kmcpclientinspectorlisttoolswidget.cpp:12
@@ -309,7 +309,7 @@ msgstr "Kapalı dünya"
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:486
 #, kde-format
 msgid "The server did not send annotations: default values are used."
-msgstr "Sunucu, ek açıklamaları göndermedi: Öntanımlı değerler kullanıldı."
+msgstr "Sunucu, ek açıklamaları göndermedi: Varsayılan değerler kullanıldı."
 
 #: widgets/actions/kmcpclientinspectorcalltoolwidget.cpp:510
 #, kde-format
@@ -1289,6 +1289,24 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox message direction"
 msgid "Received"
+msgstr ""
+
+#: widgets/misc/jsonplaintexteditwidget.cpp:51
+#, kde-format
+msgid ""
+"Could not write the file %1:\n"
+"\"%2\" is the detailed error description."
+msgstr ""
+
+#: widgets/misc/jsonplaintexteditwidget.cpp:55
+#, kde-format
+msgctxt "@title:window"
+msgid "Save File Error"
+msgstr ""
+
+#: widgets/misc/jsonplaintexteditwidget.cpp:81
+#, kde-format
+msgid "JSON Files (*.json);;All Files (*)"
 msgstr ""
 
 #: widgets/misc/mcpservermenu.cpp:22
