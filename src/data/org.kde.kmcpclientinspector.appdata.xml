@@ -119,6 +119,7 @@
     <screenshot type="default">
       <caption>Default Interface</caption>
       <caption xml:lang="ca">Interfície predeterminada</caption>
+      <caption xml:lang="es">Interfaz predeterminada</caption>
       <caption xml:lang="nl">Standaard interface</caption>
       <caption xml:lang="pt-BR">Interface padrão</caption>
       <caption xml:lang="uk">Типовий інтерфейс</caption>
