@@ -15,6 +15,7 @@
   <name xml:lang="ca">KMcpClientInspector</name>
   <name xml:lang="ca-valencia">KMcpClientInspector</name>
   <name xml:lang="es">KMcpClientInspector</name>
+  <name xml:lang="he">KMcpClientInspector</name>
   <name xml:lang="nl">KMcpClientInspecteur</name>
   <name xml:lang="pt-BR">KMcpClientInspector</name>
   <name xml:lang="sk">KMcpClientInspector</name>
@@ -25,6 +26,7 @@
   <summary xml:lang="ca">Inspector de client MCP</summary>
   <summary xml:lang="ca-valencia">Inspector de client MCP</summary>
   <summary xml:lang="es">Inspector de clientes MCP</summary>
+  <summary xml:lang="he">מאבחן לקוח MCP</summary>
   <summary xml:lang="nl">MCP-clientinspecteur</summary>
   <summary xml:lang="pt-BR">Inspetor de cliente MCP</summary>
   <summary xml:lang="sk">Inšpektor MCP klientov</summary>
@@ -38,6 +40,7 @@
     <p xml:lang="ca">KMcpClientInspector permet mostrar aplicacions clients de MCP.</p>
     <p xml:lang="ca-valencia">KMcpClientInspector permet mostrar aplicacions clients de MCP.</p>
     <p xml:lang="es">KMcpClientInspector permite mostrar aplicaciones clientes de MCP.</p>
+    <p xml:lang="he">KMcpClientInspector מאפשר לך להציג יישומי לקוח mcp.</p>
     <p xml:lang="nl">KMcpClientInspecteur maakt het mogelijk om MCP-client-toepassingen weer te geven.</p>
     <p xml:lang="pt-BR">O KMcpClientInspector permite exibir aplicativos clientes MCP.</p>
     <p xml:lang="sk">KMcpClientInspector umožňuje zobraziť aplikácie MCP klientov.</p>
@@ -78,6 +81,7 @@
           <li xml:lang="ca">Afegeix la implementació d'eina d'invocació.</li>
           <li xml:lang="ca-valencia">Afig la implementació d'eina d'invocació.</li>
           <li xml:lang="es">Añadir compatibilidad con la herramienta de llamadas.</li>
+          <li xml:lang="he">הוספת תמיכה בקריאה לכלים.</li>
           <li xml:lang="nl">Voegt ondersteuning van aanroephulpmiddelen toe</li>
           <li xml:lang="pt-BR">Adicionado suporte a ferramentas de chamada.</li>
           <li xml:lang="sk">Pridaná podpora volania nástrojov.</li>
@@ -88,6 +92,7 @@
           <li xml:lang="ca">Afegeix el diàleg Què hi ha de nou.</li>
           <li xml:lang="ca-valencia">Afig el diàleg Què hi ha de nou.</li>
           <li xml:lang="es">Añadir diálogo de novedades.</li>
+          <li xml:lang="he">הוספת חלונית מה חדש.</li>
           <li xml:lang="nl">Dialoog Wat is nieuw toevoegen.</li>
           <li xml:lang="pt-BR">Adicionado o diálogo "O que há de novo".</li>
           <li xml:lang="sk">Pridaný dialóg Čo je nové.</li>
@@ -103,6 +108,7 @@
       <caption>Default Interface</caption>
       <caption xml:lang="ca">Interfície predeterminada</caption>
       <caption xml:lang="es">Interfaz predeterminada</caption>
+      <caption xml:lang="he">ממשק ברירת מחדל</caption>
       <caption xml:lang="nl">Standaard interface</caption>
       <caption xml:lang="pt-BR">Interface padrão</caption>
       <caption xml:lang="uk">Типовий інтерфейс</caption>
