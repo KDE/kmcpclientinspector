@@ -81,6 +81,8 @@
         <ul>
           <li>Add MCP server menu.</li>
           <li xml:lang="ca">Afegeix el menú de servidor MCP.</li>
+          <li xml:lang="ca-valencia">Afig el menú de servidor MCP.</li>
+          <li xml:lang="es">Añadir menú del servidor MCP.</li>
           <li xml:lang="he">נוסף תפריט שרת MCP.</li>
           <li xml:lang="nl">MCP-servermenu toevoegen.</li>
           <li xml:lang="pt-BR">Adicionado menu de servidor MCP.</li>
@@ -125,6 +127,7 @@
     <screenshot type="default">
       <caption>Default Interface</caption>
       <caption xml:lang="ca">Interfície predeterminada</caption>
+      <caption xml:lang="ca-valencia">Interfície predeterminada</caption>
       <caption xml:lang="es">Interfaz predeterminada</caption>
       <caption xml:lang="he">ממשק ברירת מחדל</caption>
       <caption xml:lang="nl">Standaard interface</caption>
