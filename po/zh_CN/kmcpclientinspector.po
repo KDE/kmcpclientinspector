@@ -1291,17 +1291,19 @@ msgid ""
 "Could not write the file %1:\n"
 "\"%2\" is the detailed error description."
 msgstr ""
+"无法写入文件 %1：\n"
+"“%2”为详细错误描述。"
 
 #: widgets/misc/jsonplaintexteditwidget.cpp:55
 #, kde-format
 msgctxt "@title:window"
 msgid "Save File Error"
-msgstr ""
+msgstr "保存文件错误"
 
 #: widgets/misc/jsonplaintexteditwidget.cpp:81
 #, kde-format
 msgid "JSON Files (*.json);;All Files (*)"
-msgstr ""
+msgstr "JSON 文件 (*.json);;所有文件 (*)"
 
 #: widgets/misc/mcpservermenu.cpp:22
 #, kde-format

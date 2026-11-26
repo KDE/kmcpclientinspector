@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kmcpclientinspector\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-24 01:08+0000\n"
-"PO-Revision-Date: 2026-11-21 01:27+0100\n"
+"PO-Revision-Date: 2026-11-25 00:42+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -93,7 +93,7 @@ msgstr "Nivel"
 #: core/kmcpclientinspectorserverlogmodel.cpp:125
 #, kde-format
 msgid "Logger"
-msgstr ""
+msgstr "Registrador"
 
 #: core/kmcpclientinspectorserverlogmodel.cpp:127
 #, kde-format
@@ -460,11 +460,13 @@ msgid ""
 "Completion cannot be requested. Is the server connected and does it support "
 "completions?"
 msgstr ""
+"No se puede solicitar la terminación. ¿Está conectado el servidor y permite "
+"terminaciones?"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:402
 #, kde-format
 msgid "Requesting completion…"
-msgstr ""
+msgstr "Solicitando terminación…"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:422
 #, kde-format
@@ -481,7 +483,7 @@ msgstr "Total: %1."
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:427
 #, kde-format
 msgid "More values are available."
-msgstr ""
+msgstr "Hay más valores disponibles."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:42
 #, kde-format
@@ -506,13 +508,13 @@ msgstr "Papel desconocido"
 #, kde-format
 msgctxt "@action:button"
 msgid "List Prompts"
-msgstr ""
+msgstr "Listar indicaciones"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:59
 #, kde-format
 msgctxt "@action:button"
 msgid "Get Prompt"
-msgstr ""
+msgstr "Obtener indicación"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:140
 #, kde-format
@@ -523,24 +525,24 @@ msgstr "Mensajes"
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:155
 #, kde-format
 msgid "Prompts Updated"
-msgstr ""
+msgstr "Indicaciones actualizadas"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:156
 #, kde-format
 msgid "Prompts were updated in '%1'."
-msgstr ""
+msgstr "Las indicaciones se han actualizado en «%1»."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:243
 #, kde-format
 msgid "No prompt selected"
-msgstr ""
+msgstr "No se ha seleccionado ninguna indicación"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:292
 #, kde-format
 msgid "Argument \"%2\" is required."
 msgid_plural "Arguments %2 are required."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Se requiere el argumento «%2»."
+msgstr[1] "Se requieren los argumentos %2."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:297
 #, kde-format
@@ -548,23 +550,25 @@ msgid ""
 "Prompt cannot be retrieved. Is the server connected and does it support "
 "prompts?"
 msgstr ""
+"No se puede obtener la indicación. ¿Está conectado el servidor y permite "
+"indicaciones?"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:301
 #, kde-format
 msgid "Getting prompt…"
-msgstr ""
+msgstr "Obteniendo indicación…"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:317
 #, kde-format
 msgid "Prompt retrieved: %1 message."
 msgid_plural "Prompt retrieved: %1 messages."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Indicación obtenida: %1 mensaje."
+msgstr[1] "Indicación obtenida: %1 mensajes."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:336
 #, kde-format
 msgid "No messages."
-msgstr ""
+msgstr "No hay mensajes."
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:49
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:32
@@ -618,7 +622,7 @@ msgstr "Instrucciones:"
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:69
 #, kde-format
 msgid "The server did not send instructions."
-msgstr ""
+msgstr "El servidor no ha enviado instrucciones."
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:72
 #, kde-format
@@ -634,7 +638,7 @@ msgstr "JSON"
 #, kde-format
 msgctxt "@info server capability option"
 msgid "list changed notifications"
-msgstr ""
+msgstr "listar notificaciones cambiadas"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:140
 #, kde-format
@@ -646,31 +650,31 @@ msgstr "Herramientas"
 #, kde-format
 msgctxt "@info server capability"
 msgid "Prompts"
-msgstr ""
+msgstr "Indicaciones"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:149
 #, kde-format
 msgctxt "@info server capability option"
 msgid "subscribe"
-msgstr ""
+msgstr "suscribirse"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:154
 #, kde-format
 msgctxt "@info server capability"
 msgid "Resources"
-msgstr "Recursor"
+msgstr "Recursos"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:157
 #, kde-format
 msgctxt "@info server capability"
 msgid "Logging"
-msgstr ""
+msgstr "Registro"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:160
 #, kde-format
 msgctxt "@info server capability"
 msgid "Completions"
-msgstr ""
+msgstr "Terminaciones"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:163
 #, kde-format
@@ -705,7 +709,7 @@ msgstr "Recursos actualizados"
 #: widgets/actions/kmcpclientinspectorlistresourceswidget.cpp:31
 #, kde-format
 msgid "Resources were updated in '%1'."
-msgstr ""
+msgstr "Los recursos se han actualizado en «%1»."
 
 #: widgets/actions/kmcpclientinspectorlogsearchwidget.cpp:17
 #, kde-format
@@ -728,7 +732,7 @@ msgstr "Ping"
 #: widgets/actions/kmcpclientinspectorpromptargumentswidget.cpp:21
 #, kde-format
 msgid "This prompt has no arguments."
-msgstr ""
+msgstr "Esta indicación no tiene argumentos."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:52
 #, kde-format
@@ -758,7 +762,7 @@ msgstr "URI:"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Select a resource or enter its URI"
-msgstr ""
+msgstr "Seleccione un recurso o introduzca su URI"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:154
 #, kde-format
@@ -769,12 +773,12 @@ msgstr "Contenido"
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:262
 #, kde-format
 msgid "Subscribed to updates"
-msgstr ""
+msgstr "Suscrito a actualizaciones"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:271
 #, kde-format
 msgid "No resource selected"
-msgstr ""
+msgstr "No se ha seleccionado ningún recurso"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:323
 #, kde-format
@@ -782,82 +786,86 @@ msgid ""
 "Resource cannot be read. Is the server connected and does it support "
 "resources?"
 msgstr ""
+"El recurso no se puede leer. ¿Está conectado el servidor y permite el uso de "
+"recursos?"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:327
 #, kde-format
 msgid "Reading resource…"
-msgstr ""
+msgstr "Leyendo recurso…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:336
 #, kde-format
 msgid ""
 "Cannot subscribe to resource. Does the server support resource subscriptions?"
 msgstr ""
+"No se puede suscribir al recurso. ¿Permite el servidor suscripciones a "
+"recursos?"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:340
 #, kde-format
 msgid "Subscribing to resource…"
-msgstr ""
+msgstr "Suscribiéndose a recurso…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:349
 #, kde-format
 msgid "Cannot unsubscribe from resource."
-msgstr ""
+msgstr "No se puede cancelar la suscripción al recurso."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:353
 #, kde-format
 msgid "Unsubscribing from resource…"
-msgstr ""
+msgstr "Cancelando la suscripción al recurso…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:365
 #, kde-format
 msgid "Subscribed to \"%1\"."
-msgstr ""
+msgstr "Suscrito a «%1»."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:368
 #, kde-format
 msgid "Unsubscribed from \"%1\"."
-msgstr ""
+msgstr "Cancelada suscripción a «%1»."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:381
 #, kde-format
 msgid "Resource \"%1\" was updated, reading it again…"
-msgstr ""
+msgstr "El recurso «%1» ha sido actualizado. Se vuelve a leer…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:384
 #, kde-format
 msgid "Resource \"%1\" was updated."
-msgstr ""
+msgstr "El recurso «%1» ha sido actualizado."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:400
 #, kde-format
 msgid "Resource read: %1 content."
 msgid_plural "Resource read: %1 contents."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Recurso leído: %1 contenido."
+msgstr[1] "Recurso leído: %1 contenidos."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:413
 #, kde-format
 msgid "No contents."
-msgstr ""
+msgstr "No hay contenidos."
 
 #: widgets/actions/kmcpclientinspectorresourcetemplateswidget.cpp:15
 #, kde-format
 msgctxt "@action:button"
 msgid "Resource Templates"
-msgstr ""
+msgstr "Plantillas de recursos"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:51
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Server level:"
-msgstr ""
+msgstr "Nivel del servidor:"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:57
 #, kde-format
 msgctxt "@item:inlistbox logging level"
 msgid "Server Default"
-msgstr ""
+msgstr "Predeterminado del servidor"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:60
 #, kde-format
@@ -865,18 +873,20 @@ msgctxt "@info:tooltip"
 msgid ""
 "Minimum level of the log messages sent by the server (logging/setLevel)."
 msgstr ""
+"Nivel mínimo de mensajes de registro enviados por el servidor (logging/"
+"setLevel)."
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:63
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Show from:"
-msgstr ""
+msgstr "Mostrar de:"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:70
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Hide received log messages below this level."
-msgstr ""
+msgstr "Ocultar los mensajes de registro recibidos por debajo de este nivel."
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:123
 #, kde-format
@@ -930,12 +940,12 @@ msgstr "Emergencia"
 #, kde-format
 msgctxt "@option:check"
 msgid "Edit arguments as JSON"
-msgstr ""
+msgstr "Editar argumentos como JSON"
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:49
 #, kde-format
 msgid "This tool has no arguments."
-msgstr ""
+msgstr "Esta herramienta no tiene argumentos."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:169
 #, kde-format
@@ -958,50 +968,50 @@ msgstr "Valor JSON"
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:330
 #, kde-format
 msgid "Argument \"%1\" is required."
-msgstr ""
+msgstr "Se requiere el argumento «%1»."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:340
 #, kde-format
 msgid "Argument \"%1\" must be an integer."
-msgstr ""
+msgstr "El argumento «%1» debe ser un entero."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:349
 #, kde-format
 msgid "Argument \"%1\" must be a number."
-msgstr ""
+msgstr "El argumento «%1» debe ser un número."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:358
 #, kde-format
 msgid "Argument \"%1\" is not a valid JSON value."
-msgstr ""
+msgstr "El argumento «%1» no es un valor JSON válido."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:379
 #, kde-format
 msgid "Invalid JSON arguments: %1 (offset %2)."
-msgstr ""
+msgstr "Argumentos JSON no válidos: %1 (desplazamiento %2)."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:385
 #, kde-format
 msgid "Arguments must be a JSON object."
-msgstr ""
+msgstr "Los argumentos deben ser un objeto JSON."
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:17
 #, kde-format
 msgctxt "@option:check"
 msgid "Elicitation"
-msgstr ""
+msgstr "Obtención de información"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:18
 #, kde-format
 msgctxt "@option:check"
 msgid "URL elicitation"
-msgstr ""
+msgstr "Obtención de información por URL"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:19
 #, kde-format
 msgctxt "@option:check"
 msgid "Roots"
-msgstr ""
+msgstr "Raíces"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:20
 #, kde-format
@@ -1018,12 +1028,12 @@ msgstr "Capacidades"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure Roots"
-msgstr ""
+msgstr "Configurar raíces"
 
 #: widgets/configure/kmcpclientinspectorconfiguregeneralwidget.cpp:34
 #, kde-format
 msgid "Request Timeout:"
-msgstr ""
+msgstr "Se ha agotado el tiempo de espera de la solicitud:"
 
 #: widgets/configure/kmcpclientinspectorconfiguregeneralwidget.cpp:38
 #, kde-format
@@ -1055,12 +1065,12 @@ msgstr "Servidores MCP"
 #, kde-format
 msgctxt "@title:window"
 msgid "Server Requests Information"
-msgstr ""
+msgstr "El servidor solicita información"
 
 #: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:42
 #, kde-format
 msgid "No information is requested."
-msgstr ""
+msgstr "No se ha solicitado información."
 
 #: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:50
 #, kde-format
@@ -1085,19 +1095,19 @@ msgstr "Información no válida"
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Roots"
-msgstr ""
+msgstr "Configurar raíces"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:37
 #, kde-format
 msgctxt "@title:window"
 msgid "Server Requests Message Generation"
-msgstr ""
+msgstr "El servidor solicita generación de mensaje"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:41
 #, kde-format
 msgctxt "@label"
 msgid "Request:"
-msgstr ""
+msgstr "Solicitud:"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:54
 #, kde-format
@@ -1109,7 +1119,7 @@ msgstr "Modelo:"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Stop reason:"
-msgstr ""
+msgstr "Motivo de la detención:"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:60
 #, kde-format
@@ -1121,7 +1131,7 @@ msgstr "Respuesta:"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Write the message generated for the server…"
-msgstr ""
+msgstr "Escribir el mensaje generado por el servidor…"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:71
 #, kde-format
@@ -1139,7 +1149,7 @@ msgstr "Rechazar"
 #, kde-format
 msgctxt "@title:window"
 msgid "Server Requests to Open a Web Page"
-msgstr ""
+msgstr "El servidor solicita abrir una página web"
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:47
 #, kde-format
@@ -1156,12 +1166,13 @@ msgstr "URL:"
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:57
 #, kde-format
 msgid "The page will be opened in your web browser only if you click \"Open\"."
-msgstr ""
+msgstr "La página se abrirá en su navegador web solo si pulsa «Abrir»."
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:58
 #, kde-format
 msgid "This URL is invalid or is not a web page: it cannot be opened."
 msgstr ""
+"Esta URL no es válida o no se trata de una página web: no se puede abrir."
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:67
 #, kde-format
@@ -1238,19 +1249,19 @@ msgstr "Autenticación:"
 #, kde-format
 msgctxt "@label"
 msgid "Roots:"
-msgstr ""
+msgstr "Raíces:"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:82
 #, kde-format
 msgctxt "@info"
 msgid "None"
-msgstr ""
+msgstr "Ninguna"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:82
 #, kde-format
 msgctxt "@info"
 msgid "Bearer token"
-msgstr ""
+msgstr "Token de portador"
 
 #: widgets/kmcpclientinspectorserversettingswidget.cpp:25
 #, kde-format
@@ -1264,6 +1275,8 @@ msgid ""
 "The server reports that the interaction in the web browser is complete "
 "(elicitation \"%1\"). You can retry the request."
 msgstr ""
+"El servidor informa de que se ha completado la interacción en el navegador "
+"web (obtención de información «%1»). Puede volver a intentar la solicitud."
 
 #. i18n: ectx: Menu (settings)
 #: widgets/kmcpclientinspectorui.rc:12
@@ -1301,21 +1314,21 @@ msgid ""
 "Could not write the file %1:\n"
 "\"%2\" is the detailed error description."
 msgstr ""
+"No se ha podido escribir el archivo %1:\n"
+"«%2» es la descripción detallada del error."
 
 #: widgets/misc/jsonplaintexteditwidget.cpp:55
 #, kde-format
 msgctxt "@title:window"
 msgid "Save File Error"
-msgstr ""
+msgstr "Error al guardar el archivo"
 
 #: widgets/misc/jsonplaintexteditwidget.cpp:81
 #, kde-format
 msgid "JSON Files (*.json);;All Files (*)"
-msgstr ""
+msgstr "Archivos JSON (*.json);; Todos los archivos (*)"
 
 #: widgets/misc/mcpservermenu.cpp:22
-#, fuzzy, kde-format
-#| msgctxt "@title Preferences page name"
-#| msgid "MCP Servers"
+#, kde-format
 msgid "Server"
-msgstr "Servidores MCP"
+msgstr "Servidor"

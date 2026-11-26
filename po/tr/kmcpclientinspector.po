@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kmcpclientinspector\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-24 01:08+0000\n"
-"PO-Revision-Date: 2026-11-23 18:14+0300\n"
+"PO-Revision-Date: 2026-11-25 22:35+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.08.2\n"
+"X-Generator: Poedit 3.10\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -456,404 +456,407 @@ msgid ""
 "Completion cannot be requested. Is the server connected and does it support "
 "completions?"
 msgstr ""
+"Tamamlama isteğinde bulunulamıyor. Sunucu bağlı mı ve tamamlamaları "
+"destekliyor mu?"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:402
 #, kde-format
 msgid "Requesting completion…"
-msgstr ""
+msgstr "Tamamlama isteniyor…"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:422
 #, kde-format
 msgid "%1 value."
 msgid_plural "%1 values."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 değer"
+msgstr[1] "%1 değer"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:424
 #, kde-format
 msgid "Total: %1."
-msgstr ""
+msgstr "Toplam: %1"
 
 #: widgets/actions/kmcpclientinspectorcompletewidget.cpp:427
 #, kde-format
 msgid "More values are available."
-msgstr ""
+msgstr "Daha fazla değer kullanılabilirdir."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:42
 #, kde-format
 msgctxt "@title message role"
 msgid "User"
-msgstr ""
+msgstr "Kullanıcı"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:44
 #, kde-format
 msgctxt "@title message role"
 msgid "Assistant"
-msgstr ""
+msgstr "Yardımcı"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:48
 #, kde-format
 msgctxt "@title message role"
 msgid "Unknown role"
-msgstr ""
+msgstr "Bilinmeyen rol"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:54
 #: widgets/actions/kmcpclientinspectorlistpromptswidget.cpp:15
 #, kde-format
 msgctxt "@action:button"
 msgid "List Prompts"
-msgstr ""
+msgstr "İstemleri Listele"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:59
 #, kde-format
 msgctxt "@action:button"
 msgid "Get Prompt"
-msgstr ""
+msgstr "İstem Al"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:140
 #, kde-format
 msgctxt "@title:tab"
 msgid "Messages"
-msgstr ""
+msgstr "İletiler"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:155
 #, kde-format
 msgid "Prompts Updated"
-msgstr ""
+msgstr "İstemler Güncellendi"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:156
 #, kde-format
 msgid "Prompts were updated in '%1'."
-msgstr ""
+msgstr "İstemler, “%1” içinde güncellendi."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:243
 #, kde-format
 msgid "No prompt selected"
-msgstr ""
+msgstr "Seçili istem yok"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:292
 #, kde-format
 msgid "Argument \"%2\" is required."
 msgid_plural "Arguments %2 are required."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "“%2” argümanı gerekiyor."
+msgstr[1] "Argümanlar %2 gerekiyor."
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:297
 #, kde-format
 msgid ""
 "Prompt cannot be retrieved. Is the server connected and does it support "
 "prompts?"
-msgstr ""
+msgstr "İstem alınamıyor. Sunucu bağlı ve istemleri destekliyor mu?"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:301
 #, kde-format
 msgid "Getting prompt…"
-msgstr ""
+msgstr "İstem alınıyor…"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:317
 #, kde-format
 msgid "Prompt retrieved: %1 message."
 msgid_plural "Prompt retrieved: %1 messages."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "İstem alındı: %1 ileti"
+msgstr[1] "İstem alındı: %1 ileti"
 
 #: widgets/actions/kmcpclientinspectorgetpromptwidget.cpp:336
 #, kde-format
 msgid "No messages."
-msgstr ""
+msgstr "İleti yok"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:49
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:32
 #, kde-format
 msgctxt "@label"
 msgid "Name:"
-msgstr ""
+msgstr "Ad:"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:50
 #, kde-format
 msgctxt "@label"
 msgid "Title:"
-msgstr ""
+msgstr "Başlık:"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:51
 #, kde-format
 msgctxt "@label"
 msgid "Version:"
-msgstr ""
+msgstr "Sürüm:"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:52
 #, kde-format
 msgctxt "@label"
 msgid "Description:"
-msgstr ""
+msgstr "Açıklama:"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:53
 #, kde-format
 msgctxt "@label"
 msgid "Website:"
-msgstr ""
+msgstr "Web sitesi:"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:54
 #, kde-format
 msgctxt "@label"
 msgid "Protocol version:"
-msgstr ""
+msgstr "Protokol sürümü:"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:55
 #, kde-format
 msgctxt "@label"
 msgid "Capabilities:"
-msgstr ""
+msgstr "Yetenekler:"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:63
 #, kde-format
 msgctxt "@label"
 msgid "Instructions:"
-msgstr ""
+msgstr "Yönergeler:"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:69
 #, kde-format
 msgid "The server did not send instructions."
-msgstr ""
+msgstr "Sunucu, hiçbir yönerge göndermedi."
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:72
 #, kde-format
 msgid "Information"
-msgstr ""
+msgstr "Bilgi"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:75
 #, kde-format
 msgid "JSON"
-msgstr ""
+msgstr "JSON"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:136
 #, kde-format
 msgctxt "@info server capability option"
 msgid "list changed notifications"
-msgstr ""
+msgstr "Değiştirilen bildirimleri listele"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:140
 #, kde-format
 msgctxt "@info server capability"
 msgid "Tools"
-msgstr ""
+msgstr "Araçlar"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:144
 #, kde-format
 msgctxt "@info server capability"
 msgid "Prompts"
-msgstr ""
+msgstr "İstemler"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:149
 #, kde-format
 msgctxt "@info server capability option"
 msgid "subscribe"
-msgstr ""
+msgstr "Abone ol"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:154
 #, kde-format
 msgctxt "@info server capability"
 msgid "Resources"
-msgstr ""
+msgstr "Özkaynaklar"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:157
 #, kde-format
 msgctxt "@info server capability"
 msgid "Logging"
-msgstr ""
+msgstr "Günlükleme"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:160
 #, kde-format
 msgctxt "@info server capability"
 msgid "Completions"
-msgstr ""
+msgstr "Tamamlamalar"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:163
 #, kde-format
 msgctxt "@info server capability"
 msgid "Tasks"
-msgstr ""
+msgstr "Görevler"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:166
 #, kde-format
 msgctxt "@info server capability"
 msgid "Experimental"
-msgstr ""
+msgstr "Deneysel"
 
 #: widgets/actions/kmcpclientinspectorinitializewidget.cpp:169
 #, kde-format
 msgctxt "@info server capabilities"
 msgid "None"
-msgstr ""
+msgstr "Yok"
 
 #: widgets/actions/kmcpclientinspectorlistresourceswidget.cpp:16
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:47
 #, kde-format
 msgctxt "@action:button"
 msgid "List Resources"
-msgstr ""
+msgstr "Özkaynakları Listele"
 
 #: widgets/actions/kmcpclientinspectorlistresourceswidget.cpp:30
 #, kde-format
 msgid "Resources Updated"
-msgstr ""
+msgstr "Özkaynaklar Güncellendi"
 
 #: widgets/actions/kmcpclientinspectorlistresourceswidget.cpp:31
 #, kde-format
 msgid "Resources were updated in '%1'."
-msgstr ""
+msgstr "Özkaynaklar, “%1” içinde güncellendi."
 
 #: widgets/actions/kmcpclientinspectorlogsearchwidget.cpp:17
 #, kde-format
 msgctxt "@action:button"
 msgid "Clear"
-msgstr ""
+msgstr "Temizle"
 
 #: widgets/actions/kmcpclientinspectorlogtreewidget.cpp:40
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Direction:"
-msgstr ""
+msgstr "Yön:"
 
 #: widgets/actions/kmcpclientinspectorpingwidget.cpp:12
 #, kde-format
 msgctxt "@action:button"
 msgid "Ping"
-msgstr ""
+msgstr "Ping"
 
 #: widgets/actions/kmcpclientinspectorpromptargumentswidget.cpp:21
 #, kde-format
 msgid "This prompt has no arguments."
-msgstr ""
+msgstr "Bu istemin argümanı yok."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:52
 #, kde-format
 msgctxt "@action:button"
 msgid "Read Resource"
-msgstr ""
+msgstr "Özkaynağı Oku"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:53
 #, kde-format
 msgctxt "@action:button"
 msgid "Subscribe"
-msgstr ""
+msgstr "Abone Ol"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:54
 #, kde-format
 msgctxt "@action:button"
 msgid "Unsubscribe"
-msgstr ""
+msgstr "Abonelikten Çık"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:118
 #, kde-format
 msgctxt "@label:textbox"
 msgid "URI:"
-msgstr ""
+msgstr "URI:"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:123
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Select a resource or enter its URI"
-msgstr ""
+msgstr "Bir özkaynak seç veya URI’sini gir…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:154
 #, kde-format
 msgctxt "@title:tab"
 msgid "Contents"
-msgstr ""
+msgstr "İçerik"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:262
 #, kde-format
 msgid "Subscribed to updates"
-msgstr ""
+msgstr "Güncellemelere abone olundu"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:271
 #, kde-format
 msgid "No resource selected"
-msgstr ""
+msgstr "Seçili özkaynak yok"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:323
 #, kde-format
 msgid ""
 "Resource cannot be read. Is the server connected and does it support "
 "resources?"
-msgstr ""
+msgstr "Özkaynak okunamıyor. Sunucu bağlı mı ve özkaynakları destekliyor mu?"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:327
 #, kde-format
 msgid "Reading resource…"
-msgstr ""
+msgstr "Özkaynak okunuyor…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:336
 #, kde-format
 msgid ""
 "Cannot subscribe to resource. Does the server support resource subscriptions?"
 msgstr ""
+"Özkaynağa abone olunamıyor. Sunucu, özkaynak aboneliğini destekliyor mu?"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:340
 #, kde-format
 msgid "Subscribing to resource…"
-msgstr ""
+msgstr "Özkaynağa abone olunuyor…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:349
 #, kde-format
 msgid "Cannot unsubscribe from resource."
-msgstr ""
+msgstr "Özkaynak aboneliğinden çıkılamıyor"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:353
 #, kde-format
 msgid "Unsubscribing from resource…"
-msgstr ""
+msgstr "Özkaynak aboneliğinden çıkılıyor…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:365
 #, kde-format
 msgid "Subscribed to \"%1\"."
-msgstr ""
+msgstr "Abone olundu: “%1”"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:368
 #, kde-format
 msgid "Unsubscribed from \"%1\"."
-msgstr ""
+msgstr "Abonelikten çıkıldı: “%1”"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:381
 #, kde-format
 msgid "Resource \"%1\" was updated, reading it again…"
-msgstr ""
+msgstr "“%1” özkaynağı güncellendi; yeniden okunuyor…"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:384
 #, kde-format
 msgid "Resource \"%1\" was updated."
-msgstr ""
+msgstr "“%1” özkaynağı güncellendi."
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:400
 #, kde-format
 msgid "Resource read: %1 content."
 msgid_plural "Resource read: %1 contents."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Özkaynak okundu: %1 içerik"
+msgstr[1] "Özkaynak okundu: %1 içerik"
 
 #: widgets/actions/kmcpclientinspectorreadresourcewidget.cpp:413
 #, kde-format
 msgid "No contents."
-msgstr ""
+msgstr "İçerik yok"
 
 #: widgets/actions/kmcpclientinspectorresourcetemplateswidget.cpp:15
 #, kde-format
 msgctxt "@action:button"
 msgid "Resource Templates"
-msgstr ""
+msgstr "Özkaynak Şablonları"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:51
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Server level:"
-msgstr ""
+msgstr "Sunucu düzeyi:"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:57
 #, kde-format
 msgctxt "@item:inlistbox logging level"
 msgid "Server Default"
-msgstr ""
+msgstr "Sunucu Varsayılanı"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:60
 #, kde-format
@@ -861,398 +864,400 @@ msgctxt "@info:tooltip"
 msgid ""
 "Minimum level of the log messages sent by the server (logging/setLevel)."
 msgstr ""
+"Sunucu tarafından gönderilen günlük iletilerinin en az düzeyi (logging/"
+"setLevel)."
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:63
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Show from:"
-msgstr ""
+msgstr "Şunlardan göster:"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:70
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Hide received log messages below this level."
-msgstr ""
+msgstr "Bu düzeyin altındaki alınan günlük iletilerini gizleyin."
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:123
 #, kde-format
 msgctxt "@item:inlistbox logging level"
 msgid "Debug"
-msgstr ""
+msgstr "Hata Ayıkla"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:124
 #, kde-format
 msgctxt "@item:inlistbox logging level"
 msgid "Info"
-msgstr ""
+msgstr "Bilgi"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:125
 #, kde-format
 msgctxt "@item:inlistbox logging level"
 msgid "Notice"
-msgstr ""
+msgstr "Bildiri"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:126
 #, kde-format
 msgctxt "@item:inlistbox logging level"
 msgid "Warning"
-msgstr ""
+msgstr "Uyarı"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:127
 #, kde-format
 msgctxt "@item:inlistbox logging level"
 msgid "Error"
-msgstr ""
+msgstr "Hata"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:128
 #, kde-format
 msgctxt "@item:inlistbox logging level"
 msgid "Critical"
-msgstr ""
+msgstr "Kritik"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:129
 #, kde-format
 msgctxt "@item:inlistbox logging level"
 msgid "Alert"
-msgstr ""
+msgstr "İkaz"
 
 #: widgets/actions/kmcpclientinspectorservernotificationwidget.cpp:130
 #, kde-format
 msgctxt "@item:inlistbox logging level"
 msgid "Emergency"
-msgstr ""
+msgstr "Acil durum"
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:45
 #, kde-format
 msgctxt "@option:check"
 msgid "Edit arguments as JSON"
-msgstr ""
+msgstr "Argümanları JSON olarak düzenle"
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:49
 #, kde-format
 msgid "This tool has no arguments."
-msgstr ""
+msgstr "Bu aracın argümanı yok."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:169
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Integer"
-msgstr ""
+msgstr "Tam sayı"
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:173
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Number"
-msgstr ""
+msgstr "Sayı"
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:177
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "JSON value"
-msgstr ""
+msgstr "JSON değeri"
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:330
 #, kde-format
 msgid "Argument \"%1\" is required."
-msgstr ""
+msgstr "“%1” argümanı gerekiyor."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:340
 #, kde-format
 msgid "Argument \"%1\" must be an integer."
-msgstr ""
+msgstr "“%1” argümanı bir tam sayı olmalıdır."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:349
 #, kde-format
 msgid "Argument \"%1\" must be a number."
-msgstr ""
+msgstr "“%1” argümanı bir sayı olmalıdır."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:358
 #, kde-format
 msgid "Argument \"%1\" is not a valid JSON value."
-msgstr ""
+msgstr "“%1” argümanı geçerli bir JSON değeri olmalıdır."
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:379
 #, kde-format
 msgid "Invalid JSON arguments: %1 (offset %2)."
-msgstr ""
+msgstr "Geçersiz JSON argümanları: %1 (ofset %2)"
 
 #: widgets/actions/kmcpclientinspectortoolargumentswidget.cpp:385
 #, kde-format
 msgid "Arguments must be a JSON object."
-msgstr ""
+msgstr "Argümanlar bir JSON nesnesi olmalıdır."
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:17
 #, kde-format
 msgctxt "@option:check"
 msgid "Elicitation"
-msgstr ""
+msgstr "Veri istemi"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:18
 #, kde-format
 msgctxt "@option:check"
 msgid "URL elicitation"
-msgstr ""
+msgstr "URL istemi"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:19
 #, kde-format
 msgctxt "@option:check"
 msgid "Roots"
-msgstr ""
+msgstr "Kökler"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:20
 #, kde-format
 msgctxt "@option:check"
 msgid "Sampling"
-msgstr ""
+msgstr "Örnekleme"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:27
 #, kde-format
 msgid "Capabilities"
-msgstr ""
+msgstr "Yetenekler"
 
 #: widgets/common/kmcpclientinspectorcapabilitywidget.cpp:56
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure Roots"
-msgstr ""
+msgstr "Kökleri Yapılandır"
 
 #: widgets/configure/kmcpclientinspectorconfiguregeneralwidget.cpp:34
 #, kde-format
 msgid "Request Timeout:"
-msgstr ""
+msgstr "İstek zaman aşımı:"
 
 #: widgets/configure/kmcpclientinspectorconfiguregeneralwidget.cpp:38
 #, kde-format
 msgctxt "Interval suffix"
 msgid "%v second"
 msgid_plural "%v seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%v saniye"
+msgstr[1] "%v saniye"
 
 #: widgets/configure/kmcpclientinspectorconfiguresettingsdialog.cpp:24
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure KMcpClientInspector"
-msgstr ""
+msgstr "KMcpClientInspector’ı Yapılandır"
 
 #: widgets/configure/kmcpclientinspectorconfiguresettingsdialog.cpp:27
 #, kde-format
 msgctxt "@title Preferences page name"
 msgid "General"
-msgstr ""
+msgstr "Genel"
 
 #: widgets/configure/kmcpclientinspectorconfiguresettingsdialog.cpp:32
 #, kde-format
 msgctxt "@title Preferences page name"
 msgid "MCP Servers"
-msgstr ""
+msgstr "MCP Sunucuları"
 
 #: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:30
 #, kde-format
 msgctxt "@title:window"
 msgid "Server Requests Information"
-msgstr ""
+msgstr "Sunucu İstekleri Bilgisi"
 
 #: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:42
 #, kde-format
 msgid "No information is requested."
-msgstr ""
+msgstr "İstenen bilgi yok"
 
 #: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:50
 #, kde-format
 msgctxt "@action:button"
 msgid "Accept"
-msgstr ""
+msgstr "Kabul Et"
 
 #: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:51
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:73
 #, kde-format
 msgctxt "@action:button"
 msgid "Decline"
-msgstr ""
+msgstr "Reddet"
 
 #: widgets/dialogs/kmcpclientinspectorelicitationdialog.cpp:68
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid Information"
-msgstr ""
+msgstr "Geçersiz Bilgi"
 
 #: widgets/dialogs/kmcpclientinspectorrootsdialog.cpp:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Roots"
-msgstr ""
+msgstr "Kökleri Yapılandır"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:37
 #, kde-format
 msgctxt "@title:window"
 msgid "Server Requests Message Generation"
-msgstr ""
+msgstr "Sunucu İstekleri İletisi Üretimi"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:41
 #, kde-format
 msgctxt "@label"
 msgid "Request:"
-msgstr ""
+msgstr "İstek:"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:54
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Model:"
-msgstr ""
+msgstr "Model:"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:57
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Stop reason:"
-msgstr ""
+msgstr "Durdurma gerekçesi:"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:60
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Response:"
-msgstr ""
+msgstr "Yanıt:"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:65
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Write the message generated for the server…"
-msgstr ""
+msgstr "Sunucu için üretilen iletiyi yaz…"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:71
 #, kde-format
 msgctxt "@action:button"
 msgid "Send"
-msgstr ""
+msgstr "Gönder"
 
 #: widgets/dialogs/kmcpclientinspectorsamplingdialog.cpp:73
 #, kde-format
 msgctxt "@action:button"
 msgid "Reject"
-msgstr ""
+msgstr "Reddet"
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:24
 #, kde-format
 msgctxt "@title:window"
 msgid "Server Requests to Open a Web Page"
-msgstr ""
+msgstr "Web Sayfası Açmak için Sunucu İstekleri"
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:47
 #, kde-format
 msgctxt "@label"
 msgid "Domain:"
-msgstr ""
+msgstr "Etki alanı:"
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:54
 #, kde-format
 msgctxt "@label"
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:57
 #, kde-format
 msgid "The page will be opened in your web browser only if you click \"Open\"."
-msgstr ""
+msgstr "Sayfa, yalnızca “Aç”ı tıklarsanız web tarayıcınızda açılacaktır."
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:58
 #, kde-format
 msgid "This URL is invalid or is not a web page: it cannot be opened."
-msgstr ""
+msgstr "Bu URL geçersiz veya bir web sayfası değil; açılamıyor."
 
 #: widgets/dialogs/kmcpclientinspectorurlelicitationdialog.cpp:67
 #, kde-format
 msgctxt "@action:button"
 msgid "Open"
-msgstr ""
+msgstr "Aç"
 
 #: widgets/kmcpclientinspectorconnectbuttonswidget.cpp:14
 #, kde-format
 msgctxt "@action:button"
 msgid "Connect"
-msgstr ""
+msgstr "Bağlan"
 
 #: widgets/kmcpclientinspectorconnectbuttonswidget.cpp:15
 #, kde-format
 msgctxt "@action:button"
 msgid "Disconnect"
-msgstr ""
+msgstr "Bağlantıyı Kes"
 
 #: widgets/kmcpclientinspectormainwindow.cpp:68
 #, kde-format
 msgid "What's new"
-msgstr ""
+msgstr "Neler Yeni"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:31
 #, kde-format
 msgctxt "@label"
 msgid "Icon:"
-msgstr ""
+msgstr "Simge:"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:33
 #, kde-format
 msgctxt "@label"
 msgid "Type:"
-msgstr ""
+msgstr "Tür:"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:34
 #, kde-format
 msgctxt "@label"
 msgid "Command:"
-msgstr ""
+msgstr "Komut:"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:35
 #, kde-format
 msgctxt "@label"
 msgid "Arguments:"
-msgstr ""
+msgstr "Argümanlar:"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:36
 #, kde-format
 msgctxt "@label"
 msgid "Environment:"
-msgstr ""
+msgstr "Ortam:"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:37
 #, kde-format
 msgctxt "@label"
 msgid "Url:"
-msgstr ""
+msgstr "URL:"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:38
 #, kde-format
 msgctxt "@label"
 msgid "Headers:"
-msgstr ""
+msgstr "Üst bilgiler:"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:39
 #, kde-format
 msgctxt "@label"
 msgid "Authentication:"
-msgstr ""
+msgstr "Kimlik doğrulama:"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:40
 #, kde-format
 msgctxt "@label"
 msgid "Roots:"
-msgstr ""
+msgstr "Kökler:"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:82
 #, kde-format
 msgctxt "@info"
 msgid "None"
-msgstr ""
+msgstr "Yok"
 
 #: widgets/kmcpclientinspectorserverinfowidget.cpp:82
 #, kde-format
 msgctxt "@info"
 msgid "Bearer token"
-msgstr ""
+msgstr "Taşıyıcı jeton"
 
 #: widgets/kmcpclientinspectorserversettingswidget.cpp:25
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
-msgstr ""
+msgstr "Düzenle…"
 
 #: widgets/kmcpclientinspectortabpage.cpp:180
 #, kde-format
@@ -1260,36 +1265,38 @@ msgid ""
 "The server reports that the interaction in the web browser is complete "
 "(elicitation \"%1\"). You can retry the request."
 msgstr ""
+"Sunucu, web tarayıcısındaki etkileşimin tamamlandığını bildiriyor (veri "
+"istemi “%1”). İsteği yeniden deneyebilirsiniz."
 
 #. i18n: ectx: Menu (settings)
 #: widgets/kmcpclientinspectorui.rc:12
 #, kde-format
 msgid "&Settings"
-msgstr ""
+msgstr "Ayar&lar"
 
 #. i18n: ectx: Menu (help)
 #: widgets/kmcpclientinspectorui.rc:16
 #, kde-format
 msgid "&Help"
-msgstr ""
+msgstr "&Yardım"
 
 #: widgets/misc/directioncombobox.cpp:20
 #, kde-format
 msgctxt "@item:inlistbox message direction"
 msgid "All"
-msgstr ""
+msgstr "Tümü"
 
 #: widgets/misc/directioncombobox.cpp:21
 #, kde-format
 msgctxt "@item:inlistbox message direction"
 msgid "Sent"
-msgstr ""
+msgstr "Gönderilen"
 
 #: widgets/misc/directioncombobox.cpp:22
 #, kde-format
 msgctxt "@item:inlistbox message direction"
 msgid "Received"
-msgstr ""
+msgstr "Alınan"
 
 #: widgets/misc/jsonplaintexteditwidget.cpp:51
 #, kde-format
@@ -1297,19 +1304,21 @@ msgid ""
 "Could not write the file %1:\n"
 "\"%2\" is the detailed error description."
 msgstr ""
+"%1 dosyasına yazılamadı:\n"
+"“%2”, ayrıntılı hata açıklamasıdır."
 
 #: widgets/misc/jsonplaintexteditwidget.cpp:55
 #, kde-format
 msgctxt "@title:window"
 msgid "Save File Error"
-msgstr ""
+msgstr "Dosya Kaydetme Hatası"
 
 #: widgets/misc/jsonplaintexteditwidget.cpp:81
 #, kde-format
 msgid "JSON Files (*.json);;All Files (*)"
-msgstr ""
+msgstr "JSON dosyaları (*.json);;Tüm dosyalar (*)"
 
 #: widgets/misc/mcpservermenu.cpp:22
 #, kde-format
 msgid "Server"
-msgstr ""
+msgstr "Sunucu"
