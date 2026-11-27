@@ -27,5 +27,5 @@ if(APPLE)
 endif()
 
 install(PROGRAMS data/org.kde.kmcpclientinspector.desktop DESTINATION ${KDE_INSTALL_APPDIR})
-install(FILES data/org.kde.kmcpclientinspector.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+install(FILES data/org.kde.kmcpclientinspector.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 install(FILES data/kmcpclientinspector.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFYRCDIR})
